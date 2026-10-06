@@ -1,0 +1,343 @@
+@SPK@include("partials/mainhead.html")
+
+</head>
+
+<body>
+
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <!-- Start::app-content -->
+        <div class="main-content app-content">
+            <div class="container-fluid">
+
+                @SPK@include("partials/page-header.html", {"title": "Ribbons", "subtitle": 'Advanced Ui'})
+
+                <!-- Row 1-->
+                <div class="row">
+                    <h5 class="fw-semibold mb-4">Ribbon Style 1</h5>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card ribbone-card">
+                            <div class="power-ribbone power-ribbone-top-left text-warning"><span class="bg-warning"><i class="ri-flashlight-fill"></i></span></div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card ribbone-card">
+                            <div class="power-ribbone power-ribbone-bottom-left text-primary"><span class="bg-primary"><i class="ri-flashlight-fill"></i></span></div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title.  some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card ribbone-card">
+                            <div class="power-ribbone power-ribbone-top-right text-danger"><span class="bg-danger"><i class="ri-flashlight-fill"></i></span></div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card ribbone-card">
+                            <div class="power-ribbone power-ribbone-bottom-right text-success"><span class="bg-success"><i class="ri-flashlight-fill"></i></span></div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Row 1-->
+
+                <!-- Row 2-->
+                <div class="row">
+                    <h5 class="fw-semibold mb-4">Ribbon Style 2</h5>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card ribbone-card">
+                            <div class="ribbone ribbone-top-left text-primary"><span class="bg-primary">sold out</span></div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold text-end">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card ribbone-card  sold-out">
+                            <div class="ribbone ribbone-top-right text-danger"><span class="bg-danger">Offer</span></div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card ribbone-card">
+                            <div class="ribbone ribbone-top-left text-success"><span class="bg-success">Update</span></div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold text-end">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card ribbone-card  sold-out">
+                            <div class="ribbone ribbone-top-right text-warning"><span class="bg-warning">Open</span></div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Row 2-->
+
+                <!-- Row 3-->
+                <div class="row">
+                    <h5 class="fw-semibold mb-4">Ribbon Style 3</h5>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card ribbone-card">
+                            <div class="arrow-ribbone-left bg-secondary">Sale</div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold text-end">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card ribbone-card">
+                            <div class="arrow-ribbone-right bg-info">Price</div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card ribbone-card">
+                            <div class="arrow-ribbone-left bg-warning">Service</div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold text-end">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card ribbone-card">
+                            <div class="arrow-ribbone-right bg-teal">Offer</div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Row 3-->
+
+                <!-- Row 4-->
+                <div class="row">
+                    <h5 class="fw-semibold mb-4">Ribbon Style 4</h5>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <span class="ribbone-success-left">
+                                <span><i class="fe fe-zap"></i></span>
+                            </span>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold text-end">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <span class="ribbone-warning-right">
+                                <span><i class="fe fe-zap"></i></span>
+                            </span>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <span class="ribbone-info-left">
+                                <span><i class="fe fe-zap"></i></span>
+                            </span>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold text-end">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <span class="ribbone-danger-right">
+                                <span><i class="fe fe-zap"></i></span>
+                            </span>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Row 4-->
+
+                <!-- Row 5-->
+                <div class="row">
+                    <h5 class="fw-semibold mb-4">Ribbon Style 5</h5>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <span class="bookmark-ribbone-danger-left">
+                                <span>Jul</span>
+                            </span>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold text-end">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <span class="bookmark-ribbone-secondary-right">
+                                <span>Aug</span>
+                            </span>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <span class="bookmark-sideleft-ribbone-success-left">
+                                <span>Sept</span>
+                            </span>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold text-end">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <span class="bookmark-sideright-ribbone-primary-right">
+                                <span>Oct</span>
+                            </span>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Row 5-->
+
+                <!-- Row 6-->
+                <div class="row">
+                    <h5 class="fw-semibold mb-4">Ribbon Style 6</h5>
+                    <div class="col-xxl-2 col-lg-4 col-md-4 col-sm-10 mx-0 mx-sm-7">
+                        <div class="card br-0">
+                            <div class="fullwidth-secondary-ribbons">
+
+                                <div class="bar">
+                                    CSS Ribbon
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    </div>
+                                </div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-2 col-lg-4 col-md-4 col-sm-10 mx-0 mx-sm-7">
+                        <div class="card br-0">
+                            <div class="fullwidth-primary-ribbons">
+
+                                <div class="bar">
+                                    CSS Ribbon
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    </div>
+                            </div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-2 col-lg-4 col-md-4 col-sm-10 mx-0 mx-sm-7">
+                        <div class="card br-0">
+                            <div class="fullwidth-arrow-warning-ribbons">
+
+                                <div class="bar">
+                                    CSS Ribbon
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    </div>
+                            </div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-2 col-lg-4 col-md-4 col-sm-10 mx-0 mx-sm-7">
+                        <div class="card br-0">
+                            <div class="fullwidth-arrow-danger-ribbons-right">
+
+                                <div class="bar">
+                                    CSS Ribbon
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    </div>
+                            </div>
+                            <div class="card-body  p-6">
+                                <h6 class="card-subtitle mb-2 text-dark fw-bold">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title. Some quick example text to build on the card title</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Row 6-->
+
+            </div>
+        </div>
+        <!-- End::app-content -->
+
+        @SPK@include("partials/headersearch_modal.html")
+        @SPK@include("partials/right-sidebar.html")
+        @SPK@include("partials/footer.html")
+
+    </div>
+
+    @SPK@include("partials/commonjs.html")
+
+    @SPK@include("partials/custom_switcherjs.html")
+
+    <!-- Custom JS -->
+    <script src="../assets/js/custom.js"></script>
+
+</body>
+
+</html>

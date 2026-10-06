@@ -1,0 +1,162 @@
+@SPK@include("partials/mainhead.html")
+
+<style>
+    .auto-gen-card {
+        border: 1px solid #e2e8f0;
+        border-radius: 0.625rem;
+        background: #ffffff;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    }
+    .auto-gen-card .card-header {
+        background-color: #f8fafc;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 0.85rem 1.25rem;
+    }
+    .data-tile {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        padding: 0.85rem 1rem;
+        height: 100%;
+    }
+    .data-tile-label {
+        font-size: 0.75rem;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.35rem;
+        display: block;
+        font-weight: 600;
+    }
+    .data-tile-value {
+        font-size: 0.9375rem;
+        font-weight: 700;
+        color: #1e293b;
+    }
+</style>
+
+</head>
+
+<body>
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <main class="main-content app-content">
+            <div class="container-fluid">
+                @SPK@include("partials/page-header.html", {"title": "Permohonan Perubahan SIPR", "subtitle": 'Daftar Permohonan'})
+
+                <!-- Card 1: Data SIUP Pelaku Usaha (Auto Generated) -->
+                <div class="card custom-card auto-gen-card mb-4">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <div class="card-title text-dark fs-14 fw-bold mb-0">
+                            <i class="ri-building-line text-primary me-2"></i>Data SIUP Pelaku Usaha
+                        </div>
+                        <span class="badge bg-success-transparent text-success rounded-pill px-3 py-1 fs-11">
+                            <i class="fe fe-check-circle me-1"></i>Auto Generated OSS
+                        </span>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row g-3">
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+                                <div class="data-tile">
+                                    <span class="data-tile-label">Nama Pemilik / Badan Usaha</span>
+                                    <span class="data-tile-value text-primary">BANDAR NELAYAN, PT</span>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                                <div class="data-tile">
+                                    <span class="data-tile-label">Nomor SIUP</span>
+                                    <span class="data-tile-value font-monospace">01.02.01.0079.0282</span>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-2 col-md-6 col-12">
+                                <div class="data-tile">
+                                    <span class="data-tile-label">Revisi</span>
+                                    <span class="data-tile-value">40</span>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                                <div class="data-tile">
+                                    <span class="data-tile-label">Tanggal Terbit</span>
+                                    <span class="data-tile-value">7 Desember 2023</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Data Permohonan (Auto Generated + Keterangan Perubahan) -->
+                <div class="card custom-card auto-gen-card mb-4">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <div class="card-title text-dark fs-14 fw-bold mb-0">
+                            <i class="ri-file-list-3-line text-primary me-2"></i>PERMOHONAN
+                        </div>
+                        <span class="badge bg-warning-transparent text-warning rounded-pill px-3 py-1 fs-11">
+                            SIPR Perubahan
+                        </span>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row g-3 mb-3">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                                <div class="data-tile">
+                                    <span class="data-tile-label">Nomor Agenda</span>
+                                    <span class="data-tile-value text-primary font-monospace">424218/2026</span>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                                <div class="data-tile">
+                                    <span class="data-tile-label">Nomor NIB</span>
+                                    <span class="data-tile-value font-monospace">8120003752084</span>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                                <div class="data-tile">
+                                    <span class="data-tile-label">Jenis Permohonan</span>
+                                    <span class="data-tile-value text-dark">Perubahan</span>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                                <div class="data-tile">
+                                    <span class="data-tile-label">Skema PNBP</span>
+                                    <span class="data-tile-value text-success">PRA PRODUKSI</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Keterangan Perubahan (Input Long Text) -->
+                        <div class="row g-3 mb-4">
+                            <div class="col-12">
+                                <label for="keteranganPerubahan" class="form-label fs-13 fw-semibold text-dark mb-1">
+                                    Keterangan Perubahan
+                                </label>
+                                <textarea id="keteranganPerubahan" class="form-control" rows="4" placeholder="Masukkan keterangan rincian perubahan teknis/titik koordinat penempatan rumpon (SIPR)..."></textarea>
+                                <span class="text-muted fs-11 mt-1 d-block">
+                                    <i class="ri-information-line me-1 text-primary"></i>Rincian keterangan perubahan data teknis/posisi rumpon akan disertakan pada formulir pengajuan.
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons (Kembali & Lanjut) -->
+                        <div class="d-flex justify-content-end align-items-center gap-2 pt-3 border-top">
+                            <a href="verifikasi-izin-rumpon.html" class="btn btn-light px-4 py-2 fs-13">
+                                <i class="fe fe-arrow-left me-1"></i>Kembali
+                            </a>
+                            <a href="form-rumpon-perubahan.html" class="btn btn-warning text-white px-4 py-2 fs-13 fw-semibold shadow-sm">
+                                Lanjut<i class="fe fe-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    @SPK@include("partials/footer.html")
+    @SPK@include("partials/commonjs.html")
+</body>
+</html>

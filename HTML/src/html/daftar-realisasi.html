@@ -1,0 +1,1182 @@
+@SPK@include("partials/mainhead.html")
+
+<style>
+    .progress-xs {
+        height: 6px;
+        border-radius: 3px;
+    }
+    .wpp-badge {
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.375rem;
+    }
+    .table-realisasi th {
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #475569;
+        font-weight: 700;
+        background-color: #f8fafc;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    .table-realisasi td {
+        vertical-align: middle;
+        font-size: 0.8125rem;
+        font-weight: 400 !important;
+        color: #334155;
+    }
+    .modal-detail-card {
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        background-color: #f8fafc;
+    }
+    .modal-section-title {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.75rem;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 0.35rem;
+    }
+</style>
+
+</head>
+
+<body>
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <div class="main-content app-content">
+            <div class="container-fluid">
+                @SPK@include("partials/page-header.html", {"title": "Daftar Realisasi Operasional Kapal", "subtitle": "Portal Pelaku Usaha"})
+
+                <!-- Main Table Card: Data Realisasi Operasional Kapal -->
+                <div class="card custom-card border-0 shadow-sm mb-4">
+                    <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3 pb-3">
+                        <div>
+                            <h6 class="card-title mb-1">
+                                <i class="fe fe-anchor me-2 text-primary"></i>Data Realisasi Pelayaran Kapal
+                            </h6>
+                            <p class="text-muted fs-12 mb-0">Data realisasi pelayaran kapal, izin penangkapan (SIPI), jadwal keberangkatan, dan kedatangan.</p>
+                        </div>
+                        <div class="d-flex align-items-center flex-wrap gap-2">
+                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="window.print()">
+                                <i class="fe fe-printer me-1"></i>Cetak Tabel
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filter Toolbar -->
+                    <div class="card-body bg-light-subtle border-bottom py-3 px-4">
+                        <div class="row g-2 align-items-center">
+                            <!-- Search Box with Cari Button -->
+                            <div class="col-xl-8 col-lg-8 col-md-7 col-12">
+                                <label class="form-label fs-11 text-muted mb-1 fw-semibold">Pencarian Cepat Data Realisasi:</label>
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-text bg-white"><i class="fe fe-search text-muted"></i></span>
+                                    <input type="text" class="form-control" id="searchRealisasiInput" placeholder="Cari Nama Kapal / SIPI / Alat Tangkap / Pelabuhan...">
+                                    <button class="btn btn-primary" type="button" id="btnCariRealisasi">
+                                        <i class="fe fe-search me-1"></i>Cari
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Entries per page (Numbers only) -->
+                            <div class="col-xl-4 col-lg-4 col-md-5 col-12 d-flex flex-column justify-content-end">
+                                <label class="form-label fs-11 text-muted mb-1 fw-semibold">Tampilkan Baris:</label>
+                                <select class="form-select form-select-sm" id="entriesPerPage">
+                                    <option value="10" selected>10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Table Realisasi -->
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle table-bordered table-realisasi mb-0 text-nowrap" id="tableDataRealisasi">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th scope="col" class="text-center" style="width: 45px;">No.</th>
+                                        <th scope="col">Nama Kapal</th>
+                                        <th scope="col">Ukuran (GT)</th>
+                                        <th scope="col">Alat Tangkap (API)</th>
+                                        <th scope="col">No. SIPI / Izin</th>
+                                        <th scope="col">Lokasi WPP-NRI</th>
+                                        <th scope="col">Tanggal Keberangkatan</th>
+                                        <th scope="col">Tanggal Kedatangan</th>
+                                        <th scope="col">Pelabuhan Pangkalan</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBodyRealisasi">
+                                    <!-- Dynamic content rendered by Javascript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Table Footer: Pagination & Information -->
+                    <div class="card-footer d-flex flex-wrap align-items-center justify-content-between gap-2 py-2 px-3 border-top">
+                        <div class="text-muted fs-12" id="tableInfoRealisasi">
+                            Menampilkan 1 sampai 10 dari 35 data realisasi
+                        </div>
+                        <nav aria-label="Navigasi Halaman">
+                            <ul class="pagination pagination-sm mb-0" id="paginationRealisasi">
+                                <!-- Dynamic pagination rendered by Javascript -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- START:: MODAL DETAIL REALISASI VOYAGE -->
+    <div class="modal fade" id="modalDetailRealisasi" tabindex="-1" aria-labelledby="modalDetailRealisasiLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-primary text-white py-3 px-4">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar avatar-sm bg-white-transparent text-white rounded-circle me-2">
+                            <i class="ri-ship-line fs-18"></i>
+                        </div>
+                        <div>
+                            <h6 class="modal-title fs-15 text-white mb-0" id="modalDetailRealisasiLabel">Detail Realisasi Operasional Voyage</h6>
+                            <span class="text-white-50 fs-11">ID Voyage: <span id="mHdrIdVoyage" class="text-white fw-bold">-</span> · Pemilik: SUMBER MAKMUR RAYA FISHERIES, PT</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 bg-light">
+                    <!-- SECTION 1: INFORMASI VOYAGE & STATUS -->
+                    <div class="card custom-card modal-detail-card p-3 mb-3 border-0">
+                        <h6 class="modal-section-title d-flex align-items-center">
+                            <i class="ri-file-paper-2-line me-2"></i>1. INFORMASI VOYAGE & OPERASIONAL
+                        </h6>
+                        <div class="row g-3">
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">ID Voyage</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mIdVoyage" readonly>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">Status Pelayaran</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mStatusLogbook" readonly>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">Lokasi WPP-NRI</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mLokasiWpp" readonly>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">Estimasi Durasi Trip</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mDurasiTrip" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 2: DATA KAPAL & PERIZINAN -->
+                    <div class="card custom-card modal-detail-card p-3 mb-3 border-0">
+                        <h6 class="modal-section-title d-flex align-items-center">
+                            <i class="ri-ship-2-line me-2"></i>2. DATA KAPAL & PERIZINAN (SIPI)
+                        </h6>
+                        <div class="row g-3">
+                            <div class="col-md-4 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">Nama Kapal</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mNamaKapal" readonly>
+                            </div>
+                            <div class="col-md-2 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">Ukuran (GT)</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mUkuranGt" readonly>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">Alat Tangkap (API)</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mAlatTangkap" readonly>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">No. SIPI / Izin</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mNoSipi" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 3: JADWAL & PELABUHAN -->
+                    <div class="card custom-card modal-detail-card p-3 mb-3 border-0">
+                        <h6 class="modal-section-title d-flex align-items-center">
+                            <i class="ri-map-pin-time-line me-2"></i>3. JADWAL KEBERANGKATAN & PELABUHAN
+                        </h6>
+                        <div class="row g-3">
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">Tanggal Keberangkatan</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mTglKeberangkatan" readonly>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">Tanggal Kedatangan</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mTglKedatangan" readonly>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">Pelabuhan Pangkalan</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mPelabuhanPangkalan" readonly>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">Pelabuhan Singgah / Muat</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mPelabuhanSinggah" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 4: RINGKASAN HASIL TANGKAPAN IKAN -->
+                    <div class="card custom-card modal-detail-card p-3 mb-0 border-0">
+                        <h6 class="modal-section-title d-flex align-items-center">
+                            <i class="ri-file-chart-line me-2"></i>4. RINGKASAN HASIL TANGKAPAN IKAN
+                        </h6>
+                        <div class="row g-3">
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">Total Estimasi Tangkapan</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mTotalTangkapan" readonly>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">Komoditas Dominan</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mKomoditas" readonly>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">Jumlah Setting / Hauling</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mSettingCount" readonly>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <label class="form-label fs-11 text-muted mb-1">Status Validasi</label>
+                                <input type="text" class="form-control form-control-sm bg-white" id="mSinkronisasiKkp" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-white py-2 px-4">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">
+                        <i class="fe fe-x me-1"></i>Tutup
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="window.print()">
+                        <i class="fe fe-printer me-1"></i>Cetak Resume Voyage
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END:: MODAL DETAIL REALISASI VOYAGE -->
+
+    @SPK@include("partials/footer.html")
+    @SPK@include("partials/commonjs.html")
+
+    <script>
+        (function () {
+            // Master Data Realisasi Operasional Kapal (Pelaku Usaha: SUMBER MAKMUR RAYA FISHERIES, PT)
+            const realisasiDataMaster = [
+                {
+                    idVoyage: "VYG-718-2026-001",
+                    namaKapal: "KM SUMBER MAKMUR 01",
+                    ukuranGt: "280 GT",
+                    alatTangkap: "Jaring Hela Udang Berkantong",
+                    noSipi: "SIPI-718-2024-0012",
+                    lokasiWpp: "WPP-RI 718",
+                    wppCode: "718",
+                    tglKeberangkatan: "10-SEP-2026",
+                    tglKedatangan: "25-SEP-2026",
+                    pelabuhanPangkalan: "PP. Banjarmasin",
+                    pelabuhanSinggah: "PPP. Bajomulyo",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "48,500 Kg",
+                    komoditas: "Udang Windu, Udang Jerbung",
+                    settingCount: "28 Kali",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-718-2026-002",
+                    namaKapal: "KM SUMBER MAKMUR 02",
+                    ukuranGt: "275 GT",
+                    alatTangkap: "Jaring Hela Udang Berkantong",
+                    noSipi: "SIPI-718-2024-0013",
+                    lokasiWpp: "WPP-RI 718",
+                    wppCode: "718",
+                    tglKeberangkatan: "12-SEP-2026",
+                    tglKedatangan: "27-SEP-2026",
+                    pelabuhanPangkalan: "PP. Poumako",
+                    pelabuhanSinggah: "PP. Dobo",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "46,200 Kg",
+                    komoditas: "Udang Tiger, Cumi-cumi",
+                    settingCount: "26 Kali",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-718-2026-003",
+                    namaKapal: "KM SUMBER MAKMUR 03",
+                    ukuranGt: "290 GT",
+                    alatTangkap: "Jaring Hela Udang Berkantong",
+                    noSipi: "SIPI-718-2024-0014",
+                    lokasiWpp: "WPP-RI 718",
+                    wppCode: "718",
+                    tglKeberangkatan: "15-SEP-2026",
+                    tglKedatangan: "Masih Melaut",
+                    pelabuhanPangkalan: "PP. Poumako",
+                    pelabuhanSinggah: "PP. Merauke",
+                    statusLogbook: "Sedang Berjalan",
+                    durasiTrip: "Berjalan (Hari ke-6)",
+                    totalTangkapan: "22,400 Kg (Sementara)",
+                    komoditas: "Udang Putih, Ikan Demersal",
+                    settingCount: "14 Kali",
+                    sinkronisasiKkp: "Sinkronisasi Harian Aktif"
+                },
+                {
+                    idVoyage: "VYG-572-2026-004",
+                    namaKapal: "KM BAHARI NUSANTARA 01",
+                    ukuranGt: "120 GT",
+                    alatTangkap: "Rawai Tuna (Tuna Longline)",
+                    noSipi: "SIPI-572-2024-0021",
+                    lokasiWpp: "WPP-RI 572",
+                    wppCode: "572",
+                    tglKeberangkatan: "05-SEP-2026",
+                    tglKedatangan: "20-SEP-2026",
+                    pelabuhanPangkalan: "PPS Nizam Zachman Jakarta",
+                    pelabuhanSinggah: "PPN Sibolga",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "32,800 Kg",
+                    komoditas: "Tuna Madidihang, Tuna Mata Besar",
+                    settingCount: "12 Setting",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-572-2026-005",
+                    namaKapal: "KM BAHARI NUSANTARA 02",
+                    ukuranGt: "115 GT",
+                    alatTangkap: "Rawai Tuna (Tuna Longline)",
+                    noSipi: "SIPI-572-2024-0022",
+                    lokasiWpp: "WPP-RI 572",
+                    wppCode: "572",
+                    tglKeberangkatan: "08-SEP-2026",
+                    tglKedatangan: "23-SEP-2026",
+                    pelabuhanPangkalan: "PPS Nizam Zachman Jakarta",
+                    pelabuhanSinggah: "PPN Teluk Bayur",
+                    statusLogbook: "Tervalidasi",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "29,400 Kg",
+                    komoditas: "Tuna Sirip Kuning, Albakor",
+                    settingCount: "11 Setting",
+                    sinkronisasiKkp: "Tervalidasi Pengawas KKP"
+                },
+                {
+                    idVoyage: "VYG-572-2026-006",
+                    namaKapal: "KM BAHARI NUSANTARA 03",
+                    ukuranGt: "130 GT",
+                    alatTangkap: "Purse Seine Pelagis Besar",
+                    noSipi: "SIPI-572-2024-0023",
+                    lokasiWpp: "WPP-RI 572",
+                    wppCode: "572",
+                    tglKeberangkatan: "14-SEP-2026",
+                    tglKedatangan: "Masih Melaut",
+                    pelabuhanPangkalan: "PPS Nizam Zachman Jakarta",
+                    pelabuhanSinggah: "PPN Bungus",
+                    statusLogbook: "Sedang Berjalan",
+                    durasiTrip: "Berjalan (Hari ke-7)",
+                    totalTangkapan: "18,900 Kg (Sementara)",
+                    komoditas: "Cakalang, Tongkol",
+                    settingCount: "9 Setting",
+                    sinkronisasiKkp: "Sinkronisasi Harian Aktif"
+                },
+                {
+                    idVoyage: "VYG-573-2026-007",
+                    namaKapal: "KM SAMUDRA JAYA 08",
+                    ukuranGt: "95 GT",
+                    alatTangkap: "Pancing Ulur (Hand Line)",
+                    noSipi: "SIPI-573-2024-0044",
+                    lokasiWpp: "WPP-RI 573",
+                    wppCode: "573",
+                    tglKeberangkatan: "01-SEP-2026",
+                    tglKedatangan: "16-SEP-2026",
+                    pelabuhanPangkalan: "PPN Pelabuhan Ratu",
+                    pelabuhanSinggah: "PPP Sadeng",
+                    statusLogbook: "Tervalidasi",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "21,600 Kg",
+                    komoditas: "Tuna Sirip Kuning, Cakalang",
+                    settingCount: "15 Trip Operasi",
+                    sinkronisasiKkp: "Tervalidasi Pengawas KKP"
+                },
+                {
+                    idVoyage: "VYG-573-2026-008",
+                    namaKapal: "KM SAMUDRA JAYA 09",
+                    ukuranGt: "98 GT",
+                    alatTangkap: "Pancing Ulur (Hand Line)",
+                    noSipi: "SIPI-573-2024-0045",
+                    lokasiWpp: "WPP-RI 573",
+                    wppCode: "573",
+                    tglKeberangkatan: "06-SEP-2026",
+                    tglKedatangan: "21-SEP-2026",
+                    pelabuhanPangkalan: "PPN Pelabuhan Ratu",
+                    pelabuhanSinggah: "PPN Cilacap",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "23,100 Kg",
+                    komoditas: "Tuna Sirip Kuning, Layaran",
+                    settingCount: "14 Trip Operasi",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-573-2026-009",
+                    namaKapal: "KM SAMUDRA JAYA 10",
+                    ukuranGt: "105 GT",
+                    alatTangkap: "Rawai Tuna (Tuna Longline)",
+                    noSipi: "SIPI-573-2024-0046",
+                    lokasiWpp: "WPP-RI 573",
+                    wppCode: "573",
+                    tglKeberangkatan: "16-SEP-2026",
+                    tglKedatangan: "Masih Melaut",
+                    pelabuhanPangkalan: "PPN Pelabuhan Ratu",
+                    pelabuhanSinggah: "PPN Prigi",
+                    statusLogbook: "Sedang Berjalan",
+                    durasiTrip: "Berjalan (Hari ke-5)",
+                    totalTangkapan: "12,700 Kg (Sementara)",
+                    komoditas: "Tuna Mata Besar, Lemadang",
+                    settingCount: "6 Setting",
+                    sinkronisasiKkp: "Sinkronisasi Harian Aktif"
+                },
+                {
+                    idVoyage: "VYG-711-2026-010",
+                    namaKapal: "KM PENGANGKUT BAHARI 03",
+                    ukuranGt: "180 GT",
+                    alatTangkap: "Kapal Pengangkut Ikan",
+                    noSipi: "SIKPI-711-2024-0018",
+                    lokasiWpp: "WPP-RI 711",
+                    wppCode: "711",
+                    tglKeberangkatan: "04-SEP-2026",
+                    tglKedatangan: "18-SEP-2026",
+                    pelabuhanPangkalan: "PPN Sungai Liat Bangka",
+                    pelabuhanSinggah: "PPS Nizam Zachman Jakarta",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "14 Hari",
+                    totalTangkapan: "65,000 Kg (Muatan)",
+                    komoditas: "Kerapu, Kakap Merah, Cumi",
+                    settingCount: "4 Transshipment",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-711-2026-011",
+                    namaKapal: "KM MINA RAYA 01",
+                    ukuranGt: "140 GT",
+                    alatTangkap: "Pukat Cincin Pelagis Kecil",
+                    noSipi: "SIPI-711-2024-0019",
+                    lokasiWpp: "WPP-RI 711",
+                    wppCode: "711",
+                    tglKeberangkatan: "09-SEP-2026",
+                    tglKedatangan: "24-SEP-2026",
+                    pelabuhanPangkalan: "PPN Sungai Liat Bangka",
+                    pelabuhanSinggah: "PPP Tarempa",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "38,400 Kg",
+                    komoditas: "Kembung, Layang, Selar",
+                    settingCount: "16 Setting",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-711-2026-012",
+                    namaKapal: "KM MINA RAYA 02",
+                    ukuranGt: "145 GT",
+                    alatTangkap: "Pukat Cincin Pelagis Kecil",
+                    noSipi: "SIPI-711-2024-0020",
+                    lokasiWpp: "WPP-RI 711",
+                    wppCode: "711",
+                    tglKeberangkatan: "17-SEP-2026",
+                    tglKedatangan: "Masih Melaut",
+                    pelabuhanPangkalan: "PPN Sungai Liat Bangka",
+                    pelabuhanSinggah: "PPN Pemangkat",
+                    statusLogbook: "Sedang Berjalan",
+                    durasiTrip: "Berjalan (Hari ke-4)",
+                    totalTangkapan: "10,200 Kg (Sementara)",
+                    komoditas: "Kembung, Tongkol Lisong",
+                    settingCount: "5 Setting",
+                    sinkronisasiKkp: "Sinkronisasi Harian Aktif"
+                },
+                {
+                    idVoyage: "VYG-712-2026-013",
+                    namaKapal: "KM MINA MAKMUR 05",
+                    ukuranGt: "88 GT",
+                    alatTangkap: "Jaring Insang Hanyut (Drift Gillnet)",
+                    noSipi: "SIPI-712-2024-0031",
+                    lokasiWpp: "WPP-RI 712",
+                    wppCode: "712",
+                    tglKeberangkatan: "02-SEP-2026",
+                    tglKedatangan: "16-SEP-2026",
+                    pelabuhanPangkalan: "PPP Bajomulyo",
+                    pelabuhanSinggah: "PPN Brondong",
+                    statusLogbook: "Tervalidasi",
+                    durasiTrip: "14 Hari",
+                    totalTangkapan: "18,200 Kg",
+                    komoditas: "Tenggiri, Bawal Putih",
+                    settingCount: "12 Setting",
+                    sinkronisasiKkp: "Tervalidasi Pengawas KKP"
+                },
+                {
+                    idVoyage: "VYG-712-2026-014",
+                    namaKapal: "KM MINA MAKMUR 06",
+                    ukuranGt: "92 GT",
+                    alatTangkap: "Jaring Insang Hanyut (Drift Gillnet)",
+                    noSipi: "SIPI-712-2024-0032",
+                    lokasiWpp: "WPP-RI 712",
+                    wppCode: "712",
+                    tglKeberangkatan: "07-SEP-2026",
+                    tglKedatangan: "22-SEP-2026",
+                    pelabuhanPangkalan: "PPP Bajomulyo",
+                    pelabuhanSinggah: "PPP Tegalsari",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "19,800 Kg",
+                    komoditas: "Tenggiri, Manyung",
+                    settingCount: "13 Setting",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-712-2026-015",
+                    namaKapal: "KM MINA MAKMUR 07",
+                    ukuranGt: "85 GT",
+                    alatTangkap: "Rawai Dasar (Bottom Longline)",
+                    noSipi: "SIPI-712-2024-0033",
+                    lokasiWpp: "WPP-RI 712",
+                    wppCode: "712",
+                    tglKeberangkatan: "18-SEP-2026",
+                    tglKedatangan: "Masih Melaut",
+                    pelabuhanPangkalan: "PPP Bajomulyo",
+                    pelabuhanSinggah: "PPP Klidang Lor",
+                    statusLogbook: "Sedang Berjalan",
+                    durasiTrip: "Berjalan (Hari ke-3)",
+                    totalTangkapan: "6,500 Kg (Sementara)",
+                    komoditas: "Kakap Merah, Kerapu Lumpur",
+                    settingCount: "4 Setting",
+                    sinkronisasiKkp: "Sinkronisasi Harian Aktif"
+                },
+                {
+                    idVoyage: "VYG-716-2026-016",
+                    namaKapal: "KM MINA MAKMUR 12",
+                    ukuranGt: "150 GT",
+                    alatTangkap: "Purse Seine Pelagis Besar",
+                    noSipi: "SIPI-716-2024-0091",
+                    lokasiWpp: "WPP-RI 716",
+                    wppCode: "716",
+                    tglKeberangkatan: "03-SEP-2026",
+                    tglKedatangan: "18-SEP-2026",
+                    pelabuhanPangkalan: "PPS Bitung Sulawesi Utara",
+                    pelabuhanSinggah: "PPN Kwandang",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "42,300 Kg",
+                    komoditas: "Cakalang, Madidihang",
+                    settingCount: "15 Setting",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-716-2026-017",
+                    namaKapal: "KM MINA MAKMUR 14",
+                    ukuranGt: "160 GT",
+                    alatTangkap: "Purse Seine Pelagis Besar",
+                    noSipi: "SIPI-716-2024-0092",
+                    lokasiWpp: "WPP-RI 716",
+                    wppCode: "716",
+                    tglKeberangkatan: "08-SEP-2026",
+                    tglKedatangan: "23-SEP-2026",
+                    pelabuhanPangkalan: "PPS Bitung Sulawesi Utara",
+                    pelabuhanSinggah: "PPN Ternate",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "44,100 Kg",
+                    komoditas: "Cakalang, Tongkol Abu-abu",
+                    settingCount: "16 Setting",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-716-2026-018",
+                    namaKapal: "KM MINA MAKMUR 15",
+                    ukuranGt: "155 GT",
+                    alatTangkap: "Purse Seine Pelagis Besar",
+                    noSipi: "SIPI-716-2024-0093",
+                    lokasiWpp: "WPP-RI 716",
+                    wppCode: "716",
+                    tglKeberangkatan: "15-SEP-2026",
+                    tglKedatangan: "Masih Melaut",
+                    pelabuhanPangkalan: "PPS Bitung Sulawesi Utara",
+                    pelabuhanSinggah: "PPN Tobelo",
+                    statusLogbook: "Sedang Berjalan",
+                    durasiTrip: "Berjalan (Hari ke-6)",
+                    totalTangkapan: "21,000 Kg (Sementara)",
+                    komoditas: "Cakalang, Baby Tuna",
+                    settingCount: "8 Setting",
+                    sinkronisasiKkp: "Sinkronisasi Harian Aktif"
+                },
+                {
+                    idVoyage: "VYG-717-2026-019",
+                    namaKapal: "KM PASIFIK GLORY 05",
+                    ukuranGt: "195 GT",
+                    alatTangkap: "Rawai Tuna (Tuna Longline)",
+                    noSipi: "SIPI-717-2024-0033",
+                    lokasiWpp: "WPP-RI 717",
+                    wppCode: "717",
+                    tglKeberangkatan: "01-SEP-2026",
+                    tglKedatangan: "17-SEP-2026",
+                    pelabuhanPangkalan: "PPN Merauke Papua",
+                    pelabuhanSinggah: "PPN Biak",
+                    statusLogbook: "Tervalidasi",
+                    durasiTrip: "16 Hari",
+                    totalTangkapan: "36,700 Kg",
+                    komoditas: "Tuna Sirip Kuning, Marlin",
+                    settingCount: "14 Setting",
+                    sinkronisasiKkp: "Tervalidasi Pengawas KKP"
+                },
+                {
+                    idVoyage: "VYG-717-2026-020",
+                    namaKapal: "KM PASIFIK GLORY 06",
+                    ukuranGt: "210 GT",
+                    alatTangkap: "Rawai Tuna (Tuna Longline)",
+                    noSipi: "SIPI-717-2024-0034",
+                    lokasiWpp: "WPP-RI 717",
+                    wppCode: "717",
+                    tglKeberangkatan: "07-SEP-2026",
+                    tglKedatangan: "22-SEP-2026",
+                    pelabuhanPangkalan: "PPN Merauke Papua",
+                    pelabuhanSinggah: "PPN Biak",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "39,500 Kg",
+                    komoditas: "Tuna Mata Besar, Tuna Sirip Kuning",
+                    settingCount: "15 Setting",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-717-2026-021",
+                    namaKapal: "KM PASIFIK GLORY 07",
+                    ukuranGt: "205 GT",
+                    alatTangkap: "Rawai Tuna (Tuna Longline)",
+                    noSipi: "SIPI-717-2024-0035",
+                    lokasiWpp: "WPP-RI 717",
+                    wppCode: "717",
+                    tglKeberangkatan: "16-SEP-2026",
+                    tglKedatangan: "Masih Melaut",
+                    pelabuhanPangkalan: "PPN Merauke Papua",
+                    pelabuhanSinggah: "PPN Biak",
+                    statusLogbook: "Sedang Berjalan",
+                    durasiTrip: "Berjalan (Hari ke-5)",
+                    totalTangkapan: "15,800 Kg (Sementara)",
+                    komoditas: "Tuna Sirip Kuning, Madidihang",
+                    settingCount: "7 Setting",
+                    sinkronisasiKkp: "Sinkronisasi Harian Aktif"
+                },
+                {
+                    idVoyage: "VYG-718-2026-022",
+                    namaKapal: "KM SUMBER MAKMUR 08",
+                    ukuranGt: "285 GT",
+                    alatTangkap: "Jaring Hela Udang Berkantong",
+                    noSipi: "SIPI-718-2024-0051",
+                    lokasiWpp: "WPP-RI 718",
+                    wppCode: "718",
+                    tglKeberangkatan: "11-SEP-2026",
+                    tglKedatangan: "26-SEP-2026",
+                    pelabuhanPangkalan: "PP. Poumako",
+                    pelabuhanSinggah: "PP. Dobo",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "47,100 Kg",
+                    komoditas: "Udang Tiger, Udang Dogol",
+                    settingCount: "27 Kali",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-718-2026-023",
+                    namaKapal: "KM SUMBER MAKMUR 09",
+                    ukuranGt: "295 GT",
+                    alatTangkap: "Jaring Hela Udang Berkantong",
+                    noSipi: "SIPI-718-2024-0052",
+                    lokasiWpp: "WPP-RI 718",
+                    wppCode: "718",
+                    tglKeberangkatan: "13-SEP-2026",
+                    tglKedatangan: "28-SEP-2026",
+                    pelabuhanPangkalan: "PP. Poumako",
+                    pelabuhanSinggah: "PP. Merauke",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "51,200 Kg",
+                    komoditas: "Udang Windu, Bawal Hitam",
+                    settingCount: "29 Kali",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-718-2026-024",
+                    namaKapal: "KM SUMBER MAKMUR 10",
+                    ukuranGt: "280 GT",
+                    alatTangkap: "Jaring Hela Udang Berkantong",
+                    noSipi: "SIPI-718-2024-0053",
+                    lokasiWpp: "WPP-RI 718",
+                    wppCode: "718",
+                    tglKeberangkatan: "17-SEP-2026",
+                    tglKedatangan: "Masih Melaut",
+                    pelabuhanPangkalan: "PP. Poumako",
+                    pelabuhanSinggah: "PP. Dobo",
+                    statusLogbook: "Sedang Berjalan",
+                    durasiTrip: "Berjalan (Hari ke-4)",
+                    totalTangkapan: "16,400 Kg (Sementara)",
+                    komoditas: "Udang Putih, Cumi",
+                    settingCount: "10 Kali",
+                    sinkronisasiKkp: "Sinkronisasi Harian Aktif"
+                },
+                {
+                    idVoyage: "VYG-572-2026-025",
+                    namaKapal: "KM BAHARI MAKMUR 08",
+                    ukuranGt: "125 GT",
+                    alatTangkap: "Rawai Tuna (Tuna Longline)",
+                    noSipi: "SIPI-572-2024-0061",
+                    lokasiWpp: "WPP-RI 572",
+                    wppCode: "572",
+                    tglKeberangkatan: "02-SEP-2026",
+                    tglKedatangan: "17-SEP-2026",
+                    pelabuhanPangkalan: "PPS Nizam Zachman Jakarta",
+                    pelabuhanSinggah: "PPN Teluk Bayur",
+                    statusLogbook: "Tervalidasi",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "31,500 Kg",
+                    komoditas: "Tuna Sirip Kuning, Albakor",
+                    settingCount: "13 Setting",
+                    sinkronisasiKkp: "Tervalidasi Pengawas KKP"
+                },
+                {
+                    idVoyage: "VYG-572-2026-026",
+                    namaKapal: "KM BAHARI MAKMUR 09",
+                    ukuranGt: "128 GT",
+                    alatTangkap: "Purse Seine Pelagis Besar",
+                    noSipi: "SIPI-572-2024-0062",
+                    lokasiWpp: "WPP-RI 572",
+                    wppCode: "572",
+                    tglKeberangkatan: "10-SEP-2026",
+                    tglKedatangan: "25-SEP-2026",
+                    pelabuhanPangkalan: "PPS Nizam Zachman Jakarta",
+                    pelabuhanSinggah: "PPN Sibolga",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "34,200 Kg",
+                    komoditas: "Cakalang, Tongkol",
+                    settingCount: "14 Setting",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-573-2026-027",
+                    namaKapal: "KM SAMUDRA MAKMUR 11",
+                    ukuranGt: "102 GT",
+                    alatTangkap: "Pancing Ulur (Hand Line)",
+                    noSipi: "SIPI-573-2024-0071",
+                    lokasiWpp: "WPP-RI 573",
+                    wppCode: "573",
+                    tglKeberangkatan: "05-SEP-2026",
+                    tglKedatangan: "20-SEP-2026",
+                    pelabuhanPangkalan: "PPN Pelabuhan Ratu",
+                    pelabuhanSinggah: "PPP Sadeng",
+                    statusLogbook: "Tervalidasi",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "24,300 Kg",
+                    komoditas: "Tuna Sirip Kuning, Layaran",
+                    settingCount: "16 Trip Operasi",
+                    sinkronisasiKkp: "Tervalidasi Pengawas KKP"
+                },
+                {
+                    idVoyage: "VYG-573-2026-028",
+                    namaKapal: "KM SAMUDRA MAKMUR 12",
+                    ukuranGt: "108 GT",
+                    alatTangkap: "Rawai Tuna (Tuna Longline)",
+                    noSipi: "SIPI-573-2024-0072",
+                    lokasiWpp: "WPP-RI 573",
+                    wppCode: "573",
+                    tglKeberangkatan: "11-SEP-2026",
+                    tglKedatangan: "26-SEP-2026",
+                    pelabuhanPangkalan: "PPN Pelabuhan Ratu",
+                    pelabuhanSinggah: "PPN Cilacap",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "27,800 Kg",
+                    komoditas: "Tuna Mata Besar, Marlin",
+                    settingCount: "13 Setting",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-711-2026-029",
+                    namaKapal: "KM ARTHA SAMUDRA 01",
+                    ukuranGt: "150 GT",
+                    alatTangkap: "Pukat Cincin Pelagis Kecil",
+                    noSipi: "SIPI-711-2024-0081",
+                    lokasiWpp: "WPP-RI 711",
+                    wppCode: "711",
+                    tglKeberangkatan: "08-SEP-2026",
+                    tglKedatangan: "23-SEP-2026",
+                    pelabuhanPangkalan: "PPN Sungai Liat Bangka",
+                    pelabuhanSinggah: "PPP Tarempa",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "41,000 Kg",
+                    komoditas: "Kembung, Layang, Tongkol",
+                    settingCount: "17 Setting",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-711-2026-030",
+                    namaKapal: "KM ARTHA SAMUDRA 02",
+                    ukuranGt: "155 GT",
+                    alatTangkap: "Pukat Cincin Pelagis Kecil",
+                    noSipi: "SIPI-711-2024-0082",
+                    lokasiWpp: "WPP-RI 711",
+                    wppCode: "711",
+                    tglKeberangkatan: "14-SEP-2026",
+                    tglKedatangan: "Masih Melaut",
+                    pelabuhanPangkalan: "PPN Sungai Liat Bangka",
+                    pelabuhanSinggah: "PPN Pemangkat",
+                    statusLogbook: "Sedang Berjalan",
+                    durasiTrip: "Berjalan (Hari ke-7)",
+                    totalTangkapan: "19,500 Kg (Sementara)",
+                    komoditas: "Layang, Selar, Kembung",
+                    settingCount: "9 Setting",
+                    sinkronisasiKkp: "Sinkronisasi Harian Aktif"
+                },
+                {
+                    idVoyage: "VYG-712-2026-031",
+                    namaKapal: "KM MINA JAYA 01",
+                    ukuranGt: "90 GT",
+                    alatTangkap: "Jaring Insang Hanyut (Drift Gillnet)",
+                    noSipi: "SIPI-712-2024-0095",
+                    lokasiWpp: "WPP-RI 712",
+                    wppCode: "712",
+                    tglKeberangkatan: "06-SEP-2026",
+                    tglKedatangan: "20-SEP-2026",
+                    pelabuhanPangkalan: "PPP Bajomulyo",
+                    pelabuhanSinggah: "PPN Brondong",
+                    statusLogbook: "Tervalidasi",
+                    durasiTrip: "14 Hari",
+                    totalTangkapan: "17,600 Kg",
+                    komoditas: "Tenggiri, Bawal Putih",
+                    settingCount: "12 Setting",
+                    sinkronisasiKkp: "Tervalidasi Pengawas KKP"
+                },
+                {
+                    idVoyage: "VYG-712-2026-032",
+                    namaKapal: "KM MINA JAYA 02",
+                    ukuranGt: "94 GT",
+                    alatTangkap: "Jaring Insang Hanyut (Drift Gillnet)",
+                    noSipi: "SIPI-712-2024-0096",
+                    lokasiWpp: "WPP-RI 712",
+                    wppCode: "712",
+                    tglKeberangkatan: "12-SEP-2026",
+                    tglKedatangan: "27-SEP-2026",
+                    pelabuhanPangkalan: "PPP Bajomulyo",
+                    pelabuhanSinggah: "PPP Tegalsari",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "18,900 Kg",
+                    komoditas: "Tenggiri, Ikan Kembung",
+                    settingCount: "13 Setting",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-716-2026-033",
+                    namaKapal: "KM SULAWESI JAYA 01",
+                    ukuranGt: "165 GT",
+                    alatTangkap: "Purse Seine Pelagis Besar",
+                    noSipi: "SIPI-716-2024-0101",
+                    lokasiWpp: "WPP-RI 716",
+                    wppCode: "716",
+                    tglKeberangkatan: "05-SEP-2026",
+                    tglKedatangan: "20-SEP-2026",
+                    pelabuhanPangkalan: "PPS Bitung Sulawesi Utara",
+                    pelabuhanSinggah: "PPN Ternate",
+                    statusLogbook: "Terkirim (Sesuai)",
+                    durasiTrip: "15 Hari",
+                    totalTangkapan: "45,800 Kg",
+                    komoditas: "Cakalang, Madidihang",
+                    settingCount: "16 Setting",
+                    sinkronisasiKkp: "Terverifikasi (Pusdatin KKP)"
+                },
+                {
+                    idVoyage: "VYG-717-2026-034",
+                    namaKapal: "KM PAPUA RAYA 01",
+                    ukuranGt: "220 GT",
+                    alatTangkap: "Rawai Tuna (Tuna Longline)",
+                    noSipi: "SIPI-717-2024-0111",
+                    lokasiWpp: "WPP-RI 717",
+                    wppCode: "717",
+                    tglKeberangkatan: "03-SEP-2026",
+                    tglKedatangan: "19-SEP-2026",
+                    pelabuhanPangkalan: "PPN Merauke Papua",
+                    pelabuhanSinggah: "PPN Biak",
+                    statusLogbook: "Tervalidasi",
+                    durasiTrip: "16 Hari",
+                    totalTangkapan: "41,200 Kg",
+                    komoditas: "Tuna Mata Besar, Tuna Sirip Kuning",
+                    settingCount: "15 Setting",
+                    sinkronisasiKkp: "Tervalidasi Pengawas KKP"
+                },
+                {
+                    idVoyage: "VYG-718-2026-035",
+                    namaKapal: "KM SUMBER MAKMUR 11",
+                    ukuranGt: "290 GT",
+                    alatTangkap: "Jaring Hela Udang Berkantong",
+                    noSipi: "SIPI-718-2024-0121",
+                    lokasiWpp: "WPP-RI 718",
+                    wppCode: "718",
+                    tglKeberangkatan: "19-SEP-2026",
+                    tglKedatangan: "Masih Melaut",
+                    pelabuhanPangkalan: "PP. Banjarmasin",
+                    pelabuhanSinggah: "PPP. Bajomulyo",
+                    statusLogbook: "Draft",
+                    durasiTrip: "Berjalan (Hari ke-2)",
+                    totalTangkapan: "4,200 Kg (Sementara)",
+                    komoditas: "Udang Windu, Udang Dogol",
+                    settingCount: "3 Kali",
+                    sinkronisasiKkp: "Draft Lokal Terbuka"
+                }
+            ];
+
+            // State
+            let filteredData = [...realisasiDataMaster];
+            let currentPage = 1;
+            let rowsPerPage = 10;
+
+            // DOM Elements
+            const tableBody = document.getElementById("tableBodyRealisasi");
+            const searchInput = document.getElementById("searchRealisasiInput");
+            const btnCari = document.getElementById("btnCariRealisasi");
+            const filterWppSelect = document.getElementById("filterWpp");
+            const filterStatusSelect = document.getElementById("filterStatusLogbook");
+            const entriesSelect = document.getElementById("entriesPerPage");
+            const paginationEl = document.getElementById("paginationRealisasi");
+            const tableInfoEl = document.getElementById("tableInfoRealisasi");
+
+            // Filter logic
+            function applyFilters() {
+                const keyword = (searchInput ? searchInput.value : "").trim().toLowerCase();
+
+                filteredData = realisasiDataMaster.filter(item => {
+                    let matchSearch = true;
+                    if (keyword) {
+                        const searchStr = `${item.idVoyage} ${item.namaKapal} ${item.ukuranGt} ${item.alatTangkap} ${item.noSipi} ${item.lokasiWpp} ${item.tglKeberangkatan} ${item.tglKedatangan} ${item.pelabuhanPangkalan}`.toLowerCase();
+                        matchSearch = searchStr.includes(keyword);
+                    }
+
+                    return matchSearch;
+                });
+
+                currentPage = 1;
+                renderTable();
+            }
+
+            // Render Table
+            function renderTable() {
+                if (!tableBody) return;
+
+                const totalRows = filteredData.length;
+                const totalPages = Math.ceil(totalRows / rowsPerPage) || 1;
+
+                if (currentPage > totalPages) currentPage = totalPages;
+                if (currentPage < 1) currentPage = 1;
+
+                const startIndex = (currentPage - 1) * rowsPerPage;
+                const endIndex = Math.min(startIndex + rowsPerPage, totalRows);
+                const currentRows = filteredData.slice(startIndex, endIndex);
+
+                tableBody.innerHTML = "";
+
+                if (currentRows.length === 0) {
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="9" class="text-center py-4 text-muted">
+                                <i class="fe fe-info fs-18 d-block mb-1"></i>
+                                Tidak ada data realisasi yang sesuai dengan kriteria pencarian / filter.
+                            </td>
+                        </tr>
+                    `;
+                } else {
+                    currentRows.forEach((row, idx) => {
+                        const tr = document.createElement("tr");
+                        const rowNum = startIndex + idx + 1;
+
+                        tr.innerHTML = `
+                            <td class="text-center text-muted">${rowNum}</td>
+                            <td class="fw-semibold text-dark">${row.namaKapal}</td>
+                            <td>${row.ukuranGt}</td>
+                            <td>${row.alatTangkap}</td>
+                            <td class="font-monospace text-dark">${row.noSipi}</td>
+                            <td>${row.lokasiWpp}</td>
+                            <td>${row.tglKeberangkatan}</td>
+                            <td>${row.tglKedatangan}</td>
+                            <td>${row.pelabuhanPangkalan}</td>
+                        `;
+                        tableBody.appendChild(tr);
+                    });
+                }
+
+                // Attach click events to "Lihat" buttons
+                document.querySelectorAll(".btn-detail-voyage").forEach(btn => {
+                    btn.addEventListener("click", function () {
+                        const vId = this.getAttribute("data-voyage");
+                        const foundItem = realisasiDataMaster.find(x => x.idVoyage === vId);
+                        if (foundItem) {
+                            openModalDetail(foundItem);
+                        }
+                    });
+                });
+
+                // Update Info Text
+                if (tableInfoEl) {
+                    if (totalRows === 0) {
+                        tableInfoEl.textContent = "Menampilkan 0 data realisasi";
+                    } else {
+                        tableInfoEl.textContent = `Menampilkan ${startIndex + 1} sampai ${endIndex} dari ${totalRows} data realisasi`;
+                    }
+                }
+
+                // Render Pagination
+                renderPagination(totalPages);
+            }
+
+            // Render Pagination
+            function renderPagination(totalPages) {
+                if (!paginationEl) return;
+                paginationEl.innerHTML = "";
+
+                if (totalPages <= 1) return;
+
+                // Previous
+                const prevLi = document.createElement("li");
+                prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+                prevLi.innerHTML = `<a class="page-link" href="javascript:void(0)" aria-label="Previous">&laquo;</a>`;
+                prevLi.addEventListener("click", () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        renderTable();
+                    }
+                });
+                paginationEl.appendChild(prevLi);
+
+                // Page numbers
+                let startP = Math.max(1, currentPage - 2);
+                let endP = Math.min(totalPages, startP + 4);
+                if (endP - startP < 4) {
+                    startP = Math.max(1, endP - 4);
+                }
+
+                for (let p = startP; p <= endP; p++) {
+                    const li = document.createElement("li");
+                    li.className = `page-item ${p === currentPage ? 'active' : ''}`;
+                    li.innerHTML = `<a class="page-link" href="javascript:void(0)">${p}</a>`;
+                    const pageNum = p;
+                    li.addEventListener("click", () => {
+                        currentPage = pageNum;
+                        renderTable();
+                    });
+                    paginationEl.appendChild(li);
+                }
+
+                // Next
+                const nextLi = document.createElement("li");
+                nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+                nextLi.innerHTML = `<a class="page-link" href="javascript:void(0)" aria-label="Next">&raquo;</a>`;
+                nextLi.addEventListener("click", () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        renderTable();
+                    }
+                });
+                paginationEl.appendChild(nextLi);
+            }
+
+            // Open Modal Detail
+            function openModalDetail(item) {
+                // Header
+                const hdrEl = document.getElementById("mHdrIdVoyage");
+                if (hdrEl) hdrEl.textContent = item.idVoyage;
+
+                // Section 1
+                const mId = document.getElementById("mIdVoyage");
+                if (mId) mId.value = item.idVoyage;
+                const mStatus = document.getElementById("mStatusLogbook");
+                if (mStatus) {
+                    if (item.statusLogbook.includes("Terkirim")) mStatus.value = "Selesai Berlayar";
+                    else if (item.statusLogbook.includes("Sedang Berjalan")) mStatus.value = "Sedang Melaut";
+                    else mStatus.value = item.statusLogbook;
+                }
+                const mWpp = document.getElementById("mLokasiWpp");
+                if (mWpp) mWpp.value = item.lokasiWpp;
+                const mDur = document.getElementById("mDurasiTrip");
+                if (mDur) mDur.value = item.durasiTrip || "-";
+
+                // Section 2
+                const mKapal = document.getElementById("mNamaKapal");
+                if (mKapal) mKapal.value = item.namaKapal;
+                const mGt = document.getElementById("mUkuranGt");
+                if (mGt) mGt.value = item.ukuranGt;
+                const mAlat = document.getElementById("mAlatTangkap");
+                if (mAlat) mAlat.value = item.alatTangkap;
+                const mSipi = document.getElementById("mNoSipi");
+                if (mSipi) mSipi.value = item.noSipi;
+
+                // Section 3
+                const mTglBerangkat = document.getElementById("mTglKeberangkatan");
+                if (mTglBerangkat) mTglBerangkat.value = item.tglKeberangkatan;
+                const mTglDatang = document.getElementById("mTglKedatangan");
+                if (mTglDatang) mTglDatang.value = item.tglKedatangan;
+                const mPp = document.getElementById("mPelabuhanPangkalan");
+                if (mPp) mPp.value = item.pelabuhanPangkalan;
+                const mSinggah = document.getElementById("mPelabuhanSinggah");
+                if (mSinggah) mSinggah.value = item.pelabuhanSinggah || "-";
+
+                // Section 4
+                const mTangkapan = document.getElementById("mTotalTangkapan");
+                if (mTangkapan) mTangkapan.value = item.totalTangkapan || "-";
+                const mKom = document.getElementById("mKomoditas");
+                if (mKom) mKom.value = item.komoditas || "-";
+                const mSet = document.getElementById("mSettingCount");
+                if (mSet) mSet.value = item.settingCount || "-";
+                const mSinkron = document.getElementById("mSinkronisasiKkp");
+                if (mSinkron) mSinkron.value = item.sinkronisasiKkp || "-";
+
+                // Show modal
+                const modalEl = document.getElementById("modalDetailRealisasi");
+                if (modalEl) {
+                    const modalInstance = new bootstrap.Modal(modalEl);
+                    modalInstance.show();
+                }
+            }
+
+            // Event Listeners
+            if (btnCari) btnCari.addEventListener("click", applyFilters);
+            if (searchInput) {
+                searchInput.addEventListener("input", applyFilters);
+                searchInput.addEventListener("keypress", function (e) {
+                    if (e.key === "Enter") {
+                        applyFilters();
+                    }
+                });
+            }
+            if (entriesSelect) {
+                entriesSelect.addEventListener("change", function () {
+                    rowsPerPage = Number(this.value);
+                    currentPage = 1;
+                    renderTable();
+                });
+            }
+
+            // Initial render
+            renderTable();
+        })();
+    </script>
+</body>
+</html>

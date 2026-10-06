@@ -1,0 +1,480 @@
+@SPK@include("partials/mainhead.html")
+
+</head>
+
+<body>
+
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <!-- Start::app-content -->
+        <div class="main-content app-content">
+            <div class="container-fluid">
+                @SPK@include("partials/page-header.html", {"title": "Team", "subtitle": 'Pages'})
+
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <div class="team-header">
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                        <div class="h5 fw-semibold mb-sm-0">Team Ui</div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search Person Name" aria-describedby="search-team-member">
+                                                <button aria-label="button" class="btn btn-light  btn-primary" type="button" id="search-team-member"><i class="ri-search-line"></i></button>
+                                            </div>
+                                            <div class="dropdown ms-2">
+                                                <button aria-label="button" class="btn btn-light btn-wave" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="ti ti-dots-vertical"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item border-bottom" href="javascript:void(0);">Delete Team</a></li>
+                                                    <li><a class="dropdown-item border-bottom" href="javascript:void(0);">Edit</a></li>
+                                                    <li><a class="dropdown-item" href="javascript:void(0);">Add Member</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card ">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <span class="avatar avatar-xxl rounded">
+                                        <img src="../assets/images/faces/11.jpg" alt="" class="rounded-circle">
+                                    </span>
+                                </div>
+                                <div class="d-flex  text-center justify-content-between mt-1 mb-3">
+                                    <div class="flex-fill">
+                                        <p class="mb-0 fw-semibold fs-16 text-truncate max-w-150 mx-auto">
+                                            <a href="javascript:void(0);">Alexander Smith</a>
+                                        </p>
+                                        <p class="mb-0 fs-12 text-muted text-truncate max-w-150 mx-auto">alexandersmith2135@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="btn-list text-center">
+                                    <div class="btn-list">
+                                        <button aria-label="button" type="button" class="btn btn-sm btn-icon btn-info-light btn-wave waves-effect waves-light">
+                                            <i class="ri-facebook-line fw-bold"></i>
+                                        </button>
+                                        <button aria-label="button" type="button" class="btn btn-sm btn-icon btn-secondary-light btn-wave waves-effect waves-light">
+                                            <i class="ri-twitter-line fw-bold"></i>
+                                        </button>
+                                        <button aria-label="button" type="button" class="btn btn-sm btn-icon btn-success-light btn-wave waves-effect waves-light">
+                                            <i class="ri-github-line fw-bold"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer border-block-start-dashed text-center p-0">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="d-flex p-3 w-100 justify-content-center border-end">
+                                        <div class="text-center ">
+                                            <p class="fw-semibold mb-0">Projects</p>
+                                            <span class="text-muted fs-12">100</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex p-3 w-100 justify-content-center">
+                                        <div class="text-center">
+                                            <p class="fw-semibold mb-0">Position</p>
+                                            <span class="text-muted fs-12">Associate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <span class="avatar avatar-xxl rounded">
+                                        <img src="../assets/images/faces/2.jpg" alt="" class="rounded-circle">
+                                    </span>
+                                </div>
+                                <div class="d-flex  text-center justify-content-between mt-1 mb-3">
+                                    <div class="flex-fill">
+                                        <p class="mb-0 fw-semibold fs-16 text-truncate max-w-150 mx-auto">
+                                            <a href="javascript:void(0);">Alicia Sierra</a>
+                                        </p>
+                                        <p class="mb-0 fs-12 text-muted text-truncate max-w-150 mx-auto">aliciasierra1645@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="btn-list text-center">
+                                    <div class="btn-list">
+                                        <button aria-label="button" type="button" class="btn btn-sm btn-icon btn-info-light btn-wave waves-effect waves-light">
+                                            <i class="ri-facebook-line fw-bold"></i>
+                                        </button>
+                                        <button aria-label="button" type="button" class="btn btn-sm btn-icon btn-secondary-light btn-wave waves-effect waves-light">
+                                            <i class="ri-twitter-line fw-bold"></i>
+                                        </button>
+                                        <button aria-label="button" type="button" class="btn btn-sm btn-icon btn-success-light btn-wave waves-effect waves-light">
+                                            <i class="ri-github-line fw-bold"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer border-block-start-dashed text-center p-0">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="d-flex p-3 w-100 justify-content-center border-end">
+                                        <div class="text-center ">
+                                            <p class="fw-semibold mb-0">Projects</p>
+                                            <span class="text-muted fs-12">120</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex p-3 w-100 justify-content-center">
+                                        <div class="text-center">
+                                            <p class="fw-semibold mb-0">Position</p>
+                                            <span class="text-muted fs-12">Associate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <span class="avatar avatar-xxl rounded">
+                                        <img src="../assets/images/faces/3.jpg" alt="" class="rounded-circle">
+                                    </span>
+                                </div>
+                                <div class="d-flex  text-center justify-content-between mt-1 mb-3">
+                                    <div class="flex-fill">
+                                        <p class="mb-0 fw-semibold fs-16 text-truncate max-w-150 mx-auto">
+                                            <a href="javascript:void(0);">Angelica Hose</a>
+                                        </p>
+                                        <p class="mb-0 fs-12 text-muted text-truncate max-w-150 mx-auto">angelica143@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="btn-list text-center">
+                                    <div class="btn-list">
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-info-light btn-wave waves-effect waves-light">
+                                            <i class="ri-facebook-line fw-bold"></i>
+                                        </button>
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-secondary-light btn-wave waves-effect waves-light">
+                                            <i class="ri-twitter-line fw-bold"></i>
+                                        </button>
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-success-light btn-wave waves-effect waves-light">
+                                            <i class="ri-github-line fw-bold"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer border-block-start-dashed text-center p-0">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="d-flex p-3 w-100 justify-content-center border-end">
+                                        <div class="text-center ">
+                                            <p class="fw-semibold mb-0">Projects</p>
+                                            <span class="text-muted fs-12">220</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex p-3 w-100 justify-content-center">
+                                        <div class="text-center">
+                                            <p class="fw-semibold mb-0">Position</p>
+                                            <span class="text-muted fs-12">Member</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <span class="avatar avatar-xxl rounded">
+                                        <img src="../assets/images/faces/8.jpg" alt="" class="rounded-circle">
+                                    </span>
+                                </div>
+                                <div class="d-flex  text-center justify-content-between mt-1 mb-3">
+                                    <div class="flex-fill">
+                                        <p class="mb-0 fw-semibold fs-16 text-truncate max-w-150 mx-auto">
+                                            <a href="javascript:void(0);">Jhope Joseph</a>
+                                        </p>
+                                        <p class="mb-0 fs-12 text-muted text-truncate max-w-150 mx-auto">jhope.jhope@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="btn-list text-center">
+                                    <div class="btn-list">
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-info-light btn-wave waves-effect waves-light">
+                                            <i class="ri-facebook-line fw-bold"></i>
+                                        </button>
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-secondary-light btn-wave waves-effect waves-light">
+                                            <i class="ri-twitter-line fw-bold"></i>
+                                        </button>
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-success-light btn-wave waves-effect waves-light">
+                                            <i class="ri-github-line fw-bold"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer border-block-start-dashed text-center p-0">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="d-flex p-3 w-100 justify-content-center border-end">
+                                        <div class="text-center ">
+                                            <p class="fw-semibold mb-0">Projects</p>
+                                            <span class="text-muted fs-12">200</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex p-3 w-100 justify-content-center">
+                                        <div class="text-center">
+                                            <p class="fw-semibold mb-0">Position</p>
+                                            <span class="text-muted fs-12">Team Lead</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <span class="avatar avatar-xxl rounded">
+                                        <img src="../assets/images/faces/9.jpg" alt="" class="rounded-circle">
+                                    </span>
+                                </div>
+                                <div class="d-flex  text-center justify-content-between mt-1 mb-3">
+                                    <div class="flex-fill">
+                                        <p class="mb-0 fw-semibold fs-16 text-truncate max-w-150 mx-auto">
+                                            <a href="javascript:void(0);">King Martin</a>
+                                        </p>
+                                        <p class="mb-0 fs-12 text-muted text-truncate max-w-150 mx-auto">King.Martin@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="btn-list text-center">
+                                    <div class="btn-list">
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-info-light btn-wave waves-effect waves-light">
+                                            <i class="ri-facebook-line fw-bold"></i>
+                                        </button>
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-secondary-light btn-wave waves-effect waves-light">
+                                            <i class="ri-twitter-line fw-bold"></i>
+                                        </button>
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-success-light btn-wave waves-effect waves-light">
+                                            <i class="ri-github-line fw-bold"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer border-block-start-dashed text-center p-0">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="d-flex p-3 w-100 justify-content-center border-end">
+                                        <div class="text-center ">
+                                            <p class="fw-semibold mb-0">Projects</p>
+                                            <span class="text-muted fs-12">140</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex p-3 w-100 justify-content-center">
+                                        <div class="text-center">
+                                            <p class="fw-semibold mb-0">Position</p>
+                                            <span class="text-muted fs-12">Team Lead</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card ">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <span class="avatar avatar-xxl rounded">
+                                        <img src="../assets/images/faces/12.jpg" alt="" class="rounded-circle">
+                                    </span>
+                                </div>
+                                <div class="d-flex  text-center justify-content-between mt-1 mb-3">
+                                    <div class="flex-fill">
+                                        <p class="mb-0 fw-semibold fs-16 text-truncate max-w-150 mx-auto">
+                                            <a href="javascript:void(0);">Susan Sane</a>
+                                        </p>
+                                        <p class="mb-0 fs-12 text-muted text-truncate max-w-150 mx-auto">Susan.Sane532@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="btn-list text-center">
+                                    <div class="btn-list">
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-info-light btn-wave waves-effect waves-light">
+                                            <i class="ri-facebook-line fw-bold"></i>
+                                        </button>
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-secondary-light btn-wave waves-effect waves-light">
+                                            <i class="ri-twitter-line fw-bold"></i>
+                                        </button>
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-success-light btn-wave waves-effect waves-light">
+                                            <i class="ri-github-line fw-bold"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer border-block-start-dashed text-center p-0">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="d-flex p-3 w-100 justify-content-center border-end">
+                                        <div class="text-center ">
+                                            <p class="fw-semibold mb-0">Projects</p>
+                                            <span class="text-muted fs-12">160</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex p-3 w-100 justify-content-center">
+                                        <div class="text-center">
+                                            <p class="fw-semibold mb-0">Position</p>
+                                            <span class="text-muted fs-12">Develepor</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <span class="avatar avatar-xxl rounded">
+                                        <img src="../assets/images/faces/1.jpg" alt="" class="rounded-circle">
+                                    </span>
+                                </div>
+                                <div class="d-flex  text-center justify-content-between mt-1 mb-3">
+                                    <div class="flex-fill">
+                                        <p class="mb-0 fw-semibold fs-16 text-truncate max-w-150 mx-auto">
+                                            <a href="javascript:void(0);">Brenda Hops</a>
+                                        </p>
+                                        <p class="mb-0 fs-12 text-muted text-truncate max-w-150 mx-auto">Brenda432@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="btn-list text-center">
+                                    <div class="btn-list">
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-info-light btn-wave waves-effect waves-light">
+                                            <i class="ri-facebook-line fw-bold"></i>
+                                        </button>
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-secondary-light btn-wave waves-effect waves-light">
+                                            <i class="ri-twitter-line fw-bold"></i>
+                                        </button>
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-success-light btn-wave waves-effect waves-light">
+                                            <i class="ri-github-line fw-bold"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer border-block-start-dashed text-center p-0">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="d-flex p-3 w-100 justify-content-center border-end">
+                                        <div class="text-center ">
+                                            <p class="fw-semibold mb-0">Projects</p>
+                                            <span class="text-muted fs-12">110</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex p-3 w-100 justify-content-center">
+                                        <div class="text-center">
+                                            <p class="fw-semibold mb-0">Position</p>
+                                            <span class="text-muted fs-12">Member</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card ">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <span class="avatar avatar-xxl rounded">
+                                        <img src="../assets/images/faces/4.jpg" alt="" class="rounded-circle">
+                                    </span>
+                                </div>
+                                <div class="d-flex  text-center justify-content-between mt-1 mb-3">
+                                    <div class="flex-fill">
+                                        <p class="mb-0 fw-semibold fs-16 text-truncate max-w-150 mx-auto">
+                                            <a href="javascript:void(0);">Paul Rudd</a>
+                                        </p>
+                                        <p class="mb-0 fs-12 text-muted text-truncate max-w-150 mx-auto">Paulrude765@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="btn-list text-center">
+                                    <div class="btn-list">
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-info-light btn-wave waves-effect waves-light">
+                                            <i class="ri-facebook-line fw-bold"></i>
+                                        </button>
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-secondary-light btn-wave waves-effect waves-light">
+                                            <i class="ri-twitter-line fw-bold"></i>
+                                        </button>
+                                        <button type="button" aria-label="button" class="btn btn-sm btn-icon btn-success-light btn-wave waves-effect waves-light">
+                                            <i class="ri-github-line fw-bold"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer border-block-start-dashed text-center p-0">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="d-flex p-3 w-100 justify-content-center border-end">
+                                        <div class="text-center ">
+                                            <p class="fw-semibold mb-0">Projects</p>
+                                            <span class="text-muted fs-12">110</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex p-3 w-100 justify-content-center">
+                                        <div class="text-center">
+                                            <p class="fw-semibold mb-0">Position</p>
+                                            <span class="text-muted fs-12">Member</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Start: pagination -->
+                <div class="float-end mb-4 ms-auto">
+                    <nav aria-label="Page navigation" class="pagination-style-4">
+                        <ul class="pagination mb-0 gap-2">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="javascript:void(0);">
+                                    Prev
+                                </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                            <li class="page-item">
+                                <a aria-label="anchor" class="page-link" href="javascript:void(0);">
+                                    <i class="bi bi-three-dots"></i>
+                                </a>
+                            </li>
+                            <li class="page-item d-none d-sm-flex"><a class="page-link" href="javascript:void(0);">16</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">17</a></li>
+                            <li class="page-item">
+                                <a class="page-link text-primary" href="javascript:void(0);">
+                                    next
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- End: pagination -->
+
+            </div>
+        </div>
+        <!-- End::app-content -->
+
+        @SPK@include("partials/headersearch_modal.html")
+        @SPK@include("partials/right-sidebar.html")
+         @SPK@include("partials/footer.html")
+
+
+    </div>
+
+    @SPK@include("partials/commonjs.html")
+
+    @SPK@include("partials/custom_switcherjs.html")
+
+    <!-- Custom JS -->
+    <script src="../assets/js/custom.js"></script>
+
+</body>
+
+</html>

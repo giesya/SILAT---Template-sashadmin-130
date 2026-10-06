@@ -1,0 +1,98 @@
+@SPK@include("partials/mainhead.html")
+
+</head>
+
+<body>
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <div class="main-content app-content">
+            <div class="container-fluid">
+                @SPK@include("partials/page-header.html", {"title": "Profile Usaha", "subtitle": "Manajemen Usaha"})
+
+                <div class="row g-4">
+                    <div class="col-12">
+                        <div class="card custom-card">
+                            <div class="card-header">
+                                <div class="card-title">Profil Pemilik Kapal &amp; Badan Usaha</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-xl-3 col-md-4 text-center">
+                                        <div class="d-inline-flex flex-column align-items-center justify-content-center border rounded p-2 mb-3" style="width: 135px; height: 180px; background-color: #eaedf1;">
+                                            <i class="fe fe-user text-muted fs-32 mb-1"></i>
+                                            <span class="text-muted fs-11 fw-medium">Foto 4x3</span>
+                                            <span class="text-muted fs-10">Belum ada foto</span>
+                                        </div>
+                                        <h6 class="fw-semibold mb-1">PT SAMUDRA BAHARI NUSANTARA</h6>
+                                        <p class="text-muted mb-0 fs-12">Pelaku Usaha Perikanan Tangkap</p>
+                                    </div>
+                                    <div class="col-xl-9 col-md-8">
+                                        <div class="row gy-3">
+                                            <div class="col-md-6">
+                                                <span class="text-muted d-block fs-12">Nama Perusahaan</span>
+                                                <span class="fw-semibold text-dark">PT SAMUDRA BAHARI NUSANTARA</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span class="text-muted d-block fs-12">Alamat</span>
+                                                <span class="fw-semibold text-dark">Jl. Dermaga Pelabuhan Ratu No. 45, Muara Baru</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span class="text-muted d-block fs-12">No. Telepon</span>
+                                                <span class="fw-semibold text-dark">021-5558921</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span class="text-muted d-block fs-12">No. Fax</span>
+                                                <span class="fw-semibold text-dark">021-5558922</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span class="text-muted d-block fs-12">Email</span>
+                                                <span class="fw-semibold text-dark">kontak@samudrabahari.co.id</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span class="text-muted d-block fs-12">NPWP</span>
+                                                <span class="fw-semibold text-dark">01.234.567.8-012.000</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span class="text-muted d-block fs-12">Domisili Hukum</span>
+                                                <span class="fw-semibold text-dark">DKI Jakarta</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span class="text-muted d-block fs-12">Provinsi</span>
+                                                <span class="fw-semibold text-dark">DKI Jakarta</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span class="text-muted d-block fs-12">Penanggung Jawab</span>
+                                                <span class="fw-semibold text-dark">Ir. H. Hendra Wijaya, M.M.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row g-4 mt-1">
+                                    <div class="col-12">
+                                        <div class="border rounded p-3 text-center bg-light">
+                                            <div class="text-muted fs-12 mb-2 fw-medium">Tanda Tangan</div>
+                                            <div class="d-inline-flex flex-column align-items-center justify-content-center border rounded p-2" style="width: 220px; height: 100px; background-color: #eaedf1;">
+                                                <i class="fe fe-image text-muted fs-20 mb-1"></i>
+                                                <span class="text-muted fs-12">Belum ada tanda tangan</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @SPK@include("partials/footer.html")
+    @SPK@include("partials/commonjs.html")
+</body>
+</html>

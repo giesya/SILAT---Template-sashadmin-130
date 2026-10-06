@@ -1,0 +1,183 @@
+@SPK@include("partials/mainhead.html")
+
+<style>
+	.ppp-table {
+		min-width: 1260px;
+		table-layout: auto;
+	}
+
+	.ppp-table th,
+	.ppp-table td {
+		vertical-align: middle;
+		white-space: normal;
+	}
+
+	.ppp-table th:nth-child(1),
+	.ppp-table td:nth-child(1) {
+		min-width: 105px;
+		text-align: center;
+	}
+
+	.ppp-table th:nth-child(2),
+	.ppp-table td:nth-child(2) {
+		min-width: 320px;
+	}
+
+	.ppp-table th:nth-child(3),
+	.ppp-table td:nth-child(3) {
+		min-width: 145px;
+	}
+
+	.ppp-table th:nth-child(4),
+	.ppp-table td:nth-child(4),
+	.ppp-table th:nth-child(5),
+	.ppp-table td:nth-child(5),
+	.ppp-table th:nth-child(6),
+	.ppp-table td:nth-child(6),
+	.ppp-table th:nth-child(7),
+	.ppp-table td:nth-child(7) {
+		min-width: 175px;
+	}
+
+	.ppp-table th:nth-child(8),
+	.ppp-table td:nth-child(8) {
+		min-width: 85px;
+		text-align: center;
+	}
+
+	.ppp-table select,
+	.ppp-table input {
+		min-width: 100%;
+	}
+
+	.ppp-table .alat-tangkap {
+		min-width: 300px;
+	}
+
+	.ppp-table .form-control {
+		white-space: normal;
+	}
+</style>
+
+</head>
+
+<body>
+	@SPK@include("partials/switcher.html")
+	@SPK@include("partials/loader.html")
+
+	<div class="page">
+		@SPK@include("partials/header.html")
+		@SPK@include("partials/sidebar.html")
+
+		<div class="main-content app-content">
+			<div class="container-fluid">
+				@SPK@include("partials/page-header.html", {"title": "Simulasi PPP", "subtitle": 'Simulasi Pungutan'})
+
+				<div class="card custom-card">
+					<div class="card-header">
+						<div>
+							<div class="card-title mb-1">Simulasi PPP</div>
+							<p class="text-muted fs-13 mb-0">Isi data armada, lalu pilih Hitung untuk membuat batas atas GT, tarif, dan jumlah tagihan.</p>
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered align-middle mb-0 ppp-table" id="pppTable">
+								<thead>
+									<tr>
+										<th>Status Armada<br><span class="fw-normal">Alokasi</span></th>
+										<th>Jenis Alat Tangkap</th>
+										<th>Range GT</th>
+										<th>Batas Atas GT</th>
+										<th>Alokasi Izin</th>
+										<th>Tarif PPP</th>
+										<th>Jumlah Tagihan PPP</th>
+										<th>Aksi</th>
+									</tr>
+								</thead>
+								<tbody id="pppRows"></tbody>
+							</table>
+						</div>
+						<div class="d-flex flex-wrap gap-2 justify-content-between align-items-center mt-4">
+							<button type="button" class="btn btn-outline-primary" id="addPppRow"><i class="fe fe-plus me-1"></i>Tambah Armada</button>
+							<button type="button" class="btn btn-primary" id="calculatePpp"><i class="fe fe-calculator me-1"></i>Hitung</button>
+						</div>
+						<div class="alert alert-success mt-4 mb-0 d-none" id="pppTotal" role="status"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	@SPK@include("partials/footer.html")
+	@SPK@include("partials/commonjs.html")
+
+	<script>
+		const alatTangkap = [
+			"Bagan Berperahu", "Bagan Berperahu Teri", "Bouke Ami", "Bubu (Pots)", "Huhate", "Huhate Mekanis",
+			"Jala Jatuh Berkapal", "Jaring Hela Ikan Berkantong", "Jaring Hela Udang Berkantong", "Jaring Insang Hanyut",
+			"Jaring Insang Tetap", "Jaring Tarik Berkantong", "Jaring Tarik Berkantong (Es Batu)", "Jaring Tarik Berkantong (Freezer)",
+			"Kapal Pengangkut Ikan antar Pelabuhan Pangkalan", "Kapal Pengangkut Ikan dari Daerah Penangkapan Ikan (WPPNRI)",
+			"Kapal Pengangkut Ikan di Laut Lepas", "Kapal Pengangkut Ikan Hidup Antar Tempat Pembudidayaan Ikan",
+			"Kapal Pengangkut Ikan Hidup dari Tempat Pembudidayaan / Pelabuhan Check Point ke Negara Tujuan Ekspor",
+			"Kapal Pengangkut Ikan Segar/Beku ke Negara Tujuan", "Kapal Pengangkut Ikan Sewa untuk Ikan Hidup dari Check Point ke Negara Tujuan (Berbendera Asing)",
+			"Kapal Pengangkut Ikan Sewa untuk Ikan Segar/Beku ke Negara Tujuan (Berbendera Asing)", "Pancing Berjoran", "Pancing Cumi",
+			"Pancing Cumi Mekanis", "Pancing Ulur", "Pancing Ulur Tuna", "Payang", "Pukat Cincin Pelagis Besar dengan Satu Kapal",
+			"Pukat Cincin Pelagis Kecil dengan Satu Kapal", "Pukat Cincin Teri dengan Satu Kapal", "Pukat Labuh", "Rawai Dasar",
+			"Rawai Tuna", "Rumpon"
+		];
+		const ranges = ["5-10", "10-20", "20-30", "30-60", "60-100", "100-200", "200-300", "300-500", "500-1000", "1000-2000", "2000-3000", "3000-5000"];
+		const tarifPerRange = { "5-10": 1000000, "10-20": 1500000, "20-30": 2000000, "30-60": 3000000, "60-100": 4500000, "100-200": 6500000, "200-300": 8500000, "300-500": 11000000, "500-1000": 15000000, "1000-2000": 20000000, "2000-3000": 30000000, "3000-5000": 45000000 };
+		const pppRows = document.getElementById("pppRows");
+
+		function optionList(items, placeholder) {
+			return `<option value="">${placeholder}</option>${items.map((item) => `<option value="${item}">${item}</option>`).join("")}`;
+		}
+
+		function addPppRow() {
+			const row = document.createElement("tr");
+			row.innerHTML = `
+				<td class="text-center"><input class="form-check-input allocation-check" type="checkbox" aria-label="Status armada alokasi"></td>
+				<td><select class="form-select form-select-sm alat-tangkap">${optionList(alatTangkap, "Pilih alat tangkap")}</select></td>
+				<td><select class="form-select form-select-sm range-gt">${optionList(ranges, "Pilih range GT")}</select></td>
+				<td><input class="form-control form-control-sm batas-gt" type="text" readonly placeholder="Otomatis saat Hitung"></td>
+				<td><input class="form-control form-control-sm alokasi-izin" type="text" inputmode="numeric" placeholder="Masukkan alokasi"></td>
+				<td><input class="form-control form-control-sm tarif-ppp" type="text" readonly placeholder="Otomatis saat Hitung"></td>
+				<td><input class="form-control form-control-sm tagihan-ppp" type="text" readonly placeholder="Otomatis saat Hitung"></td>
+				<td><button type="button" class="btn btn-sm btn-danger-light remove-row" aria-label="Hapus baris"><i class="fe fe-trash-2"></i></button></td>
+			`;
+			pppRows.appendChild(row);
+		}
+
+		function formatRupiah(value) {
+			return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(value);
+		}
+
+		function calculatePpp() {
+			let total = 0;
+			document.querySelectorAll("#pppRows tr").forEach((row) => {
+				const range = row.querySelector(".range-gt").value;
+				const allocation = Number(row.querySelector(".alokasi-izin").value) || 0;
+				const upperGt = range ? Number(range.split("-")[1]) : 0;
+				const tariff = tarifPerRange[range] || 0;
+				const bill = tariff * allocation;
+				row.querySelector(".batas-gt").value = upperGt || "";
+				row.querySelector(".tarif-ppp").value = tariff ? formatRupiah(tariff) : "";
+				row.querySelector(".tagihan-ppp").value = bill ? formatRupiah(bill) : "";
+				total += bill;
+			});
+			const totalElement = document.getElementById("pppTotal");
+			totalElement.textContent = `Total Tagihan PPP: ${formatRupiah(total)}`;
+			totalElement.classList.remove("d-none");
+		}
+
+		document.getElementById("addPppRow").addEventListener("click", addPppRow);
+		document.getElementById("calculatePpp").addEventListener("click", calculatePpp);
+		pppRows.addEventListener("click", (event) => {
+			const removeButton = event.target.closest(".remove-row");
+			if (removeButton) removeButton.closest("tr").remove();
+		});
+		addPppRow();
+	</script>
+</body>
+</html>

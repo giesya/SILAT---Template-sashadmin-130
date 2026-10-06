@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+
+<head>
+
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login | SILAT - Ditjen Perikanan Tangkap KKP</title>
+    <meta name="description" content="Sistem Informasi Izin Layanan Cepat (SILAT) - Aplikasi Layanan Perizinan Berusaha (terintegrasi dengan OSS) untuk kapal ukuran > 5 GT dan beroperasi diatas 12 mil.">
+    <meta name="Author" content="Direktorat Jenderal Perikanan Tangkap">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/brand-logos/favicon.ico" type="image/x-icon">
+
+    <!-- Main Theme Js -->
+    <script src="../assets/js/authentication-main.js"></script>
+
+    <!-- Bootstrap Css -->
+    <link id="style" href="../assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Style Css -->
+    <link href="../assets/css/styles.min.css" rel="stylesheet">
+
+    <!-- Icons Css -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f0f4f9;
+        }
+
+        .login-page {
+            flex: 1 0 auto;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 10% 20%, rgba(13, 110, 253, 0.05) 0%, rgba(240, 244, 249, 1) 90%);
+        }
+
+        .login-shell {
+            overflow: hidden;
+            max-width: 1040px;
+            min-height: 600px;
+            border: 0;
+            border-radius: 1.25rem;
+            box-shadow: 0 24px 60px rgba(18, 38, 63, 0.12);
+            background: #ffffff;
+        }
+
+        .login-form-panel {
+            display: flex;
+            align-items: center;
+            padding: 3.5rem 3rem;
+            background: #ffffff;
+        }
+
+        .login-form-content {
+            width: 100%;
+            max-width: 390px;
+            margin: 0 auto;
+        }
+
+        .login-logo {
+            display: block;
+            width: 96px;
+            height: auto;
+            margin-bottom: 1.25rem;
+        }
+
+        .login-hero-panel {
+            min-height: 600px;
+            position: relative;
+            background: linear-gradient(145deg, rgba(8, 77, 96, 0.94) 0%, rgba(13, 110, 253, 0.88) 100%), url('../assets/images/brand-logos/login-page.png') center/cover no-repeat;
+        }
+
+        .bg-white-transparent {
+            background-color: rgba(255, 255, 255, 0.14) !important;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .text-white-75 {
+            color: rgba(255, 255, 255, 0.82) !important;
+        }
+
+        .border-white-15 {
+            border-color: rgba(255, 255, 255, 0.18) !important;
+        }
+
+        .form-control:focus, .input-group-text:focus-within {
+            box-shadow: none;
+        }
+
+        .input-group-custom {
+            border: 1px solid #dce4ec;
+            border-radius: 0.6rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            background: #ffffff;
+        }
+
+        .input-group-custom:focus-within {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.14);
+        }
+
+        .captcha-box {
+            min-width: 110px;
+            padding: 0.65rem 0.85rem;
+            border: 1px dashed #3858f6;
+            border-radius: 0.5rem;
+            background: linear-gradient(135deg, #eef4fc 0%, #e0edfd 100%);
+            color: #0b3fa8;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: 0.25rem;
+            text-align: center;
+        }
+
+        @media (max-width: 991.98px) {
+            .login-form-panel {
+                padding: 2.5rem 1.75rem;
+            }
+
+            .login-shell {
+                margin: 1rem;
+                min-height: auto;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <main class="login-page py-4">
+        <div class="container">
+            <div class="row g-0 login-shell mx-auto">
+                
+                <!-- Left Panel: Form Login -->
+                <section class="col-lg-6 login-form-panel">
+                    <div class="login-form-content">
+                        
+                        <!-- Logo Portal -->
+                        <div class="mb-3">
+                            <a href="index.html" aria-label="Kembali ke halaman utama">
+                                <img class="login-logo mb-0" src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="SILAT">
+                            </a>
+                        </div>
+
+                        <h4 class="fw-bold text-dark mb-1">Masuk ke SILAT</h4>
+                        <p class="text-muted fs-13 mb-4">Gunakan akun terdaftar untuk mengakses layanan perizinan berusaha.</p>
+
+                        <form id="login-form" novalidate>
+                            
+                            <!-- Username -->
+                            <div class="mb-3">
+                                <label for="signin-username" class="form-label text-dark fw-medium fs-13 mb-1">Username / Email OSS</label>
+                                <div class="input-group input-group-custom overflow-hidden">
+                                    <span class="input-group-text bg-transparent border-0 text-muted ps-3 pe-2">
+                                        <i class="fe fe-user fs-15"></i>
+                                    </span>
+                                    <input type="text" class="form-control border-0 ps-1 py-2 fs-13" id="signin-username" placeholder="Masukkan username atau email" required>
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="mb-3">
+                                <label for="signin-password" class="form-label text-dark fw-medium fs-13 mb-1">Password</label>
+                                <div class="input-group input-group-custom overflow-hidden">
+                                    <span class="input-group-text bg-transparent border-0 text-muted ps-3 pe-2">
+                                        <i class="fe fe-lock fs-15"></i>
+                                    </span>
+                                    <input type="password" class="form-control border-0 ps-1 py-2 fs-13" id="signin-password" placeholder="Masukkan password" required>
+                                    <button class="btn btn-transparent border-0 text-muted pe-3" type="button" onclick="createpassword('signin-password', this)" aria-label="Tampilkan password">
+                                        <i class="ri-eye-off-line align-middle"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Validasi Captcha -->
+                            <div class="mb-3">
+                                <label for="login-captcha" class="form-label text-dark fw-medium fs-13 mb-1">Validasi Captcha</label>
+                                <div class="d-flex gap-2">
+                                    <input type="text" class="form-control border rounded-3 fs-13 ps-3" id="login-captcha" placeholder="Ketik kode" autocomplete="off" required>
+                                    <span id="captcha-code" class="captcha-box user-select-none" aria-label="Kode captcha"></span>
+                                    <button id="refresh-captcha" class="btn btn-light border rounded-3 px-3 text-muted" type="button" title="Muat ulang captcha">
+                                        <i class="fe fe-refresh-cw"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Remember Me & Forgot Password -->
+                            <div class="d-flex justify-content-between align-items-center mb-4 fs-13">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="remember-password">
+                                    <label class="form-check-label text-muted" for="remember-password">Ingat saya</label>
+                                </div>
+                                <a href="reset-password.html" class="text-primary fw-semibold text-decoration-none">Lupa password?</a>
+                            </div>
+
+                            <!-- Tombol Submit Login -->
+                            <button type="submit" class="btn btn-primary btn-lg w-100 fw-semibold rounded-3 shadow-sm py-2 fs-14">
+                                <i class="fe fe-log-in me-2"></i>Masuk Sekarang
+                            </button>
+
+                            <p id="login-message" class="text-center text-danger fs-13 mt-3 mb-0" aria-live="polite"></p>
+                        </form>
+
+                        <p class="text-center text-muted fs-13 mt-4 mb-0">
+                            Belum memiliki akun? <a href="sign-up.html" class="text-primary fw-semibold text-decoration-none">Daftar Akun Baru</a>
+                        </p>
+
+                    </div>
+                </section>
+
+                <!-- Right Panel: Hero Banner with Value Proposition -->
+                <aside class="col-lg-6 login-hero-panel d-none d-lg-flex flex-column justify-content-between p-5 text-white">
+                    <div>
+                        <div class="d-flex align-items-center gap-2 mb-4">
+                            <span class="badge bg-white-transparent text-white px-3 py-2 rounded-pill fs-12 fw-semibold">
+                                <i class="ri-government-line me-1"></i>Kementerian Kelautan dan Perikanan
+                            </span>
+                        </div>
+                        <h3 class="fw-bold mb-2 text-white">Sistem Informasi Izin Layanan Cepat (SILAT)</h3>
+                        <p class="text-white-75 fs-13 mb-4" style="max-width: 440px;">
+                            Aplikasi Layanan Perizinan Berusaha (terintegrasi dengan OSS) untuk kapal ukuran &gt; 5 GT dan beroperasi diatas 12 mil.
+                        </p>
+
+                        <!-- Value Proposition Points / Fungsi Web -->
+                        <div class="d-flex flex-column gap-3 mt-4">
+                            <div class="d-flex align-items-center gap-3 p-3 rounded-3 bg-white-transparent">
+                                <div class="avatar avatar-md bg-white text-primary rounded-circle shadow-xs flex-shrink-0">
+                                    <i class="ri-file-shield-2-line fs-18"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-semibold mb-0 fs-13 text-white">Surat Izin Usaha Perikanan (SIUP)</h6>
+                                    <span class="text-white-75 fs-11">Penerbitan baru dan pembaruan izin usaha berbasis risiko & KBLI 2025</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-3 p-3 rounded-3 bg-white-transparent">
+                                <div class="avatar avatar-md bg-white text-success rounded-circle shadow-xs flex-shrink-0">
+                                    <i class="ri-ship-line fs-18"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-semibold mb-0 fs-13 text-white">SIPI / SIKPI</h6>
+                                    <span class="text-white-75 fs-11">Surat Izin Penangkapan Ikan & Surat Izin Kapal Pengangkut Ikan</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-3 p-3 rounded-3 bg-white-transparent">
+                                <div class="avatar avatar-md bg-white text-warning rounded-circle shadow-xs flex-shrink-0">
+                                    <i class="ri-anchor-line fs-18"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-semibold mb-0 fs-13 text-white">Surat Izin Pemasangan Rumpon (SIPR)</h6>
+                                    <span class="text-white-75 fs-11">Perizinan penempatan alat bantu penangkapan ikan di perairan WPPNRI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Contact info -->
+                    <div class="pt-4 border-top border-white-15 d-flex justify-content-between align-items-center">
+                        <span class="fs-12 text-white-75"><i class="fe fe-phone me-1"></i>Helpdesk: (021) 3519070</span>
+                        <span class="fs-12 text-white-75"><i class="fe fe-mail me-1"></i>perizinan@kkp.go.id</span>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Start -->
+    <footer class="footer mt-auto py-3 text-center">
+        <div class="container">
+            <span class=""> Copyright © 2026 <a href="https://perizinan.kkp.go.id/" target="_blank" rel="noopener noreferrer">Digitalisasi Perizinan</a>, <a href="https://kkp.go.id/unit-kerja/djpt.html" target="_blank" rel="noopener noreferrer">Direktorat Jenderal Perikanan Tangkap</a> . All rights reserved.
+            </span>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/show-password.js"></script>
+
+    <script>
+        (function () {
+            const form = document.getElementById('login-form');
+            const captchaCode = document.getElementById('captcha-code');
+            const captchaInput = document.getElementById('login-captcha');
+            const message = document.getElementById('login-message');
+            let currentCaptcha = '';
+
+            function generateCaptcha() {
+                currentCaptcha = Math.random().toString(36).slice(2, 8).toUpperCase();
+                captchaCode.textContent = currentCaptcha;
+                captchaInput.value = '';
+            }
+
+            document.getElementById('refresh-captcha').addEventListener('click', generateCaptcha);
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                message.textContent = '';
+
+                if (!form.checkValidity()) {
+                    form.classList.add('was-validated');
+                    return;
+                }
+
+                if (captchaInput.value.trim().toUpperCase() !== currentCaptcha) {
+                    message.textContent = 'Captcha tidak sesuai. Silakan coba lagi.';
+                    generateCaptcha();
+                    return;
+                }
+
+                window.location.href = 'index.html';
+            });
+
+            generateCaptcha();
+        }());
+    </script>
+
+</body>
+
+</html>

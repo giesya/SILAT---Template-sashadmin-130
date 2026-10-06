@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+
+<head>
+
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Sash – Bootstrap 5  Admin &amp; Dashboard Template </title>
+    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
+    <meta name="Author" content="Spruko Technologies Private Limited">
+	<meta name="keywords" content="admin dashboard,dashboard design htmlbootstrap admin template,html admin panel,admin dashboard html,admin panel html template,bootstrap dashboard,html admin template,html dashboard,html admin dashboard template,bootstrap dashboard template,dashboard html template,bootstrap admin panel,dashboard admin bootstrap,bootstrap admin dashboard">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/brand-logos/favicon.ico" type="image/x-icon">
+
+    <!-- Choices JS -->
+    <script src="../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <!-- Main Theme Js -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Bootstrap Css -->
+    <link id="style" href="../assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+
+    <!-- Style Css -->
+    <link href="../assets/css/styles.min.css" rel="stylesheet" >
+
+    <!-- Icons Css -->
+    <link href="../assets/css/icons.css" rel="stylesheet" >
+
+    <!-- Node Waves Css -->
+    <link href="../assets/libs/node-waves/waves.min.css" rel="stylesheet" >
+
+    <!-- Simplebar Css -->
+    <link href="../assets/libs/simplebar/simplebar.min.css" rel="stylesheet" >
+
+    <!-- Color Picker Css -->
+    <link rel="stylesheet" href="../assets/libs/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" href="../assets/libs/@simonwep/pickr/themes/nano.min.css">
+
+    <!-- Choices Css -->
+    <link rel="stylesheet" href="../assets/libs/choices.js/public/assets/styles/choices.min.css">
+
+<!-- Sweetalerts CSS -->
+<link rel="stylesheet" href="../assets/libs/sweetalert2/sweetalert2.min.css">
+
+<style>
+    .form-section {
+        border: 1px solid #dce7ea;
+        border-radius: .5rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    }
+    .form-section > .card-header {
+        background: #f4f8f9;
+        border-bottom: 1px solid #dce7ea;
+    }
+    .form-section-title {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #1a2b49;
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+    .form-section-title .badge-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: #fff;
+        font-size: 0.85rem;
+    }
+    .form-note {
+        border-left: 3px solid #00a5a8;
+        background-color: #f0fafb;
+    }
+    .phone-prefix-badge {
+        font-weight: 600;
+        background-color: #f1f4f8;
+        color: var(--primary-color);
+        border-color: #dce7ea;
+    }
+    .modal-custom-card {
+        border-radius: 0.75rem;
+        border: 0;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    }
+</style>
+
+</head>
+<body>
+    <!-- Start Switcher -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="switcher-canvas" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title text-default" id="offcanvasRightLabel">Switcher</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="border-bottom border-block-end-dashed">
+                <div class="nav nav-tabs nav-justified" id="switcher-main-tab" role="tablist">
+                    <button class="nav-link active" id="switcher-home-tab" data-bs-toggle="tab" data-bs-target="#switcher-home"
+                        type="button" role="tab" aria-controls="switcher-home" aria-selected="true">Theme Styles</button>
+                    <button class="nav-link" id="switcher-profile-tab" data-bs-toggle="tab" data-bs-target="#switcher-profile"
+                        type="button" role="tab" aria-controls="switcher-profile" aria-selected="false">Theme Colors</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active border-0" id="switcher-home" role="tabpanel" aria-labelledby="switcher-home-tab"
+                    tabindex="0">
+                    <div class="">
+                        <p class="switcher-style-head">Theme Color Mode:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-light-theme">
+                                        Light
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="theme-style" id="switcher-light-theme"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-dark-theme">
+                                        Dark
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="theme-style" id="switcher-dark-theme">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Directions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-ltr">
+                                        LTR
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="direction" id="switcher-ltr" checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-rtl">
+                                        RTL
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="direction" id="switcher-rtl">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Navigation Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-vertical">
+                                        Vertical
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-style" id="switcher-vertical"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-horizontal">
+                                        Horizontal
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-style"
+                                        id="switcher-horizontal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navigation-menu-styles">
+                        <p class="switcher-style-head">Vertical & Horizontal Menu Styles:</p>
+                        <div class="row switcher-style gx-0 pb-2 gy-2">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-click">
+                                        Menu Click
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-menu-click">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-hover">
+                                        Menu Hover
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-menu-hover">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-click">
+                                        Icon Click
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-icon-click">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-hover">
+                                        Icon Hover
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-icon-hover">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidemenu-layout-styles">
+                        <p class="switcher-style-head">Sidemenu Layout Styles:</p>
+                        <div class="row switcher-style gx-0 pb-2 gy-2">
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-default-menu">
+                                        Default Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-default-menu" checked>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-closed-menu">
+                                        Closed Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-closed-menu">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icontext-menu">
+                                        Icon Text
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-icontext-menu">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-overlay">
+                                        Icon Overlay
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-icon-overlay">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-detached">
+                                        Detached
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-detached">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-double-menu">
+                                        Double Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-double-menu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Page Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-regular">
+                                        Regular
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-styles" id="switcher-regular"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-classic">
+                                        Classic
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-styles" id="switcher-classic">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Layout Width Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-full-width">
+                                        Full Width
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="layout-width" id="switcher-full-width"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-boxed">
+                                        Boxed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="layout-width" id="switcher-boxed">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Menu Positions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-fixed">
+                                        Fixed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="menu-positions" id="switcher-menu-fixed"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-scroll">
+                                        Scrollable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="menu-positions" id="switcher-menu-scroll">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Header Positions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-header-fixed">
+                                        Fixed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="header-positions"
+                                        id="switcher-header-fixed" checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-header-scroll">
+                                        Scrollable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="header-positions"
+                                        id="switcher-header-scroll">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Loader:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-loader-enable">
+                                        Enable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-loader"
+                                        id="switcher-loader-enable">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-loader-disable">
+                                        Disable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-loader"
+                                        id="switcher-loader-disable" checked>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade border-0" id="switcher-profile" role="tabpanel" aria-labelledby="switcher-profile-tab" tabindex="0">
+                    <div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Menu Colors:</p>
+                            <div class="d-flex switcher-style pb-2">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-white" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Light Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-light">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-dark" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Dark Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-dark" checked>
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Color Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-gradient" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Gradient Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-gradient">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-transparent"
+                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Transparent Menu"
+                                        type="radio" name="menu-colors" id="switcher-menu-transparent">
+                                </div>
+                            </div>
+                            <div class="px-4 pb-3 text-muted fs-11">Note:If you want to change color Menu dynamically change from below Theme Primary color picker</div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Header Colors:</p>
+                            <div class="d-flex switcher-style pb-2">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-white" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Light Header" type="radio" name="header-colors"
+                                        id="switcher-header-light" checked>
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-dark" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Dark Header" type="radio" name="header-colors"
+                                        id="switcher-header-dark">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Color Header" type="radio" name="header-colors"
+                                        id="switcher-header-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-gradient" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Gradient Header" type="radio" name="header-colors"
+                                        id="switcher-header-gradient">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-transparent" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Transparent Header" type="radio" name="header-colors"
+                                        id="switcher-header-transparent">
+                                </div>
+                            </div>
+                            <div class="px-4 pb-3 text-muted fs-11">Note:If you want to change color Header dynamically change from below Theme Primary color picker</div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Theme Primary:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-1" type="radio"
+                                        name="theme-primary" id="switcher-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-2" type="radio"
+                                        name="theme-primary" id="switcher-primary1">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-3" type="radio" name="theme-primary"
+                                        id="switcher-primary2">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-4" type="radio" name="theme-primary"
+                                        id="switcher-primary3">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-5" type="radio" name="theme-primary"
+                                        id="switcher-primary4">
+                                </div>
+                                <div class="form-check switch-select ps-0 mt-1 color-primary-light">
+                                    <div class="theme-container-primary"></div>
+                                    <div class="pickr-container-primary"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Theme Background:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-1" type="radio"
+                                        name="theme-background" id="switcher-background">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-2" type="radio"
+                                        name="theme-background" id="switcher-background1">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-3" type="radio" name="theme-background"
+                                        id="switcher-background2">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-4" type="radio"
+                                        name="theme-background" id="switcher-background3">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-5" type="radio"
+                                        name="theme-background" id="switcher-background4">
+                                </div>
+                                <div class="form-check switch-select ps-0 mt-1 tooltip-static-demo color-bg-transparent">
+                                    <div class="theme-container-background"></div>
+                                    <div class="pickr-container-background"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-image mb-3">
+                            <p class="switcher-style-head">Menu With Background Image:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img1" type="radio"
+                                        name="theme-background" id="switcher-bg-img">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img2" type="radio"
+                                        name="theme-background" id="switcher-bg-img1">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img3" type="radio" name="theme-background"
+                                        id="switcher-bg-img2">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img4" type="radio"
+                                        name="theme-background" id="switcher-bg-img3">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img5" type="radio"
+                                        name="theme-background" id="switcher-bg-img4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center canvas-footer flex-wrap px-0 px-sm-5">
+                    <a href="javascript:void(0);" id="reset-all" class="btn btn-danger m-1">Reset</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Switcher -->
+
+
+    <!-- Loader -->
+    <div id="loader" >
+        <img src="../assets/images/media/loader.svg" alt="">
+    </div>
+    <!-- Loader -->
+    
+    <div class="page">
+         <!-- app-header -->
+         <header class="app-header">
+
+            <!-- Start::main-header-container -->
+            <div class="main-header-container container-fluid">
+
+                <!-- Start::header-content-left -->
+                <div class="header-content-left">
+
+                    <!-- Start::header-element (Logo) -->
+                    <div class="header-element">
+                        <div class="horizontal-logo">
+                            <a href="index.html" class="header-logo">
+                                <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-logo">
+                                <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-logo">
+                                <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-dark">
+                                <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-dark">
+                                <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-white">
+                                <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-white">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- End::header-element -->
+
+                    <!-- Start::header-element (Hamburger Toggle) -->
+                    <div class="header-element">
+                        <!-- Start::header-link -->
+                        <a aria-label="Hide Sidebar" class="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle" data-bs-toggle="sidebar" href="javascript:void(0);"><span></span></a>
+                        <!-- End::header-link -->
+                    </div>
+                    <!-- End::header-element -->
+
+                </div>
+                <!-- End::header-content-left -->
+
+                <!-- Start::header-content-right -->
+                <div class="header-content-right">
+
+                    <!-- Start::header-element (Inbox Chat / Pesan) -->
+                    <div class="header-element message-dropdown">
+                        <!-- Start::header-link|dropdown-toggle -->
+                        <a aria-label="Kotak Masuk Pesan" href="javascript:void(0);" class="header-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" id="messageDropdown2" aria-expanded="false">
+                            <i class="fe fe-message-square header-link-icon"></i>
+                            <span class="w-9 h-9 p-0 bg-primary rounded-pill header-icon-badge pulse pulse-primary" id="message-icon-badge"></span>
+                        </a>
+                        <!-- End::header-link|dropdown-toggle -->
+                        <!-- Start::main-header-dropdown -->
+                        <div class="main-header-dropdown dropdown-menu dropdown-menu-end shadow" data-popper-placement="none">
+                            <div class="p-3 bg-primary-transparent border-bottom">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <p class="mb-0 fs-15 fw-semibold text-dark"><i class="fe fe-message-square me-1 text-primary"></i>Pesan Masuk</p>
+                                    <span class="badge bg-primary text-white fs-11" id="message-data">3 Belum Dibaca</span>
+                                </div>
+                            </div>
+                            <ul class="list-unstyled mb-0" id="header-message-scroll" style="max-height: 280px; overflow-y: auto;">
+                                <li class="dropdown-item p-3 border-bottom">
+                                    <a href="chat.html?contact=Helpdesk%20Perizinan%20KKP" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                         <span class="avatar avatar-md bg-primary-transparent text-primary rounded-circle flex-shrink-0"><i class="fe fe-shield fs-16"></i></span>
+                                         <div class="w-100">
+                                            <div class="d-flex align-items-center justify-content-between mb-1">
+                                                <h6 class="mb-0 fw-semibold fs-13 text-dark">Helpdesk Perizinan KKP</h6>
+                                                <span class="text-muted fs-11">09:15</span>
+                                            </div>
+                                            <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Dokumen permohonan verifikasi kapal telah diterima sistem.</p>
+                                         </div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-item p-3 border-bottom">
+                                    <a href="chat.html?contact=Syahbandar%20Muara%20Baru" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                         <span class="avatar avatar-md bg-info-transparent text-info rounded-circle flex-shrink-0"><i class="fe fe-anchor fs-16"></i></span>
+                                         <div class="w-100">
+                                            <div class="d-flex align-items-center justify-content-between mb-1">
+                                                <h6 class="mb-0 fw-semibold fs-13 text-dark">Syahbandar Muara Baru</h6>
+                                                <span class="text-muted fs-11">Kemarin</span>
+                                            </div>
+                                            <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Konfirmasi jadwal tambat pangkalan PPS Nizam Zachman.</p>
+                                         </div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-item p-3">
+                                    <a href="chat.html?contact=Staf%20Operasional%20Kapal" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                         <span class="avatar avatar-md bg-success-transparent text-success rounded-circle flex-shrink-0"><i class="fe fe-user-check fs-16"></i></span>
+                                         <div class="w-100">
+                                            <div class="d-flex align-items-center justify-content-between mb-1">
+                                                <h6 class="mb-0 fw-semibold fs-13 text-dark">Staf Operasional Kapal</h6>
+                                                <span class="text-muted fs-11">2 hari lalu</span>
+                                            </div>
+                                            <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Data dokumen awak kapal KM. Bahari Nusantara telah diperbarui.</p>
+                                         </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="p-2 border-top text-center bg-light-subtle">
+                                <a href="chat.html" class="fs-12 text-primary fw-semibold text-decoration-none d-block">Lihat Semua Pesan</a>
+                            </div>
+                        </div>
+                        <!-- End::main-header-dropdown -->
+                    </div>
+                    <!-- End::header-element -->
+
+                    <!-- Start::header-element (Profile: Pengaturan Akun & Logout) -->
+                    <div class="header-element main-profile-user">
+                        <!-- Start::header-link|dropdown-toggle -->
+                        <a href="javascript:void(0);" class="header-link dropdown-toggle" id="mainHeaderProfile" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            <div class="d-flex align-items-center">
+                                <div class="me-xxl-2 me-0">
+                                    <img src="../assets/images/faces/9.jpg" alt="Foto Profil" width="34" height="34" class="rounded-circle border border-2 border-primary-subtle">
+                                </div>
+                                <div class="d-xxl-block d-none my-auto text-start">
+                                    <h6 class="fw-semibold mb-0 lh-1 fs-14 text-dark">Ir. H. Hendra Wijaya</h6>
+                                    <span class="op-7 fw-normal d-block fs-11 text-muted">Pemilik Usaha</span>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- End::header-link|dropdown-toggle -->
+                        <ul class="main-header-dropdown dropdown-menu pt-0 header-profile-dropdown dropdown-menu-end shadow" aria-labelledby="mainHeaderProfile">
+                            <li class="drop-heading d-xxl-none d-block border-bottom p-3">
+                                 <div class="text-center">
+                                    <h6 class="text-dark mb-0 fs-14 fw-semibold">Ir. H. Hendra Wijaya</h6>
+                                    <small class="text-muted fs-11">Pemilik Usaha</small>
+                                </div>
+                            </li>
+                            <li class="dropdown-item py-2">
+                                <a class="d-flex align-items-center w-100" href="profile.html">
+                                    <i class="fe fe-settings fs-16 me-2 text-primary"></i>Pengaturan Akun
+                                </a>
+                            </li>
+                            <li class="dropdown-divider my-1"></li>
+                            <li class="dropdown-item py-2">
+                                <a class="d-flex align-items-center w-100 text-danger" href="login.html">
+                                    <i class="fe fe-log-out fs-16 me-2 text-danger"></i>Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End::header-element -->
+
+                </div>
+                <!-- End::header-content-right -->
+
+            </div>
+            <!-- End::main-header-container -->
+
+        </header>
+        <!-- /app-header -->
+        <!-- Start::app-sidebar -->
+        <aside class="app-sidebar sticky" id="sidebar">
+
+            <!-- Start::main-sidebar-header -->
+            <div class="main-sidebar-header">
+                <a href="index.html" class="header-logo">
+                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-logo">
+                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-logo">
+                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-dark">
+                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-dark">
+                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-white">
+                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-white">
+                </a>
+            </div>
+            <!-- End::main-sidebar-header -->
+
+            <!-- Start::main-sidebar -->
+            <div class="main-sidebar" id="sidebar-scroll">
+                <nav class="main-menu-container nav nav-pills flex-column sub-open">
+                    <div class="slide-left" id="slide-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg>
+                    </div>
+
+                    <ul class="main-menu">
+                        <li class="slide__category"><span class="category-name">Menu Utama</span></li>
+                        <li class="slide">
+                            <a href="index.html" class="side-menu__item">
+                                <i class="fe fe-home side-menu__icon"></i>
+                                <span class="side-menu__label">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <i class="fe fe-briefcase side-menu__icon"></i>
+                                <span class="side-menu__label">Manajemen Usaha</span>
+                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide side-menu__label1"><a href="javascript:void(0)">Manajemen Usaha</a></li>
+                                <li class="slide"><a href="daftar-alokasi.html" class="side-menu__item">Daftar Alokasi</a></li>
+                                <li class="slide"><a href="javascript:void(0);" class="side-menu__item disabled opacity-50" tabindex="-1" aria-disabled="true" style="pointer-events: none; cursor: not-allowed;">Daftar Realisasi</a></li>
+                            </ul>
+                        </li>
+                        <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <i class="fe fe-file-text side-menu__icon"></i>
+                                <span class="side-menu__label">Daftar Permohonan</span>
+                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide side-menu__label1"><a href="javascript:void(0)">Daftar Permohonan</a></li>
+                                <li class="slide"><a href="verifikasi-izin-usaha.html" class="side-menu__item">Verifikasi Izin Usaha</a></li>
+                                <li class="slide"><a href="verifikasi-izin-kapal.html" class="side-menu__item">Verifikasi Izin Kapal</a></li>
+                                <li class="slide"><a href="verifikasi-izin-rumpon.html" class="side-menu__item">Verifikasi Izin Rumpon</a></li>
+                            </ul>
+                        </li>
+                        <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <i class="fe fe-credit-card side-menu__icon"></i>
+                                <span class="side-menu__label">Simulasi Pungutan</span>
+                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide side-menu__label1"><a href="javascript:void(0)">Simulasi Pungutan</a></li>
+                                <li class="slide"><a href="simulasi-ppp.html" class="side-menu__item">Simulasi PPP</a></li>
+                                <li class="slide"><a href="simulasi-pppka.html" class="side-menu__item">Simulasi PPPKA</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="slide-right" id="slide-right">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="m10.707 17.707 5.707-5.707-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path></svg>
+                    </div>
+                </nav>
+            </div>
+        </aside>
+        <!-- End::app-sidebar -->
+
+
+        <main class="main-content app-content">
+            <div class="container-fluid">
+                <!-- PAGE-HEADER -->
+                <div class="page-header">
+                  <h1 class="page-title my-auto">Form Permohonan SIUP Baru</h1>
+                  <div>
+                    <ol class="breadcrumb mb-0">
+                      <li class="breadcrumb-item">
+                        <a href="javascript:void(0)">Daftar Permohonan</a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">Form Permohonan SIUP Baru</li>
+                    </ol>
+                  </div>
+                </div>
+                <!-- PAGE-HEADER END -->
+
+
+                <!-- Start:: Informasi Permohonan Banner -->
+                <div class="card custom-card mb-4">
+                    <div class="card-header bg-primary-transparent">
+                        <div class="card-title text-primary"><i class="fe fe-info me-2"></i>Informasi Permohonan SIUP</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row gy-3">
+                            <div class="col-md-3 col-sm-6">
+                                <span class="text-muted d-block fs-12">Nomor Agenda Permohonan</span>
+                                <strong class="fs-14 text-dark" id="nomorAgendaTxt">SIUP-2026/09/0088</strong>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <span class="text-muted d-block fs-12">Tanggal Pengajuan</span>
+                                <strong class="fs-14 text-dark" id="tanggalPermohonanTxt">11 September 2026</strong>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <span class="text-muted d-block fs-12">Jenis Perizinan</span>
+                                <strong class="fs-14 text-dark">Surat Izin Usaha Perikanan (SIUP)</strong>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <span class="text-muted d-block fs-12">Status Pengajuan</span>
+                                <span class="badge bg-primary-transparent text-primary fs-12"><i class="fe fe-file-plus me-1"></i>Permohonan Baru</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End:: Informasi Permohonan Banner -->
+
+                <!-- Start:: Form Permohonan SIUP Baru -->
+                <form id="formPermohonanSiup" novalidate>
+                    
+                    <!-- Section 1: Data Pemohon -->
+                    <section class="card custom-card form-section mb-4">
+                        <div class="card-header py-3">
+                            <h2 class="form-section-title">
+                                <span class="badge-number">1</span>
+                                Data Pemohon
+                            </h2>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="form-note p-3 mb-4 rounded text-muted fs-13">
+                                <i class="fe fe-alert-circle text-primary me-1"></i>
+                                Mohon lengkapi data pemohon izin usaha perikanan di bawah ini dengan data yang valid dan sesuai dokumen resmi.
+                            </div>
+
+                            <div class="row g-3">
+                                <!-- Baris 1: Nama & Alamat -->
+                                <div class="col-md-6">
+                                    <label for="namaPemohon" class="form-label fw-semibold">Nama <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="namaPemohon" name="nama" placeholder="Masukkan nama pemohon / badan usaha" required>
+                                    <div class="invalid-feedback">Nama pemohon wajib diisi.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="alamatPemohon" class="form-label fw-semibold">Alamat</label>
+                                    <input type="text" class="form-control" id="alamatPemohon" name="alamat" placeholder="Masukkan alamat domisili atau operasional">
+                                </div>
+
+                                <!-- Baris 2: RT/RW & Desa/Kelurahan -->
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">RT / RW</label>
+                                    <div class="row g-2">
+                                        <div class="col-6">
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light text-muted fs-12">RT</span>
+                                                <input type="text" class="form-control" id="rtPemohon" name="rt" placeholder="Contoh: 005" maxlength="5">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light text-muted fs-12">RW</span>
+                                                <input type="text" class="form-control" id="rwPemohon" name="rw" placeholder="Contoh: 012" maxlength="5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="desaKelurahan" class="form-label fw-semibold">Desa / Kelurahan</label>
+                                    <input type="text" class="form-control" id="desaKelurahan" name="desa_kelurahan" list="desaList" placeholder="Ketik atau pilih Desa/Kelurahan">
+                                    <datalist id="desaList">
+                                        <option value="Kelurahan Ancol"></option>
+                                        <option value="Kelurahan Penjaringan"></option>
+                                        <option value="Kelurahan Pluit"></option>
+                                        <option value="Kelurahan Muara Angke"></option>
+                                        <option value="Kelurahan Tanjung Priok"></option>
+                                        <option value="Kelurahan Marunda"></option>
+                                        <option value="Kelurahan Kamal Muara"></option>
+                                        <option value="Desa Muara Baru"></option>
+                                        <option value="Desa Cilincing"></option>
+                                        <option value="Desa Kalibaru"></option>
+                                    </datalist>
+                                </div>
+
+                                <!-- Baris 3: Kecamatan & Provinsi -->
+                                <div class="col-md-6">
+                                    <label for="kecamatanPemohon" class="form-label fw-semibold">Kecamatan</label>
+                                    <input type="text" class="form-control" id="kecamatanPemohon" name="kecamatan" placeholder="Masukkan nama kecamatan">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="provinsiPemohon" class="form-label fw-semibold">Provinsi <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="provinsiPemohon" name="provinsi" required>
+                                        <option value="" disabled selected>Pilih Provinsi</option>
+                                        <option value="DKI JAKARTA">DKI JAKARTA</option>
+                                        <option value="JAWA BARAT">JAWA BARAT</option>
+                                        <option value="JAWA TENGAH">JAWA TENGAH</option>
+                                        <option value="JAWA TIMUR">JAWA TIMUR</option>
+                                        <option value="BANTEN">BANTEN</option>
+                                        <option value="BALI">BALI</option>
+                                        <option value="SUMATERA UTARA">SUMATERA UTARA</option>
+                                        <option value="SUMATERA BARAT">SUMATERA BARAT</option>
+                                        <option value="RIAU">RIAU</option>
+                                        <option value="KEPULAUAN RIAU">KEPULAUAN RIAU</option>
+                                        <option value="LAMPUNG">LAMPUNG</option>
+                                        <option value="SULAWESI SELATAN">SULAWESI SELATAN</option>
+                                        <option value="SULAWESI UTARA">SULAWESI UTARA</option>
+                                        <option value="KALIMANTAN TIMUR">KALIMANTAN TIMUR</option>
+                                        <option value="KALIMANTAN BARAT">KALIMANTAN BARAT</option>
+                                        <option value="MALUKU">MALUKU</option>
+                                        <option value="PAPUA">PAPUA</option>
+                                    </select>
+                                    <div class="invalid-feedback">Provinsi wajib dipilih.</div>
+                                </div>
+
+                                <!-- Baris 4: Kabupaten & NPWP -->
+                                <div class="col-md-6">
+                                    <label for="kabupatenPemohon" class="form-label fw-semibold">Kabupaten / Kota <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="kabupatenPemohon" name="kabupaten" required>
+                                        <option value="" disabled selected>Pilih Kabupaten/Kota</option>
+                                        <option value="JAKARTA UTARA">JAKARTA UTARA</option>
+                                        <option value="JAKARTA PUSAT">JAKARTA PUSAT</option>
+                                        <option value="JAKARTA SELATAN">JAKARTA SELATAN</option>
+                                        <option value="JAKARTA TIMUR">JAKARTA TIMUR</option>
+                                        <option value="JAKARTA BARAT">JAKARTA BARAT</option>
+                                        <option value="KABUPATEN KEPULAUAN SERIBU">KABUPATEN KEPULAUAN SERIBU</option>
+                                        <option value="KOTA SURABAYA">KOTA SURABAYA</option>
+                                        <option value="KOTA SEMARANG">KOTA SEMARANG</option>
+                                        <option value="KOTA BANDUNG">KOTA BANDUNG</option>
+                                        <option value="KOTA MEDAN">KOTA MEDAN</option>
+                                        <option value="KOTA MAKASSAR">KOTA MAKASSAR</option>
+                                        <option value="KOTA DENPASAR">KOTA DENPASAR</option>
+                                        <option value="KABUPATEN CILACAP">KABUPATEN CILACAP</option>
+                                        <option value="KABUPATEN BANYUWANGI">KABUPATEN BANYUWANGI</option>
+                                    </select>
+                                    <div class="invalid-feedback">Kabupaten/Kota wajib dipilih.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="npwpPemohon" class="form-label fw-semibold">NPWP <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="npwpPemohon" name="npwp" placeholder="00.000.000.0-000.000" maxlength="20" required>
+                                    <div class="invalid-feedback">NPWP wajib diisi.</div>
+                                </div>
+
+                                <!-- Baris 5: Badan Hukum & Kategori Pemohon -->
+                                <div class="col-md-6">
+                                    <label for="badanHukum" class="form-label fw-semibold">Badan Hukum <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="badanHukum" name="badan_hukum" required>
+                                        <option value="" disabled selected>Pilih Badan Hukum</option>
+                                        <option value="Perusahaan">Perusahaan</option>
+                                        <option value="Perseorangan">Perseorangan</option>
+                                        <option value="KUB">KUB</option>
+                                        <option value="Koperasi">Koperasi</option>
+                                        <option value="Dinas KP">Dinas KP</option>
+                                        <option value="Badan Riset">Badan Riset</option>
+                                        <option value="Akademisi">Akademisi</option>
+                                    </select>
+                                    <div class="invalid-feedback">Badan Hukum wajib dipilih.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="kategoriPemohon" class="form-label fw-semibold">Kategori Pemohon <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="kategoriPemohon" name="kategori_pemohon" required>
+                                        <option value="" disabled selected>Pilih Kategori Pemohon</option>
+                                        <option value="Perorangan">Perorangan</option>
+                                        <option value="CV">CV</option>
+                                    </select>
+                                    <div class="invalid-feedback">Kategori Pemohon wajib dipilih.</div>
+                                </div>
+
+                                <!-- Baris 6: No. Telepon 1 & No. Telepon 2 -->
+                                <div class="col-md-6">
+                                    <label for="telepon1" class="form-label fw-semibold">No. Telepon 1</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text phone-prefix-badge"><i class="ri-flag-line me-1"></i>+62 (ID)</span>
+                                        <input type="tel" class="form-control" id="telepon1" name="telepon_1" placeholder="812-3456-7890">
+                                    </div>
+                                    <span class="text-muted fs-11 mt-1 d-block">Indonesia (+62)</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="telepon2" class="form-label fw-semibold">No. Telepon 2</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text phone-prefix-badge"><i class="ri-flag-line me-1"></i>+62 (ID)</span>
+                                        <input type="tel" class="form-control" id="telepon2" name="telepon_2" placeholder="21-555-1234">
+                                    </div>
+                                    <span class="text-muted fs-11 mt-1 d-block">Indonesia (+62)</span>
+                                </div>
+
+                                <!-- Baris 7: No. Telepon Genggam & FAX -->
+                                <div class="col-md-6">
+                                    <label for="teleponGenggam" class="form-label fw-semibold">No. Telepon Genggam</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text phone-prefix-badge"><i class="ri-smartphone-line me-1"></i>+62 (ID)</span>
+                                        <input type="tel" class="form-control" id="teleponGenggam" name="telepon_genggam" placeholder="813-9876-5432">
+                                    </div>
+                                    <span class="text-muted fs-11 mt-1 d-block">Indonesia (+62)</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="faxPemohon" class="form-label fw-semibold">FAX</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text phone-prefix-badge"><i class="ri-printer-line me-1"></i>+62 (ID)</span>
+                                        <input type="tel" class="form-control" id="faxPemohon" name="fax" placeholder="21-555-4321">
+                                    </div>
+                                    <span class="text-muted fs-11 mt-1 d-block">Indonesia (+62)</span>
+                                </div>
+
+                                <!-- Baris 8: No. KTP & Email -->
+                                <div class="col-md-6">
+                                    <label for="noKtp" class="form-label fw-semibold">No. KTP <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="noKtp" name="no_ktp" placeholder="Masukkan 16 digit NIK KTP" maxlength="16" required>
+                                    <div class="invalid-feedback">No. KTP (16 Digit NIK) wajib diisi.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="emailPemohon" class="form-label fw-semibold">Email</label>
+                                    <input type="email" class="form-control" id="emailPemohon" name="email" placeholder="nama@email.com / instansi@domain.com">
+                                    <div class="invalid-feedback">Format email tidak valid.</div>
+                                </div>
+
+                                <!-- Baris 9: Website -->
+                                <div class="col-md-12">
+                                    <label for="websitePemohon" class="form-label fw-semibold">Website</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted"><i class="ri-global-line me-1"></i>https://</span>
+                                        <input type="text" class="form-control" id="websitePemohon" name="website" placeholder="www.perusahaananda.com">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 2: Penanggung Jawab -->
+                    <section class="card custom-card form-section mb-4">
+                        <div class="card-header py-3">
+                            <h2 class="form-section-title">
+                                <span class="badge-number">2</span>
+                                Penanggung Jawab
+                            </h2>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="form-note p-3 mb-4 rounded text-muted fs-13">
+                                <i class="fe fe-user-check text-primary me-1"></i>
+                                Masukkan rincian penanggung jawab legal yang berwenang atas pengajuan izin usaha perikanan ini.
+                            </div>
+
+                            <div class="row g-3">
+                                <!-- Baris 1: Nama Lengkap & Jabatan -->
+                                <div class="col-md-6">
+                                    <label for="pjNama" class="form-label fw-semibold">Nama Lengkap <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="pjNama" name="pj_nama" placeholder="Masukkan nama lengkap penanggung jawab" required>
+                                    <div class="invalid-feedback">Nama lengkap penanggung jawab wajib diisi.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="pjJabatan" class="form-label fw-semibold">Jabatan <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="pjJabatan" name="pj_jabatan" placeholder="Contoh: Direktur Utama / Pemilik Usaha / Pengelola" required>
+                                    <div class="invalid-feedback">Jabatan penanggung jawab wajib diisi.</div>
+                                </div>
+
+                                <!-- Baris 2: Jenis Identitas & No. Identitas -->
+                                <div class="col-md-6">
+                                    <label for="pjJenisIdentitas" class="form-label fw-semibold">Jenis Identitas <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="pjJenisIdentitas" name="pj_jenis_identitas" required>
+                                        <option value="" disabled selected>Pilih Jenis Identitas</option>
+                                        <option value="KTP">KTP</option>
+                                        <option value="NPWP">NPWP</option>
+                                    </select>
+                                    <div class="invalid-feedback">Jenis identitas wajib dipilih.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="pjNoIdentitas" class="form-label fw-semibold">No. Identitas <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="pjNoIdentitas" name="pj_no_identitas" placeholder="Masukkan nomor identitas sesuai jenis identitas" required>
+                                    <div class="invalid-feedback">No. Identitas penanggung jawab wajib diisi.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Start:: Form Action Buttons -->
+                    <div class="d-flex justify-content-end align-items-center gap-3 mb-5">
+                        <a href="verifikasi-izin-usaha.html" class="btn btn-light px-4">
+                            <i class="fe fe-arrow-left me-1"></i>Kembali
+                        </a>
+                        <button type="submit" class="btn btn-primary px-4" id="btnSimpanPermohonan">
+                            <i class="fe fe-save me-1"></i>Simpan
+                        </button>
+                    </div>
+                    <!-- End:: Form Action Buttons -->
+
+                </form>
+                <!-- End:: Form Permohonan SIUP Baru -->
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Peringatan Data Belum Lengkap (Native Clean Bootstrap Modal) -->
+    <div class="modal fade" id="modalValidasiWarning" tabindex="-1" aria-labelledby="modalValidasiWarningLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-custom-card">
+                <div class="modal-body text-center p-4">
+                    <div class="avatar avatar-xl bg-warning-transparent text-warning mb-3 mx-auto">
+                        <i class="ri-alert-line fs-32"></i>
+                    </div>
+                    <h5 class="modal-title fw-semibold mb-2 text-dark" id="modalValidasiWarningLabel">Data Belum Lengkap</h5>
+                    <p class="text-muted fs-13 mb-4">
+                        Mohon periksa kembali kolom formulir yang bertanda bintang (<span class="text-danger fw-bold">*</span>) dan lengkapi data yang diperlukan sebelum menyimpan.
+                    </p>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">
+                            <i class="fe fe-check me-1"></i>Mengerti
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Sukses Simpan (Native Clean Bootstrap Modal) -->
+    <div class="modal fade" id="modalSuksesSimpan" tabindex="-1" aria-labelledby="modalSuksesSimpanLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-custom-card">
+                <div class="modal-body text-center p-4">
+                    <div class="avatar avatar-xl bg-success-transparent text-success mb-3 mx-auto">
+                        <i class="ri-checkbox-circle-line fs-36"></i>
+                    </div>
+                    <h5 class="modal-title fw-semibold mb-2 text-dark" id="modalSuksesSimpanLabel">Permohonan Berhasil Disimpan!</h5>
+                    <p class="text-muted fs-13 mb-4">
+                        Formulir Permohonan SIUP Baru dengan nomor agenda <strong id="modalAgendaNo" class="text-primary">SIUP-2026/09/0088</strong> atas nama <strong id="modalPemohonNama" class="text-dark">Pemohon</strong> telah berhasil disimpan ke dalam sistem.
+                    </p>
+                    <div class="d-flex justify-content-center gap-2">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tetap di Form</button>
+                        <a href="verifikasi-izin-usaha.html" class="btn btn-primary">
+                            <i class="fe fe-arrow-left me-1"></i>Kembali ke Verifikasi Izin Usaha
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Start -->
+    <footer class="footer mt-auto py-3 text-center">
+        <div class="container">
+            <span class=""> Copyright © 2026 <a href="https://perizinan.kkp.go.id/" target="_blank" rel="noopener noreferrer">Digitalisasi Perizinan</a>, <a href="https://kkp.go.id/unit-kerja/djpt.html" target="_blank" rel="noopener noreferrer">Direktorat Jenderal Perikanan Tangkap</a> . All rights reserved.
+            </span>
+        </div>
+    </footer>
+    <!-- Footer End -->
+    
+    <!-- Scroll To Top -->
+    <div class="scrollToTop">
+        <span class="arrow"><i class="ri-arrow-up-s-fill fs-20"></i></span>
+    </div>
+    <div id="responsive-overlay"></div>
+    <!-- Scroll To Top -->
+
+    <!-- Popper JS -->
+    <script src="../assets/libs/@popperjs/core/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Defaultmenu JS -->
+    <script src="../assets/js/defaultmenu.min.js"></script>
+
+    <!-- Node Waves JS-->
+    <script src="../assets/libs/node-waves/waves.min.js"></script>
+
+    <!-- Sticky JS -->
+    <script src="../assets/js/sticky.js"></script>
+
+    <!-- Simplebar JS -->
+    <script src="../assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../assets/js/simplebar.js"></script>
+
+    <!-- Color Picker JS -->
+    <script src="../assets/libs/@simonwep/pickr/pickr.es5.min.js"></script>
+
+
+    <!-- SweetAlert JS -->
+    <script src="../assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("formPermohonanSiup");
+            const provinsiSelect = document.getElementById("provinsiPemohon");
+            const kabupatenSelect = document.getElementById("kabupatenPemohon");
+            const npwpInput = document.getElementById("npwpPemohon");
+            const noKtpInput = document.getElementById("noKtp");
+            const pjJenisIdentitas = document.getElementById("pjJenisIdentitas");
+            const pjNoIdentitas = document.getElementById("pjNoIdentitas");
+
+            // Mapping Kabupaten/Kota dinamis per Provinsi
+            const kabupatenData = {
+                "DKI JAKARTA": ["JAKARTA UTARA", "JAKARTA PUSAT", "JAKARTA SELATAN", "JAKARTA TIMUR", "JAKARTA BARAT", "KABUPATEN KEPULAUAN SERIBU"],
+                "JAWA BARAT": ["KOTA BANDUNG", "KOTA BEKASI", "KABUPATEN BOGOR", "KABUPATEN CIREBON", "KABUPATEN INDRAMAYU", "KABUPATEN SUKABUMI"],
+                "JAWA TENGAH": ["KOTA SEMARANG", "KABUPATEN CILACAP", "KABUPATEN PATI", "KABUPATEN REMBANG", "KABUPATEN JEPARA", "KOTA PEKALONGAN"],
+                "JAWA TIMUR": ["KOTA SURABAYA", "KABUPATEN BANYUWANGI", "KABUPATEN PROBOLINGGO", "KABUPATEN TUBAN", "KABUPATEN GRESIK", "KABUPATEN PACITAN"],
+                "BANTEN": ["KOTA CILEGON", "KOTA SERANG", "KABUPATEN PANDEGLANG", "KABUPATEN LEBAK", "KOTA TANGERANG"],
+                "BALI": ["KOTA DENPASAR", "KABUPATEN BADUNG", "KABUPATEN BULELENG", "KABUPATEN JEMBRANA", "KABUPATEN KARANGASEM"],
+                "SUMATERA UTARA": ["KOTA MEDAN", "KOTA SIBOLGA", "KABUPATEN TAPANULI TENGAH", "KABUPATEN NIAS", "KABUPATEN BATUBARA"],
+                "SULAWESI SELATAN": ["KOTA MAKASSAR", "KABUPATEN BULUKUMBA", "KABUPATEN SINJAI", "KABUPATEN BONE", "KOTA PALOPO"],
+                "SULAWESI UTARA": ["KOTA MANADO", "KOTA BITUNG", "KABUPATEN MINAHASA UTARA", "KABUPATEN KEPULAUAN SANGIHE"],
+                "MALUKU": ["KOTA AMBON", "KOTA TUAL", "KABUPATEN MALUKU TENGAH", "KABUPATEN KEPULAUAN ARU"],
+                "PAPUA": ["KOTA JAYAPURA", "KABUPATEN BIAK NUMFOR", "KABUPATEN JAYAPURA", "KABUPATEN SARMI"]
+            };
+
+            // Event listener perubahan provinsi
+            if (provinsiSelect && kabupatenSelect) {
+                provinsiSelect.addEventListener("change", function () {
+                    const selectedProv = this.value;
+                    kabupatenSelect.innerHTML = '<option value="" disabled selected>Pilih Kabupaten/Kota</option>';
+                    if (kabupatenData[selectedProv]) {
+                        kabupatenData[selectedProv].forEach((kab) => {
+                            const opt = document.createElement("option");
+                            opt.value = kab;
+                            opt.textContent = kab;
+                            kabupatenSelect.appendChild(opt);
+                        });
+                    } else {
+                        const defaultKab = ["KOTA PUSAT", "KABUPATEN UTAMA", "KOTA PESISIR"];
+                        defaultKab.forEach((kab) => {
+                            const opt = document.createElement("option");
+                            opt.value = kab;
+                            opt.textContent = kab;
+                            kabupatenSelect.appendChild(opt);
+                        });
+                    }
+                });
+            }
+
+            // Validasi input angka untuk KTP
+            if (noKtpInput) {
+                noKtpInput.addEventListener("input", function () {
+                    this.value = this.value.replace(/[^0-9]/g, "");
+                });
+            }
+
+            // Placeholder dinamis untuk identitas penanggung jawab
+            if (pjJenisIdentitas && pjNoIdentitas) {
+                pjJenisIdentitas.addEventListener("change", function () {
+                    if (this.value === "KTP") {
+                        pjNoIdentitas.placeholder = "Masukkan 16 digit NIK KTP";
+                        pjNoIdentitas.maxLength = 16;
+                    } else if (this.value === "NPWP") {
+                        pjNoIdentitas.placeholder = "Masukkan nomor NPWP (16 digit)";
+                        pjNoIdentitas.maxLength = 20;
+                    }
+                });
+            }
+
+            // Format NPWP saat mengetik
+            if (npwpInput) {
+                npwpInput.addEventListener("input", function (e) {
+                    let val = this.value.replace(/\D/g, "");
+                    if (val.length > 16) val = val.substring(0, 16);
+                    if (val.length > 12) {
+                        this.value = val.replace(/(\d{2})(\d{3})(\d{3})(\d{1})(\d{3})(\d{3})/, "$1.$2.$3.$4-$5.$6");
+                    } else if (val.length > 9) {
+                        this.value = val.replace(/(\d{2})(\d{3})(\d{3})(\d{1})(\d{3})/, "$1.$2.$3.$4-$5");
+                    } else if (val.length > 8) {
+                        this.value = val.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, "$1.$2.$3.$4");
+                    } else if (val.length > 5) {
+                        this.value = val.replace(/(\d{2})(\d{3})/, "$1.$2.$3");
+                    } else if (val.length > 2) {
+                        this.value = val.replace(/(\d{2})(\d{3})/, "$1.$2");
+                    } else {
+                        this.value = val;
+                    }
+                });
+            }
+
+            // Tangani pengiriman form (Submit)
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                if (!form.checkValidity()) {
+                    form.classList.add("was-validated");
+                    
+                    // Tampilkan modal peringatan validasi native Bootstrap yang rapi dan bersih
+                    const warningModalEl = document.getElementById("modalValidasiWarning");
+                    if (warningModalEl) {
+                        const warningModal = new bootstrap.Modal(warningModalEl);
+                        warningModal.show();
+                    }
+                    return;
+                }
+
+                // Ambil data form
+                const formData = new FormData(form);
+                const dataObj = {};
+                formData.forEach((value, key) => {
+                    dataObj[key] = value;
+                });
+                dataObj.nomorAgenda = document.getElementById("nomorAgendaTxt").textContent;
+                dataObj.tanggal = document.getElementById("tanggalPermohonanTxt").textContent;
+
+                // Simpan ke localStorage sebagai simulasi data
+                localStorage.setItem("lastSiupApplication", JSON.stringify(dataObj));
+
+                // Update isi teks modal sukses
+                const modalAgendaEl = document.getElementById("modalAgendaNo");
+                const modalPemohonEl = document.getElementById("modalPemohonNama");
+                if (modalAgendaEl) modalAgendaEl.textContent = dataObj.nomorAgenda;
+                if (modalPemohonEl) modalPemohonEl.textContent = dataObj.nama || 'Pemohon';
+
+                // Tampilkan modal sukses simpan native Bootstrap yang rapi
+                const modalSuksesEl = document.getElementById("modalSuksesSimpan");
+                if (modalSuksesEl) {
+                    const modalSukses = new bootstrap.Modal(modalSuksesEl);
+                    modalSukses.show();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1668 @@
+@SPK@include("partials/mainhead.html")
+
+<style>
+    .progress-xs {
+        height: 6px;
+        border-radius: 3px;
+    }
+
+    .wpp-badge {
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.3rem 0.55rem;
+        border-radius: 0.375rem;
+    }
+
+    .table-alokasi th {
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #475569;
+        font-weight: 700;
+        background-color: #f8fafc;
+        vertical-align: middle;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .table-alokasi td {
+        vertical-align: top !important;
+        font-size: 0.6875rem;
+        line-height: 1.35;
+    }
+
+    .info-cell-title {
+        font-weight: 600;
+        color: #1e293b;
+        font-size: 0.8125rem;
+    }
+
+    .info-cell-sub {
+        font-size: 0.72rem;
+        color: #64748b;
+    }
+
+    .modal-detail-card {
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        background-color: #f8fafc;
+    }
+
+    .modal-section-title {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.75rem;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 0.35rem;
+    }
+
+    .step-badge {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-weight: 700;
+        font-size: 14px;
+    }
+</style>
+
+</head>
+
+<body>
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <div class="main-content app-content">
+            <div class="container-fluid">
+                @SPK@include("partials/page-header.html", {"title": "Daftar Alokasi Izin Usaha", "subtitle": "Portal Pelaku Usaha"})
+
+                <!-- Main Table Card: Data Alokasi Izin Usaha -->
+                <div class="card custom-card border-0 shadow-sm mb-4">
+                    <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3 pb-3">
+                        <div>
+                            <h6 class="card-title mb-1">
+                                <i class="fe fe-list me-2 text-primary"></i>Data Alokasi Izin Usaha
+                            </h6>
+                            <p class="text-muted fs-12 mb-0">Data kapal, alat tangkap, daerah penangkapan (DPI), dan
+                                pelabuhan pangkalan.</p>
+                        </div>
+                        <div class="d-flex align-items-center flex-wrap gap-2">
+                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="window.print()">
+                                <i class="fe fe-printer me-1"></i>Cetak Tabel
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filter Toolbar -->
+                    <div class="card-body bg-light-subtle border-bottom py-3 px-4">
+                        <div class="row g-2 align-items-center">
+                            <!-- Search Box with Cari Button -->
+                            <div class="col-xl-8 col-lg-8 col-md-7 col-12">
+                                <label class="form-label fs-11 text-muted mb-1 fw-semibold">Pencarian Cepat Data
+                                    Alokasi:</label>
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-text bg-white"><i
+                                            class="fe fe-search text-muted"></i></span>
+                                    <input type="text" class="form-control" id="searchAlokasiInput"
+                                        placeholder="Cari ID Alokasi / Alat Tangkap / Pelabuhan...">
+                                    <button class="btn btn-primary" type="button" id="btnCariAlokasi">
+                                        <i class="fe fe-search me-1"></i>Cari
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Entries per page (Numbers only) -->
+                            <div class="col-xl-4 col-lg-4 col-md-5 col-12 d-flex flex-column justify-content-end">
+                                <label class="form-label fs-11 text-muted mb-1 fw-semibold">Tampilkan Baris:</label>
+                                <select class="form-select form-select-sm" id="entriesPerPage">
+                                    <option value="10" selected>10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="180">180</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Table Data Alokasi Izin Usaha -->
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle table-bordered table-alokasi mb-0"
+                                id="tableDataAlokasi">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th scope="col" class="text-center ps-3" style="width: 45px;">No.</th>
+                                        <th scope="col" class="text-center" style="min-width: 140px;">ID/Tanggal Alokasi</th>
+                                        <th scope="col" class="text-center" style="min-width: 190px;">Data Izin Usaha</th>
+                                        <th scope="col" class="text-center" style="min-width: 200px;">Data Pelaku Usaha</th>
+                                        <th scope="col" class="text-center" style="min-width: 170px;">Rencana Pengadaan</th>
+                                        <th scope="col" class="text-center" style="min-width: 250px;">Data Alokasi</th>
+                                        <th scope="col" class="text-center" style="min-width: 200px;">Pelabuhan</th>
+                                        <th scope="col" class="text-center" style="min-width: 180px;">Data Kapal</th>
+                                        <th scope="col" class="text-center" style="min-width: 200px;">Data Perizinan</th>
+                                        <th scope="col" class="text-center pe-3" style="width: 60px;">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableAlokasiBody">
+                                    <!-- Dynamic Rows Rendered by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Table Footer: Total GT Alokasi (Sebelah Kiri, Non-Scrollable), Pagination & Summary -->
+                    <div
+                        class="card-footer bg-white border-top py-3 px-4 d-flex flex-wrap align-items-center justify-content-between gap-3">
+                        <div>
+                            <p class="fs-13 text-dark fw-bold mb-0">Total GT Alokasi = 18,450 GT</p>
+                            <span class="text-muted fs-12" id="tableAlokasiSummary">Menampilkan 1 sampai 10 dari 180
+                                data alokasi</span>
+                        </div>
+                        <nav aria-label="Navigasi Halaman Data Alokasi">
+                            <ul class="pagination pagination-sm mb-0" id="tableAlokasiPagination">
+                                <!-- Pagination links dynamically populated -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- START:: MODAL DETAIL DATA ALOKASI IZIN USAHA -->
+    <div class="modal fade" id="modalDetailAlokasi" tabindex="-1" aria-labelledby="modalDetailAlokasiLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg rounded-3">
+                <div class="modal-header bg-primary text-white py-3 px-4">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="avatar avatar-sm bg-white-transparent text-white rounded-circle">
+                            <i class="fe fe-file-text fs-16"></i>
+                        </div>
+                        <h5 class="modal-title fs-15 fw-bold text-white mb-0" id="modalDetailAlokasiLabel">
+                            Data ID Alokasi : <span id="mHdrIdAlokasi" class="font-monospace text-warning">329347</span>
+                        </h5>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Tutup"></button>
+                </div>
+
+                <div class="modal-body p-4 bg-light">
+                    <!-- SECTION 1: DATA ALOKASI -->
+                    <div class="card custom-card border mb-3 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="fe fe-file-text me-1"></i>DATA ALOKASI
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">ID Alokasi <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text"
+                                        class="form-control form-control-sm font-monospace fw-bold text-primary bg-light"
+                                        id="mIdAlokasi" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">Tgl. Terbit Alokasi <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text"
+                                        class="form-control form-control-sm fw-semibold text-dark bg-light"
+                                        id="mTglTerbitAlokasi" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 2: DATA USAHA -->
+                    <div class="card custom-card border mb-3 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="fe fe-briefcase me-1"></i>DATA USAHA
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">NIB <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text"
+                                        class="form-control form-control-sm font-monospace fw-bold text-dark bg-light"
+                                        id="mNibUsaha" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">KBLI <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text"
+                                        class="form-control form-control-sm fw-semibold text-dark bg-light"
+                                        id="mKbliUsaha" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 3: DATA PELAKU USAHA -->
+                    <div class="card custom-card border mb-3 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="fe fe-user me-1"></i>DATA PELAKU USAHA
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Nama Perusahaan <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-bold text-dark bg-light" id="mNamaPemilik" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Nama Penanggung Jawab <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-semibold text-dark bg-light" id="mPenanggungJawab" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">No. SIUP <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm font-monospace fw-bold text-dark bg-light" id="mNoSiupPemilik" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 4: RENCANA PENGADAAN -->
+                    <div class="card custom-card border mb-3 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="fe fe-package me-1"></i>RENCANA PENGADAAN
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Material Kapal <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-semibold text-dark bg-light" id="mMaterialKapal" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Lokasi Pengadaan <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-semibold text-dark bg-light" id="mLokasiPengadaan" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Skema Pengadaan <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-semibold text-dark bg-light" id="mSkemaPengadaan" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 5: DATA ALOKASI KAPAL -->
+                    <div class="card custom-card border mb-3 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="fe fe-anchor me-1"></i>DATA ALOKASI KAPAL
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">Jenis Kapal <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text"
+                                        class="form-control form-control-sm fw-semibold text-dark bg-light"
+                                        id="mJenisKapal" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">Alat Penangkapan Ikan / Tipe Operasi
+                                        <span class="text-danger">*</span></label>
+                                    <input type="text"
+                                        class="form-control form-control-sm fw-semibold text-dark bg-light"
+                                        id="mAlatPenangkapan" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">Range Ukuran Kapal <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-bold text-dark bg-light"
+                                        id="mRangeUkuran" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">Jumlah Kapal (Unit) <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text"
+                                        class="form-control form-control-sm fw-bold text-primary bg-light"
+                                        id="mJumlahKapal" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 6: DATA DAERAH PENANGKAPAN IKAN -->
+                    <div class="card custom-card border mb-3 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="ri-compass-3-line me-1"></i>DATA DAERAH PENANGKAPAN IKAN
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Zona <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-bold text-dark bg-light"
+                                        id="mZonaDpi" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Jalur Penangkapan Ikan <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text"
+                                        class="form-control form-control-sm fw-semibold text-dark bg-light" id="mJpiDpi"
+                                        readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">WPPN-RI <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text"
+                                        class="form-control form-control-sm fw-bold text-primary bg-light" id="mWppDpi"
+                                        readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 7: DATA PELABUHAN -->
+                    <div class="card custom-card border mb-3 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="fe fe-map-pin me-1"></i>DATA PELABUHAN
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label fs-12 text-muted mb-1">Pelabuhan Pangkalan <span
+                                            class="text-danger">*</span></label>
+                                    <textarea class="form-control form-control-sm fw-semibold text-dark bg-light"
+                                        id="mPelabuhanPangkalan" rows="2" readonly></textarea>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Pelabuhan Domisili <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light"
+                                        id="mPelabuhanDomisili" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Pelabuhan Muat (Kapal Angkut) <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light" id="mPelabuhanMuat"
+                                        readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Pelabuhan Negara Tujuan (Kapal
+                                        Angkut) <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light"
+                                        id="mPelabuhanTujuan" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 8: DATA REALISASI KAPAL & PERIZINAN -->
+                    <div class="card custom-card border mb-0 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="ri-pulse-line me-1"></i>DATA KAPAL &amp; PERIZINAN
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <label class="form-label fs-12 text-muted mb-1">No. BKP <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light font-monospace" id="mNoBkp"
+                                        readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label fs-12 text-muted mb-1">ID Kapal <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light font-monospace" id="mIdKapal"
+                                        readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label fs-12 text-muted mb-1">Nama Kapal <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light fw-bold"
+                                        id="mNamaKapalRealisasi" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label fs-12 text-muted mb-1">Ukuran Kapal <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light"
+                                        id="mUkuranKapalGt" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">No. Izin (SIPI/SIKPI) <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light font-monospace" id="mNoIzin"
+                                        readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Tgl. Terbit Izin <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light" id="mTglTerbitIzin"
+                                        readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Status Perizinan <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light fw-bold" id="mStatusPerizinan"
+                                        readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-top bg-white py-2 px-4 d-flex justify-content-between">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.print()">
+                        <i class="fe fe-printer me-1"></i>Cetak Data Alokasi
+                    </button>
+                    <button type="button" class="btn btn-sm btn-primary px-4" data-bs-dismiss="modal">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END:: MODAL DETAIL DATA ALOKASI IZIN USAHA -->
+
+    <!-- START:: MODAL PANDUAN REALISASI KAPAL (EDUKASI PELAKU USAHA) -->
+    <div class="modal fade" id="modalPanduanRealisasi" tabindex="-1" aria-labelledby="modalPanduanRealisasiLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg rounded-3">
+                <div class="modal-header bg-primary text-white py-3 px-4">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="avatar avatar-sm bg-white-transparent text-white rounded-circle">
+                            <i class="fe fe-book-open fs-16"></i>
+                        </div>
+                        <h5 class="modal-title fs-15 fw-bold text-white mb-0" id="modalPanduanRealisasiLabel">
+                            Panduan Pelaku Usaha: Alur Realisasi Alokasi ke Izin Melaut (SIPI)
+                        </h5>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body p-4 bg-white">
+                    <div class="alert alert-primary d-flex align-items-center mb-4" role="alert">
+                        <i class="fe fe-info fs-20 me-3 flex-shrink-0"></i>
+                        <div class="fs-13">
+                            Setiap ID Alokasi yang Anda miliki merupakan <strong>kuota izin resmi</strong> dari KKP.
+                            Agar kapal dapat melaut secara legal, ID Alokasi ini harus direalisasikan menjadi
+                            <strong>BKP</strong> dan <strong>SIPI</strong>.
+                        </div>
+                    </div>
+
+                    <div class="timeline-steps">
+                        <div class="d-flex gap-3 mb-4">
+                            <span
+                                class="avatar avatar-md bg-primary text-white rounded-circle flex-shrink-0 fw-bold fs-15">1</span>
+                            <div>
+                                <h6 class="fw-bold text-dark mb-1">Verifikasi Data Alokasi</h6>
+                                <p class="text-muted fs-13 mb-0">
+                                    Cek kecocokan nomor ID Alokasi, tipe alat tangkap, ukuran tonase kapal (GT), dan
+                                    wilayah WPPN-RI yang tercantum pada tabel alokasi Anda.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-3 mb-4">
+                            <span
+                                class="avatar avatar-md bg-info text-white rounded-circle flex-shrink-0 fw-bold fs-15">2</span>
+                            <div>
+                                <h6 class="fw-bold text-dark mb-1">Pengurusan Buku Kapal Perikanan (BKP)</h6>
+                                <p class="text-muted fs-13 mb-0">
+                                    Bawa dokumen fisik kapal (Gross Akte, Surat Ukur, Sertifikat Kelaikan) ke Syahbandar
+                                    di Pelabuhan Pangkalan (PP) untuk diterbitkan nomor BKP.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-3 mb-4">
+                            <span
+                                class="avatar avatar-md bg-warning text-white rounded-circle flex-shrink-0 fw-bold fs-15">3</span>
+                            <div>
+                                <h6 class="fw-bold text-dark mb-1">Permohonan SIPI/SIKPI via SILAT KKP</h6>
+                                <p class="text-muted fs-13 mb-0">
+                                    Masuk ke portal SILAT, pilih menu <em>Pengajuan SIPI</em>, masukkan ID Alokasi dan
+                                    Nomor BKP kapal Anda, lalu selesaikan pembayaran PNBP pasca-produksi/pra-produksi.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-3 mb-0">
+                            <span
+                                class="avatar avatar-md bg-success text-white rounded-circle flex-shrink-0 fw-bold fs-15">4</span>
+                            <div>
+                                <h6 class="fw-bold text-dark mb-1">Aktivasi Transmitter VMS & Berlayar</h6>
+                                <p class="text-muted fs-13 mb-0">
+                                    Pasang dan aktifkan transmitter VMS kapal Anda, ajukan Surat Persetujuan Berlayar
+                                    (SPB), dan kapal siap beroperasi di wilayah DPI yang ditentukan.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top bg-light py-2 px-4">
+                    <button type="button" class="btn btn-primary px-4 btn-sm" data-bs-dismiss="modal">Saya
+                        Mengerti</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END:: MODAL PANDUAN REALISASI KAPAL -->
+
+    @SPK@include("partials/footer.html")
+    @SPK@include("partials/commonjs.html")
+
+    <!-- Client-Side Dataset & Interactive Logic -->
+    <script>
+        (function () {
+            // Helper function to render Status Perizinan Badge
+            function getStatusPerizinanBadge(status) {
+                if (!status || status === "-" || status === "Belum Mengajukan Izin" || status.toLowerCase().includes("belum")) {
+                    return `<span class="badge bg-secondary-transparent text-secondary border border-secondary-subtle fs-10 px-1 py-0 fw-semibold"><i class="ri-close-circle-line me-1"></i>Belum Mengajukan Izin</span>`;
+                }
+                if (status === "Aktif" || status.toLowerCase().includes("aktif")) {
+                    return `<span class="badge bg-success-transparent text-success border border-success-subtle fs-10 px-1 py-0 fw-semibold"><i class="ri-checkbox-circle-fill me-1"></i>Aktif</span>`;
+                }
+                if (status === "Kedaluwarsa" || status.toLowerCase().includes("habis") || status.toLowerCase().includes("kedaluwarsa")) {
+                    return `<span class="badge bg-danger-transparent text-danger border border-danger-subtle fs-10 px-1 py-0 fw-semibold"><i class="ri-alarm-warning-line me-1"></i>Kedaluwarsa</span>`;
+                }
+                if (status.toLowerCase().includes("mendekati") || status.toLowerCase().includes("proses")) {
+                    return `<span class="badge bg-warning-transparent text-warning-emphasis border border-warning-subtle fs-10 px-1 py-0 fw-semibold"><i class="ri-error-warning-line me-1"></i>Mendekati Kedaluwarsa</span>`;
+                }
+                return `<span class="badge bg-light text-muted border fs-10 px-1 py-0">${status}</span>`;
+            }
+
+            // Pool of realistic fishing vessel names
+            const shipNamesMaster = [
+                "KM Mina Utama 08", "KM Samudra Berkah 02", "KM Bahari Nusantara", "KM Samudra Jaya",
+                "KM Nelayan Mandiri 07", "KM Bintang Timur 05", "KM Bahtera Nelayan 03", "KM Halmahera Star",
+                "KM Laut Makmur", "KM Samudra Bahari 09", "KM Tirta Samudra", "KM Samudra Pasifik",
+                "KM Cendrawasih Glory", "KM Nusantara Explorer", "KM Bahari Raya 01", "KM Sumber Makmur 02",
+                "KM Samudra Abadi", "KM Nelayan Berkah 04", "KM Mina Perkasa 09", "KM Bintang Laut 06",
+                "KM Bahtera Bahari 11", "KM Halmahera Raya", "KM Laut Selatan 03", "KM Pasifik Star",
+                "KM Samudra Perkasa 05", "KM Mina Jaya 07", "KM Nelayan Utama 12", "KM Bahari Makmur 08",
+                "KM Sumber Rezeki 01", "KM Samudra Lestari 06", "KM Mina Bahari 10", "KM Nusantara Jaya 03"
+            ];
+
+            // Master dataset for Data Alokasi Izin Usaha
+            const alokasiDataMaster = [
+                {
+                    id: 1,
+                    no: 1,
+                    idAlokasi: "329349",
+                    tglAlokasi: "18-SEP-2026",
+                    nib: "1806250046134",
+                    subAlatTangkap: "Rawai Tuna (Tuna Longline)",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    noSiup: "01.26.01.0000.20269",
+                    namaPemilik: "SUMBER MAKMUR RAYA FISHERIES, PT",
+                    namaPenanggungJawab: "Ir. H. Hendra Wijaya, M.M.",
+                    material: "Baja",
+                    lokasiPengadaan: "Dalam Negeri",
+                    skemaPengadaan: "Pasca Produksi",
+                    jenisKapal: "Kapal Penangkap",
+                    alatTangkap: "Rawai Tuna (Tuna Longline)",
+                    ukuranKapal: "60 - 100",
+                    rangeUkuran: "60 - 100",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Ya",
+                    armadaTunggal: "Armada",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPPN-RI 572; Jalur Penangkapan Ikan III di ZEEI WPPN-RI 572; Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPPN-RI 573; Jalur Penangkapan Ikan III di ZEEI WPPN-RI 573; Laut Lepas Samudera Hindia",
+                    daerahTerlarang: "Jalur I & II; Jalur I & II",
+                    pangkalan: "PP. Teluk Awang, PPN. Pengambengan, PPN. Prigi, PPS. Cilacap, PU. Benoa",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    jumlahKapal: "1 Unit",
+                    jumlahKapalNum: "1",
+                    zona: "ZONA 01",
+                    jpi: "Jalur Penangkapan Ikan III",
+                    wpp: "WPPN-RI 572, WPPN-RI 573",
+                    pp: "PP. Teluk Awang, PPN. Pengambengan, PPN. Prigi, PPS. Cilacap, PU. Benoa",
+                    pd: "PPS. Cilacap",
+                    pelabuhanMuat: "-",
+                    pelabuhanTujuan: "-",
+                    realisasiKapal: "KM Mina Utama 08",
+                    noBkp: "BKP-2023-0091",
+                    idKapal: "KP-329101",
+                    namaKapal: "KM Mina Utama 08",
+                    ukuranKapalGt: "95 GT",
+                    noIzin: "SIPI-KP-2023/4412",
+                    tglTerbitIzin: "15-JAN-2023",
+                    statusPerizinan: "Mendekati Kedaluwarsa"
+                },
+                {
+                    id: 2,
+                    no: 2,
+                    idAlokasi: "329347",
+                    tglAlokasi: "18-SEP-2026",
+                    nib: "1806250046134",
+                    subAlatTangkap: "Jaring Hela Udang Berkantong",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    noSiup: "01.26.01.0000.20269",
+                    namaPemilik: "SUMBER MAKMUR RAYA FISHERIES, PT",
+                    namaPenanggungJawab: "Ir. H. Hendra Wijaya, M.M.",
+                    material: "Baja",
+                    lokasiPengadaan: "Dalam Negeri",
+                    skemaPengadaan: "Pasca Produksi",
+                    jenisKapal: "Kapal Penangkap",
+                    alatTangkap: "Jaring Hela Udang Berkantong",
+                    ukuranKapal: "250 - 300",
+                    rangeUkuran: "250 - 300",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Tidak",
+                    armadaTunggal: "Tunggal",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPPN-RI 718; Jalur Penangkapan Ikan III di ZEEI WPPN-RI 718",
+                    daerahTerlarang: "Jalur I & II",
+                    pangkalan: "PP. Poumako, PP. Tual, PPN. Merauke",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    jumlahKapal: "1 Unit",
+                    jumlahKapalNum: "1",
+                    zona: "ZONA 03",
+                    jpi: "Jalur Penangkapan Ikan III",
+                    wpp: "WPPN-RI 718",
+                    pp: "PP. Poumako; PP. Tual; PPN. Merauke",
+                    pd: "-",
+                    pelabuhanMuat: "-",
+                    pelabuhanTujuan: "-",
+                    realisasiKapal: "KM Samudra Berkah 02",
+                    noBkp: "BKP-2023-0112",
+                    idKapal: "KP-329102",
+                    namaKapal: "KM Samudra Berkah 02",
+                    ukuranKapalGt: "110 GT",
+                    noIzin: "SIPI-KP-2023/4910",
+                    tglTerbitIzin: "20-FEB-2023",
+                    statusPerizinan: "Mendekati Kedaluwarsa"
+                },
+                {
+                    id: 3,
+                    no: 3,
+                    idAlokasi: "329350",
+                    tglAlokasi: "19-SEP-2026",
+                    nib: "1806250046134",
+                    subAlatTangkap: "Rawai Tuna (Tuna Longline)",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    noSiup: "01.26.01.0000.20269",
+                    namaPemilik: "SUMBER MAKMUR RAYA FISHERIES, PT",
+                    namaPenanggungJawab: "Ir. H. Hendra Wijaya, M.M.",
+                    material: "Baja",
+                    lokasiPengadaan: "Dalam Negeri",
+                    skemaPengadaan: "Pra Produksi",
+                    jenisKapal: "Kapal Penangkap",
+                    alatTangkap: "Rawai Tuna (Tuna Longline)",
+                    ukuranKapal: "100 - 150",
+                    rangeUkuran: "100 - 150",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Ya",
+                    armadaTunggal: "Armada",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPPN-RI 572; Jalur Penangkapan Ikan III di ZEEI WPPN-RI 572; Laut Lepas Samudera Hindia",
+                    daerahTerlarang: "Jalur I & II",
+                    pangkalan: "PPS Nizam Zachman Jakarta, PPN Sibolga, PP. Teluk Awang",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    jumlahKapal: "1 Unit",
+                    jumlahKapalNum: "1",
+                    zona: "ZONA 01",
+                    jpi: "Jalur Penangkapan Ikan III",
+                    wpp: "WPPN-RI 572",
+                    pp: "PPS Nizam Zachman Jakarta; PPN Sibolga",
+                    pd: "PPS Nizam Zachman Jakarta",
+                    pelabuhanMuat: "-",
+                    pelabuhanTujuan: "-",
+                    realisasiKapal: "KM Bahari Nusantara",
+                    noBkp: "BKP-2023-0145",
+                    idKapal: "KP-329103",
+                    namaKapal: "KM Bahari Nusantara",
+                    ukuranKapalGt: "85 GT",
+                    noIzin: "SIPI-KP-2023/99120",
+                    tglTerbitIzin: "10-MAR-2023",
+                    statusPerizinan: "Mendekati Kedaluwarsa"
+                },
+                {
+                    id: 4,
+                    no: 4,
+                    idAlokasi: "329352",
+                    tglAlokasi: "19-SEP-2026",
+                    nib: "1806250046134",
+                    subAlatTangkap: "Pukat Cincin Pelagis Besar",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    noSiup: "01.26.01.0000.20269",
+                    namaPemilik: "SUMBER MAKMUR RAYA FISHERIES, PT",
+                    namaPenanggungJawab: "Ir. H. Hendra Wijaya, M.M.",
+                    material: "Baja",
+                    lokasiPengadaan: "Luar Negeri",
+                    skemaPengadaan: "Pasca Produksi",
+                    jenisKapal: "Kapal Penangkap",
+                    alatTangkap: "Pukat Cincin Pelagis Besar",
+                    ukuranKapal: "150 - 200",
+                    rangeUkuran: "150 - 200",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Tidak",
+                    armadaTunggal: "Armada",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPPN-RI 573; Jalur Penangkapan Ikan III di ZEEI WPPN-RI 573",
+                    daerahTerlarang: "Jalur I & II",
+                    pangkalan: "PPS Cilacap, PPN Prigi, PPN Pengambengan",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    jumlahKapal: "1 Unit",
+                    jumlahKapalNum: "1",
+                    zona: "ZONA 02",
+                    jpi: "Jalur Penangkapan Ikan III",
+                    wpp: "WPPN-RI 573",
+                    pp: "PPS Cilacap; PPN Prigi; PPN Pengambengan",
+                    pd: "PPS Cilacap",
+                    pelabuhanMuat: "-",
+                    pelabuhanTujuan: "-",
+                    realisasiKapal: "KM Samudra Jaya",
+                    noBkp: "BKP-2024-0019",
+                    idKapal: "KP-329104",
+                    namaKapal: "KM Samudra Jaya",
+                    ukuranKapalGt: "120 GT",
+                    noIzin: "SIPI-KP-2024/00192",
+                    tglTerbitIzin: "05-APR-2024",
+                    statusPerizinan: "Aktif"
+                },
+                {
+                    id: 5,
+                    no: 5,
+                    idAlokasi: "329355",
+                    tglAlokasi: "20-SEP-2026",
+                    nib: "1806250046134",
+                    subAlatTangkap: "Bouke Ami (Cumi-cumi)",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    noSiup: "01.26.01.0000.20269",
+                    namaPemilik: "SUMBER MAKMUR RAYA FISHERIES, PT",
+                    namaPenanggungJawab: "Ir. H. Hendra Wijaya, M.M.",
+                    material: "Fiberglass",
+                    lokasiPengadaan: "Dalam Negeri",
+                    skemaPengadaan: "Pra Produksi",
+                    jenisKapal: "Kapal Penangkap",
+                    alatTangkap: "Bouke Ami (Cumi-cumi)",
+                    ukuranKapal: "100 - 150",
+                    rangeUkuran: "100 - 150",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Tidak",
+                    armadaTunggal: "Armada",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan III di Selat Karimata dan Laut Natuna WPPN-RI 711",
+                    daerahTerlarang: "Jalur I & II",
+                    pangkalan: "PPS Nizam Zachman Jakarta, PPN Sungailiat, PPN Pemangkat",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    jumlahKapal: "1 Unit",
+                    jumlahKapalNum: "1",
+                    zona: "ZONA 03",
+                    jpi: "Jalur Penangkapan Ikan III",
+                    wpp: "WPPN-RI 711",
+                    pp: "PPS Nizam Zachman Jakarta; PPN Sungailiat; PPN Pemangkat",
+                    pd: "PPS Nizam Zachman Jakarta",
+                    pelabuhanMuat: "-",
+                    pelabuhanTujuan: "-",
+                    realisasiKapal: "KM Nelayan Mandiri 07",
+                    noBkp: "BKP-2023-0188",
+                    idKapal: "KP-329105",
+                    namaKapal: "KM Nelayan Mandiri 07",
+                    ukuranKapalGt: "65 GT",
+                    noIzin: "SIPI-KP-2023/3821",
+                    tglTerbitIzin: "18-MEI-2023",
+                    statusPerizinan: "Mendekati Kedaluwarsa"
+                },
+                {
+                    id: 6,
+                    no: 6,
+                    idAlokasi: "329358",
+                    tglAlokasi: "20-SEP-2026",
+                    nib: "1806250046134",
+                    subAlatTangkap: "Jaring Insang Hanyut",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    noSiup: "01.26.01.0000.20269",
+                    namaPemilik: "SUMBER MAKMUR RAYA FISHERIES, PT",
+                    namaPenanggungJawab: "Ir. H. Hendra Wijaya, M.M.",
+                    material: "Baja",
+                    lokasiPengadaan: "Dalam Negeri",
+                    skemaPengadaan: "Pasca Produksi",
+                    jenisKapal: "Kapal Penangkap",
+                    alatTangkap: "Jaring Insang Hanyut",
+                    ukuranKapal: "60 - 100",
+                    rangeUkuran: "60 - 100",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Tidak",
+                    armadaTunggal: "Tunggal",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan II & III di Laut Jawa WPPN-RI 712",
+                    daerahTerlarang: "Jalur I",
+                    pangkalan: "PPN Pekalongan, PPN Brondong, PPP. Bajomulyo",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    jumlahKapal: "1 Unit",
+                    jumlahKapalNum: "1",
+                    zona: "ZONA 02",
+                    jpi: "Jalur Penangkapan Ikan II",
+                    wpp: "WPPN-RI 712",
+                    pp: "PPN Pekalongan; PPN Brondong",
+                    pd: "PPN Pekalongan",
+                    pelabuhanMuat: "-",
+                    pelabuhanTujuan: "-",
+                    realisasiKapal: "KM Bintang Timur 05",
+                    noBkp: "BKP-2024-0220",
+                    idKapal: "KP-329106",
+                    namaKapal: "KM Bintang Timur 05",
+                    ukuranKapalGt: "110 GT",
+                    noIzin: "SIPI-KP-2024/8834",
+                    tglTerbitIzin: "22-JUN-2024",
+                    statusPerizinan: "Aktif"
+                },
+                {
+                    id: 7,
+                    no: 7,
+                    idAlokasi: "329360",
+                    tglAlokasi: "21-SEP-2026",
+                    nib: "1806250046134",
+                    subAlatTangkap: "Pukat Cincin Cakalang & Tuna",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    noSiup: "01.26.01.0000.20269",
+                    namaPemilik: "SUMBER MAKMUR RAYA FISHERIES, PT",
+                    namaPenanggungJawab: "Ir. H. Hendra Wijaya, M.M.",
+                    material: "Baja",
+                    lokasiPengadaan: "Dalam Negeri",
+                    skemaPengadaan: "Pra Produksi",
+                    jenisKapal: "Kapal Penangkap",
+                    alatTangkap: "Pukat Cincin Cakalang & Tuna",
+                    ukuranKapal: "150 - 200",
+                    rangeUkuran: "150 - 200",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Ya",
+                    armadaTunggal: "Armada",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPPN-RI 716; Jalur Penangkapan Ikan III di ZEEI WPPN-RI 716; Laut Lepas Samudera Pasifik",
+                    daerahTerlarang: "Jalur I & II",
+                    pangkalan: "PPS Bitung, PPN Ternate, PPN Ambon",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    jumlahKapal: "1 Unit",
+                    jumlahKapalNum: "1",
+                    zona: "ZONA 04",
+                    jpi: "Jalur Penangkapan Ikan III",
+                    wpp: "WPPN-RI 716",
+                    pp: "PPS Bitung; PPN Ternate; PPN Ambon",
+                    pd: "PPS Bitung",
+                    pelabuhanMuat: "-",
+                    pelabuhanTujuan: "-",
+                    realisasiKapal: "KM Bahtera Nelayan 03",
+                    noBkp: "BKP-2024-0311",
+                    idKapal: "KP-329107",
+                    namaKapal: "KM Bahtera Nelayan 03",
+                    ukuranKapalGt: "75 GT",
+                    noIzin: "SIPI-KP-2024/1102",
+                    tglTerbitIzin: "14-JUL-2024",
+                    statusPerizinan: "Aktif"
+                },
+                {
+                    id: 8,
+                    no: 8,
+                    idAlokasi: "329362",
+                    tglAlokasi: "21-SEP-2026",
+                    nib: "1806250046134",
+                    subAlatTangkap: "Rawai Tuna Hanyut",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    noSiup: "01.26.01.0000.20269",
+                    namaPemilik: "SUMBER MAKMUR RAYA FISHERIES, PT",
+                    namaPenanggungJawab: "Ir. H. Hendra Wijaya, M.M.",
+                    material: "Baja",
+                    lokasiPengadaan: "Luar Negeri",
+                    skemaPengadaan: "Pasca Produksi",
+                    jenisKapal: "Kapal Penangkap",
+                    alatTangkap: "Rawai Tuna Hanyut",
+                    ukuranKapal: "100 - 150",
+                    rangeUkuran: "100 - 150",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Ya",
+                    armadaTunggal: "Armada",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPPN-RI 717; Jalur Penangkapan Ikan III di ZEEI WPPN-RI 717; Laut Lepas Samudera Pasifik",
+                    daerahTerlarang: "Jalur I & II",
+                    pangkalan: "PPN Merauke, PPN Sorong, PPS Bitung",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    jumlahKapal: "1 Unit",
+                    jumlahKapalNum: "1",
+                    zona: "ZONA 05",
+                    jpi: "Jalur Penangkapan Ikan III",
+                    wpp: "WPPN-RI 717",
+                    pp: "PPN Merauke; PPN Sorong; PPS Bitung",
+                    pd: "PPN Merauke",
+                    pelabuhanMuat: "-",
+                    pelabuhanTujuan: "-",
+                    realisasiKapal: "KM Halmahera Star",
+                    noBkp: "BKP-2024-0402",
+                    idKapal: "KP-329108",
+                    namaKapal: "KM Halmahera Star",
+                    ukuranKapalGt: "130 GT",
+                    noIzin: "SIPI-KP-2024/6619",
+                    tglTerbitIzin: "30-AGU-2024",
+                    statusPerizinan: "Aktif"
+                },
+                {
+                    id: 9,
+                    no: 9,
+                    idAlokasi: "329365",
+                    tglAlokasi: "21-SEP-2026",
+                    nib: "1806250046134",
+                    subAlatTangkap: "Kapal Pengangkut Berpendingin (Carrier)",
+                    kbli: "[50122] Angkutan Laut Dalam Negeri Untuk Barang Khusus",
+                    noSiup: "01.26.01.0000.20269",
+                    namaPemilik: "SUMBER MAKMUR RAYA FISHERIES, PT",
+                    namaPenanggungJawab: "Ir. H. Hendra Wijaya, M.M.",
+                    material: "Baja",
+                    lokasiPengadaan: "Dalam Negeri",
+                    skemaPengadaan: "Pasca Produksi",
+                    jenisKapal: "Kapal Pengangkut",
+                    alatTangkap: "Kapal Pengangkut Berpendingin (Carrier)",
+                    ukuranKapal: "250 - 300",
+                    rangeUkuran: "250 - 300",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Tidak",
+                    armadaTunggal: "Armada",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan III di ZEEI WPPN-RI 718; Jalur Penangkapan Ikan III di ZEEI WPPN-RI 716",
+                    daerahTerlarang: "Jalur I & II",
+                    pangkalan: "PP. Poumako, PP. Tual, PPS Nizam Zachman Jakarta, PPS Bitung",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    jumlahKapal: "1 Unit",
+                    jumlahKapalNum: "1",
+                    zona: "ZONA 03",
+                    jpi: "Jalur Penangkapan Ikan III",
+                    wpp: "WPPN-RI 718",
+                    pp: "PP. Poumako; PP. Tual; PPS Nizam Zachman Jakarta",
+                    pd: "-",
+                    pelabuhanMuat: "-",
+                    pelabuhanTujuan: "-",
+                    realisasiKapal: "KM Laut Makmur",
+                    noBkp: "BKP-2026-0511",
+                    idKapal: "KP-329109",
+                    namaKapal: "KM Laut Makmur",
+                    ukuranKapalGt: "160 GT",
+                    noIzin: "SIKPI-KP-2026/5521",
+                    tglTerbitIzin: "10-JAN-2026",
+                    statusPerizinan: "Aktif"
+                },
+                {
+                    id: 10,
+                    no: 10,
+                    idAlokasi: "329370",
+                    tglAlokasi: "21-SEP-2026",
+                    nib: "1806250046134",
+                    subAlatTangkap: "Rawai Dasar",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    noSiup: "01.26.01.0000.20269",
+                    namaPemilik: "SUMBER MAKMUR RAYA FISHERIES, PT",
+                    namaPenanggungJawab: "Ir. H. Hendra Wijaya, M.M.",
+                    material: "Baja",
+                    lokasiPengadaan: "Dalam Negeri",
+                    skemaPengadaan: "Pra Produksi",
+                    jenisKapal: "Kapal Penangkap",
+                    alatTangkap: "Rawai Dasar",
+                    ukuranKapal: "60 - 100",
+                    rangeUkuran: "60 - 100",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Tidak",
+                    armadaTunggal: "Tunggal",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan II & III di Laut Jawa WPPN-RI 712",
+                    daerahTerlarang: "Jalur I",
+                    pangkalan: "PPP. Bajomulyo, PPP. Klidang Lor, PPN Brondong",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    jumlahKapal: "1 Unit",
+                    jumlahKapalNum: "1",
+                    zona: "ZONA 02",
+                    jpi: "Jalur Penangkapan Ikan II",
+                    wpp: "WPPN-RI 712",
+                    pp: "PPP. Bajomulyo; PPP. Klidang Lor",
+                    pd: "PPP. Bajomulyo",
+                    pelabuhanMuat: "-",
+                    pelabuhanTujuan: "-",
+                    realisasiKapal: "KM Samudra Pasifik",
+                    noBkp: "BKP-2026-0624",
+                    idKapal: "KP-329110",
+                    namaKapal: "KM Samudra Pasifik",
+                    ukuranKapalGt: "200 GT",
+                    noIzin: "SIKPI-KP-2026/7781",
+                    tglTerbitIzin: "15-FEB-2026",
+                    statusPerizinan: "Aktif"
+                }
+            ];
+
+            // Generate additional items up to 180 allocations
+            const synthesizedAlokasiData = [...alokasiDataMaster];
+            const dummyTemplates = [
+                {
+                    subAlatTangkap: "Rawai Tuna (Tuna Longline)",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    ukuranKapal: "60 - 100",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Ya",
+                    armadaTunggal: "Armada",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPPN-RI 572; Jalur Penangkapan Ikan III di ZEEI WPPN-RI 572; Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPPN-RI 573; Jalur Penangkapan Ikan III di ZEEI WPPN-RI 573; Laut Lepas Samudera Hindia",
+                    daerahTerlarang: "Jalur I & II; Jalur I & II",
+                    pangkalan: "PP. Teluk Awang, PPN. Pengambengan, PPN. Prigi, PPS. Cilacap, PU. Benoa",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    wpp: "WPPN-RI 572",
+                    zona: "ZONA 01",
+                    jpi: "Jalur Penangkapan Ikan III",
+                    pd: "PPS. Cilacap"
+                },
+                {
+                    subAlatTangkap: "Pukat Cincin Pelagis Besar",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    ukuranKapal: "150 - 200",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Tidak",
+                    armadaTunggal: "Armada",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPPN-RI 718; Jalur Penangkapan Ikan III di ZEEI WPPN-RI 718",
+                    daerahTerlarang: "Jalur I & II",
+                    pangkalan: "PP. Poumako, PP. Tual, PPN. Merauke, PPP. Dobo",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    wpp: "WPPN-RI 718",
+                    zona: "ZONA 03",
+                    jpi: "Jalur Penangkapan Ikan III",
+                    pd: "PPN. Merauke"
+                },
+                {
+                    subAlatTangkap: "Jaring Hela Udang Berkantong",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    ukuranKapal: "250 - 300",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Tidak",
+                    armadaTunggal: "Tunggal",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Laut Arafura WPPN-RI 718",
+                    daerahTerlarang: "Jalur I & II",
+                    pangkalan: "PP. Banjarmasin, PP. Manggar Baru, PP. Kota Baru, PPP. Bajomulyo, PPP. Klidang Lor",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    wpp: "WPPN-RI 718",
+                    zona: "ZONA 03",
+                    jpi: "Jalur Penangkapan Ikan III",
+                    pd: "PPP. Bajomulyo"
+                },
+                {
+                    subAlatTangkap: "Bouke Ami (Cumi-cumi)",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    ukuranKapal: "100 - 150",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Tidak",
+                    armadaTunggal: "Armada",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan III di Selat Karimata dan Laut Natuna WPPN-RI 711",
+                    daerahTerlarang: "Jalur I & II",
+                    pangkalan: "PPS Nizam Zachman Jakarta, PPN Sungailiat, PPN Pemangkat, PP. Muara Angke",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    wpp: "WPPN-RI 711",
+                    zona: "ZONA 03",
+                    jpi: "Jalur Penangkapan Ikan III",
+                    pd: "PPS Nizam Zachman Jakarta"
+                },
+                {
+                    subAlatTangkap: "Jaring Insang Hanyut",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    ukuranKapal: "60 - 100",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Tidak",
+                    armadaTunggal: "Tunggal",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan II & III di Laut Jawa WPPN-RI 712",
+                    daerahTerlarang: "Jalur I",
+                    pangkalan: "PPN Pekalongan, PPN Brondong, PPP. Bajomulyo",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    wpp: "WPPN-RI 712",
+                    zona: "ZONA 02",
+                    jpi: "Jalur Penangkapan Ikan II",
+                    pd: "PPN Pekalongan"
+                },
+                {
+                    subAlatTangkap: "Pukat Cincin Cakalang & Tuna",
+                    kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                    ukuranKapal: "150 - 200",
+                    diajukanDisetujui: "1 - 1",
+                    operasiLautLepas: "Ya",
+                    armadaTunggal: "Armada",
+                    daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPPN-RI 716; Jalur Penangkapan Ikan III di ZEEI WPPN-RI 716; Laut Lepas Samudera Pasifik",
+                    daerahTerlarang: "Jalur I & II",
+                    pangkalan: "PPS Bitung, PPN Ternate, PPN Ambon",
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    wpp: "WPPN-RI 716",
+                    zona: "ZONA 04",
+                    jpi: "Jalur Penangkapan Ikan III",
+                    pd: "PPS Bitung"
+                }
+            ];
+
+            const dummyMaterials = ["Baja", "Baja", "Fiberglass", "Kayu", "Baja"];
+            const dummyLocations = ["Dalam Negeri", "Dalam Negeri", "Luar Negeri", "Dalam Negeri"];
+            const dummySkemas = ["Pasca Produksi", "Pra Produksi", "Pasca Produksi", "Pra Produksi"];
+            const dummyStatuses = [
+                { status: "Aktif", prefix: "SIPI-KP-2024/", tgl: "14-MAR-2024" },
+                { status: "Mendekati Kedaluwarsa", prefix: "SIPI-KP-2023/", tgl: "18-FEB-2023" },
+                { status: "Kedaluwarsa", prefix: "SIPI-KP-2022/", tgl: "10-NOV-2022" },
+                { status: "Belum Mengajukan Izin", prefix: "-", tgl: "-" },
+                { status: "Aktif", prefix: "SIKPI-KP-2025/", tgl: "05-MEI-2025" }
+            ];
+
+            for (let i = 11; i <= 180; i++) {
+                const t = dummyTemplates[(i - 11) % dummyTemplates.length];
+                const idNum = 329370 + (i - 10);
+                const isCarrier = i % 15 === 0;
+                const mat = dummyMaterials[(i - 11) % dummyMaterials.length];
+                const loc = dummyLocations[(i - 11) % dummyLocations.length];
+                const skm = dummySkemas[(i - 11) % dummySkemas.length];
+                const st = dummyStatuses[(i - 11) % dummyStatuses.length];
+                const shipName = st.status === "Belum Mengajukan Izin" ? "-" : shipNamesMaster[(i - 11) % shipNamesMaster.length];
+                const bkpNo = st.status === "Belum Mengajukan Izin" ? "-" : `BKP-2024-${String(1000 + i).padStart(4, '0')}`;
+                const idKpl = st.status === "Belum Mengajukan Izin" ? "-" : `KP-${idNum}`;
+                const izinNo = st.status === "Belum Mengajukan Izin" ? "-" : `${st.prefix}${1000 + i}`;
+                const ukGt = isCarrier ? "250 GT" : (t.ukuranKapal ? t.ukuranKapal.split('-')[0].trim() + " GT" : "100 GT");
+
+                synthesizedAlokasiData.push({
+                    id: i,
+                    no: i,
+                    idAlokasi: String(idNum),
+                    tglAlokasi: "21-SEP-2026",
+                    nib: "1806250046134",
+                    subAlatTangkap: isCarrier ? "Kapal Pengangkut Berpendingin (Carrier)" : t.subAlatTangkap,
+                    kbli: isCarrier ? "[50122] Angkutan Laut Dalam Negeri Untuk Barang Khusus" : t.kbli,
+                    noSiup: "01.26.01.0000.20269",
+                    namaPemilik: "SUMBER MAKMUR RAYA FISHERIES, PT",
+                    namaPenanggungJawab: "Ir. H. Hendra Wijaya, M.M.",
+                    material: mat,
+                    lokasiPengadaan: loc,
+                    skemaPengadaan: skm,
+                    jenisKapal: isCarrier ? "Kapal Pengangkut" : "Kapal Penangkap",
+                    alatTangkap: isCarrier ? "Kapal Pengangkut Berpendingin (Carrier)" : t.subAlatTangkap,
+                    ukuranKapal: isCarrier ? "250 - 300" : t.ukuranKapal,
+                    rangeUkuran: isCarrier ? "250 - 300" : t.ukuranKapal,
+                    diajukanDisetujui: t.diajukanDisetujui,
+                    operasiLautLepas: isCarrier ? "Tidak" : t.operasiLautLepas,
+                    armadaTunggal: t.armadaTunggal,
+                    daerahPenangkapan: isCarrier ? "Jalur Penangkapan Ikan III di ZEEI WPPN-RI 718; Jalur Penangkapan Ikan III di ZEEI WPPN-RI 716" : t.daerahPenangkapan,
+                    daerahTerlarang: t.daerahTerlarang,
+                    pangkalan: isCarrier ? "PP. Poumako, PP. Tual, PPS Nizam Zachman Jakarta, PPS Bitung" : t.pangkalan,
+                    muatSinggah: "-",
+                    negaraTujuan: "-",
+                    jumlahKapal: "1 Unit",
+                    jumlahKapalNum: "1",
+                    zona: t.zona,
+                    jpi: t.jpi,
+                    wpp: t.wpp,
+                    pp: isCarrier ? "PP. Poumako, PP. Tual, PPS Nizam Zachman Jakarta, PPS Bitung" : t.pangkalan,
+                    pd: t.pd,
+                    pelabuhanMuat: "-",
+                    pelabuhanTujuan: "-",
+                    realisasiKapal: shipName,
+                    noBkp: bkpNo,
+                    idKapal: idKpl,
+                    namaKapal: shipName,
+                    ukuranKapalGt: ukGt,
+                    noIzin: izinNo,
+                    tglTerbitIzin: st.tgl,
+                    statusPerizinan: st.status
+                });
+            }
+
+            let filteredData = [...synthesizedAlokasiData];
+            let currentPage = 1;
+            let rowsPerPage = 10;
+
+            const tableBody = document.getElementById("tableAlokasiBody");
+            const summaryEl = document.getElementById("tableAlokasiSummary");
+            const paginationEl = document.getElementById("tableAlokasiPagination");
+            const searchInput = document.getElementById("searchAlokasiInput");
+            const btnCari = document.getElementById("btnCariAlokasi");
+            const filterDpiSelect = document.getElementById("filterDpi");
+            const entriesSelect = document.getElementById("entriesPerPage");
+
+            function renderTable() {
+                const total = filteredData.length;
+                const start = (currentPage - 1) * rowsPerPage;
+                const end = rowsPerPage === 180 ? total : Math.min(start + rowsPerPage, total);
+                const pageRows = rowsPerPage === 180 ? filteredData : filteredData.slice(start, end);
+
+                if (pageRows.length === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="10" class="text-center py-5 text-muted"><i class="ri-inbox-line fs-36 d-block mb-2"></i>Tidak ada data alokasi yang sesuai dengan kriteria pencarian</td></tr>`;
+                    summaryEl.textContent = "Menampilkan 0 data";
+                    renderPagination(0);
+                    return;
+                }
+
+                tableBody.innerHTML = pageRows.map(item => `
+                    <tr>
+                        <!-- 1. No. -->
+                        <td class="text-center ps-3 text-dark fw-semibold fs-11">${item.no}</td>
+
+                        <!-- 2. ID/Tanggal Alokasi (Split Atas Bawah) -->
+                        <td>
+                            <div class="d-flex flex-column gap-1" style="min-width: 130px;">
+                                <!-- Baris Atas: ID -->
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 40px; text-align: center;">ID</span>
+                                    <span class="font-monospace text-dark fw-semibold fs-11">${item.idAlokasi}</span>
+                                </div>
+                                <!-- Baris Bawah: Tanggal -->
+                                <div class="pt-1 border-top mt-1 d-flex align-items-center gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 40px; text-align: center;">TGL</span>
+                                    <span class="text-dark fw-semibold fs-11">${item.tglAlokasi}</span>
+                                </div>
+                            </div>
+                        </td>
+
+                        <!-- 3. Data Izin Usaha (Split Atas: NIB & SIUP, Bawah: KBLI) -->
+                        <td>
+                            <div class="d-flex flex-column gap-1" style="min-width: 180px; max-width: 250px;">
+                                <!-- Bagian Atas: NIB & SIUP -->
+                                <div class="d-flex flex-column gap-1">
+                                    <div class="d-flex align-items-center gap-1">
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 42px; text-align: center;">NIB</span>
+                                        <span class="font-monospace text-dark fw-semibold fs-11">${item.nib}</span>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 42px; text-align: center;">SIUP</span>
+                                        <span class="font-monospace text-dark fw-semibold fs-11">${item.noSiup}</span>
+                                    </div>
+                                </div>
+                                <!-- Bagian Bawah: KBLI -->
+                                <div class="pt-1 border-top mt-1 d-flex align-items-start gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0" style="min-width: 42px; text-align: center;">KBLI</span>
+                                    <span class="text-dark fw-semibold fs-11" title="${item.kbli}">${item.kbli}</span>
+                                </div>
+                            </div>
+                        </td>
+
+                        <!-- 4. Data Pelaku Usaha (Perusahaan & Penanggung Jawab Atas-Bawah) -->
+                        <td>
+                            <div class="d-flex flex-column gap-1" style="min-width: 200px; max-width: 270px;">
+                                <div class="d-flex align-items-start gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0" style="min-width: 82px; text-align: center;">Perusahaan</span>
+                                    <span class="text-dark fw-semibold fs-11">${item.namaPemilik}</span>
+                                </div>
+                                <div class="pt-1 border-top mt-1 d-flex align-items-start gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0" style="min-width: 82px; text-align: center;">Penanggung Jawab</span>
+                                    <span class="text-dark fw-semibold fs-11">${item.namaPenanggungJawab || 'Ir. H. Hendra Wijaya, M.M.'}</span>
+                                </div>
+                            </div>
+                        </td>
+
+                        <!-- 5. Rencana Pengadaan (Material, Lokasi, Skema Atas-Bawah) -->
+                        <td>
+                            <div class="d-flex flex-column gap-1" style="min-width: 170px; max-width: 240px;">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 58px; text-align: center;">Material</span>
+                                    <span class="text-dark fw-semibold fs-11">${item.material || 'Baja'}</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 58px; text-align: center;">Lokasi</span>
+                                    <span class="text-dark fw-semibold fs-11">${item.lokasiPengadaan || 'Dalam Negeri'}</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 58px; text-align: center;">Skema</span>
+                                    <span class="text-dark fw-semibold fs-11">${item.skemaPengadaan || 'Pasca Produksi'}</span>
+                                </div>
+                            </div>
+                        </td>
+
+                        <!-- 6. Data Alokasi (Split: Jenis & API | DPI & Zona | Ukuran & Jumlah) -->
+                        <td>
+                            <div class="d-flex flex-column gap-1" style="min-width: 230px; max-width: 320px;">
+                                <!-- Bagian 1: Jenis & API -->
+                                <div class="d-flex flex-column gap-1">
+                                    <div class="d-flex align-items-center gap-1">
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 50px; text-align: center;">Jenis</span>
+                                        <span class="text-dark fw-semibold fs-11">${item.jenisKapal}</span>
+                                    </div>
+                                    <div class="d-flex align-items-start gap-1">
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0" style="min-width: 50px; text-align: center;">API</span>
+                                        <span class="text-dark fw-semibold fs-11" title="${item.subAlatTangkap || item.alatTangkap}">${item.subAlatTangkap || item.alatTangkap}</span>
+                                    </div>
+                                </div>
+
+                                <!-- Bagian 2: DPI & Zona -->
+                                <div class="pt-1 border-top mt-1 d-flex flex-column gap-1">
+                                    <div class="d-flex align-items-center gap-1">
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 50px; text-align: center;">DPI</span>
+                                        <span class="text-dark fw-semibold fs-11">${item.wpp || item.zona}</span>
+                                    </div>
+                                    ${item.zona ? `
+                                    <div class="d-flex align-items-center gap-1">
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 50px; text-align: center;">Zona</span>
+                                        <span class="text-dark fw-semibold fs-11">${item.zona}</span>
+                                    </div>` : ''}
+                                </div>
+
+                                <!-- Bagian 3: Ukuran & Jumlah -->
+                                <div class="pt-1 border-top mt-1 d-flex flex-column gap-1">
+                                    <div class="d-flex align-items-center gap-1">
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 50px; text-align: center;">Ukuran</span>
+                                        <span class="text-dark fw-semibold fs-11">${item.ukuranKapal || item.rangeUkuran} GT</span>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 50px; text-align: center;">Jumlah</span>
+                                        <span class="text-dark fw-semibold fs-11">${item.jumlahKapal || '1 Unit'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <!-- 7. Pelabuhan (Split Atas Bawah) -->
+                        <td>
+                            <div class="d-flex flex-column gap-1" style="min-width: 200px; max-width: 280px;">
+                                <!-- Baris Atas: Pelabuhan Pangkalan -->
+                                <div class="d-flex align-items-start gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0" style="min-width: 65px; text-align: center;">Pangkalan</span>
+                                    <span class="text-dark fw-semibold fs-11" style="line-height: 1.35;" title="${item.pangkalan}">
+                                        ${item.pangkalan}
+                                    </span>
+                                </div>
+                                <!-- Baris Bawah: Domisili / Muat / Tujuan -->
+                                <div class="pt-1 border-top mt-1 d-flex flex-column gap-1">
+                                    <div class="d-flex align-items-center gap-1">
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 65px; text-align: center;">Domisili</span>
+                                        <span class="text-dark fw-semibold fs-11">${item.pd && item.pd !== '-' ? item.pd : (item.pangkalan.split(',')[0] || '-')}</span>
+                                    </div>
+                                    ${item.muatSinggah && item.muatSinggah !== '-' ? `
+                                        <div class="d-flex align-items-center gap-1">
+                                            <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 65px; text-align: center;">Muat</span>
+                                            <span class="text-dark fw-semibold fs-11">${item.muatSinggah}</span>
+                                        </div>
+                                    ` : ''}
+                                    ${item.negaraTujuan && item.negaraTujuan !== '-' ? `
+                                        <div class="d-flex align-items-center gap-1">
+                                            <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 65px; text-align: center;">Tujuan</span>
+                                            <span class="text-dark fw-semibold fs-11">${item.negaraTujuan}</span>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        </td>
+
+                        <!-- 8. Data Kapal (No. BKP, ID Kapal, Nama Kapal, Ukuran GT Atas-Bawah) -->
+                        <td>
+                            <div class="d-flex flex-column gap-1" style="min-width: 180px; max-width: 260px;">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 60px; text-align: center;">No. BKP</span>
+                                    <span class="font-monospace text-dark fw-semibold fs-11">${item.noBkp && item.noBkp !== '-' ? item.noBkp : '-'}</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 60px; text-align: center;">ID Kapal</span>
+                                    <span class="font-monospace text-dark fw-semibold fs-11">${item.idKapal && item.idKapal !== '-' ? item.idKapal : '-'}</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 60px; text-align: center;">Kapal</span>
+                                    <span class="text-dark fw-semibold fs-11">${item.namaKapal && item.namaKapal !== '-' ? item.namaKapal : '-'}</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 60px; text-align: center;">Ukuran</span>
+                                    <span class="text-dark fw-semibold fs-11">${item.ukuranKapalGt && item.ukuranKapalGt !== '-' ? item.ukuranKapalGt : (item.ukuranKapal ? item.ukuranKapal + ' GT' : '-')}</span>
+                                </div>
+                            </div>
+                        </td>
+
+                        <!-- 9. Data Perizinan (No. Izin, Tanggal Terbit, Status Perizinan Atas-Bawah) -->
+                        <td>
+                            <div class="d-flex flex-column gap-1" style="min-width: 190px; max-width: 270px;">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 65px; text-align: center;">No. Izin</span>
+                                    <span class="font-monospace text-dark fw-semibold fs-11">${item.noIzin && item.noIzin !== '-' ? item.noIzin : '-'}</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 65px; text-align: center;">Tgl Terbit</span>
+                                    <span class="text-dark fw-semibold fs-11">${item.tglTerbitIzin && item.tglTerbitIzin !== '-' ? item.tglTerbitIzin : '-'}</span>
+                                </div>
+                                <div class="pt-1 border-top mt-1 d-flex align-items-center gap-1">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 65px; text-align: center;">Status</span>
+                                    ${getStatusPerizinanBadge(item.statusPerizinan)}
+                                </div>
+                            </div>
+                        </td>
+
+                        <!-- 10. Aksi -->
+                        <td class="text-center pe-3" style="width: 60px;">
+                            <button type="button" class="btn btn-sm btn-light border btn-icon rounded-circle btn-view-alokasi" 
+                                data-id="${item.id}" title="Lihat Detail Alokasi" aria-label="Lihat Detail Alokasi">
+                                <i class="fe fe-eye text-primary"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `).join("");
+
+                summaryEl.textContent = `Menampilkan ${start + 1} sampai ${end} dari total ${total} data alokasi`;
+                renderPagination(total);
+
+                // Bind click event for eye buttons
+                document.querySelectorAll(".btn-view-alokasi").forEach(btn => {
+                    btn.addEventListener("click", function () {
+                        const id = Number(this.getAttribute("data-id"));
+                        const selectedItem = synthesizedAlokasiData.find(d => d.id === id);
+                        if (selectedItem) {
+                            openModalDetail(selectedItem);
+                        }
+                    });
+                });
+            }
+
+            function renderPagination(total) {
+                const totalPages = Math.ceil(total / rowsPerPage);
+                if (totalPages <= 1) {
+                    paginationEl.innerHTML = "";
+                    return;
+                }
+
+                let html = `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                    <button class="page-link" type="button" data-page="${currentPage - 1}">Sebelumnya</button>
+                </li>`;
+
+                let startPage = Math.max(1, currentPage - 2);
+                let endPage = Math.min(totalPages, startPage + 4);
+                if (endPage - startPage < 4) {
+                    startPage = Math.max(1, endPage - 4);
+                }
+
+                if (startPage > 1) {
+                    html += `<li class="page-item"><button class="page-link" type="button" data-page="1">1</button></li>`;
+                    if (startPage > 2) html += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+                }
+
+                for (let p = startPage; p <= endPage; p++) {
+                    html += `<li class="page-item ${p === currentPage ? 'active' : ''}">
+                        <button class="page-link" type="button" data-page="${p}">${p}</button>
+                    </li>`;
+                }
+
+                if (endPage < totalPages) {
+                    if (endPage < totalPages - 1) html += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+                    html += `<li class="page-item"><button class="page-link" type="button" data-page="${totalPages}">${totalPages}</button></li>`;
+                }
+
+                html += `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                    <button class="page-link" type="button" data-page="${currentPage + 1}">Selanjutnya</button>
+                </li>`;
+
+                paginationEl.innerHTML = html;
+
+                paginationEl.querySelectorAll("button[data-page]").forEach(btn => {
+                    btn.addEventListener("click", function () {
+                        const targetPage = Number(this.getAttribute("data-page"));
+                        if (targetPage >= 1 && targetPage <= totalPages) {
+                            currentPage = targetPage;
+                            renderTable();
+                        }
+                    });
+                });
+            }
+
+            function applyFilters() {
+                const keyword = searchInput ? searchInput.value.toLowerCase().trim() : "";
+
+                filteredData = synthesizedAlokasiData.filter(item => {
+                    if (!keyword) return true;
+
+                    // 1. Filter ID Alokasi
+                    const matchIdAlokasi = item.idAlokasi && item.idAlokasi.toLowerCase().includes(keyword);
+
+                    // 2. Filter Alat Tangkap (Sub Alat Tangkap & Alat Penangkapan Ikan)
+                    const matchAlatTangkap = (item.subAlatTangkap && item.subAlatTangkap.toLowerCase().includes(keyword)) ||
+                        (item.alatTangkap && item.alatTangkap.toLowerCase().includes(keyword));
+
+                    // 3. Filter Pelabuhan (Pangkalan, Domisili, Muat, Singgah, Tujuan)
+                    const matchPelabuhan = (item.pangkalan && item.pangkalan.toLowerCase().includes(keyword)) ||
+                        (item.pd && item.pd.toLowerCase().includes(keyword)) ||
+                        (item.pp && item.pp.toLowerCase().includes(keyword)) ||
+                        (item.pelabuhanMuat && item.pelabuhanMuat.toLowerCase().includes(keyword)) ||
+                        (item.pelabuhanTujuan && item.pelabuhanTujuan.toLowerCase().includes(keyword)) ||
+                        (item.muatSinggah && item.muatSinggah.toLowerCase().includes(keyword)) ||
+                        (item.negaraTujuan && item.negaraTujuan.toLowerCase().includes(keyword));
+
+                    // 4. Filter Daerah Penangkapan Ikan (WPPN-RI, DPI, Zona)
+                    const matchDpi = (item.wpp && item.wpp.toLowerCase().includes(keyword)) ||
+                        (item.daerahPenangkapan && item.daerahPenangkapan.toLowerCase().includes(keyword)) ||
+                        (item.zona && item.zona.toLowerCase().includes(keyword));
+
+                    // 5. Filter Kapal, BKP, Izin, Pelaku Usaha
+                    const matchKapal = (item.namaKapal && item.namaKapal.toLowerCase().includes(keyword)) ||
+                        (item.noBkp && item.noBkp.toLowerCase().includes(keyword)) ||
+                        (item.noIzin && item.noIzin.toLowerCase().includes(keyword)) ||
+                        (item.namaPemilik && item.namaPemilik.toLowerCase().includes(keyword)) ||
+                        (item.namaPenanggungJawab && item.namaPenanggungJawab.toLowerCase().includes(keyword));
+
+                    return matchIdAlokasi || matchAlatTangkap || matchPelabuhan || matchDpi || matchKapal;
+                });
+
+                currentPage = 1;
+                renderTable();
+            }
+
+            // Populate Modal Function
+            function openModalDetail(item) {
+                // Header
+                const hdrEl = document.getElementById("mHdrIdAlokasi");
+                if (hdrEl) hdrEl.textContent = item.idAlokasi;
+
+                // SECTION 1: DATA ALOKASI
+                const mId = document.getElementById("mIdAlokasi");
+                if (mId) mId.value = item.idAlokasi;
+                const mTgl = document.getElementById("mTglTerbitAlokasi");
+                if (mTgl) mTgl.value = item.tglAlokasi;
+
+                // SECTION 2: DATA USAHA
+                const mNib = document.getElementById("mNibUsaha");
+                if (mNib) mNib.value = item.nib;
+                const mKbli = document.getElementById("mKbliUsaha");
+                if (mKbli) mKbli.value = item.kbli;
+
+                // SECTION 3: DATA PELAKU USAHA
+                const mSiup = document.getElementById("mNoSiupPemilik");
+                if (mSiup) mSiup.value = item.noSiup || "-";
+                const mPemilik = document.getElementById("mNamaPemilik");
+                if (mPemilik) mPemilik.value = item.namaPemilik || "-";
+                const mPj = document.getElementById("mPenanggungJawab");
+                if (mPj) mPj.value = item.namaPenanggungJawab || "Ir. H. Hendra Wijaya, M.M.";
+
+                // SECTION 4: RENCANA PENGADAAN
+                const mMat = document.getElementById("mMaterialKapal");
+                if (mMat) mMat.value = item.material || "-";
+                const mLoc = document.getElementById("mLokasiPengadaan");
+                if (mLoc) mLoc.value = item.lokasiPengadaan || "-";
+                const mSkm = document.getElementById("mSkemaPengadaan");
+                if (mSkm) mSkm.value = item.skemaPengadaan || "-";
+
+                // SECTION 5: DATA ALOKASI KAPAL
+                const mJenis = document.getElementById("mJenisKapal");
+                if (mJenis) mJenis.value = item.jenisKapal;
+                const mAlat = document.getElementById("mAlatPenangkapan");
+                if (mAlat) mAlat.value = item.subAlatTangkap;
+                const mRange = document.getElementById("mRangeUkuran");
+                if (mRange) mRange.value = item.ukuranKapal;
+                const mJml = document.getElementById("mJumlahKapal");
+                if (mJml) mJml.value = item.jumlahKapalNum || "1";
+
+                // SECTION 6: DATA DAERAH PENANGKAPAN IKAN
+                const mZona = document.getElementById("mZonaDpi");
+                if (mZona) mZona.value = item.zona;
+                const mJpi = document.getElementById("mJpiDpi");
+                if (mJpi) mJpi.value = item.jpi;
+                const mWpp = document.getElementById("mWppDpi");
+                if (mWpp) mWpp.value = item.wpp;
+
+                // SECTION 7: DATA PELABUHAN
+                const mPp = document.getElementById("mPelabuhanPangkalan");
+                if (mPp) mPp.value = item.pangkalan;
+                const mPd = document.getElementById("mPelabuhanDomisili");
+                if (mPd) mPd.value = item.pd || "-";
+                const mMuat = document.getElementById("mPelabuhanMuat");
+                if (mMuat) mMuat.value = item.muatSinggah || "-";
+                const mTujuan = document.getElementById("mPelabuhanTujuan");
+                if (mTujuan) mTujuan.value = item.negaraTujuan || "-";
+
+                // SECTION 8: DATA REALISASI KAPAL & PERIZINAN
+                const mBkp = document.getElementById("mNoBkp");
+                if (mBkp) mBkp.value = item.noBkp || "-";
+                const mIdKapal = document.getElementById("mIdKapal");
+                if (mIdKapal) mIdKapal.value = item.idKapal || "-";
+                const mKapal = document.getElementById("mNamaKapalRealisasi");
+                if (mKapal) mKapal.value = item.namaKapal || "-";
+                const mUkGt = document.getElementById("mUkuranKapalGt");
+                if (mUkGt) mUkGt.value = item.ukuranKapalGt || "-";
+                const mNoIzin = document.getElementById("mNoIzin");
+                if (mNoIzin) mNoIzin.value = item.noIzin || "-";
+                const mTglIzin = document.getElementById("mTglTerbitIzin");
+                if (mTglIzin) mTglIzin.value = item.tglTerbitIzin || "-";
+                const mStatusIzin = document.getElementById("mStatusPerizinan");
+                if (mStatusIzin) mStatusIzin.value = item.statusPerizinan || "-";
+
+                // Show modal
+                const modalEl = document.getElementById("modalDetailAlokasi");
+                if (modalEl) {
+                    const modalInstance = new bootstrap.Modal(modalEl);
+                    modalInstance.show();
+                }
+            }
+
+            // Event Listeners
+            if (btnCari) btnCari.addEventListener("click", applyFilters);
+            if (searchInput) {
+                searchInput.addEventListener("input", applyFilters);
+                searchInput.addEventListener("keypress", function (e) {
+                    if (e.key === "Enter") {
+                        applyFilters();
+                    }
+                });
+            }
+            if (filterDpiSelect) filterDpiSelect.addEventListener("change", applyFilters);
+            if (entriesSelect) {
+                entriesSelect.addEventListener("change", function () {
+                    rowsPerPage = Number(this.value);
+                    currentPage = 1;
+                    renderTable();
+                });
+            }
+
+            // Initial Render
+            renderTable();
+        })();
+    </script>
+</body>
+
+</html>

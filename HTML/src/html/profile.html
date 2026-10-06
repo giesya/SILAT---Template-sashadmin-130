@@ -1,0 +1,432 @@
+@SPK@include("partials/mainhead.html")
+
+<!-- Sweetalerts CSS -->
+<link rel="stylesheet" href="../assets/libs/sweetalert2/sweetalert2.min.css">
+
+<style>
+    .profile-banner-card {
+        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        border-radius: 0.75rem;
+        color: #ffffff;
+        position: relative;
+        overflow: hidden;
+    }
+    .profile-banner-card::after {
+        content: '';
+        position: absolute;
+        right: -30px;
+        top: -30px;
+        width: 180px;
+        height: 180px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+    .profile-avatar-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+    .profile-avatar-img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3.5px solid #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .profile-verified-badge {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: #10b981;
+        color: #ffffff;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        border: 2px solid #ffffff;
+    }
+    .form-section-header {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e2e8f0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .form-section-header i {
+        color: var(--primary-color);
+        font-size: 1.15rem;
+    }
+    .form-label-custom {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: #334155;
+        margin-bottom: 0.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .helper-text {
+        font-size: 0.75rem;
+        color: #64748b;
+        margin-top: 0.3rem;
+        display: block;
+    }
+    .input-readonly-custom {
+        background-color: #f8fafc !important;
+        color: #64748b !important;
+        cursor: not-allowed;
+        border-color: #e2e8f0;
+        user-select: none;
+    }
+    .badge-editable {
+        background-color: rgba(var(--primary-rgb), 0.1);
+        color: var(--primary-color);
+        font-size: 0.6875rem;
+        font-weight: 600;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.375rem;
+    }
+    .badge-locked {
+        background-color: #f1f5f9;
+        color: #64748b;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.375rem;
+        border: 1px solid #e2e8f0;
+    }
+    .card-form-wrapper {
+        border-radius: 0.75rem;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.04);
+    }
+</style>
+
+</head>
+
+<body>
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <div class="main-content app-content">
+            <div class="container-fluid">
+                @SPK@include("partials/page-header.html", {"title": "Pengaturan Akun", "subtitle": "Profil"})
+
+                <div class="row justify-content-center">
+                    <div class="col-xxl-9 col-xl-10 col-12">
+
+                        <!-- Profile Header Summary Banner -->
+                        <div class="profile-banner-card p-4 mb-4 shadow-sm">
+                            <div class="d-flex flex-column flex-sm-row align-items-center gap-3 text-center text-sm-start">
+                                <div class="profile-avatar-wrapper flex-shrink-0">
+                                    <img src="../assets/images/faces/9.jpg" alt="Foto Profil" class="profile-avatar-img">
+                                    <span class="profile-verified-badge" title="Akun Terverifikasi KKP"><i class="ri-check-line"></i></span>
+                                </div>
+                                <div class="flex-fill">
+                                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-sm-start gap-2 mb-1">
+                                        <h5 class="fw-bold mb-0 text-white fs-18">Ir. H. Hendra Wijaya</h5>
+                                        <span class="badge bg-white-transparent text-fixed-white fs-11">
+                                            <i class="ri-shield-check-line me-1"></i>Pelaku Usaha Terverifikasi
+                                        </span>
+                                    </div>
+                                    <p class="mb-2 text-white-75 fs-13">PT Samudra Bahari Nusantara &bull; Armada Kapal Perikanan Tangkap WPPNRI 711</p>
+                                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-sm-start gap-3 fs-12 text-white-75">
+                                        <span><i class="ri-hashtag me-1"></i>NIB: <strong>8120003752084</strong></span>
+                                        <span><i class="ri-phone-line me-1"></i>HP: <strong>8123835829</strong></span>
+                                        <span><i class="ri-mail-line me-1"></i>Email: <strong>hendra.wijaya@samudra.co.id</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Main Account Settings Form Card -->
+                        <div class="card custom-card card-form-wrapper mb-4">
+                            <div class="card-header bg-white border-bottom py-3 px-4">
+                                <div>
+                                    <h5 class="card-title text-dark fw-bold mb-1 fs-15">
+                                        <i class="ri-user-settings-line text-primary me-2"></i>Form Pengaturan Akun &amp; Profil
+                                    </h5>
+                                    <p class="text-muted fs-12 mb-0">
+                                        Kelola data legalitas usaha, kontak pemilik, dan pembaruan kata sandi akun Anda.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-4">
+                                <form id="accountSettingsForm" novalidate>
+
+                                    <!-- Section 1: Identitas & Legalitas Usaha -->
+                                    <div class="form-section-header">
+                                        <i class="ri-building-4-line"></i>1. Data Legalitas &amp; Identitas Akun
+                                    </div>
+                                    <div class="row g-3 mb-4">
+                                        
+                                        <!-- 1. Nomor NIB (EDITABLE) -->
+                                        <div class="col-md-6 col-12">
+                                            <label for="nomorNib" class="form-label-custom">
+                                                <span>Nomor NIB <span class="text-danger">*</span></span>
+                                                <span class="badge-editable"><i class="fe fe-edit-2 me-1"></i>Dapat Diedit</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light text-muted"><i class="ri-hashtag"></i></span>
+                                                <input id="nomorNib" class="form-control font-monospace" type="text" value="8120003752084" placeholder="Masukkan 13 digit Nomor Induk Berusaha" required>
+                                            </div>
+                                            <span class="helper-text">Nomor Induk Berusaha OSS-RBA resmi pelaku usaha (Dapat diperbarui)</span>
+                                        </div>
+
+                                        <!-- 2. Nomor Identitas (NIK/KTP) (NO EDITABLE) -->
+                                        <div class="col-md-6 col-12">
+                                            <label for="nomorIdentitas" class="form-label-custom">
+                                                <span>Nomor Identitas (NIK / KTP) <span class="text-danger">*</span></span>
+                                                <span class="badge-locked"><i class="fe fe-lock me-1"></i>Terkunci (No Editable)</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light text-muted"><i class="fe fe-lock"></i></span>
+                                                <input id="nomorIdentitas" class="form-control font-monospace input-readonly-custom" type="text" value="3174012345678901" readonly required tabindex="-1">
+                                            </div>
+                                            <span class="helper-text text-muted">Nomor Induk Kependudukan pemilik terhubung OSS / Dukcapil (Tidak dapat diubah)</span>
+                                        </div>
+
+                                        <!-- 3. NPWP (EDITABLE) -->
+                                        <div class="col-md-6 col-12">
+                                            <label for="npwp" class="form-label-custom">
+                                                <span>NPWP <span class="text-danger">*</span></span>
+                                                <span class="badge-editable"><i class="fe fe-edit-2 me-1"></i>Dapat Diedit</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light text-muted"><i class="ri-file-paper-line"></i></span>
+                                                <input id="npwp" class="form-control font-monospace" type="text" value="81.200.037.5-208.000" placeholder="00.000.000.0-000.000" required>
+                                            </div>
+                                            <span class="helper-text">Nomor Pokok Wajib Pajak Badan Usaha / Perorangan (Dapat diperbarui)</span>
+                                        </div>
+
+                                        <!-- 6. Username (NO EDITABLE) -->
+                                        <div class="col-md-6 col-12">
+                                            <label for="username" class="form-label-custom">
+                                                <span>Username <span class="text-danger">*</span></span>
+                                                <span class="badge-locked"><i class="fe fe-lock me-1"></i>Terkunci (No Editable)</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light text-muted"><i class="fe fe-lock"></i></span>
+                                                <input id="username" class="form-control input-readonly-custom" type="text" value="hendra.wijaya" readonly required tabindex="-1">
+                                            </div>
+                                            <span class="helper-text text-muted">ID Username pendaftaran akun portal SILAT (Tidak dapat diubah)</span>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Section 2: Informasi Kontak Pemilik -->
+                                    <div class="form-section-header">
+                                        <i class="ri-contacts-book-line"></i>2. Informasi Kontak Pemilik
+                                    </div>
+                                    <div class="row g-3 mb-4">
+
+                                        <!-- 4. Email Pemilik (EDITABLE) -->
+                                        <div class="col-md-6 col-12">
+                                            <label for="emailPemilik" class="form-label-custom">
+                                                <span>Email Pemilik <span class="text-danger">*</span></span>
+                                                <span class="badge-editable"><i class="fe fe-edit-2 me-1"></i>Dapat Diedit</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light text-muted"><i class="ri-mail-line"></i></span>
+                                                <input id="emailPemilik" class="form-control" type="email" value="hendra.wijaya@samudra.co.id" placeholder="nama@perusahaan.co.id" required>
+                                            </div>
+                                            <span class="helper-text">Alamat email korespondensi resmi penerbitan e-perizinan KKP (Dapat diperbarui)</span>
+                                        </div>
+
+                                        <!-- 5. Handphone Pemilik (NO EDITABLE: 8123835829) -->
+                                        <div class="col-md-6 col-12">
+                                            <label for="handphonePemilik" class="form-label-custom">
+                                                <span>Handphone Pemilik <span class="text-danger">*</span></span>
+                                                <span class="badge-locked"><i class="fe fe-lock me-1"></i>Terkunci (No Editable)</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light text-muted"><i class="fe fe-lock"></i></span>
+                                                <span class="input-group-text bg-light text-muted font-monospace">+62</span>
+                                                <input id="handphonePemilik" class="form-control font-monospace input-readonly-custom" type="text" value="8123835829" readonly required tabindex="-1">
+                                            </div>
+                                            <span class="helper-text text-muted">Nomor ponsel utama terverifikasi OTP (Tidak dapat diubah)</span>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Section 3: Keamanan & Kata Sandi -->
+                                    <div class="form-section-header">
+                                        <i class="ri-shield-keyhole-line"></i>3. Keamanan &amp; Kata Sandi
+                                    </div>
+                                    <div class="row g-3 mb-4">
+
+                                        <!-- 7. Password Baru (INPUT KOLOM) -->
+                                        <div class="col-md-6 col-12">
+                                            <label for="passwordBaru" class="form-label-custom">
+                                                <span>Password Baru</span>
+                                                <span class="badge-editable"><i class="fe fe-edit-2 me-1"></i>Input Kolom</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light text-muted"><i class="ri-lock-line"></i></span>
+                                                <input id="passwordBaru" class="form-control" type="password" placeholder="Masukkan password baru..." minlength="8" autocomplete="new-password">
+                                                <button class="btn btn-light border" type="button" onclick="togglePasswordVisibility('passwordBaru', this)" title="Tampilkan/Sembunyikan">
+                                                    <i class="fe fe-eye text-muted"></i>
+                                                </button>
+                                            </div>
+                                            <span class="helper-text">Kosongkan jika tidak ingin mengganti kata sandi akun</span>
+                                        </div>
+
+                                        <!-- 8. Ulangi Password Baru (INPUT KOLOM) -->
+                                        <div class="col-md-6 col-12">
+                                            <label for="ulangiPassword" class="form-label-custom">
+                                                <span>Ulangi Password Baru</span>
+                                                <span class="badge-editable"><i class="fe fe-edit-2 me-1"></i>Input Kolom</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light text-muted"><i class="ri-lock-check-line"></i></span>
+                                                <input id="ulangiPassword" class="form-control" type="password" placeholder="Ketik ulang password baru..." minlength="8" autocomplete="new-password">
+                                                <button class="btn btn-light border" type="button" onclick="togglePasswordVisibility('ulangiPassword', this)" title="Tampilkan/Sembunyikan">
+                                                    <i class="fe fe-eye text-muted"></i>
+                                                </button>
+                                            </div>
+                                            <div class="invalid-feedback" id="passwordFeedback">Password baru dan ulangi password baru harus sama.</div>
+                                            <span class="helper-text">Konfirmasi ketik ulang password baru untuk verifikasi</span>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Action Button: Update Profil -->
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 pt-3 border-top">
+                                        <span class="text-muted fs-12">
+                                            <i class="fe fe-info me-1 text-primary"></i>Kolom bertanda <span class="text-danger">*</span> adalah data wajib profil akun Anda.
+                                        </span>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <button type="button" class="btn btn-light px-3 py-2 fs-13" onclick="resetFormToDefaults()">
+                                                <i class="fe fe-refresh-cw me-1"></i>Batal / Reset
+                                            </button>
+                                            <!-- 9. Button Update Profil -->
+                                            <button type="submit" class="btn btn-primary px-4 py-2 fs-13 fw-semibold shadow-sm" id="btnUpdateProfil">
+                                                <i class="fe fe-save me-1"></i>Update profil
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @SPK@include("partials/footer.html")
+    @SPK@include("partials/commonjs.html")
+
+    <!-- SweetAlert2 JS -->
+    <script src="../assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <script>
+        function togglePasswordVisibility(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const icon = btn.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fe-eye');
+                icon.classList.add('fe-eye-off');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fe-eye-off');
+                icon.classList.add('fe-eye');
+            }
+        }
+
+        function resetFormToDefaults() {
+            document.getElementById('nomorNib').value = '8120003752084';
+            document.getElementById('npwp').value = '81.200.037.5-208.000';
+            document.getElementById('emailPemilik').value = 'hendra.wijaya@samudra.co.id';
+            document.getElementById('passwordBaru').value = '';
+            document.getElementById('ulangiPassword').value = '';
+            document.getElementById('ulangiPassword').classList.remove('is-invalid');
+            document.getElementById('accountSettingsForm').classList.remove('was-validated');
+        }
+
+        document.getElementById("accountSettingsForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const form = event.currentTarget;
+            const password = document.getElementById("passwordBaru");
+            const repeatedPassword = document.getElementById("ulangiPassword");
+
+            // Password matching validation if any password entered
+            let passwordsMatch = true;
+            if (password.value !== '' || repeatedPassword.value !== '') {
+                passwordsMatch = (password.value === repeatedPassword.value);
+            }
+
+            repeatedPassword.classList.toggle("is-invalid", !passwordsMatch);
+
+            if (!form.checkValidity() || !passwordsMatch) {
+                form.classList.add("was-validated");
+                if (!passwordsMatch && typeof Swal !== 'undefined') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Kata Sandi Tidak Cocok',
+                        text: 'Password Baru dan Ulangi Password Baru harus sama.',
+                        confirmButtonText: 'Perbaiki',
+                        customClass: { confirmButton: 'btn btn-primary' }
+                    });
+                }
+                return;
+            }
+
+            const nibVal = document.getElementById('nomorNib').value;
+            const npwpVal = document.getElementById('npwp').value;
+            const emailVal = document.getElementById('emailPemilik').value;
+
+            if (typeof Swal !== 'undefined') {
+                Swal.fire({
+                    title: 'Konfirmasi Pembaruan Profil',
+                    text: 'Apakah Anda yakin ingin memperbarui data NIB, NPWP, Email Pemilik, atau Kata Sandi?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya, Update Profil',
+                    cancelButtonText: 'Batal',
+                    customClass: {
+                        confirmButton: 'btn btn-primary px-4 me-2',
+                        cancelButton: 'btn btn-outline-secondary px-4'
+                    },
+                    buttonsStyling: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Profil Berhasil Diperbarui!',
+                            html: `<p class="text-muted fs-13 mb-1">Pembaruan profil (NIB: <strong>${nibVal}</strong>, NPWP: <strong>${npwpVal}</strong>, Email: <strong>${emailVal}</strong>) telah berhasil disimpan ke basis data SILAT.</p>`,
+                            confirmButtonText: 'Selesai',
+                            customClass: { confirmButton: 'btn btn-primary px-4' }
+                        });
+                        password.value = '';
+                        repeatedPassword.value = '';
+                        form.classList.remove('was-validated');
+                    }
+                });
+            } else {
+                alert('Profil berhasil diperbarui!');
+                password.value = '';
+                repeatedPassword.value = '';
+                form.classList.remove('was-validated');
+            }
+        });
+    </script>
+</body>
+</html>

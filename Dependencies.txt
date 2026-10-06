@@ -1,0 +1,22 @@
+Bootstrap			v5.3.1
+Choices Js			v10.1.0	
+Swiper				v8.4.4	
+Sweet alerts			v11.4.19
+nouislider			v15.6.0	
+flatpickr			v4.6.13	
+@simonwep/pickr(ColorPicker)	v1.8.2
+GLightbox(Gallery)		v3.2.0
+Full Calendar			v5.11.4
+Leaflet Maps			v1.8.0
+jsvectormap			v1.4.5
+gmaps.js			v0.4.25
+apexcharts			v3.37.0
+chart.js			v3.8.0
+Echarts				v5.3.3
+simplebar js			v5.3.8
+select2 dropdown		v8.4.4
+quill				v1.3.7
+filepond			v4.30.4
+dropzone			v6.0.0-beta.2
+gridjs				v5.1.0
+rater-js			v1.0.1

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Status SIUP | Sash</title>
+    <meta name="description" content="Pilih status kepemilikan SIUP Anda">
+
+    <link rel="icon" href="../assets/images/brand-logos/favicon.ico" type="image/x-icon">
+    <script src="../assets/js/authentication-main.js"></script>
+    <link id="style" href="../assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/styles.min.css" rel="stylesheet">
+    <link href="../assets/css/icons.min.css" rel="stylesheet">
+
+    <style>
+        .siup-page {
+            flex: 1 0 auto;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, #f4f8ff 0%, #eefaf6 100%);
+        }
+
+        .siup-page > .container-lg {
+            width: 100%;
+        }
+
+        .siup-card {
+            border: 0;
+            box-shadow: 0 18px 55px rgba(31, 51, 73, 0.12);
+        }
+
+        .siup-logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: min(100%, 100px);
+            height: auto;
+        }
+
+        .siup-option {
+            position: relative;
+            display: block;
+            height: 100%;
+            padding: 1.25rem;
+            border: 1px solid var(--default-border);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .siup-option:hover,
+        .siup-option:focus-within {
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 22px rgba(var(--primary-rgb), 0.12);
+            transform: translateY(-2px);
+        }
+
+        .siup-option.is-selected {
+            border-color: var(--primary-color);
+            background: rgba(var(--primary-rgb), 0.06);
+            box-shadow: 0 8px 22px rgba(var(--primary-rgb), 0.14);
+        }
+
+        .siup-option input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .siup-option__icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            margin-bottom: 1rem;
+            border-radius: 50%;
+            color: var(--primary-color);
+            background: rgba(var(--primary-rgb), 0.1);
+            font-size: 1.5rem;
+        }
+
+        .siup-option__check {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--primary-color);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .siup-option.is-selected .siup-option__check {
+            opacity: 1;
+        }
+
+        .siup-status {
+            min-height: 1.5rem;
+        }
+
+        @media (max-width: 575.98px) {
+            .siup-card .card-body {
+                padding: 1.5rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="siup-page d-flex align-items-center py-4">
+        <div class="container-lg">
+            <div class="row justify-content-center">
+                <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10 col-12">
+                    <section class="card custom-card siup-card">
+                        <div class="card-body p-5">
+                            <div class="text-center mb-4">
+                                <a href="index.html" aria-label="Kembali ke halaman utama">
+                                    <img class="siup-logo mb-3" src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="SILAT">
+                                </a>
+                                <p class="h4 fw-semibold mb-2">PENDAFTARAN PENGGUNA E-SERVICE</p>
+                                <p class="text-muted mb-0">Pilih status surat izin usaha yang sesuai dengan kondisi usaha Anda.</p>
+                            </div>
+
+                            <form id="siup-form">
+                                <fieldset>
+                                    <legend class="visually-hidden">Status kepemilikan SIUP</legend>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="siup-option" for="siup-owned">
+                                                <input type="radio" name="siup-status" id="siup-owned" value="owned">
+                                                <i class="siup-option__check ri-checkbox-circle-fill fs-20"></i>
+                                                <span class="siup-option__icon"><i class="ri-shield-check-line"></i></span>
+                                                <span class="d-block fw-semibold fs-15 mb-1">Memiliki SIUP</span>
+                                                <span class="d-block text-muted fs-12">Saya sudah memiliki SIUP yang masih berlaku dan sesuai.</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="siup-option" for="siup-not-owned">
+                                                <input type="radio" name="siup-status" id="siup-not-owned" value="not-owned">
+                                                <i class="siup-option__check ri-checkbox-circle-fill fs-20"></i>
+                                                <span class="siup-option__icon"><i class="ri-file-add-line"></i></span>
+                                                <span class="d-block fw-semibold fs-15 mb-1">Belum Memiliki SIUP</span>
+                                                <span class="d-block text-muted fs-12">Saya belum memiliki SIUP dan ingin mengajukan SIUP Baru.</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <p class="text-center text-muted fs-13 mt-4 mb-0">Pilih salah satu opsi untuk melanjutkan.</p>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    @SPK@include("partials/footer.html")
+
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (function () {
+            const options = document.querySelectorAll('.siup-option');
+
+            options.forEach(function (option) {
+                option.querySelector('input').addEventListener('change', function () {
+                    options.forEach(function (item) {
+                        item.classList.remove('is-selected');
+                    });
+                    option.classList.add('is-selected');
+                    const status = option.querySelector('input').value;
+                    localStorage.setItem('silatSiupStatus', status);
+                    window.location.href = status === 'owned' ? 'login.html' : 'sign-up.html';
+                });
+            });
+        }());
+    </script>
+</body>
+
+</html>

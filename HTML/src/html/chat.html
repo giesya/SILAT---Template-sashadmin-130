@@ -1,0 +1,365 @@
+@SPK@include("partials/mainhead.html")
+
+<style>
+/* 1-Page Viewport Fit Unified Chat Layout */
+.chat-unified-card {
+    height: calc(100vh - 11.5rem);
+    min-height: 530px;
+    max-height: calc(100vh - 11.5rem);
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.04);
+}
+
+.chat-sidebar-pane {
+    width: 340px;
+    min-width: 340px;
+    max-width: 340px;
+    background-color: #ffffff;
+    flex-shrink: 0;
+}
+
+.chat-room-pane {
+    background-color: #ffffff;
+    position: relative;
+}
+
+.chat-item-row {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f1f5f9;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+}
+
+.chat-item-row:hover {
+    background-color: #f8fafc;
+}
+
+.chat-item-row.active {
+    background-color: rgba(var(--primary-rgb), 0.07);
+    border-left: 3px solid var(--primary-color);
+}
+
+.chat-avatar-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #2563eb;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+}
+
+.chat-preview-text {
+    font-size: 0.8rem;
+    color: #64748b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-tag-label {
+    font-size: 0.725rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.chat-status-assigned {
+    font-size: 0.725rem;
+    font-weight: 600;
+    color: #2563eb;
+}
+
+.chat-status-resolved {
+    font-size: 0.725rem;
+    font-weight: 600;
+    color: #10b981;
+}
+
+.chat-status-open {
+    font-size: 0.725rem;
+    font-weight: 600;
+    color: #f59e0b;
+}
+
+.chat-messages-container {
+    background-color: #fafbfc;
+}
+
+.chat-bubble-image {
+    max-width: 280px;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.chat-bubble-image:hover {
+    transform: scale(1.02);
+}
+
+.chat-bubble-link-card {
+    max-width: 340px;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.chat-bubble-link-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 767.98px) {
+    .chat-sidebar-pane {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .chat-room-pane {
+        display: none !important;
+    }
+    .chat-unified-card.chat-mobile-open .chat-sidebar-pane {
+        display: none !important;
+    }
+    .chat-unified-card.chat-mobile-open .chat-room-pane {
+        display: flex !important;
+        width: 100%;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <!-- Start::app-content -->
+        <div class="main-content app-content">
+            <div class="container-fluid">
+                
+                @SPK@include("partials/page-header.html", {"title": "Layanan Konsultasi & Chat", "subtitle": "Komunikasi Perizinan"})
+
+                <!-- 1 Single Unified Card -->
+                <div class="card custom-card chat-unified-card overflow-hidden mb-0">
+                    <div class="card-body p-0 d-flex flex-column flex-md-row h-100 overflow-hidden">
+                        
+                        <!-- Sisi Kiri: Display All Chats / Layanan Perizinan -->
+                        <div class="chat-sidebar-pane d-flex flex-column h-100 border-end">
+                            <!-- Header All chats -->
+                            <div class="p-3 border-bottom bg-white flex-shrink-0">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <h5 class="fw-bold mb-0 text-dark fs-16">All chats</h5>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between gap-2">
+                                    <div class="dropdown flex-fill">
+                                        <button class="btn btn-sm btn-outline-light border text-dark w-100 d-flex justify-content-between align-items-center dropdown-toggle px-3 py-1 fs-12 bg-white" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="filterDropdownBtn">
+                                            <span id="currentFilterText">Newest</span>
+                                        </button>
+                                        <ul class="dropdown-menu w-100 fs-12">
+                                            <li><a class="dropdown-item active" href="javascript:void(0);" onclick="filterChats('all', 'Newest')">Newest</a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" onclick="filterChats('unread', 'Unread')">Unread</a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" onclick="filterChats('assigned', 'Assigned')">Assigned</a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" onclick="filterChats('resolved', 'Resolved')">Resolved</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <button class="btn btn-sm btn-icon btn-light text-muted border" title="Tandai Semua Dibaca" onclick="markAllAsRead()">
+                                            <i class="ri-checkbox-circle-line fs-15"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-icon btn-light text-muted border" title="Filter" onclick="toggleFilterMode()">
+                                            <i class="ri-filter-3-line fs-15"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Scrollable Chat List -->
+                            <div class="chat-list-scroll flex-fill overflow-y-auto" id="chat-msg-scroll">
+                                <div id="chat-conversation-list">
+                                    <!-- Populated dynamically / initialized by chat.js -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sisi Kanan: Roomchat / Empty State -->
+                        <div class="chat-room-pane flex-fill d-flex flex-column h-100 overflow-hidden bg-white">
+                            
+                            <!-- Empty State Display (A chat will appear here) -->
+                            <div class="chat-empty-state h-100 d-flex flex-column align-items-center justify-content-center p-4 text-center" id="chat-empty-view">
+                                <div class="empty-chat-illustration mb-3">
+                                    <svg width="170" height="140" viewBox="0 0 170 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <ellipse cx="85" cy="128" rx="60" ry="9" fill="#E2E8F0" opacity="0.6"/>
+                                        <!-- Back White Bubble -->
+                                        <path d="M125 70C125 87.67 110.45 102 92.5 102C87.7 102 83.1 101 79 99.2L59 105.5L65.2 87.8C61.3 82.9 59 76.7 59 70C59 52.33 73.55 38 91.5 38C109.45 38 125 52.33 125 70Z" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+                                        <!-- Main Purple 3D Bubble -->
+                                        <g filter="url(#shadow-purple)">
+                                            <path d="M116 54C116 73.88 99.88 90 80 90C74.4 90 69.1 88.7 64.3 86.4L39 94.5L46.8 73C41.9 67.5 39 60.5 39 54C39 34.12 55.12 18 75 18C94.88 18 116 34.12 116 54Z" fill="url(#purple-grad)"/>
+                                        </g>
+                                        <!-- Bubble Highlight -->
+                                        <ellipse cx="66" cy="35" rx="22" ry="10" fill="white" fill-opacity="0.25" transform="rotate(-15 66 35)"/>
+                                        <!-- 3 White Dots -->
+                                        <circle cx="64" cy="54" r="4.5" fill="white"/>
+                                        <circle cx="77" cy="54" r="4.5" fill="white"/>
+                                        <circle cx="90" cy="54" r="4.5" fill="white"/>
+                                        <defs>
+                                            <linearGradient id="purple-grad" x1="39" y1="18" x2="116" y2="94" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#A78BFA"/>
+                                                <stop offset="1" stop-color="#8B5CF6"/>
+                                            </linearGradient>
+                                            <filter id="shadow-purple" x="29" y="14" width="97" height="92" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#8B5CF6" flood-opacity="0.28"/>
+                                            </filter>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <h5 class="fw-bold text-dark mb-1 fs-16">A chat will appear here</h5>
+                                <p class="text-muted fs-13 mb-0">Select a chat to view messages with Licensing Support.</p>
+                            </div>
+
+                            <!-- Active Roomchat View -->
+                            <div class="chat-active-room flex-column h-100 d-none" id="chat-active-view">
+                                
+                                <!-- Room Header -->
+                                <div class="p-3 border-bottom bg-white d-flex align-items-center justify-content-between flex-shrink-0">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <button class="btn btn-sm btn-icon btn-light d-md-none me-1" id="btn-back-to-list" title="Kembali">
+                                            <i class="ri-arrow-left-line"></i>
+                                        </button>
+                                        <div class="lh-1">
+                                            <div class="chat-avatar-icon" id="room-avatar">
+                                                <span id="room-avatar-char">H</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <h6 class="fw-bold mb-0 text-dark fs-14" id="room-contact-name">Helpdesk Perizinan KKP</h6>
+                                                <span class="badge bg-light text-muted border fs-11" id="room-contact-tag">SIUP &amp; SIPI</span>
+                                                <span class="badge bg-primary-transparent text-primary fs-11" id="room-contact-status">Assigned</span>
+                                            </div>
+                                            <span class="text-muted fs-12" id="room-contact-subtitle">Petugas Pelayanan Terpadu Satu Pintu (PTSP) DJPT KKP</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <button type="button" class="btn btn-sm btn-light border text-muted" id="btn-clear-chat" title="Bersihkan Obrolan">
+                                            <i class="ri-delete-bin-line me-1"></i><span class="d-none d-sm-inline">Bersihkan</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Room Message History (Scrollable) -->
+                                <div class="chat-messages-container flex-fill overflow-y-auto p-3 p-md-4" id="main-chat-content">
+                                    <ul class="list-unstyled mb-0">
+                                        <!-- Messages dynamically appended here -->
+                                    </ul>
+                                </div>
+
+                                <!-- Room Footer: Texting, Kirim Gambar, Kirim Link -->
+                                <div class="chat-footer p-3 border-top bg-white d-flex align-items-center gap-2 flex-shrink-0">
+                                    <!-- Hidden Image File Input -->
+                                    <input type="file" id="chat-image-file-input" accept="image/*" class="d-none">
+
+                                    <!-- Button Kirim Gambar -->
+                                    <button type="button" class="btn btn-icon btn-light border text-primary flex-shrink-0" id="btn-send-image" title="Kirim Berkas / Gambar">
+                                        <i class="ri-image-2-line fs-16"></i>
+                                    </button>
+
+                                    <!-- Button Kirim Link -->
+                                    <button type="button" class="btn btn-icon btn-light border text-info flex-shrink-0" id="btn-send-link-modal" title="Kirim Tautan / Link" data-bs-toggle="modal" data-bs-target="#modalSendLink">
+                                        <i class="ri-links-line fs-16"></i>
+                                    </button>
+
+                                    <!-- Text Input -->
+                                    <div class="flex-fill">
+                                        <input class="form-control" id="chat-input" placeholder="Ketik pesan atau pertanyaan perizinan di sini..." type="text" autocomplete="off">
+                                    </div>
+
+                                    <!-- Button Kirim Pesan -->
+                                    <button class="btn btn-primary d-inline-flex align-items-center px-3 flex-shrink-0" id="btn-chat-send" type="button">
+                                        <i class="ri-send-plane-2-line me-1"></i><span>Kirim</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- End::app-content -->
+
+        <!-- Modal Kirim Link -->
+        <div class="modal fade" id="modalSendLink" tabindex="-1" aria-labelledby="modalSendLinkLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title fw-bold" id="modalSendLinkLabel">
+                            <i class="ri-links-line text-primary me-2"></i>Kirim Tautan / Link Rujukan
+                        </h6>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label fs-13 fw-semibold">Judul / Keterangan Tautan (Opsional)</label>
+                            <input type="text" class="form-control" id="input-link-title" placeholder="Contoh: Bukti Setor PNBP Bank Persepsi">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fs-13 fw-semibold">URL / Link Web <span class="text-danger">*</span></label>
+                            <input type="url" class="form-control" id="input-link-url" placeholder="https://silat.kkp.go.id/portal/verifikasi/dokumen-0982">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" id="btn-confirm-send-link">
+                            <i class="ri-send-plane-2-line me-1"></i>Kirim Tautan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Image Preview -->
+        <div class="modal fade" id="modalImagePreview" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content bg-transparent border-0">
+                    <div class="modal-body p-0 text-center position-relative">
+                        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <img src="" id="modal-preview-img-target" class="img-fluid rounded shadow-lg" alt="Preview" style="max-height: 80vh;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @SPK@include("partials/headersearch_modal.html")
+        @SPK@include("partials/right-sidebar.html")
+        @SPK@include("partials/footer.html")
+
+    </div>
+
+    @SPK@include("partials/commonjs.html")
+
+    @SPK@include("partials/custom_switcherjs.html")
+
+    <!-- Chat JS -->
+    <script src="../assets/js/chat.js"></script>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/custom.js"></script>
+
+</body>
+
+</html>

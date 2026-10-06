@@ -1,0 +1,244 @@
+@SPK@include("partials/mainhead.html")
+
+<link rel="stylesheet" href="../assets/libs/sweetalert2/sweetalert2.min.css">
+
+</head>
+
+<body>
+
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <!-- Start::app-content -->
+        <div class="main-content app-content">
+            <div class="container-fluid">
+
+                @SPK@include("partials/page-header.html", {"title": "Wishlist", "subtitle": 'Ecommerce'})
+
+                <!-- Start::row-1 -->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card custom-card">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div class="fs-15 mb-0">Total <span class="badge bg-success">08</span> products are wishlisted</div>
+                                <div class="d-flex" role="search">
+                                    <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-sm btn-light" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card product-card">
+                            <div class="card-body">
+                                <a href="javascript:void(0)" class="product-image">
+                                    <img src="../assets/images/ecommerce/products/1.jpg" class="card-img mb-3" alt="...">
+                                </a>
+                                <div class="product-icons">
+                                    <a href="javascript:void(0);" class="wishlist btn-delete"><i class="ri-close-line"></i></a>
+                                </div>
+                                <p class="product-name fw-semibold mb-0 d-flex align-items-center justify-content-between">Women Party Wear Dress<span class="float-end text-warning fs-12">4.2<i class="ri-star-s-fill align-middle ms-1"></i></span></p>
+                                <p class="product-description fs-11 text-muted mb-2">laborum et dolorum fuga</p>
+                                <p class="mb-1 fw-semibold fs-16 d-flex align-items-center justify-content-between"><span>$229<span class="text-muted text-decoration-line-through ms-1 op-6 d-inline-block">$1,799</span></span><span class="badge bg-secondary-transparent float-end fs-10">72% off</span></p>
+                                <p class="fs-11 text-success fw-semibold mb-0 d-flex align-items-center">
+                                    <i class="ti ti-discount-2 fs-16 me-1"></i>Offer Price $229
+                                </p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="cart.html" class="btn btn-primary-light m-1"><i class="ri-shopping-cart-2-line me-2 align-middle d-inline-block"></i>Move To Cart</a>
+                                <a href="product-details.html" class="btn btn-success-light m-1"><i class="ri-eye-line me-2 align-middle d-inline-block"></i>View Product</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card product-card">
+                            <div class="card-body">
+                                <a href="javascript:void(0);" class="product-image">
+                                    <img src="../assets/images/ecommerce/products/2.jpg" class="card-img mb-3" alt="...">
+                                </a>
+                                <div class="product-icons">
+                                    <a href="javascript:void(0);" class="wishlist btn-delete"><i class="ri-close-line"></i></a>
+                                </div>
+                                <p class="product-name fw-semibold mb-0 d-flex align-items-center justify-content-between">Running Shoes for men<span class="float-end text-warning fs-12">4.0<i class="ri-star-s-fill align-middle ms-1"></i></span></p>
+                                <p class="product-description fs-11 text-muted mb-2">laborum et dolorum fuga</p>
+                                <p class="mb-1 fw-semibold fs-16 d-flex align-items-center justify-content-between"><span>$599<span class="text-muted text-decoration-line-through ms-1 op-6 d-inline-block">$2,499</span></span><span class="badge bg-secondary-transparent float-end fs-10">75% off</span></p>
+                                <p class="fs-11 text-success fw-semibold mb-0 d-flex align-items-center">
+                                    <i class="ti ti-discount-2 fs-16 me-1"></i>Offer Price $599</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="cart.html" class="btn btn-primary-light m-1"><i class="ri-shopping-cart-2-line me-2 align-middle d-inline-block"></i>Move To Cart</a>
+                                <a href="product-details.html" class="btn btn-success-light m-1"><i class="ri-eye-line me-2 align-middle d-inline-block"></i>View Product</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card product-card">
+                            <div class="card-body">
+                                <a href="javascript:void(0);" class="product-image">
+                                    <img src="../assets/images/ecommerce/products/3.jpg" class="card-img mb-3" alt="...">
+                                </a>
+                                <div class="product-icons">
+                                    <a href="javascript:void(0);" class="wishlist btn-delete"><i class="ri-close-line"></i></a>
+                                </div>
+                                <p class="product-name fw-semibold mb-0 d-flex align-items-center justify-content-between">Flower Pot for Home Decor<span class="float-end text-warning fs-12">4.5<i class="ri-star-s-fill align-middle ms-1"></i></span></p>
+                                <p class="product-description fs-11 text-muted mb-2">laborum et dolorum fuga</p>
+                                <p class="mb-1 fw-semibold fs-16 d-flex align-items-center justify-content-between"><span>$1,199<span class="text-muted text-decoration-line-through ms-1 op-6 d-inline-block">$3,299</span></span><span class="badge bg-secondary-transparent float-end fs-10">62% off</span></p>
+                                <p class="fs-11 text-success fw-semibold mb-0 d-flex align-items-center">
+                                    <i class="ti ti-discount-2 fs-16 me-1"></i>Offer Price $1,199</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="cart.html" class="btn btn-primary-light m-1"><i class="ri-shopping-cart-2-line me-2 align-middle d-inline-block"></i>Move To Cart</a>
+                                <a href="product-details.html" class="btn btn-success-light m-1"><i class="ri-eye-line me-2 align-middle d-inline-block"></i>View Product</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card product-card">
+                            <div class="card-body">
+                                <a href="javascript:void(0);" class="product-image">
+                                    <img src="../assets/images/ecommerce/products/4.jpg" class="card-img mb-3" alt="...">
+                                </a>
+                                <div class="product-icons">
+                                    <a href="javascript:void(0);" class="wishlist btn-delete"><i class="ri-close-line"></i></a>
+                                </div>
+                                <p class="product-name fw-semibold mb-0 d-flex align-items-center justify-content-between">Men shirt for party wear<span class="float-end text-warning fs-12">4.2<i class="ri-star-s-fill align-middle ms-1"></i></span></p>
+                                <p class="product-description fs-11 text-muted mb-2">laborum et dolorum fuga</p>
+                                <p class="mb-1 fw-semibold fs-16 d-flex align-items-center justify-content-between"><span>$349<span class="text-muted text-decoration-line-through ms-1 op-6 d-inline-block">$1,299</span></span><span class="badge bg-secondary-transparent float-end fs-10">60% off</span></p>
+                                <p class="fs-11 text-success fw-semibold mb-0 d-flex align-items-center">
+                                    <i class="ti ti-discount-2 fs-16 me-1"></i>Offer Price $349</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="cart.html" class="btn btn-primary-light m-1"><i class="ri-shopping-cart-2-line me-2 align-middle d-inline-block"></i>Move To Cart</a>
+                                <a href="product-details.html" class="btn btn-success-light m-1"><i class="ri-eye-line me-2 align-middle d-inline-block"></i>View Product</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card product-card">
+                            <div class="card-body">
+                                <a href="javascript:void(0);" class="product-image">
+                                    <img src="../assets/images/ecommerce/products/5.jpg" class="card-img mb-3" alt="...">
+                                </a>
+                                <div class="product-icons">
+                                    <a href="javascript:void(0);" class="wishlist btn-delete"><i class="ri-close-line"></i></a>
+                                </div>
+                                <p class="product-name fw-semibold mb-0 d-flex align-items-center justify-content-between">Black Digital Camera<span class="float-end text-warning fs-12">4.5<i class="ri-star-s-fill align-middle ms-1"></i></span></p>
+                                <p class="product-description fs-11 text-muted mb-2">laborum et dolorum fuga</p>
+                                <p class="mb-1 fw-semibold fs-16 d-flex align-items-center justify-content-between"><span>$1,899<span class="text-muted text-decoration-line-through ms-1 op-6 d-inline-block">$3,799</span></span><span class="badge bg-secondary-transparent float-end fs-10">50% off</span></p>
+                                <p class="fs-11 text-success fw-semibold mb-0 d-flex align-items-center">
+                                    <i class="ti ti-discount-2 fs-16 me-1"></i>Offer Price $1,899</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="cart.html" class="btn btn-primary-light m-1"><i class="ri-shopping-cart-2-line me-2 align-middle d-inline-block"></i>Move To Cart</a>
+                                <a href="product-details.html" class="btn btn-success-light m-1"><i class="ri-eye-line me-2 align-middle d-inline-block"></i>View Product</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card product-card">
+                            <div class="card-body">
+                                <a href="javascript:void(0);" class="product-image">
+                                    <img src="../assets/images/ecommerce/products/6.jpg" class="card-img mb-3" alt="...">
+                                </a>
+                                <div class="product-icons">
+                                    <a href="javascript:void(0);" class="wishlist btn-delete"><i class="ri-close-line"></i></a>
+                                </div>
+                                <p class="product-name fw-semibold mb-0 d-flex align-items-center justify-content-between">Light pink nail polish<span class="float-end text-warning fs-12">4.1<i class="ri-star-s-fill align-middle ms-1"></i></span></p>
+                                <p class="product-description fs-11 text-muted mb-2">laborum et dolorum fuga</p>
+                                <p class="mb-1 fw-semibold fs-16 d-flex align-items-center justify-content-between"><span>$1,499<span class="text-muted text-decoration-line-through ms-1 op-6 d-inline-block">$2,499</span></span><span class="badge bg-secondary-transparent float-end fs-10">38% off</span></p>
+                                <p class="fs-11 text-success fw-semibold mb-0 d-flex align-items-center">
+                                    <i class="ti ti-discount-2 fs-16 me-1"></i>Offer Price $1,499</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="cart.html" class="btn btn-primary-light m-1"><i class="ri-shopping-cart-2-line me-2 align-middle d-inline-block"></i>Move To Cart</a>
+                                <a href="product-details.html" class="btn btn-success-light m-1"><i class="ri-eye-line me-2 align-middle d-inline-block"></i>View Product</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card product-card">
+                            <div class="card-body">
+                                <a href="javascript:void(0);" class="product-image">
+                                    <img src="../assets/images/ecommerce/products/7.jpg" class="card-img mb-3" alt="...">
+                                </a>
+                                <div class="product-icons">
+                                    <a href="javascript:void(0);" class="wishlist btn-delete"><i class="ri-close-line"></i></a>
+                                </div>
+                                <p class="product-name fw-semibold mb-0 d-flex align-items-center justify-content-between">Stylish Rockerz 255 Ear Pods<span class="float-end text-warning fs-12">4.4<i class="ri-star-s-fill align-middle ms-1"></i></span></p>
+                                <p class="product-description fs-11 text-muted mb-2">laborum et dolorum fuga</p>
+                                <p class="mb-1 fw-semibold fs-16 d-flex align-items-center justify-content-between"><span>$299<span class="text-muted text-decoration-line-through ms-1 op-6 d-inline-block">$399</span></span><span class="badge bg-secondary-transparent float-end fs-10">35% off</span></p>
+                                <p class="fs-11 text-success fw-semibold mb-0 d-flex align-items-center">
+                                    <i class="ti ti-discount-2 fs-16 me-1"></i>Offer Price $299</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="cart.html" class="btn btn-primary-light m-1"><i class="ri-shopping-cart-2-line me-2 align-middle d-inline-block"></i>Move To Cart</a>
+                                <a href="product-details.html" class="btn btn-success-light m-1"><i class="ri-eye-line me-2 align-middle d-inline-block"></i>View Product</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card product-card">
+                            <div class="card-body">
+                                <a href="javascript:void(0);" class="product-image">
+                                    <img src="../assets/images/ecommerce/products/8.jpg" class="card-img mb-3" alt="...">
+                                </a>
+                                <div class="product-icons">
+                                    <a href="javascript:void(0);" class="wishlist btn-delete"><i class="ri-close-line"></i></a>
+                                </div>
+                                <p class="product-name fw-semibold mb-0 d-flex align-items-center justify-content-between">Candy Pure Rose Water<span class="float-end text-warning fs-12">3.8<i class="ri-star-s-fill align-middle ms-1"></i></span></p>
+                                <p class="product-description fs-11 text-muted mb-2">laborum et dolorum fuga</p>
+                                <p class="mb-1 fw-semibold fs-16 d-flex align-items-center justify-content-between"><span>$2,399<span class="text-muted text-decoration-line-through ms-1 op-6 d-inline-block">$5,699</span></span><span class="badge bg-primary-transparent float-end fs-10">72% off</span></p>
+                                <p class="fs-11 text-success fw-semibold mb-0 d-flex align-items-center">
+                                    <i class="ti ti-discount-2 fs-16 me-1"></i>Offer Price $2,399</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="cart.html" class="btn btn-primary-light m-1"><i class="ri-shopping-cart-2-line me-2 align-middle d-inline-block"></i>Move To Cart</a>
+                                <a href="product-details.html" class="btn btn-success-light m-1"><i class="ri-eye-line me-2 align-middle d-inline-block"></i>View Product</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End::row-1 -->
+
+                <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                        <a class="page-link">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <!-- End::app-content -->
+
+        @SPK@include("partials/headersearch_modal.html")
+        @SPK@include("partials/right-sidebar.html")
+        @SPK@include("partials/footer.html")
+
+    </div>
+
+    @SPK@include("partials/commonjs.html")
+
+    @SPK@include("partials/custom_switcherjs.html")
+
+    <!-- Sweetalerts JS -->
+    <script src="../assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <!-- Wishlist JS -->
+    <script src="../assets/js/wishlist.js"></script>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/custom.js"></script>
+
+</body>
+
+</html>

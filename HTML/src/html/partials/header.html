@@ -1,0 +1,145 @@
+ <!-- app-header -->
+ <header class="app-header">
+
+    <!-- Start::main-header-container -->
+    <div class="main-header-container container-fluid">
+
+        <!-- Start::header-content-left -->
+        <div class="header-content-left">
+
+            <!-- Start::header-element (Logo) -->
+            <div class="header-element">
+                <div class="horizontal-logo">
+                    <a href="index.html" class="header-logo">
+                        <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-logo">
+                        <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-logo">
+                        <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-dark">
+                        <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-dark">
+                        <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-white">
+                        <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-white">
+                    </a>
+                </div>
+            </div>
+            <!-- End::header-element -->
+
+            <!-- Start::header-element (Hamburger Toggle) -->
+            <div class="header-element">
+                <!-- Start::header-link -->
+                <a aria-label="Hide Sidebar" class="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle" data-bs-toggle="sidebar" href="javascript:void(0);"><span></span></a>
+                <!-- End::header-link -->
+            </div>
+            <!-- End::header-element -->
+
+        </div>
+        <!-- End::header-content-left -->
+
+        <!-- Start::header-content-right -->
+        <div class="header-content-right">
+
+            <!-- Start::header-element (Inbox Chat / Pesan) -->
+            <div class="header-element message-dropdown">
+                <!-- Start::header-link|dropdown-toggle -->
+                <a aria-label="Kotak Masuk Pesan" href="javascript:void(0);" class="header-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" id="messageDropdown2" aria-expanded="false">
+                    <i class="fe fe-message-square header-link-icon"></i>
+                    <span class="w-9 h-9 p-0 bg-primary rounded-pill header-icon-badge pulse pulse-primary" id="message-icon-badge"></span>
+                </a>
+                <!-- End::header-link|dropdown-toggle -->
+                <!-- Start::main-header-dropdown -->
+                <div class="main-header-dropdown dropdown-menu dropdown-menu-end shadow" data-popper-placement="none">
+                    <div class="p-3 bg-primary-transparent border-bottom">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <p class="mb-0 fs-15 fw-semibold text-dark"><i class="fe fe-message-square me-1 text-primary"></i>Pesan Masuk</p>
+                            <span class="badge bg-primary text-white fs-11" id="message-data">3 Belum Dibaca</span>
+                        </div>
+                    </div>
+                    <ul class="list-unstyled mb-0" id="header-message-scroll" style="max-height: 280px; overflow-y: auto;">
+                        <li class="dropdown-item p-3 border-bottom">
+                            <a href="chat.html?contact=Helpdesk%20Perizinan%20KKP" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                 <span class="avatar avatar-md bg-primary-transparent text-primary rounded-circle flex-shrink-0"><i class="fe fe-shield fs-16"></i></span>
+                                 <div class="w-100">
+                                    <div class="d-flex align-items-center justify-content-between mb-1">
+                                        <h6 class="mb-0 fw-semibold fs-13 text-dark">Helpdesk Perizinan KKP</h6>
+                                        <span class="text-muted fs-11">09:15</span>
+                                    </div>
+                                    <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Dokumen permohonan verifikasi kapal telah diterima sistem.</p>
+                                 </div>
+                            </a>
+                        </li>
+                        <li class="dropdown-item p-3 border-bottom">
+                            <a href="chat.html?contact=Syahbandar%20Muara%20Baru" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                 <span class="avatar avatar-md bg-info-transparent text-info rounded-circle flex-shrink-0"><i class="fe fe-anchor fs-16"></i></span>
+                                 <div class="w-100">
+                                    <div class="d-flex align-items-center justify-content-between mb-1">
+                                        <h6 class="mb-0 fw-semibold fs-13 text-dark">Syahbandar Muara Baru</h6>
+                                        <span class="text-muted fs-11">Kemarin</span>
+                                    </div>
+                                    <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Konfirmasi jadwal tambat pangkalan PPS Nizam Zachman.</p>
+                                 </div>
+                            </a>
+                        </li>
+                        <li class="dropdown-item p-3">
+                            <a href="chat.html?contact=Staf%20Operasional%20Kapal" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                 <span class="avatar avatar-md bg-success-transparent text-success rounded-circle flex-shrink-0"><i class="fe fe-user-check fs-16"></i></span>
+                                 <div class="w-100">
+                                    <div class="d-flex align-items-center justify-content-between mb-1">
+                                        <h6 class="mb-0 fw-semibold fs-13 text-dark">Staf Operasional Kapal</h6>
+                                        <span class="text-muted fs-11">2 hari lalu</span>
+                                    </div>
+                                    <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Data dokumen awak kapal KM. Bahari Nusantara telah diperbarui.</p>
+                                 </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="p-2 border-top text-center bg-light-subtle">
+                        <a href="chat.html" class="fs-12 text-primary fw-semibold text-decoration-none d-block">Lihat Semua Pesan</a>
+                    </div>
+                </div>
+                <!-- End::main-header-dropdown -->
+            </div>
+            <!-- End::header-element -->
+
+            <!-- Start::header-element (Profile: Pengaturan Akun & Logout) -->
+            <div class="header-element main-profile-user">
+                <!-- Start::header-link|dropdown-toggle -->
+                <a href="javascript:void(0);" class="header-link dropdown-toggle" id="mainHeaderProfile" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                    <div class="d-flex align-items-center">
+                        <div class="me-xxl-2 me-0">
+                            <img src="../assets/images/faces/9.jpg" alt="Foto Profil" width="34" height="34" class="rounded-circle border border-2 border-primary-subtle">
+                        </div>
+                        <div class="d-xxl-block d-none my-auto text-start">
+                            <h6 class="fw-semibold mb-0 lh-1 fs-14 text-dark">Ir. H. Hendra Wijaya</h6>
+                            <span class="op-7 fw-normal d-block fs-11 text-muted">Pemilik Usaha</span>
+                        </div>
+                    </div>
+                </a>
+                <!-- End::header-link|dropdown-toggle -->
+                <ul class="main-header-dropdown dropdown-menu pt-0 header-profile-dropdown dropdown-menu-end shadow" aria-labelledby="mainHeaderProfile">
+                    <li class="drop-heading d-xxl-none d-block border-bottom p-3">
+                         <div class="text-center">
+                            <h6 class="text-dark mb-0 fs-14 fw-semibold">Ir. H. Hendra Wijaya</h6>
+                            <small class="text-muted fs-11">Pemilik Usaha</small>
+                        </div>
+                    </li>
+                    <li class="dropdown-item py-2">
+                        <a class="d-flex align-items-center w-100" href="profile.html">
+                            <i class="fe fe-settings fs-16 me-2 text-primary"></i>Pengaturan Akun
+                        </a>
+                    </li>
+                    <li class="dropdown-divider my-1"></li>
+                    <li class="dropdown-item py-2">
+                        <a class="d-flex align-items-center w-100 text-danger" href="login.html">
+                            <i class="fe fe-log-out fs-16 me-2 text-danger"></i>Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- End::header-element -->
+
+        </div>
+        <!-- End::header-content-right -->
+
+    </div>
+    <!-- End::main-header-container -->
+
+</header>
+<!-- /app-header -->

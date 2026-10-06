@@ -1,0 +1,76 @@
+@SPK@include("partials/mainhead.html")
+
+<style>
+    .letter-paper { max-width: 860px; margin: 0 auto; border: 1px solid #dce5e8; background: #fff; box-shadow: 0 10px 30px rgba(23, 50, 77, .08); }
+    .letter-heading { border-bottom: 3px solid #075c70; }
+    .letter-table th { width: 34%; color: #667987; font-weight: 500; }
+    @media print { .app-header, .app-sidebar, .page-header, .letter-actions, .switcher, .scrollToTop { display: none !important; } .main-content { margin: 0 !important; } .letter-paper { border: 0; box-shadow: none; } }
+</style>
+
+</head>
+<body>
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+        <main class="main-content app-content">
+            <div class="container-fluid">
+                @SPK@include("partials/page-header.html", {"title": "Download/Cetak Surat Izin OSS", "subtitle": 'Daftar Permohonan'})
+                <div class="letter-actions d-flex justify-content-end gap-2 mb-3">
+                    <a href="javascript:history.back()" class="btn btn-light"><i class="fe fe-arrow-left me-1"></i>Kembali</a>
+                    <button type="button" id="downloadLetter" class="btn btn-primary"><i class="fe fe-download me-1"></i>Download Surat</button>
+                    <button type="button" id="printLetter" class="btn btn-success"><i class="fe fe-printer me-1"></i>Cetak Surat</button>
+                </div>
+                <article class="letter-paper p-4 p-md-5">
+                    <div class="letter-heading text-center pb-3 mb-4">
+                        <h4 class="fw-bold mb-1">SURAT IZIN OSS</h4>
+                        <p class="mb-0 text-muted">Dokumen surat izin berdasarkan data pengajuan</p>
+                    </div>
+                    <p>Dengan ini menerangkan bahwa data permohonan berikut tercatat pada sistem SILAT:</p>
+                    <table class="table table-bordered letter-table">
+                        <tbody>
+                            <tr><th>Pemohon</th><td id="letterPemohon">PT Samudra Bahari</td></tr>
+                            <tr><th>Nomor Agenda</th><td id="letterAgenda">-</td></tr>
+                            <tr><th>Jenis Permohonan</th><td id="letterJenis">-</td></tr>
+                            <tr><th>Nama Kapal</th><td id="letterKapal">-</td></tr>
+                            <tr><th>Tanggal Pengajuan</th><td id="letterTanggal">-</td></tr>
+                            <tr><th>Status</th><td id="letterStatus">-</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="alert alert-info mt-4 mb-0"><i class="fe fe-info me-1"></i>Gunakan tombol Download Surat untuk menyimpan dokumen atau Cetak Surat untuk mencetaknya.</div>
+                    <div class="text-end mt-5"><p class="mb-5">Jakarta, <span id="letterDate"></span></p><strong>Pejabat Berwenang</strong></div>
+                </article>
+            </div>
+        </main>
+    </div>
+    @SPK@include("partials/footer.html")
+    @SPK@include("partials/commonjs.html")
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const letterData = {
+            pemohon: params.get("pemohon") || "PT Samudra Bahari",
+            agenda: params.get("agenda") || "-",
+            jenis: params.get("jenis") || "-",
+            kapal: params.get("kapal") || "-",
+            tanggal: params.get("tanggal") || "-",
+            status: params.get("status") || "-"
+        };
+        Object.entries(letterData).forEach(([key, value]) => {
+            const element = document.getElementById(`letter${key.charAt(0).toUpperCase()}${key.slice(1)}`);
+            if (element) element.textContent = value;
+        });
+        document.getElementById("letterDate").textContent = new Date().toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" });
+        document.getElementById("printLetter").addEventListener("click", () => window.print());
+        document.getElementById("downloadLetter").addEventListener("click", () => {
+            const documentHtml = `<!doctype html><html lang="id"><head><meta charset="UTF-8"><title>Surat Izin OSS - ${letterData.pemohon}</title><style>body{font-family:Arial,sans-serif;color:#17324d;padding:48px}h1{text-align:center;border-bottom:3px solid #075c70;padding-bottom:16px}table{width:100%;border-collapse:collapse;margin-top:28px}th,td{border:1px solid #ccd9dd;padding:12px;text-align:left}th{width:34%;background:#f2f6f7;font-weight:normal}</style></head><body><h1>SURAT IZIN OSS</h1><p>Data permohonan yang tercatat pada sistem SILAT:</p><table><tr><th>Pemohon</th><td>${letterData.pemohon}</td></tr><tr><th>Nomor Agenda</th><td>${letterData.agenda}</td></tr><tr><th>Jenis Permohonan</th><td>${letterData.jenis}</td></tr><tr><th>Nama Kapal</th><td>${letterData.kapal}</td></tr><tr><th>Tanggal Pengajuan</th><td>${letterData.tanggal}</td></tr><tr><th>Status</th><td>${letterData.status}</td></tr></table><p style="margin-top:32px">Dokumen surat ini dibuat berdasarkan data pengajuan pada sistem SILAT.</p></body></html>`;
+            const blob = new Blob([documentHtml], { type: "text/html;charset=utf-8" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = `surat-izin-oss-${letterData.agenda === "-" ? "dokumen" : letterData.agenda}.html`;
+            link.click();
+            URL.revokeObjectURL(link.href);
+        });
+    </script>
+</body>
+</html>

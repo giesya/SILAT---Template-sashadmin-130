@@ -1,0 +1,48 @@
+@SPK@include("partials/mainhead.html")
+
+</head>
+
+<body>
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <div class="main-content app-content">
+            <div class="container-fluid">
+                @SPK@include("partials/page-header.html", {"title": "Daftar Izin Kapal", "subtitle": 'Umum'})
+
+                <div class="card custom-card">
+                    <div class="card-header">
+                        <div class="card-title">Daftar Izin Kapal yang Akan Habis Masa Berlakunya 1 Bulan ke Depan</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover text-nowrap align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nama Kapal</th>
+                                        <th scope="col">GT</th>
+                                        <th scope="col">No. Izin</th>
+                                        <th scope="col">Tanggal Berlaku</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="4" class="text-center text-muted py-5">Belum ada izin kapal yang akan habis masa berlakunya.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @SPK@include("partials/footer.html")
+    @SPK@include("partials/commonjs.html")
+</body>
+</html>

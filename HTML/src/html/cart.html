@@ -1,0 +1,382 @@
+@SPK@include("partials/mainhead.html")
+
+<link rel="stylesheet" href="../assets/libs/sweetalert2/sweetalert2.min.css">
+
+</head>
+
+<body>
+
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <!-- Start::app-content -->
+        <div class="main-content app-content">
+            <div class="container-fluid">
+
+                @SPK@include("partials/page-header.html", {"title": "Cart", "subtitle": 'Ecommerce'})
+
+                <!-- Start::row-1 -->
+                <div class="row" >
+                    <div class="col-xxl-9">
+                        <div class="card custom-card" id="cart-container-delete">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    Cart Items
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    Product Name
+                                                </th>
+                                                <th scope="col">
+                                                    Price
+                                                </th>
+                                                <th scope="col">
+                                                    Quantity
+                                                </th>
+                                                <th scope="col">
+                                                    Total
+                                                </th>
+                                                <th scope="col">
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="me-3">
+                                                            <span class="avatar avatar-xxl bg-light">
+                                                                <img src="../assets/images/ecommerce/orders/12.jpg" alt="">
+                                                            </span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="mb-1 fs-14 fw-semibold">
+                                                                <a href="javascript:void(0);">laborum et dolorum fuga</a>
+                                                            </div>
+                                                            <div class="mb-1">
+                                                                <span class="me-1 d-inline-flex align-items-center">Size:</span><span class="fw-semibold text-muted">Large</span>
+                                                            </div>
+                                                            <div class="mb-1">
+                                                                <span class="me-1 d-inline-flex align-items-center">Color:</span><span class="fw-semibold text-muted">orange<span class="badge bg-success-transparent ms-3">In Offer</span></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fw-semibold fs-14">
+                                                        $459
+                                                    </div>
+                                                </td>
+                                                <td class="product-quantity-container">
+                                                    <div class="input-group border rounded flex-nowrap">
+                                                        <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-minus border-0" ><i class="ri-subtract-line"></i></button>
+                                                        <input type="text" class="form-control form-control-sm border-0 text-center w-100" aria-label="quantity" id="product-quantity" value="2">
+                                                        <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-plus border-0" ><i class="ri-add-line"></i></button>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fs-14 fw-semibold">
+                                                        $918
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="wishlist.html" class="btn btn-icon btn-success me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Wishlist"><i class="ri-heart-line"></i></a>
+                                                    <button class="btn btn-icon btn-danger btn-delete" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remove From cart">
+                                                        <i class="ri-delete-bin-line"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="me-3">
+                                                            <span class="avatar avatar-xxl bg-light">
+                                                                <img src="../assets/images/ecommerce/orders/7.jpg" alt="">
+                                                            </span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="mb-1 fs-14 fw-semibold">
+                                                                <a href="javascript:void(0);">laborum et dolorum fuga</a>
+                                                            </div>
+                                                            <div class="mb-1">
+                                                                <span class="me-1 d-inline-flex align-items-center">Size:</span><span class="fw-semibold text-muted">Medium</span>
+                                                            </div>
+                                                            <div class="mb-1">
+                                                                <span class="me-1 d-inline-flex align-items-center">Color:</span><span class="fw-semibold text-muted">white<span class="badge bg-secondary ms-3">25% discount</span></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fw-semibold fs-14">
+                                                        $129
+                                                    </div>
+                                                </td>
+                                                <td class="product-quantity-container">
+                                                    <div class="input-group border rounded flex-nowrap">
+                                                        <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-minus border-0" ><i class="ri-subtract-line"></i></button>
+                                                        <input type="text" class="form-control form-control-sm border-0 text-center w-100" aria-label="quantity" id="product-quantity1" value="1">
+                                                        <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-plus border-0" ><i class="ri-add-line"></i></button>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fs-14 fw-semibold">
+                                                        $129
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="wishlist.html" class="btn btn-icon btn-success me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Wishlist"><i class="ri-heart-line"></i></a>
+                                                    <button class="btn btn-icon btn-danger btn-delete" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remove From cart">
+                                                        <i class="ri-delete-bin-line"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="me-3">
+                                                            <span class="avatar avatar-xxl bg-light">
+                                                                <img src="../assets/images/ecommerce/orders/5.jpg" alt="">
+                                                            </span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="mb-1 fs-14 fw-semibold">
+                                                                <a href="javascript:void(0);">laborum et dolorum fuga</a>
+                                                            </div>
+                                                            <div class="mb-1">
+                                                                <span class="me-1 d-inline-flex align-items-center">Size:</span><span class="fw-semibold text-muted">44mm dial</span>
+                                                            </div>
+                                                            <div class="mb-1">
+                                                                <span class="me-1 d-inline-flex align-items-center">Color:</span><span class="fw-semibold text-muted">Black<span class="badge bg-success-transparent ms-3">On Offer</span></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fw-semibold fs-14">
+                                                        $249
+                                                    </div>
+                                                </td>
+                                                <td class="product-quantity-container">
+                                                    <div class="input-group border rounded flex-nowrap">
+                                                        <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-minus border-0"><i class="ri-subtract-line"></i></button>
+                                                        <input type="text" class="form-control form-control-sm border-0 text-center w-100" aria-label="quantity" id="product-quantity2" value="2">
+                                                        <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-plus border-0"><i class="ri-add-line"></i></button>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fs-14 fw-semibold">
+                                                        $498
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="wishlist.html" class="btn btn-icon btn-success me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Wishlist"><i class="ri-heart-line"></i></a>
+                                                    <button class="btn btn-icon btn-danger btn-delete" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remove From cart">
+                                                        <i class="ri-delete-bin-line"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="me-3">
+                                                            <span class="avatar avatar-xxl bg-light">
+                                                                <img src="../assets/images/ecommerce/orders/2.jpg" alt="">
+                                                            </span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="mb-1 fs-14 fw-semibold">
+                                                                <a href="javascript:void(0);">laborum et dolorum fuga</a>
+                                                            </div>
+                                                            <div class="mb-1">
+                                                                <span class="me-1 d-inline-flex align-items-center">Size:</span><span class="fw-semibold text-muted">Medium</span>
+                                                            </div>
+                                                            <div class="mb-1">
+                                                                <span class="me-1 d-inline-flex align-items-center">Color:</span><span class="fw-semibold text-muted">White<span class="badge bg-success-transparent ms-3">On Offer</span></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fw-semibold fs-14">
+                                                        $249
+                                                    </div>
+                                                </td>
+                                                <td class="product-quantity-container">
+                                                    <div class="input-group border rounded flex-nowrap">
+                                                        <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-minus border-0"><i class="ri-subtract-line"></i></button>
+                                                        <input type="text" class="form-control form-control-sm border-0 text-center w-100" aria-label="quantity" id="product-quantity3" value="2">
+                                                        <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-plus border-0"><i class="ri-add-line"></i></button>
+                                                    </div>
+                                                <td>
+                                                    <div class="fs-14 fw-semibold">
+                                                        $498
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="wishlist.html" class="btn btn-icon btn-success me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Wishlist"><i class="ri-heart-line"></i></a>
+                                                    <button class="btn btn-icon btn-danger btn-delete" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remove From cart">
+                                                        <i class="ri-delete-bin-line"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="me-3">
+                                                            <span class="avatar avatar-xxl bg-light">
+                                                                <img src="../assets/images/ecommerce/orders/3.jpg" alt="">
+                                                            </span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="mb-1 fs-14 fw-semibold">
+                                                                <a href="javascript:void(0);">laborum et dolorum fuga</a>
+                                                            </div>
+                                                            <div class="mb-1">
+                                                                <span class="me-1 d-inline-flex align-items-center">Size:</span><span class="fw-semibold text-muted">Large</span>
+                                                            </div>
+                                                            <div class="mb-1">
+                                                                <span class="me-1 d-inline-flex align-items-center">Color:</span><span class="fw-semibold text-muted">Green</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fw-semibold fs-14">
+                                                        $1,299
+                                                    </div>
+                                                </td>
+                                                <td class="product-quantity-container">
+                                                    <div class="input-group border rounded flex-nowrap">
+                                                        <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-minus border-0"><i class="ri-subtract-line"></i></button>
+                                                        <input type="text" class="form-control form-control-sm border-0 text-center w-100" aria-label="quantity" id="product-quantity4" value="1">
+                                                        <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-plus border-0"><i class="ri-add-line"></i></button>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="fs-14 fw-semibold">
+                                                        $1,299
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="wishlist.html" class="btn btn-icon btn-success me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Wishlist"><i class="ri-heart-line"></i></a>
+                                                    <button class="btn btn-icon btn-danger btn-delete" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remove From cart">
+                                                        <i class="ri-delete-bin-line"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card custom-card d-none" id="cart-empty-cart">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    Empty Cart
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="cart-empty text-center">
+									<svg xmlns="http://www.w3.org/2000/svg" class="svg-muted" width="24" height="24" viewbox="0 0 24 24"><path d="M18.6 16.5H8.9c-.9 0-1.6-.6-1.9-1.4L4.8 6.7c0-.1 0-.3.1-.4.1-.1.2-.1.4-.1h17.1c.1 0 .3.1.4.2.1.1.1.3.1.4L20.5 15c-.2.8-1 1.5-1.9 1.5zM5.9 7.1 8 14.8c.1.4.5.8 1 .8h9.7c.5 0 .9-.3 1-.8l2.1-7.7H5.9z"/><path d="M6 10.9 3.7 2.5H1.3v-.9H4c.2 0 .4.1.4.3l2.4 8.7-.8.3zM8.1 18.8 6 11l.9-.3L9 18.5z"/><path d="M20.8 20.4h-.9V20c0-.7-.6-1.3-1.3-1.3H8.9c-.7 0-1.3.6-1.3 1.3v.5h-.9V20c0-1.2 1-2.2 2.2-2.2h9.7c1.2 0 2.2 1 2.2 2.2v.4z"/><path d="M8.9 22.2c-1.2 0-2.2-1-2.2-2.2s1-2.2 2.2-2.2c1.2 0 2.2 1 2.2 2.2s-1 2.2-2.2 2.2zm0-3.5c-.7 0-1.3.6-1.3 1.3 0 .7.6 1.3 1.3 1.3.8 0 1.3-.6 1.3-1.3 0-.7-.5-1.3-1.3-1.3zM18.6 22.2c-1.2 0-2.2-1-2.2-2.2s1-2.2 2.2-2.2c1.2 0 2.2 1 2.2 2.2s-.9 2.2-2.2 2.2zm0-3.5c-.8 0-1.3.6-1.3 1.3 0 .7.6 1.3 1.3 1.3.7 0 1.3-.6 1.3-1.3 0-.7-.5-1.3-1.3-1.3z"/></svg>
+									<h3 class="fw-bold mb-1">Your Cart is Empty</h3>
+									<h5 class="mb-3">Add some items to make me happy :)</h5>
+									<a href="#" class="btn btn-primary btn-wave m-3" data-abc="true">continue shopping <i class="bi bi-arrow-right ms-1"></i></a>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3">
+                        <div class="card custom-card">
+                            <div class="card-header justify-content-between">
+                                <div class="card-title">
+                                    Have a coupon..?
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control form-control-sm" placeholder="Coupon Code" aria-label="coupon-code" aria-describedby="coupons">
+                                        <button type="button" class="btn btn-primary input-group-text" id="coupons">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card custom-card">
+                            <div class="card-header justify-content-between">
+                                <div class="card-title">
+                                    Price Details
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="p-4 border-bottom border-block-end-dashed">
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <div class="text-muted ">Sub Total</div>
+                                        <div class="fw-semibold fs-14">$1,299</div>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <div class="text-muted ">Discount</div>
+                                        <div class="fw-semibold fs-14 text-success">10% - $129</div>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <div class="text-muted ">Delivery Charges</div>
+                                        <div class="fw-semibold fs-14 text-danger">- $49</div>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="text-muted ">Service Tax (18%)</div>
+                                        <div class="fw-semibold fs-14">- $169</div>
+                                    </div>
+                                </div>
+                                <div class=" py-3 px-4">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="fw-semibold fs-18 ">Total :</div>
+                                        <div class="fw-semibold fs-18"> $1,387</div>
+                                    </div>
+
+                                </div>
+                                <div class="p-3 border-top text-center">
+                                    <a href="checkout.html" class="btn btn-primary m-1">Proceed To Checkout</a>
+                                    <a href="products.html" class="btn btn-light m-1 ">Countinue Shopping</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End::row-1 -->
+
+            </div>
+        </div>
+        <!-- End::app-content -->
+
+        @SPK@include("partials/headersearch_modal.html")
+        @SPK@include("partials/right-sidebar.html")
+        @SPK@include("partials/footer.html")
+
+    </div>
+
+    @SPK@include("partials/commonjs.html")
+
+    @SPK@include("partials/custom_switcherjs.html")
+
+    <!-- Sweetalerts JS -->
+    <script src="../assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <!-- Internal Cart JS -->
+    <script src="../assets/js/cart.js"></script>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/custom.js"></script>
+
+</body>
+
+</html>

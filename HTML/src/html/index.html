@@ -1,0 +1,1930 @@
+@SPK@include("partials/mainhead.html")
+
+<style>
+    .dashboard-kpi-card {
+        border-radius: 0.75rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .dashboard-kpi-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .progress-xs {
+        height: 6px;
+        border-radius: 3px;
+    }
+
+    .permit-track {
+        height: 6px;
+        border-radius: 3px;
+        background: #e9ecef;
+        overflow: hidden;
+    }
+
+    .permit-bar {
+        height: 100%;
+        border-radius: inherit;
+    }
+
+    .fs-10 {
+        font-size: 0.625rem !important;
+    }
+
+    .btn-xs {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.6875rem;
+        border-radius: 0.25rem;
+    }
+
+    .nav-pills-sm .nav-link {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.75rem;
+        border-radius: 0.375rem;
+    }
+
+    .pit-scroll-container {
+        max-height: 380px;
+        overflow-y: auto;
+        padding-right: 4px;
+    }
+
+    .pit-scroll-container::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .pit-scroll-container::-webkit-scrollbar-track {
+        background: #f1f5f9;
+        border-radius: 4px;
+    }
+
+    .pit-scroll-container::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+    }
+
+    .pit-scroll-container::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+
+    .pit-card-item {
+        transition: all 0.2s ease;
+    }
+
+    .pit-card-item:hover {
+        border-color: #3b82f6 !important;
+        background-color: #f8fafc !important;
+        transform: translateY(-1px);
+    }
+</style>
+
+</head>
+
+<body>
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <main class="main-content app-content">
+            <div class="container-fluid">
+                @SPK@include("partials/page-header.html", {"title": "Dashboard Utama", "subtitle": "Monitoring Perizinan, Alokasi & Realisasi Armada, dan Dokumen Kapal"})
+
+                <!-- ================================================================================== -->
+                <!-- PROFIL USAHA & PEMILIK USAHA (Dua Bagian Terpisah)                                 -->
+                <!-- ================================================================================== -->
+                <div class="row g-4 mb-4">
+                    
+                    <!-- 1. Profil Pemilik Usaha -->
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-12">
+                        <div class="card custom-card h-100 border-0 shadow-sm d-flex flex-column">
+                            <div class="card-header border-bottom py-3 px-3 px-md-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                <div>
+                                    <div class="card-title d-flex align-items-center gap-2 mb-1">
+                                        <i class="ri-user-star-line text-primary fs-18"></i>
+                                        <span>Profil Pemilik Usaha</span>
+                                    </div>
+                                    <p class="text-muted fs-12 mb-0">Identitas pemilik usaha</p>
+                                </div>
+                            </div>
+                            <div class="card-body p-3 p-md-4 d-flex flex-column justify-content-between flex-grow-1">
+                                <div class="d-flex align-items-center gap-3 pb-3 mb-3 border-bottom flex-wrap flex-sm-nowrap">
+                                    <!-- Pasfoto 4x6 cm -->
+                                    <div class="d-flex flex-column align-items-center flex-shrink-0">
+                                        <div class="position-relative border border-2 border-primary-subtle rounded-3 overflow-hidden shadow-sm" style="width: 88px; height: 132px; background-color: #eaedf1;">
+                                            <img src="../assets/images/faces/9.jpg" alt="Pasfoto Pemilik Usaha (4x6)" class="w-100 h-100 object-fit-cover">
+                                            <span class="position-absolute bottom-0 start-0 w-100 text-center bg-dark bg-opacity-75 text-white fs-9 py-0 fw-semibold">4 x 6 cm</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h5 class="fw-bold text-dark mb-1 fs-16">Ir. H. Hendra Wijaya, M.M.</h5>
+                                        <span class="badge bg-light text-muted border border-secondary-subtle px-2 py-1 fs-11 fw-medium align-self-start">
+                                            <i class="ri-briefcase-line me-1 text-primary"></i>Direktur Utama / Pemilik Usaha
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row g-2">
+                                    <div class="col-sm-6 col-12">
+                                        <div class="p-2 px-3 rounded-3 bg-light-subtle border h-100">
+                                            <span class="text-muted fs-11 d-block mb-1">NIK (Nomor Induk Kependudukan)</span>
+                                            <span class="fw-semibold text-dark font-monospace fs-12">3174051208750003</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12">
+                                        <div class="p-2 px-3 rounded-3 bg-light-subtle border h-100">
+                                            <span class="text-muted fs-11 d-block mb-1">NPWP Pribadi</span>
+                                            <span class="fw-semibold text-dark font-monospace fs-12">09.123.456.7-015.000</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12">
+                                        <div class="p-2 px-3 rounded-3 bg-light-subtle border h-100">
+                                            <span class="text-muted fs-11 d-block mb-1">Nomor Telepon / WhatsApp</span>
+                                            <span class="fw-semibold text-dark fs-12">+62 812-8899-7721</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12">
+                                        <div class="p-2 px-3 rounded-3 bg-light-subtle border h-100">
+                                            <span class="text-muted fs-11 d-block mb-1">Email Pribadi</span>
+                                            <span class="fw-semibold text-dark fs-12">hendra.wijaya@samudrabahari.co.id</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12">
+                                        <div class="p-2 px-3 rounded-3 bg-light-subtle border h-100">
+                                            <span class="text-muted fs-11 d-block mb-1">Alamat Domisili</span>
+                                            <span class="fw-semibold text-dark fs-12">Jl. Muara Karang Blok B7 No. 12, Pluit, Penjaringan, Jakarta Utara</span>
+                                        </div>
+                                    </div>
+                                    <!-- Tanda Tangan Pemilik Usaha -->
+                                    <div class="col-sm-6 col-12">
+                                        <div class="p-2 px-3 rounded-3 bg-light-subtle border h-100 d-flex flex-column justify-content-between">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <span class="text-muted fs-11">Tanda Tangan</span>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-center border rounded-2 bg-white px-2 py-1" style="height: 48px;">
+                                                <svg viewBox="0 0 160 50" class="w-100" style="max-height: 40px;" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M15,36 Q30,8 48,26 T78,18 Q98,4 115,22 T148,20 Q128,42 98,34" fill="none" stroke="#003366" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M42,28 Q70,44 125,36" fill="none" stroke="#003366" stroke-width="1.8" stroke-linecap="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Profil Usaha / Perusahaan -->
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-12">
+                        <div class="card custom-card h-100 border-0 shadow-sm d-flex flex-column">
+                            <div class="card-header border-bottom py-3 px-3 px-md-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                <div>
+                                    <div class="card-title d-flex align-items-center gap-2 mb-1">
+                                        <i class="ri-building-4-line text-success fs-18"></i>
+                                        <span>Profil Perusahaan</span>
+                                    </div>
+                                    <p class="text-muted fs-12 mb-0">Legalitas badan usaha &amp; izin operasional perikanan</p>
+                                </div>
+                            </div>
+                            <div class="card-body p-3 p-md-4 d-flex flex-column justify-content-between flex-grow-1">
+                                <div class="d-flex align-items-center gap-3 pb-3 mb-3 border-bottom flex-wrap flex-sm-nowrap">
+                                    <div class="avatar rounded-3 bg-primary-transparent text-primary border border-2 border-primary-subtle shadow-sm flex-shrink-0 d-flex align-items-center justify-content-center" style="width: 88px; height: 132px;">
+                                        <div class="text-center">
+                                            <i class="ri-ship-2-fill fs-36 text-primary d-block mb-1"></i>
+                                            <span class="badge bg-primary text-white fs-9 px-1">PT / PMDN</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h5 class="fw-bold text-dark mb-1 fs-16">PT SAMUDRA BAHARI NUSANTARA</h5>
+                                        <span class="badge bg-light text-muted border border-secondary-subtle px-2 py-1 fs-11 fw-medium align-self-start">
+                                            <i class="ri-anchor-line me-1 text-success"></i>Pelaku Usaha Perikanan Tangkap
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row g-2">
+                                    <div class="col-sm-6 col-12">
+                                        <div class="p-2 px-3 rounded-3 bg-light-subtle border h-100">
+                                            <span class="text-muted fs-11 d-block mb-1">Nomor Induk Berusaha (NIB)</span>
+                                            <span class="fw-semibold text-dark font-monospace fs-12">1294000128491</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12">
+                                        <div class="p-2 px-3 rounded-3 bg-light-subtle border h-100">
+                                            <span class="text-muted fs-11 d-block mb-1">NPWP Perusahaan</span>
+                                            <span class="fw-semibold text-dark font-monospace fs-12">01.234.567.8-012.000</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12">
+                                        <div class="p-2 px-3 rounded-3 bg-light-subtle border h-100">
+                                            <span class="text-muted fs-11 d-block mb-1">KBLI Usaha</span>
+                                            <span class="fw-semibold text-dark fs-12">03111 (Penangkapan Laut)</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12">
+                                        <div class="p-2 px-3 rounded-3 bg-light-subtle border h-100">
+                                            <span class="text-muted fs-11 d-block mb-1">Kontak Perusahaan</span>
+                                            <span class="fw-semibold text-dark fs-12">(021) 555-8921 · kontak@samudrabahari.co.id</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12">
+                                        <div class="p-2 px-3 rounded-3 bg-light-subtle border h-100">
+                                            <span class="text-muted fs-11 d-block mb-1">Alamat Kantor / Domisili Usaha</span>
+                                            <span class="fw-semibold text-dark fs-12">Jl. Dermaga Pelabuhan Ratu No. 45, Muara Baru, Jakarta Utara</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-12">
+                                        <div class="p-2 px-3 rounded-3 bg-light-subtle border h-100">
+                                            <span class="text-muted fs-11 d-block mb-1">Pelabuhan Pangkalan / WPPNRI</span>
+                                            <span class="fw-semibold text-dark fs-12">PPS Muara Baru · WPPNRI 711, 712, 713</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End:: Profil Usaha & Pemilik Usaha -->
+
+                <!-- ================================================================================== -->
+                <!-- SEKSI 1: ALOKASI & REALISASI                                                       -->
+                <!-- ================================================================================== -->
+                <div class="d-flex align-items-center justify-content-between mb-3 mt-1 flex-wrap gap-2">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="avatar avatar-sm bg-primary text-white rounded-circle shadow-sm">
+                            <i class="ri-pie-chart-2-fill fs-16"></i>
+                        </span>
+                        <div>
+                            <h5 class="fw-bold text-dark mb-0 fs-15">Alokasi &amp; Realisasi</h5>
+                            <p class="text-muted fs-12 mb-0">Alokasi perizinan dan realisasi operasional kapal penangkap &amp; pengangkut</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <span class="badge bg-primary-transparent text-primary border border-primary-subtle px-2 py-1 fs-11 fw-semibold">
+                            <i class="ri-dashboard-line me-1"></i>15 Alokasi
+                        </span>
+                        <span class="badge bg-success-transparent text-success border border-success-subtle px-2 py-1 fs-11 fw-semibold">
+                            <i class="ri-checkbox-circle-fill me-1"></i>12 Realisasi
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-4">
+
+                    <!-- ========================================================================= -->
+                    <!-- ========================================================================= -->
+                    <!-- KOLOM 1A (50% KIRI): CARD ALOKASI                                         -->
+                    <!-- ========================================================================= -->
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-12">
+                        <div class="card custom-card h-100 border-0 shadow-sm d-flex flex-column">
+                            <!-- Card Header Alokasi -->
+                            <div class="card-header border-bottom py-3 px-3 px-md-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                <div>
+                                    <div class="card-title d-flex align-items-center gap-2 mb-1">
+                                        <i class="ri-pie-chart-2-line text-primary fs-18"></i>
+                                        <span>Alokasi</span>
+                                    </div>
+                                    <p class="text-muted fs-12 mb-0">Alokasi izin kapal penangkap &amp; pengangkut</p>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="badge bg-primary-transparent text-primary border border-primary-subtle px-2 py-1 fs-11 fw-semibold">
+                                        <i class="ri-dashboard-line me-1"></i>15 Alokasi
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-3 p-md-4 d-flex flex-column justify-content-between flex-grow-1">
+                                <div>
+                                    <!-- Ringkasan Metrik Alokasi -->
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-4">
+                                            <div class="p-2 p-md-3 rounded bg-primary-transparent text-center h-100 border border-primary-subtle" role="button" onclick="showKapalDetailModal('alokasi', 'all')" title="Klik untuk melihat semua kapal alokasi" style="cursor: pointer;">
+                                                <span class="text-muted fs-11 d-block">Total Alokasi</span>
+                                                <h5 class="fw-bold text-primary mb-0 mt-1">15</h5>
+                                                <span class="text-muted fs-10">Alokasi Izin</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="p-2 p-md-3 rounded bg-info-transparent text-center h-100 border border-info-subtle" role="button" onclick="showKapalDetailModal('alokasi', 'penangkap')" title="Klik untuk melihat kapal penangkap" style="cursor: pointer;">
+                                                <span class="text-muted fs-11 d-block">Penangkap</span>
+                                                <h5 class="fw-bold text-info mb-0 mt-1">10</h5>
+                                                <span class="text-muted fs-10">5 Alat Tangkap</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="p-2 p-md-3 rounded bg-success-transparent text-center h-100 border border-success-subtle" role="button" onclick="showKapalDetailModal('alokasi', 'pengangkut')" title="Klik untuk melihat kapal pengangkut" style="cursor: pointer;">
+                                                <span class="text-muted fs-11 d-block">Pengangkut</span>
+                                                <h5 class="fw-bold text-success mb-0 mt-1">5</h5>
+                                                <span class="text-muted fs-10">4 Jenis Operasi</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sub Filter Pills Alokasi -->
+                                    <div class="d-flex align-items-center justify-content-end mb-3 flex-wrap gap-2">
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="Filter Alokasi">
+                                            <button type="button" class="btn btn-outline-primary active fs-11 px-2 py-1" id="btnFilterAllAlokasi" onclick="filterAlokasiView('all')">
+                                                Semua (15)
+                                            </button>
+                                            <button type="button" class="btn btn-outline-primary fs-11 px-2 py-1" id="btnFilterTangkapAlokasi" onclick="filterAlokasiView('tangkap')">
+                                                Penangkap (10)
+                                            </button>
+                                            <button type="button" class="btn btn-outline-primary fs-11 px-2 py-1" id="btnFilterPengangkutAlokasi" onclick="filterAlokasiView('pengangkut')">
+                                                Pengangkut (5)
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Container List Alokasi -->
+                                    <div class="pit-scroll-container d-flex flex-column gap-2 pe-1" style="overflow-y: auto; max-height: 420px;">
+                                        
+                                        <!-- SECTION A: PENANGKAP (BERDASARKAN ALAT TANGKAP) -->
+                                        <div id="sectionAlokasiTangkap">
+                                            <div class="d-flex align-items-center justify-content-between mb-2 mt-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="badge bg-primary text-white fs-10 px-2 py-1"><i class="ri-anchor-line me-1"></i>PENANGKAP</span>
+                                                    <span class="fs-11 text-muted">Alat Tangkap (API)</span>
+                                                </div>
+                                                <span class="badge bg-primary-transparent text-primary fs-11 fw-bold">10 Alokasi</span>
+                                            </div>
+
+                                            <!-- Alat Tangkap 1: Jala Jatuh Berkapal -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('alokasi', 'Jala Jatuh Berkapal')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <strong class="text-dark fs-12">Jala Jatuh Berkapal</strong>
+                                                    <span class="badge bg-primary text-white fs-11 fw-semibold">2 Unit</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Mina Utama 08, KM Samudra Berkah 02</span>
+                                                    <i class="ri-arrow-right-s-line text-primary fs-14"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Alat Tangkap 2: Pukat Cincin Pelagis Kecil dengan Satu Kapal -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('alokasi', 'Pukat Cincin Pelagis Kecil dengan Satu Kapal')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <strong class="text-dark fs-12">Pukat Cincin Pelagis Kecil dengan Satu Kapal</strong>
+                                                    <span class="badge bg-info text-white fs-11 fw-semibold">3 Unit</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Samudra Jaya, KM Bahari Nusantara, KM Bahari Sejati 01</span>
+                                                    <i class="ri-arrow-right-s-line text-info fs-14"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Alat Tangkap 3: Jaring Hela Ikan Berkantong -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('alokasi', 'Jaring Hela Ikan Berkantong')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <strong class="text-dark fs-12">Jaring Hela Ikan Berkantong</strong>
+                                                    <span class="badge bg-success text-white fs-11 fw-semibold">3 Unit</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Nelayan Mandiri 07, KM Bintang Timur 05, KM Nusantara Explorer</span>
+                                                    <i class="ri-arrow-right-s-line text-success fs-14"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Alat Tangkap 4: Jaring Hela Udang Berkantong -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('alokasi', 'Jaring Hela Udang Berkantong')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <strong class="text-dark fs-12">Jaring Hela Udang Berkantong</strong>
+                                                    <span class="badge bg-warning text-dark fs-11 fw-semibold">1 Unit</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Bahtera Nelayan 03</span>
+                                                    <i class="ri-arrow-right-s-line text-warning fs-14"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Alat Tangkap 5: Jaring Insang Hanyut -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('alokasi', 'Jaring Insang Hanyut')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <strong class="text-dark fs-12">Jaring Insang Hanyut</strong>
+                                                    <span class="badge bg-secondary text-white fs-11 fw-semibold">1 Unit</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Halmahera Star</span>
+                                                    <i class="ri-arrow-right-s-line text-secondary fs-14"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- SECTION B: PENGANGKUT (BERDASARKAN JENIS OPERASI) -->
+                                        <div id="sectionAlokasiPengangkut" class="mt-2">
+                                            <div class="d-flex align-items-center justify-content-between mb-2 mt-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="badge bg-success text-white fs-10 px-2 py-1"><i class="ri-ship-line me-1"></i>PENGANGKUT</span>
+                                                    <span class="fs-11 text-muted">Jenis Operasi</span>
+                                                </div>
+                                                <span class="badge bg-success-transparent text-success fs-11 fw-bold">5 Alokasi</span>
+                                            </div>
+
+                                            <!-- Jenis Operasi 1: Kapal Pengangkut Ikan antar Pelabuhan Pangkalan -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('alokasi', 'Kapal Pengangkut Ikan antar Pelabuhan Pangkalan')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <strong class="text-dark fs-12">Kapal Pengangkut Ikan antar Pelabuhan Pangkalan</strong>
+                                                    <span class="badge bg-primary text-white fs-11 fw-semibold">2 Unit</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Laut Makmur, KM Samudra Bahari 09</span>
+                                                    <i class="ri-arrow-right-s-line text-primary fs-14"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Jenis Operasi 2: Kapal Pengangkut Ikan dari Daerah Penangkapan Ikan (WPPNRI) -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('alokasi', 'Kapal Pengangkut Ikan dari Daerah Penangkapan Ikan (WPPNRI)')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <strong class="text-dark fs-12">Kapal Pengangkut Ikan dari Daerah Penangkapan Ikan (WPPNRI)</strong>
+                                                    <span class="badge bg-info text-white fs-11 fw-semibold">1 Unit</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Tirta Samudra</span>
+                                                    <i class="ri-arrow-right-s-line text-info fs-14"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Jenis Operasi 3: Kapal Pengangkut Ikan di Laut Lepas -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('alokasi', 'Kapal Pengangkut Ikan di Laut Lepas')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <strong class="text-dark fs-12">Kapal Pengangkut Ikan di Laut Lepas</strong>
+                                                    <span class="badge bg-success text-white fs-11 fw-semibold">1 Unit</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Samudra Pasifik</span>
+                                                    <i class="ri-arrow-right-s-line text-success fs-14"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Jenis Operasi 4: Kapal Pengangkut Ikan Hidup Antar Tempat Pembudidayaan Ikan -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('alokasi', 'Kapal Pengangkut Ikan Hidup Antar Tempat Pembudidayaan Ikan')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <strong class="text-dark fs-12">Kapal Pengangkut Ikan Hidup Antar Tempat Pembudidayaan Ikan</strong>
+                                                    <span class="badge bg-secondary text-white fs-11 fw-semibold">1 Unit</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Cendrawasih Glory</span>
+                                                    <i class="ri-arrow-right-s-line text-secondary fs-14"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ========================================================================= -->
+                    <!-- KOLOM 1B (50% KANAN): CARD REALISASI                                      -->
+                    <!-- ========================================================================= -->
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-12">
+                        <div class="card custom-card h-100 border-0 shadow-sm d-flex flex-column">
+                            <!-- Card Header Realisasi -->
+                            <div class="card-header border-bottom py-3 px-3 px-md-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                <div>
+                                    <div class="card-title d-flex align-items-center gap-2 mb-1">
+                                        <i class="ri-ship-line text-success fs-18"></i>
+                                        <span>Realisasi</span>
+                                    </div>
+                                    <p class="text-muted fs-12 mb-0">Realisasi operasional kapal penangkap &amp; pengangkut</p>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="badge bg-success-transparent text-success border border-success-subtle px-2 py-1 fs-11 fw-semibold">
+                                        <i class="ri-checkbox-circle-fill me-1"></i>12 Realisasi
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-3 p-md-4 d-flex flex-column justify-content-between flex-grow-1">
+                                <div>
+                                    <!-- Ringkasan Metrik Realisasi -->
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-4">
+                                             <div class="p-2 p-md-3 rounded bg-success-transparent text-center h-100 border border-success-subtle" role="button" onclick="showKapalDetailModal('realisasi', 'all')" title="Klik untuk melihat semua kapal realisasi" style="cursor: pointer;">
+                                                <span class="text-muted fs-11 d-block">Total Realisasi</span>
+                                                <h5 class="fw-bold text-success mb-0 mt-1">12</h5>
+                                                <span class="text-muted fs-10">Armada Beroperasi</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="p-2 p-md-3 rounded bg-primary-transparent text-center h-100 border border-primary-subtle" role="button" onclick="showKapalDetailModal('realisasi', 'penangkap')" title="Klik untuk melihat kapal penangkap aktif" style="cursor: pointer;">
+                                                <span class="text-muted fs-11 d-block">Penangkap</span>
+                                                <h5 class="fw-bold text-primary mb-0 mt-1">8</h5>
+                                                <span class="text-muted fs-10">SIPI Aktif</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="p-2 p-md-3 rounded bg-info-transparent text-center h-100 border border-info-subtle" role="button" onclick="showKapalDetailModal('realisasi', 'pengangkut')" title="Klik untuk melihat kapal pengangkut aktif" style="cursor: pointer;">
+                                                <span class="text-muted fs-11 d-block">Pengangkut</span>
+                                                <h5 class="fw-bold text-info mb-0 mt-1">4</h5>
+                                                <span class="text-muted fs-10">SIKPI Aktif</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sub Filter Pills Realisasi -->
+                                    <div class="d-flex align-items-center justify-content-end mb-3 flex-wrap gap-2">
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="Filter Realisasi">
+                                            <button type="button" class="btn btn-outline-success active fs-11 px-2 py-1" id="btnFilterAllRealisasi" onclick="filterRealisasiView('all')">
+                                                Semua (12)
+                                            </button>
+                                            <button type="button" class="btn btn-outline-success fs-11 px-2 py-1" id="btnFilterTangkapRealisasi" onclick="filterRealisasiView('tangkap')">
+                                                Penangkap (8)
+                                            </button>
+                                            <button type="button" class="btn btn-outline-success fs-11 px-2 py-1" id="btnFilterPengangkutRealisasi" onclick="filterRealisasiView('pengangkut')">
+                                                Pengangkut (4)
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Container List Realisasi -->
+                                    <div class="pit-scroll-container d-flex flex-column gap-2 pe-1" style="overflow-y: auto; max-height: 420px;">
+                                        
+                                        <!-- SECTION A: PENANGKAP REALISASI -->
+                                        <div id="sectionRealisasiTangkap">
+                                            <div class="d-flex align-items-center justify-content-between mb-2 mt-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="badge bg-primary text-white fs-10 px-2 py-1"><i class="ri-anchor-line me-1"></i>PENANGKAP</span>
+                                                    <span class="fs-11 text-muted">SIPI Aktif</span>
+                                                </div>
+                                                <span class="badge bg-primary-transparent text-primary fs-11 fw-bold">8 Realisasi</span>
+                                            </div>
+
+                                            <!-- Realisasi 1: Jala Jatuh Berkapal -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('realisasi', 'Jala Jatuh Berkapal')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="text-dark fs-12 fw-semibold">Jala Jatuh Berkapal</span>
+                                                    <span class="badge bg-primary text-white fs-11">2 dari 2 Alokasi</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Mina Utama 08, KM Samudra Berkah 02</span>
+                                                    <i class="ri-arrow-right-s-line text-success fs-14"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Realisasi 2: Pukat Cincin Pelagis Kecil dengan Satu Kapal -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('realisasi', 'Pukat Cincin Pelagis Kecil dengan Satu Kapal')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="text-dark fs-12 fw-semibold">Pukat Cincin Pelagis Kecil dengan Satu Kapal</span>
+                                                    <span class="badge bg-info text-white fs-11">2 dari 3 Alokasi</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Samudra Jaya, KM Bahari Nusantara</span>
+                                                    <i class="ri-arrow-right-s-line text-success fs-14"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Realisasi 3: Jaring Hela Ikan Berkantong -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('realisasi', 'Jaring Hela Ikan Berkantong')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="text-dark fs-12 fw-semibold">Jaring Hela Ikan Berkantong</span>
+                                                    <span class="badge bg-success text-white fs-11">2 dari 3 Alokasi</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Nelayan Mandiri 07, KM Bintang Timur 05</span>
+                                                    <i class="ri-arrow-right-s-line text-success fs-14"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Realisasi 4: Jaring Hela Udang Berkantong -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('realisasi', 'Jaring Hela Udang Berkantong')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="text-dark fs-12 fw-semibold">Jaring Hela Udang Berkantong</span>
+                                                    <span class="badge bg-warning text-dark fs-11">1 dari 1 Alokasi</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Bahtera Nelayan 03</span>
+                                                    <i class="ri-arrow-right-s-line text-success fs-14"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Realisasi 5: Jaring Insang Hanyut -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('realisasi', 'Jaring Insang Hanyut')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="text-dark fs-12 fw-semibold">Jaring Insang Hanyut</span>
+                                                    <span class="badge bg-secondary text-white fs-11">1 dari 1 Alokasi</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Halmahera Star</span>
+                                                    <i class="ri-arrow-right-s-line text-success fs-14"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- SECTION B: PENGANGKUT REALISASI -->
+                                        <div id="sectionRealisasiPengangkut" class="mt-2">
+                                            <div class="d-flex align-items-center justify-content-between mb-2 mt-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="badge bg-success text-white fs-10 px-2 py-1"><i class="ri-ship-line me-1"></i>PENGANGKUT</span>
+                                                    <span class="fs-11 text-muted">SIKPI Aktif</span>
+                                                </div>
+                                                <span class="badge bg-success-transparent text-success fs-11 fw-bold">4 Realisasi</span>
+                                            </div>
+
+                                            <!-- Realisasi 6: Kapal Pengangkut Ikan antar Pelabuhan Pangkalan -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('realisasi', 'Kapal Pengangkut Ikan antar Pelabuhan Pangkalan')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="text-dark fs-12 fw-semibold">Kapal Pengangkut Ikan antar Pelabuhan Pangkalan</span>
+                                                    <span class="badge bg-primary text-white fs-11">1 dari 2 Alokasi</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Laut Makmur</span>
+                                                    <i class="ri-arrow-right-s-line text-success fs-14"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Realisasi 7: Kapal Pengangkut Ikan dari Daerah Penangkapan Ikan (WPPNRI) -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('realisasi', 'Kapal Pengangkut Ikan dari Daerah Penangkapan Ikan (WPPNRI)')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="text-dark fs-12 fw-semibold">Kapal Pengangkut Ikan dari Daerah Penangkapan Ikan (WPPNRI)</span>
+                                                    <span class="badge bg-info text-white fs-11">1 dari 1 Alokasi</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Tirta Samudra</span>
+                                                    <i class="ri-arrow-right-s-line text-success fs-14"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Realisasi 8: Kapal Pengangkut Ikan di Laut Lepas -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('realisasi', 'Kapal Pengangkut Ikan di Laut Lepas')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="text-dark fs-12 fw-semibold">Kapal Pengangkut Ikan di Laut Lepas</span>
+                                                    <span class="badge bg-success text-white fs-11">1 dari 1 Alokasi</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Samudra Pasifik</span>
+                                                    <i class="ri-arrow-right-s-line text-success fs-14"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Realisasi 9: Kapal Pengangkut Ikan Hidup Antar Tempat Pembudidayaan Ikan -->
+                                            <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item mb-2" role="button" onclick="showKapalDetailModal('realisasi', 'Kapal Pengangkut Ikan Hidup Antar Tempat Pembudidayaan Ikan')" style="cursor: pointer;" title="Klik untuk rincian kapal">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="text-dark fs-12 fw-semibold">Kapal Pengangkut Ikan Hidup Antar Tempat Pembudidayaan Ikan</span>
+                                                    <span class="badge bg-secondary text-white fs-11">1 dari 1 Alokasi</span>
+                                                </div>
+                                                <div class="fs-11 text-muted d-flex justify-content-between align-items-center">
+                                                    <span class="text-dark fw-medium">KM Cendrawasih Glory</span>
+                                                    <i class="ri-arrow-right-s-line text-success fs-14"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End:: Seksi 1: Alokasi & Realisasi Armada Usaha -->
+
+
+                <!-- ================================================================================== -->
+                <!-- SEKSI 2: STATUS DOKUMEN & TAHAPAN VERIFIKASI                                       -->
+                <!-- ================================================================================== -->
+                <div class="d-flex align-items-center justify-content-between mb-3 mt-4 pt-2 flex-wrap gap-2">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="avatar avatar-sm bg-info text-white rounded-circle shadow-sm">
+                            <i class="ri-file-shield-2-fill fs-16"></i>
+                        </span>
+                        <div>
+                            <h5 class="fw-bold text-dark mb-0 fs-15">Status Dokumen &amp; Tahapan Verifikasi</h5>
+                            <p class="text-muted fs-12 mb-0">Status keaktifan dokumen izin armada dan tahapan verifikasi</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <span class="badge bg-success-transparent text-success border border-success-subtle px-2 py-1 fs-11 fw-semibold">
+                            <i class="ri-shield-check-fill me-1"></i>8 Aktif
+                        </span>
+                        <span class="badge bg-warning-transparent text-warning-emphasis border border-warning-subtle px-2 py-1 fs-11 fw-semibold">
+                            <i class="ri-time-fill me-1"></i>4 Mendekati Kedaluwarsa
+                        </span>
+                        <span class="badge bg-danger-transparent text-danger border border-danger-subtle px-2 py-1 fs-11 fw-semibold">
+                            <i class="ri-close-circle-fill me-1"></i>3 Tidak Aktif / Belum Berizin
+                        </span>
+                        <span class="badge bg-primary-transparent text-primary border border-primary-subtle px-2 py-1 fs-11 fw-semibold">
+                            <i class="ri-hourglass-2-line me-1"></i>3 Proses Verifikasi
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    
+                    <!-- ========================================================================= -->
+                    <!-- KOLOM 2A (50% KIRI): CARD STATUS DOKUMEN PERIZINAN (SIPI / SIKPI)          -->
+                    <!-- ========================================================================= -->
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-12">
+                        <div class="card custom-card h-100 border-0 shadow-sm d-flex flex-column">
+                            <!-- Card Header Dokumen Perizinan -->
+                            <div class="card-header border-bottom py-3 px-3 px-md-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                <div>
+                                    <div class="card-title d-flex align-items-center gap-2 mb-1">
+                                        <i class="ri-file-shield-2-line text-primary fs-18"></i>
+                                        <span>Status Dokumen Perizinan</span>
+                                    </div>
+                                    <p class="text-muted fs-12 mb-0">Status keaktifan dokumen izin armada kapal penangkap &amp; pengangkut</p>
+                                </div>
+                                <span class="badge bg-light text-dark border px-2 py-1 fs-11 fw-semibold">
+                                    <i class="ri-file-list-3-line me-1"></i>15 Dokumen
+                                </span>
+                            </div>
+
+                            <div class="card-body p-3 p-md-4 d-flex flex-column justify-content-between flex-grow-1">
+                                <div>
+                                    <!-- Ringkasan Metrik Status Dokumen -->
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-3">
+                                            <div class="p-2 rounded bg-primary-transparent text-center h-100 border border-primary-subtle">
+                                                <span class="text-muted fs-11 d-block">Total</span>
+                                                <h5 class="fw-bold text-primary mb-0 mt-1">15</h5>
+                                                <span class="text-muted fs-10">Alokasi Kapal</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="p-2 rounded bg-success-transparent text-center h-100 border border-success-subtle">
+                                                <span class="text-muted fs-11 d-block">Aktif</span>
+                                                <h5 class="fw-bold text-success mb-0 mt-1">8</h5>
+                                                <span class="text-muted fs-10">Masa Aman</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="p-2 rounded bg-warning-transparent text-center h-100 border border-warning-subtle">
+                                                <span class="text-muted fs-11 d-block">Mendekati</span>
+                                                <h5 class="fw-bold text-warning-emphasis mb-0 mt-1">4</h5>
+                                                <span class="text-muted fs-10">Perpanjangan</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="p-2 rounded bg-danger-transparent text-center h-100 border border-danger-subtle">
+                                                <span class="text-muted fs-11 d-block">Tidak Aktif</span>
+                                                <h5 class="fw-bold text-danger mb-0 mt-1">3</h5>
+                                                <span class="text-muted fs-10">2 Habis · 1 Belum</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Filter Button Kategori Status -->
+                                    <div class="d-flex align-items-center justify-content-end mb-3 flex-wrap gap-2">
+                                        <div class="btn-group btn-group-sm flex-wrap" role="group" aria-label="Filter Status Dokumen">
+                                            <button type="button" class="btn btn-outline-primary active fs-11 px-2 py-1" id="btnFilterAllDok" onclick="filterDokumenStatus('all')">
+                                                Semua (15)
+                                            </button>
+                                            <button type="button" class="btn btn-outline-success fs-11 px-2 py-1" id="btnFilterAktifDok" onclick="filterDokumenStatus('aktif')">
+                                                Aktif (8)
+                                            </button>
+                                            <button type="button" class="btn btn-outline-warning fs-11 px-2 py-1" id="btnFilterMepetDok" onclick="filterDokumenStatus('mepet')">
+                                                Mendekati (4)
+                                            </button>
+                                            <button type="button" class="btn btn-outline-danger fs-11 px-2 py-1" id="btnFilterMatiDok" onclick="filterDokumenStatus('tidak-aktif')">
+                                                Tidak Aktif (3)
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Container List Dokumen SIPI / SIKPI -->
+                                    <div class="pit-scroll-container d-flex flex-column gap-2 pe-1" id="listDokumenAktifContainer" style="overflow-y: auto; max-height: 420px;">
+                                        
+                                        <!-- ============================================================= -->
+                                        <!-- KATEGORI: TIDAK AKTIF / MATI / BELUM MENGAJUKAN IZIN          -->
+                                        <!-- ============================================================= -->
+
+                                        <!-- Dokumen Tidak Aktif 1: MATI KARENA TIDAK DIPERPANJANG -->
+                                        <div class="p-2 px-3 border border-danger-subtle rounded-3 bg-danger-subtle pit-card-item item-dok-tidak-aktif">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-danger text-white rounded"><i class="ri-close-circle-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Bahari Sejati 01</strong>
+                                                        <span class="text-muted fs-10">100 GT · Penangkap</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-danger text-white fs-10 px-2 py-1 d-inline-block"><i class="ri-error-warning-line me-1"></i>Izin Habis</span>
+                                                </div>
+                                            </div>
+                                            <div class="fs-11 text-muted mb-1">
+                                                <i class="ri-information-line me-1 text-danger"></i>Masa berlaku izin habis dan belum diajukan perpanjangan.
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top border-danger-subtle">
+                                                <div>
+                                                    <span class="badge bg-primary-transparent text-primary me-1 fs-10">SIPI</span>
+                                                    <span class="font-monospace text-muted text-decoration-line-through fs-11">SIPI-KP-2023/1189</span>
+                                                </div>
+                                                <span class="badge bg-danger text-white fs-10 fw-semibold"><i class="ri-alert-line me-1"></i>Belum Diperpanjang</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dokumen Tidak Aktif 2: MATI KARENA TIDAK DIPERPANJANG -->
+                                        <div class="p-2 px-3 border border-danger-subtle rounded-3 bg-danger-subtle pit-card-item item-dok-tidak-aktif">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-danger text-white rounded"><i class="ri-close-circle-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Samudra Bahari 09</strong>
+                                                        <span class="text-muted fs-10">140 GT · Pengangkut</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-danger text-white fs-10 px-2 py-1 d-inline-block"><i class="ri-error-warning-line me-1"></i>Izin Habis</span>
+                                                </div>
+                                            </div>
+                                            <div class="fs-11 text-muted mb-1">
+                                                <i class="ri-information-line me-1 text-danger"></i>Masa berlaku izin habis dan belum diajukan perpanjangan.
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top border-danger-subtle">
+                                                <div>
+                                                    <span class="badge bg-info-transparent text-info me-1 fs-10">SIKPI</span>
+                                                    <span class="font-monospace text-muted text-decoration-line-through fs-11">SIKPI-KP-2025/8802</span>
+                                                </div>
+                                                <span class="badge bg-danger text-white fs-10 fw-semibold"><i class="ri-alert-line me-1"></i>Belum Diperpanjang</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dokumen Tidak Aktif 3: BELUM PERNAH MENGAJUKAN IZIN -->
+                                        <div class="p-2 px-3 border border-secondary-subtle rounded-3 bg-secondary-subtle pit-card-item item-dok-tidak-aktif">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-secondary text-white rounded"><i class="ri-file-forbid-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Nusantara Explorer</strong>
+                                                        <span class="text-muted fs-10">80 GT · Penangkap</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-secondary text-white fs-10 px-2 py-1 d-inline-block"><i class="ri-forbid-line me-1"></i>Belum Berizin</span>
+                                                </div>
+                                            </div>
+                                            <div class="fs-11 text-muted mb-1">
+                                                <i class="ri-information-line me-1 text-secondary"></i>Armada terdata dalam alokasi usaha namun belum pernah mengajukan permohonan izin.
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top border-secondary-subtle">
+                                                <div>
+                                                    <span class="badge bg-light text-muted border me-1 fs-10">SIPI</span>
+                                                    <span class="text-muted fst-italic fs-11">Belum Ada Nomor Izin</span>
+                                                </div>
+                                                <span class="badge bg-secondary text-white fs-10 fw-semibold"><i class="ri-forbid-2-line me-1"></i>Belum Mengajukan Izin</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- ============================================================= -->
+                                        <!-- KATEGORI: MENDEKATI KEDALUWARSA (PERIODE PERPANJANGAN)         -->
+                                        <!-- ============================================================= -->
+
+                                        <!-- Dokumen Mendekati Kedaluwarsa 1: Mepet Tanggal (5 Hari) -->
+                                        <div class="p-2 px-3 border border-warning-subtle rounded-3 bg-warning-subtle pit-card-item item-dok-mepet">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-warning text-dark rounded"><i class="ri-ship-2-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Mina Utama 08</strong>
+                                                        <span class="text-muted fs-10">95 GT · Penangkap</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-warning text-dark fs-10 px-2 py-1 d-inline-block"><i class="ri-time-line me-1"></i>Tersisa 5 Hari</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top border-warning-subtle">
+                                                <div>
+                                                    <span class="badge bg-primary-transparent text-primary me-1 fs-10">SIPI</span>
+                                                    <span class="font-monospace text-dark fs-11">SIPI-KP-2023/4412</span>
+                                                </div>
+                                                <span class="badge bg-warning-transparent text-warning-emphasis fs-10 fw-semibold"><i class="ri-alarm-warning-line me-1"></i>Mendekati Kedaluwarsa</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dokumen Mendekati Kedaluwarsa 2: Mepet Tanggal (7 Hari) -->
+                                        <div class="p-2 px-3 border border-warning-subtle rounded-3 bg-warning-subtle pit-card-item item-dok-mepet">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-warning text-dark rounded"><i class="ri-ship-2-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Samudra Berkah 02</strong>
+                                                        <span class="text-muted fs-10">110 GT · Penangkap</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-warning text-dark fs-10 px-2 py-1 d-inline-block"><i class="ri-time-line me-1"></i>Tersisa 7 Hari</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top border-warning-subtle">
+                                                <div>
+                                                    <span class="badge bg-primary-transparent text-primary me-1 fs-10">SIPI</span>
+                                                    <span class="font-monospace text-dark fs-11">SIPI-KP-2023/4910</span>
+                                                </div>
+                                                <span class="badge bg-warning-transparent text-warning-emphasis fs-10 fw-semibold"><i class="ri-alarm-warning-line me-1"></i>Mendekati Kedaluwarsa</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dokumen Mendekati Kedaluwarsa 3: Masuk Periode Perpanjangan (17 Hari) -->
+                                        <div class="p-2 px-3 border border-warning-subtle rounded-3 bg-warning-subtle pit-card-item item-dok-mepet">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-warning text-dark rounded"><i class="ri-ship-2-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Bahari Nusantara</strong>
+                                                        <span class="text-muted fs-10">85 GT · Penangkap</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-warning text-dark fs-10 px-2 py-1 d-inline-block"><i class="ri-time-line me-1"></i>Tersisa 17 Hari</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top border-warning-subtle">
+                                                <div>
+                                                    <span class="badge bg-primary-transparent text-primary me-1 fs-10">SIPI</span>
+                                                    <span class="font-monospace text-dark fs-11">SIPI-KP-2023/99120</span>
+                                                </div>
+                                                <span class="badge bg-warning-transparent text-warning-emphasis fs-10 fw-semibold"><i class="ri-time-line me-1"></i>Periode Perpanjangan</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dokumen Mendekati Kedaluwarsa 4: Masuk Periode Perpanjangan (25 Hari) -->
+                                        <div class="p-2 px-3 border border-warning-subtle rounded-3 bg-warning-subtle pit-card-item item-dok-mepet">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-warning text-dark rounded"><i class="ri-ship-2-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Nelayan Mandiri 07</strong>
+                                                        <span class="text-muted fs-10">65 GT · Penangkap</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-warning text-dark fs-10 px-2 py-1 d-inline-block"><i class="ri-time-line me-1"></i>Tersisa 25 Hari</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top border-warning-subtle">
+                                                <div>
+                                                    <span class="badge bg-primary-transparent text-primary me-1 fs-10">SIPI</span>
+                                                    <span class="font-monospace text-dark fs-11">SIPI-KP-2023/3821</span>
+                                                </div>
+                                                <span class="badge bg-warning-transparent text-warning-emphasis fs-10 fw-semibold"><i class="ri-time-line me-1"></i>Periode Perpanjangan</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- ============================================================= -->
+                                        <!-- KATEGORI: AKTIF                                                -->
+                                        <!-- ============================================================= -->
+
+                                        <!-- Dokumen Aktif 1 -->
+                                        <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item item-dok-aktif">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-light text-muted rounded border"><i class="ri-ship-2-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Samudra Jaya</strong>
+                                                        <span class="text-muted fs-10">120 GT · Penangkap</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-success-transparent text-success fs-10 px-2 py-1 d-inline-block"><i class="ri-check-line me-1"></i>Tersisa 89 Hari</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top">
+                                                <div>
+                                                    <span class="badge bg-primary-transparent text-primary me-1 fs-10">SIPI</span>
+                                                    <span class="font-monospace text-dark fs-11">SIPI-KP-2024/00192</span>
+                                                </div>
+                                                <span class="badge bg-success-transparent text-success fs-10 fw-semibold"><i class="ri-shield-check-line me-1"></i>Aktif</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dokumen Aktif 2 -->
+                                        <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item item-dok-aktif">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-info-transparent text-info rounded border border-info-subtle"><i class="ri-ship-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Laut Makmur</strong>
+                                                        <span class="text-muted fs-10">160 GT · Pengangkut</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-success-transparent text-success fs-10 px-2 py-1 d-inline-block"><i class="ri-check-line me-1"></i>Tersisa 98 Hari</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top">
+                                                <div>
+                                                    <span class="badge bg-info-transparent text-info me-1 fs-10">SIKPI</span>
+                                                    <span class="font-monospace text-dark fs-11">SIKPI-KP-2026/5521</span>
+                                                </div>
+                                                <span class="badge bg-success-transparent text-success fs-10 fw-semibold"><i class="ri-shield-check-line me-1"></i>Aktif</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dokumen Aktif 3 -->
+                                        <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item item-dok-aktif">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-info-transparent text-info rounded border border-info-subtle"><i class="ri-ship-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Samudra Pasifik</strong>
+                                                        <span class="text-muted fs-10">200 GT · Pengangkut</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-success-transparent text-success fs-10 px-2 py-1 d-inline-block"><i class="ri-check-line me-1"></i>Tersisa 98 Hari</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top">
+                                                <div>
+                                                    <span class="badge bg-info-transparent text-info me-1 fs-10">SIKPI</span>
+                                                    <span class="font-monospace text-dark fs-11">SIKPI-KP-2026/7781</span>
+                                                </div>
+                                                <span class="badge bg-success-transparent text-success fs-10 fw-semibold"><i class="ri-shield-check-line me-1"></i>Aktif</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dokumen Aktif 4 -->
+                                        <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item item-dok-aktif">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-light text-muted rounded border"><i class="ri-ship-2-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Bahtera Nelayan 03</strong>
+                                                        <span class="text-muted fs-10">75 GT · Penangkap</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-success-transparent text-success fs-10 px-2 py-1 d-inline-block"><i class="ri-check-line me-1"></i>Tersisa 55 Hari</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top">
+                                                <div>
+                                                    <span class="badge bg-primary-transparent text-primary me-1 fs-10">SIPI</span>
+                                                    <span class="font-monospace text-dark fs-11">SIPI-KP-2024/1102</span>
+                                                </div>
+                                                <span class="badge bg-success-transparent text-success fs-10 fw-semibold"><i class="ri-shield-check-line me-1"></i>Aktif</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dokumen Aktif 5 -->
+                                        <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item item-dok-aktif">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-light text-muted rounded border"><i class="ri-ship-2-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Bintang Timur 05</strong>
+                                                        <span class="text-muted fs-10">110 GT · Penangkap</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-success-transparent text-success fs-10 px-2 py-1 d-inline-block"><i class="ri-check-line me-1"></i>Tersisa 141 Hari</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top">
+                                                <div>
+                                                    <span class="badge bg-primary-transparent text-primary me-1 fs-10">SIPI</span>
+                                                    <span class="font-monospace text-dark fs-11">SIPI-KP-2024/8834</span>
+                                                </div>
+                                                <span class="badge bg-success-transparent text-success fs-10 fw-semibold"><i class="ri-shield-check-line me-1"></i>Aktif</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dokumen Aktif 6 -->
+                                        <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item item-dok-aktif">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-info-transparent text-info rounded border border-info-subtle"><i class="ri-ship-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Tirta Samudra</strong>
+                                                        <span class="text-muted fs-10">135 GT · Pengangkut</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-success-transparent text-success fs-10 px-2 py-1 d-inline-block"><i class="ri-check-line me-1"></i>Tersisa 98 Hari</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top">
+                                                <div>
+                                                    <span class="badge bg-info-transparent text-info me-1 fs-10">SIKPI</span>
+                                                    <span class="font-monospace text-dark fs-11">SIKPI-KP-2026/9021</span>
+                                                </div>
+                                                <span class="badge bg-success-transparent text-success fs-10 fw-semibold"><i class="ri-shield-check-line me-1"></i>Aktif</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dokumen Aktif 7 -->
+                                        <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item item-dok-aktif">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-light text-muted rounded border"><i class="ri-ship-2-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Halmahera Star</strong>
+                                                        <span class="text-muted fs-10">130 GT · Penangkap</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-success-transparent text-success fs-10 px-2 py-1 d-inline-block"><i class="ri-check-line me-1"></i>Tersisa 270 Hari</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top">
+                                                <div>
+                                                    <span class="badge bg-primary-transparent text-primary me-1 fs-10">SIPI</span>
+                                                    <span class="font-monospace text-dark fs-11">SIPI-KP-2024/6619</span>
+                                                </div>
+                                                <span class="badge bg-success-transparent text-success fs-10 fw-semibold"><i class="ri-shield-check-line me-1"></i>Aktif</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dokumen Aktif 8 -->
+                                        <div class="p-2 px-3 border rounded-3 bg-light-subtle pit-card-item item-dok-aktif">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-xs bg-info-transparent text-info rounded border border-info-subtle"><i class="ri-ship-line"></i></span>
+                                                    <div>
+                                                        <strong class="text-dark fs-12 d-block">KM Cendrawasih Glory</strong>
+                                                        <span class="text-muted fs-10">175 GT · Pengangkut</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="badge bg-success-transparent text-success fs-10 px-2 py-1 d-inline-block"><i class="ri-check-line me-1"></i>Tersisa 98 Hari</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1 border-top">
+                                                <div>
+                                                    <span class="badge bg-info-transparent text-info me-1 fs-10">SIKPI</span>
+                                                    <span class="font-monospace text-dark fs-11">SIKPI-KP-2026/9805</span>
+                                                </div>
+                                                <span class="badge bg-success-transparent text-success fs-10 fw-semibold"><i class="ri-shield-check-line me-1"></i>Aktif</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ========================================================================= -->
+                    <!-- KOLOM 2B (50% KANAN): CARD TAHAPAN VERIFIKASI BERKAS DALAM PROSES         -->
+                    <!-- ========================================================================= -->
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-12">
+                        <div class="card custom-card h-100 border-0 shadow-sm d-flex flex-column">
+                            <div class="card-header border-bottom py-3 px-3 px-md-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                <div>
+                                    <div class="card-title d-flex align-items-center gap-2 mb-1">
+                                        <i class="ri-loader-4-line text-warning fs-18"></i>
+                                        <span>Tahapan Verifikasi Berkas</span>
+                                    </div>
+                                    <p class="text-muted fs-12 mb-0">Status pemeriksaan dokumen permohonan izin</p>
+                                </div>
+                                <span class="badge bg-warning-transparent text-warning-emphasis border border-warning-subtle px-2 py-1 fs-11 fw-semibold">
+                                    <i class="ri-hourglass-2-line me-1"></i>3 Berkas Proses
+                                </span>
+                            </div>
+
+                            <div class="card-body p-3 p-md-4 d-flex flex-column justify-content-between flex-grow-1">
+                                <div>
+                                    <!-- Ringkasan Metrik Dokumen Dalam Proses -->
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-6">
+                                            <div class="p-2 p-md-3 rounded bg-warning-transparent text-center h-100 border border-warning-subtle">
+                                                <span class="text-muted fs-11 d-block">Total Berkas Proses</span>
+                                                <h5 class="fw-bold text-warning-emphasis mb-0 mt-1">3</h5>
+                                                <span class="text-muted fs-10">Berkas Verifikasi</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="p-2 p-md-3 rounded bg-primary-transparent text-center h-100 border border-primary-subtle">
+                                                <span class="text-muted fs-11 d-block">Kapal Dalam Proses</span>
+                                                <h5 class="fw-bold text-primary mb-0 mt-1">3 Kapal</h5>
+                                                <span class="text-muted fs-10">Armada Aktif</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Container List Dokumen Proses -->
+                                    <div class="pit-scroll-container d-flex flex-column gap-3 pe-1" style="overflow-y: auto; max-height: 420px;">
+                                        
+                                        <!-- Agenda Proses 1: AG-2026-0014 (KM Bahari Nusantara) -->
+                                        <div class="p-3 border border-warning-subtle rounded-3 bg-white shadow-sm pit-card-item">
+                                            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-sm bg-warning-transparent text-warning rounded-circle">
+                                                        <i class="ri-file-search-line fs-14"></i>
+                                                    </span>
+                                                    <div>
+                                                        <div class="d-flex align-items-center gap-2 flex-wrap">
+                                                            <strong class="font-monospace text-primary fs-13">AG-2026-0014</strong>
+                                                            <span class="badge bg-primary-transparent text-primary border border-primary-subtle fs-10 px-1.5 py-0.5 fw-semibold">
+                                                                <i class="ri-refresh-line me-1"></i>Perpanjangan SIPI
+                                                            </span>
+                                                        </div>
+                                                        <span class="text-dark fw-bold fs-12 d-block mt-0.5">KM Bahari Nusantara <span class="text-muted fw-normal fs-11">(85 GT · Penangkap)</span></span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-sm btn-icon btn-light border border-warning-subtle rounded-circle shadow-none" 
+                                                            data-bs-toggle="tooltip" 
+                                                            data-bs-placement="left" 
+                                                            title="10 Sep 2026, 09:30 WIB"
+                                                            aria-label="Informasi Waktu Verifikasi">
+                                                        <i class="ri-information-line fs-14 text-warning-emphasis"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between align-items-center pt-2 border-top fs-11 text-muted">
+                                                <span><i class="ri-calendar-line me-1 text-secondary"></i>Tanggal Pengajuan: <strong>10 Sep 2026</strong></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Agenda Proses 2: AG-2026-0010 (KM Samudra Berkah 02) -->
+                                        <div class="p-3 border border-warning-subtle rounded-3 bg-white shadow-sm pit-card-item">
+                                            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-sm bg-warning-transparent text-warning rounded-circle">
+                                                        <i class="ri-shield-check-line fs-14"></i>
+                                                    </span>
+                                                    <div>
+                                                        <div class="d-flex align-items-center gap-2 flex-wrap">
+                                                            <strong class="font-monospace text-primary fs-13">AG-2026-0010</strong>
+                                                            <span class="badge bg-success-transparent text-success border border-success-subtle fs-10 px-1.5 py-0.5 fw-semibold">
+                                                                <i class="ri-file-add-line me-1"></i>Permohonan SIPI Baru
+                                                            </span>
+                                                        </div>
+                                                        <span class="text-dark fw-bold fs-12 d-block mt-0.5">KM Samudra Berkah 02 <span class="text-muted fw-normal fs-11">(110 GT · Penangkap)</span></span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-sm btn-icon btn-light border border-warning-subtle rounded-circle shadow-none" 
+                                                            data-bs-toggle="tooltip" 
+                                                            data-bs-placement="left" 
+                                                            title="19 Agu 2026, 14:15 WIB"
+                                                            aria-label="Informasi Waktu Verifikasi">
+                                                        <i class="ri-information-line fs-14 text-warning-emphasis"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between align-items-center pt-2 border-top fs-11 text-muted">
+                                                <span><i class="ri-calendar-line me-1 text-secondary"></i>Tanggal Pengajuan: <strong>19 Agu 2026</strong></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Agenda Proses 3: AG-2026-0006 (KM Mina Utama 08) -->
+                                        <div class="p-3 border border-warning-subtle rounded-3 bg-white shadow-sm pit-card-item">
+                                            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="avatar avatar-sm bg-warning-transparent text-warning rounded-circle">
+                                                        <i class="ri-tools-line fs-14"></i>
+                                                    </span>
+                                                    <div>
+                                                        <div class="d-flex align-items-center gap-2 flex-wrap">
+                                                            <strong class="font-monospace text-primary fs-13">AG-2026-0006</strong>
+                                                            <span class="badge bg-primary-transparent text-primary border border-primary-subtle fs-10 px-1.5 py-0.5 fw-semibold">
+                                                                <i class="ri-refresh-line me-1"></i>Perpanjangan SIPI
+                                                            </span>
+                                                        </div>
+                                                        <span class="text-dark fw-bold fs-12 d-block mt-0.5">KM Mina Utama 08 <span class="text-muted fw-normal fs-11">(95 GT · Penangkap)</span></span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-sm btn-icon btn-light border border-warning-subtle rounded-circle shadow-none" 
+                                                            data-bs-toggle="tooltip" 
+                                                            data-bs-placement="left" 
+                                                            title="22 Agu 2026, 11:20 WIB"
+                                                            aria-label="Informasi Waktu Verifikasi">
+                                                        <i class="ri-information-line fs-14 text-warning-emphasis"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between align-items-center pt-2 border-top fs-11 text-muted">
+                                                <span><i class="ri-calendar-line me-1 text-secondary"></i>Tanggal Pengajuan: <strong>22 Agu 2026</strong></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End:: Seksi 2: Status Dokumen Perizinan & Tahapan Verifikasi -->
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL DETAIL DAFTAR KAPAL (ALOKASI & REALISASI)                           -->
+    <!-- ========================================================================= -->
+    <div class="modal fade" id="modalDetailKapalDashboard" tabindex="-1" aria-labelledby="modalDetailKapalDashboardTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header border-bottom py-3 px-4 bg-light-subtle">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="avatar avatar-md rounded-circle bg-primary-transparent text-primary" id="modalKapalHeaderIconBg">
+                            <i class="ri-ship-line fs-20" id="modalKapalHeaderIcon"></i>
+                        </span>
+                        <div>
+                            <div class="d-flex align-items-center gap-2">
+                                <h5 class="modal-title fw-bold text-dark mb-0 fs-16" id="modalDetailKapalDashboardTitle">Daftar Armada Kapal</h5>
+                                <span class="badge bg-primary text-white" id="modalKapalHeaderBadge">15 Kapal</span>
+                            </div>
+                            <p class="text-muted fs-12 mb-0 mt-1" id="modalKapalSubtitle">Rincian nama kapal, spesifikasi tonase, alat tangkap, dan izin</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <!-- Filters & Search Bar in Modal -->
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Filter Tipe Kapal">
+                            <button type="button" class="btn btn-outline-primary active px-3" id="btnModalFilterAll" onclick="filterModalKapalByType('all')">
+                                Semua Kapal (<span id="modalCountAll">0</span>)
+                            </button>
+                            <button type="button" class="btn btn-outline-primary px-3" id="btnModalFilterTangkap" onclick="filterModalKapalByType('penangkap')">
+                                Penangkap (<span id="modalCountTangkap">0</span>)
+                            </button>
+                            <button type="button" class="btn btn-outline-primary px-3" id="btnModalFilterPengangkut" onclick="filterModalKapalByType('pengangkut')">
+                                Pengangkut (<span id="modalCountPengangkut">0</span>)
+                            </button>
+                        </div>
+                        <div class="input-group input-group-sm" style="max-width: 280px;">
+                            <span class="input-group-text bg-light"><i class="ri-search-line text-muted"></i></span>
+                            <input type="text" id="inputSearchModalKapal" class="form-control" placeholder="Cari nama kapal / izin..." oninput="handleSearchModalKapal(this.value)">
+                        </div>
+                    </div>
+
+                    <!-- Category Notice (if filtered by item) -->
+                    <div id="modalCategoryNotice" class="alert alert-primary-transparent d-none py-2 px-3 fs-12 mb-3 d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="ri-filter-3-line me-1"></i>Menampilkan kategori: <strong id="modalCategoryNoticeText"></strong>
+                        </div>
+                        <button type="button" class="btn btn-xs btn-link text-primary p-0" onclick="filterModalKapalByType('all')">Tampilkan Semua</button>
+                    </div>
+
+                    <!-- Responsive Table -->
+                    <div class="table-responsive border rounded">
+                        <table class="table table-hover align-middle mb-0 text-nowrap">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-center ps-3" style="width: 40px;">No.</th>
+                                    <th>Nama Kapal</th>
+                                    <th class="text-center">Ukuran (GT)</th>
+                                    <th>Kategori Kapal</th>
+                                    <th>Alat Tangkap / Jenis Operasi</th>
+                                    <th>Nomor Izin</th>
+                                    <th>Status Dokumen</th>
+                                    <th class="pe-3">Pelabuhan Pangkalan</th>
+                                </tr>
+                            </thead>
+                            <tbody id="modalKapalTableBody">
+                                <!-- Rendered dynamically by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer border-top py-2 px-4 bg-light-subtle d-flex justify-content-between">
+                    <span class="text-muted fs-12" id="modalKapalSummaryText">Menampilkan data armada</span>
+                    <button type="button" class="btn btn-sm btn-primary px-4" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @SPK@include("partials/footer.html")
+    @SPK@include("partials/commonjs.html")
+    @SPK@include("partials/custom_switcherjs.html")
+
+    <!-- Interactive Filter & Modal Helpers -->
+    <script>
+        // Master Data Kapal Dashboard (Alokasi & Realisasi)
+        const masterKapalDashboard = [
+            {
+                nama: "KM Mina Utama 08",
+                gt: "95 GT",
+                kategori: "penangkap",
+                kategoriLabel: "Penangkap",
+                alatTangkap: "Jala Jatuh Berkapal",
+                noIzin: "SIPI-KP-2023/4412",
+                jenisIzin: "SIPI",
+                status: "mepet",
+                statusLabel: "Tersisa 5 Hari",
+                statusBadgeClass: "bg-warning text-dark",
+                isRealisasi: true,
+                pangkalan: "PPS Muara Baru",
+                wpp: "WPPNRI 711, 712"
+            },
+            {
+                nama: "KM Samudra Berkah 02",
+                gt: "110 GT",
+                kategori: "penangkap",
+                kategoriLabel: "Penangkap",
+                alatTangkap: "Jala Jatuh Berkapal",
+                noIzin: "SIPI-KP-2023/4910",
+                jenisIzin: "SIPI",
+                status: "mepet",
+                statusLabel: "Tersisa 7 Hari",
+                statusBadgeClass: "bg-warning text-dark",
+                isRealisasi: true,
+                pangkalan: "PPS Muara Baru",
+                wpp: "WPPNRI 711, 712"
+            },
+            {
+                nama: "KM Samudra Jaya",
+                gt: "120 GT",
+                kategori: "penangkap",
+                kategoriLabel: "Penangkap",
+                alatTangkap: "Pukat Cincin Pelagis Kecil dengan Satu Kapal",
+                noIzin: "SIPI-KP-2024/00192",
+                jenisIzin: "SIPI",
+                status: "aktif",
+                statusLabel: "Aktif (Tersisa 89 Hari)",
+                statusBadgeClass: "bg-success-transparent text-success",
+                isRealisasi: true,
+                pangkalan: "PPS Muara Baru",
+                wpp: "WPPNRI 711, 712, 713"
+            },
+            {
+                nama: "KM Bahari Nusantara",
+                gt: "85 GT",
+                kategori: "penangkap",
+                kategoriLabel: "Penangkap",
+                alatTangkap: "Pukat Cincin Pelagis Kecil dengan Satu Kapal",
+                noIzin: "SIPI-KP-2023/99120",
+                jenisIzin: "SIPI",
+                status: "mepet",
+                statusLabel: "Tersisa 17 Hari",
+                statusBadgeClass: "bg-warning text-dark",
+                isRealisasi: true,
+                pangkalan: "PPS Muara Baru",
+                wpp: "WPPNRI 711, 712"
+            },
+            {
+                nama: "KM Bahari Sejati 01",
+                gt: "100 GT",
+                kategori: "penangkap",
+                kategoriLabel: "Penangkap",
+                alatTangkap: "Pukat Cincin Pelagis Kecil dengan Satu Kapal",
+                noIzin: "SIPI-KP-2023/1189",
+                jenisIzin: "SIPI",
+                status: "tidak-aktif",
+                statusLabel: "Izin Habis (Belum Diperpanjang)",
+                statusBadgeClass: "bg-danger text-white",
+                isRealisasi: false,
+                pangkalan: "PPS Muara Baru",
+                wpp: "WPPNRI 711, 712"
+            },
+            {
+                nama: "KM Nelayan Mandiri 07",
+                gt: "65 GT",
+                kategori: "penangkap",
+                kategoriLabel: "Penangkap",
+                alatTangkap: "Jaring Hela Ikan Berkantong",
+                noIzin: "SIPI-KP-2023/3821",
+                jenisIzin: "SIPI",
+                status: "mepet",
+                statusLabel: "Tersisa 25 Hari",
+                statusBadgeClass: "bg-warning text-dark",
+                isRealisasi: true,
+                pangkalan: "PPS Muara Baru",
+                wpp: "WPPNRI 711, 712"
+            },
+            {
+                nama: "KM Bintang Timur 05",
+                gt: "110 GT",
+                kategori: "penangkap",
+                kategoriLabel: "Penangkap",
+                alatTangkap: "Jaring Hela Ikan Berkantong",
+                noIzin: "SIPI-KP-2024/8834",
+                jenisIzin: "SIPI",
+                status: "aktif",
+                statusLabel: "Aktif (Tersisa 141 Hari)",
+                statusBadgeClass: "bg-success-transparent text-success",
+                isRealisasi: true,
+                pangkalan: "PPS Muara Baru",
+                wpp: "WPPNRI 711, 712"
+            },
+            {
+                nama: "KM Nusantara Explorer",
+                gt: "80 GT",
+                kategori: "penangkap",
+                kategoriLabel: "Penangkap",
+                alatTangkap: "Jaring Hela Ikan Berkantong",
+                noIzin: "-",
+                jenisIzin: "SIPI",
+                status: "tidak-aktif",
+                statusLabel: "Belum Mengajukan Izin",
+                statusBadgeClass: "bg-secondary text-white",
+                isRealisasi: false,
+                pangkalan: "PPS Muara Baru",
+                wpp: "WPPNRI 711, 712"
+            },
+            {
+                nama: "KM Bahtera Nelayan 03",
+                gt: "75 GT",
+                kategori: "penangkap",
+                kategoriLabel: "Penangkap",
+                alatTangkap: "Jaring Hela Udang Berkantong",
+                noIzin: "SIPI-KP-2024/1102",
+                jenisIzin: "SIPI",
+                status: "aktif",
+                statusLabel: "Aktif (Tersisa 55 Hari)",
+                statusBadgeClass: "bg-success-transparent text-success",
+                isRealisasi: true,
+                pangkalan: "PPS Muara Baru",
+                wpp: "WPPNRI 711, 712"
+            },
+            {
+                nama: "KM Halmahera Star",
+                gt: "130 GT",
+                kategori: "penangkap",
+                kategoriLabel: "Penangkap",
+                alatTangkap: "Jaring Insang Hanyut",
+                noIzin: "SIPI-KP-2024/6619",
+                jenisIzin: "SIPI",
+                status: "aktif",
+                statusLabel: "Aktif (Tersisa 270 Hari)",
+                statusBadgeClass: "bg-success-transparent text-success",
+                isRealisasi: true,
+                pangkalan: "PPS Muara Baru",
+                wpp: "WPPNRI 711, 712"
+            },
+            {
+                nama: "KM Laut Makmur",
+                gt: "160 GT",
+                kategori: "pengangkut",
+                kategoriLabel: "Pengangkut",
+                alatTangkap: "Kapal Pengangkut Ikan antar Pelabuhan Pangkalan",
+                noIzin: "SIKPI-KP-2026/5521",
+                jenisIzin: "SIKPI",
+                status: "aktif",
+                statusLabel: "Aktif (Tersisa 98 Hari)",
+                statusBadgeClass: "bg-success-transparent text-success",
+                isRealisasi: true,
+                pangkalan: "PPS Muara Baru",
+                wpp: "WPPNRI 711, 712"
+            },
+            {
+                nama: "KM Samudra Bahari 09",
+                gt: "140 GT",
+                kategori: "pengangkut",
+                kategoriLabel: "Pengangkut",
+                alatTangkap: "Kapal Pengangkut Ikan antar Pelabuhan Pangkalan",
+                noIzin: "SIKPI-KP-2025/8802",
+                jenisIzin: "SIKPI",
+                status: "tidak-aktif",
+                statusLabel: "Izin Habis (Belum Diperpanjang)",
+                statusBadgeClass: "bg-danger text-white",
+                isRealisasi: false,
+                pangkalan: "PPS Muara Baru",
+                wpp: "WPPNRI 711, 712"
+            },
+            {
+                nama: "KM Tirta Samudra",
+                gt: "135 GT",
+                kategori: "pengangkut",
+                kategoriLabel: "Pengangkut",
+                alatTangkap: "Kapal Pengangkut Ikan dari Daerah Penangkapan Ikan (WPPNRI)",
+                noIzin: "SIKPI-KP-2026/9021",
+                jenisIzin: "SIKPI",
+                status: "aktif",
+                statusLabel: "Aktif (Tersisa 98 Hari)",
+                statusBadgeClass: "bg-success-transparent text-success",
+                isRealisasi: true,
+                pangkalan: "PPS Muara Baru",
+                wpp: "WPPNRI 711, 712"
+            },
+            {
+                nama: "KM Samudra Pasifik",
+                gt: "200 GT",
+                kategori: "pengangkut",
+                kategoriLabel: "Pengangkut",
+                alatTangkap: "Kapal Pengangkut Ikan di Laut Lepas",
+                noIzin: "SIKPI-KP-2026/7781",
+                jenisIzin: "SIKPI",
+                status: "aktif",
+                statusLabel: "Aktif (Tersisa 98 Hari)",
+                statusBadgeClass: "bg-success-transparent text-success",
+                isRealisasi: true,
+                pangkalan: "PPS Muara Baru",
+                wpp: "Laut Lepas"
+            },
+            {
+                nama: "KM Cendrawasih Glory",
+                gt: "175 GT",
+                kategori: "pengangkut",
+                kategoriLabel: "Pengangkut",
+                alatTangkap: "Kapal Pengangkut Ikan Hidup Antar Tempat Pembudidayaan Ikan",
+                noIzin: "SIKPI-KP-2026/9805",
+                jenisIzin: "SIKPI",
+                status: "aktif",
+                statusLabel: "Aktif (Tersisa 98 Hari)",
+                statusBadgeClass: "bg-success-transparent text-success",
+                isRealisasi: true,
+                pangkalan: "PPS Muara Baru",
+                wpp: "WPPNRI 711, 712"
+            }
+        ];
+
+        let currentModalContext = 'alokasi'; // 'alokasi' | 'realisasi'
+        let currentModalCategoryFilter = 'all'; // 'all' | 'penangkap' | 'pengangkut' | specific alat tangkap
+        let currentModalSearchQuery = '';
+
+        // Function to open & render Kapal Detail Modal
+        function showKapalDetailModal(context, filterVal) {
+            currentModalContext = context || 'alokasi';
+            currentModalCategoryFilter = filterVal || 'all';
+            currentModalSearchQuery = '';
+
+            const inputSearch = document.getElementById('inputSearchModalKapal');
+            if (inputSearch) inputSearch.value = '';
+
+            const modalTitle = document.getElementById('modalDetailKapalDashboardTitle');
+            const modalSubtitle = document.getElementById('modalKapalSubtitle');
+            const modalBadge = document.getElementById('modalKapalHeaderBadge');
+            const modalIcon = document.getElementById('modalKapalHeaderIcon');
+            const modalIconBg = document.getElementById('modalKapalHeaderIconBg');
+
+            if (currentModalContext === 'realisasi') {
+                if (modalTitle) modalTitle.textContent = 'Daftar Armada Kapal - Realisasi Beroperasi';
+                if (modalSubtitle) modalSubtitle.textContent = 'Rincian 12 kapal yang telah terealisasi operasional perizinannya';
+                if (modalBadge) {
+                    modalBadge.className = 'badge bg-success text-white';
+                    modalBadge.textContent = '12 Realisasi';
+                }
+                if (modalIcon) modalIcon.className = 'ri-ship-line fs-20';
+                if (modalIconBg) modalIconBg.className = 'avatar avatar-md rounded-circle bg-success-transparent text-success';
+            } else {
+                if (modalTitle) modalTitle.textContent = 'Daftar Armada Kapal - Alokasi Izin';
+                if (modalSubtitle) modalSubtitle.textContent = 'Rincian 15 kapal yang dialokasikan dalam portofolio perizinan usaha';
+                if (modalBadge) {
+                    modalBadge.className = 'badge bg-primary text-white';
+                    modalBadge.textContent = '15 Alokasi';
+                }
+                if (modalIcon) modalIcon.className = 'ri-pie-chart-2-line fs-20';
+                if (modalIconBg) modalIconBg.className = 'avatar avatar-md rounded-circle bg-primary-transparent text-primary';
+            }
+
+            renderModalKapalTable();
+
+            const modalEl = document.getElementById('modalDetailKapalDashboard');
+            if (modalEl) {
+                const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+                bsModal.show();
+            }
+        }
+
+        function filterModalKapalByType(type) {
+            currentModalCategoryFilter = type;
+            renderModalKapalTable();
+        }
+
+        function handleSearchModalKapal(query) {
+            currentModalSearchQuery = query.toLowerCase().trim();
+            renderModalKapalTable();
+        }
+
+        function renderModalKapalTable() {
+            // Filter pool by context
+            let basePool = masterKapalDashboard.filter(item => {
+                if (currentModalContext === 'realisasi') {
+                    return item.isRealisasi === true;
+                }
+                return true;
+            });
+
+            // Update Counts in tabs
+            const countAll = basePool.length;
+            const countTangkap = basePool.filter(i => i.kategori === 'penangkap').length;
+            const countPengangkut = basePool.filter(i => i.kategori === 'pengangkut').length;
+
+            const elAll = document.getElementById('modalCountAll');
+            const elTangkap = document.getElementById('modalCountTangkap');
+            const elPengangkut = document.getElementById('modalCountPengangkut');
+
+            if (elAll) elAll.textContent = countAll;
+            if (elTangkap) elTangkap.textContent = countTangkap;
+            if (elPengangkut) elPengangkut.textContent = countPengangkut;
+
+            // Update active button state
+            const btnAll = document.getElementById('btnModalFilterAll');
+            const btnTangkap = document.getElementById('btnModalFilterTangkap');
+            const btnPengangkut = document.getElementById('btnModalFilterPengangkut');
+            const noticeBox = document.getElementById('modalCategoryNotice');
+            const noticeText = document.getElementById('modalCategoryNoticeText');
+
+            [btnAll, btnTangkap, btnPengangkut].forEach(b => { if (b) b.classList.remove('active'); });
+
+            if (currentModalCategoryFilter === 'all') {
+                if (btnAll) btnAll.classList.add('active');
+                if (noticeBox) noticeBox.classList.add('d-none');
+            } else if (currentModalCategoryFilter === 'penangkap') {
+                if (btnTangkap) btnTangkap.classList.add('active');
+                if (noticeBox) noticeBox.classList.add('d-none');
+            } else if (currentModalCategoryFilter === 'pengangkut') {
+                if (btnPengangkut) btnPengangkut.classList.add('active');
+                if (noticeBox) noticeBox.classList.add('d-none');
+            } else {
+                // Specific category name
+                if (noticeBox && noticeText) {
+                    noticeBox.classList.remove('d-none');
+                    noticeText.textContent = currentModalCategoryFilter;
+                }
+            }
+
+            // Apply category filter
+            let filtered = basePool.filter(item => {
+                if (currentModalCategoryFilter === 'all') return true;
+                if (currentModalCategoryFilter === 'penangkap') return item.kategori === 'penangkap';
+                if (currentModalCategoryFilter === 'pengangkut') return item.kategori === 'pengangkut';
+                return item.alatTangkap.toLowerCase() === currentModalCategoryFilter.toLowerCase();
+            });
+
+            // Apply search query
+            if (currentModalSearchQuery) {
+                filtered = filtered.filter(item => {
+                    return item.nama.toLowerCase().includes(currentModalSearchQuery) ||
+                           item.alatTangkap.toLowerCase().includes(currentModalSearchQuery) ||
+                           item.noIzin.toLowerCase().includes(currentModalSearchQuery) ||
+                           item.pangkalan.toLowerCase().includes(currentModalSearchQuery);
+                });
+            }
+
+            // Render Rows
+            const tbody = document.getElementById('modalKapalTableBody');
+            if (!tbody) return;
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="text-center py-4 text-muted">
+                            <i class="ri-inbox-line fs-24 d-block mb-1"></i>
+                            Tidak ada data kapal yang sesuai dengan filter / pencarian.
+                        </td>
+                    </tr>
+                `;
+            } else {
+                tbody.innerHTML = filtered.map((k, idx) => `
+                    <tr>
+                        <td class="text-center ps-3 text-muted fs-12">${idx + 1}</td>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="avatar avatar-xs ${k.kategori === 'penangkap' ? 'bg-primary-transparent text-primary' : 'bg-info-transparent text-info'} rounded-circle">
+                                    <i class="${k.kategori === 'penangkap' ? 'ri-anchor-line' : 'ri-ship-line'}"></i>
+                                </span>
+                                <div>
+                                    <strong class="text-dark fs-13 d-block">${k.nama}</strong>
+                                    <span class="text-muted fs-10">${k.wpp}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <span class="badge bg-light text-dark border font-monospace fs-11">${k.gt}</span>
+                        </td>
+                        <td>
+                            <span class="badge ${k.kategori === 'penangkap' ? 'bg-primary-transparent text-primary' : 'bg-info-transparent text-info'} fs-11">
+                                ${k.kategoriLabel}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="text-dark fs-12 fw-medium">${k.alatTangkap}</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-light text-muted border me-1 fs-10">${k.jenisIzin}</span>
+                            <span class="font-monospace fs-11 text-dark">${k.noIzin}</span>
+                        </td>
+                        <td>
+                            <span class="badge ${k.statusBadgeClass} fs-11">
+                                ${k.statusLabel}
+                            </span>
+                        </td>
+                        <td class="pe-3 fs-12 text-muted">
+                            <i class="ri-map-pin-line me-1 text-secondary"></i>${k.pangkalan}
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            const summaryEl = document.getElementById('modalKapalSummaryText');
+            if (summaryEl) {
+                summaryEl.textContent = `Menampilkan ${filtered.length} dari total ${basePool.length} kapal (${currentModalContext === 'realisasi' ? 'Realisasi' : 'Alokasi'})`;
+            }
+        }
+
+        // Filter helper for Alokasi View (Semua, Kapal Tangkap, Kapal Pengangkut)
+        function filterAlokasiView(type) {
+            const secTangkap = document.getElementById('sectionAlokasiTangkap');
+            const secPengangkut = document.getElementById('sectionAlokasiPengangkut');
+            const btnAll = document.getElementById('btnFilterAllAlokasi');
+            const btnTangkap = document.getElementById('btnFilterTangkapAlokasi');
+            const btnPengangkut = document.getElementById('btnFilterPengangkutAlokasi');
+
+            if (btnAll && btnTangkap && btnPengangkut) {
+                btnAll.classList.remove('active');
+                btnTangkap.classList.remove('active');
+                btnPengangkut.classList.remove('active');
+            }
+
+            if (type === 'tangkap') {
+                if (secTangkap) secTangkap.style.display = 'block';
+                if (secPengangkut) secPengangkut.style.display = 'none';
+                if (btnTangkap) btnTangkap.classList.add('active');
+            } else if (type === 'pengangkut') {
+                if (secTangkap) secTangkap.style.display = 'none';
+                if (secPengangkut) secPengangkut.style.display = 'block';
+                if (btnPengangkut) btnPengangkut.classList.add('active');
+            } else {
+                if (secTangkap) secTangkap.style.display = 'block';
+                if (secPengangkut) secPengangkut.style.display = 'block';
+                if (btnAll) btnAll.classList.add('active');
+            }
+        }
+
+        // Filter helper for Realisasi View (Semua, Kapal Tangkap, Kapal Pengangkut)
+        function filterRealisasiView(type) {
+            const secTangkap = document.getElementById('sectionRealisasiTangkap');
+            const secPengangkut = document.getElementById('sectionRealisasiPengangkut');
+            const btnAll = document.getElementById('btnFilterAllRealisasi');
+            const btnTangkap = document.getElementById('btnFilterTangkapRealisasi');
+            const btnPengangkut = document.getElementById('btnFilterPengangkutRealisasi');
+
+            if (btnAll && btnTangkap && btnPengangkut) {
+                btnAll.classList.remove('active');
+                btnTangkap.classList.remove('active');
+                btnPengangkut.classList.remove('active');
+            }
+
+            if (type === 'tangkap') {
+                if (secTangkap) secTangkap.style.display = 'block';
+                if (secPengangkut) secPengangkut.style.display = 'none';
+                if (btnTangkap) btnTangkap.classList.add('active');
+            } else if (type === 'pengangkut') {
+                if (secTangkap) secTangkap.style.display = 'none';
+                if (secPengangkut) secPengangkut.style.display = 'block';
+                if (btnPengangkut) btnPengangkut.classList.add('active');
+            } else {
+                if (secTangkap) secTangkap.style.display = 'block';
+                if (secPengangkut) secPengangkut.style.display = 'block';
+                if (btnAll) btnAll.classList.add('active');
+            }
+        }
+
+        // Filter helper for Dokumen Status View (Semua, Aktif, Mendekati, Tidak Aktif)
+        function filterDokumenStatus(status) {
+            const itemsAktif = document.querySelectorAll('.item-dok-aktif');
+            const itemsMepet = document.querySelectorAll('.item-dok-mepet');
+            const itemsTidakAktif = document.querySelectorAll('.item-dok-tidak-aktif');
+            
+            const btnAll = document.getElementById('btnFilterAllDok');
+            const btnAktif = document.getElementById('btnFilterAktifDok');
+            const btnMepet = document.getElementById('btnFilterMepetDok');
+            const btnMati = document.getElementById('btnFilterMatiDok');
+
+            [btnAll, btnAktif, btnMepet, btnMati].forEach(function (btn) {
+                if (btn) btn.classList.remove('active');
+            });
+
+            if (status === 'aktif') {
+                itemsAktif.forEach(function (el) { el.style.display = 'block'; });
+                itemsMepet.forEach(function (el) { el.style.display = 'none'; });
+                itemsTidakAktif.forEach(function (el) { el.style.display = 'none'; });
+                if (btnAktif) btnAktif.classList.add('active');
+            } else if (status === 'mepet') {
+                itemsAktif.forEach(function (el) { el.style.display = 'none'; });
+                itemsMepet.forEach(function (el) { el.style.display = 'block'; });
+                itemsTidakAktif.forEach(function (el) { el.style.display = 'none'; });
+                if (btnMepet) btnMepet.classList.add('active');
+            } else if (status === 'tidak-aktif') {
+                itemsAktif.forEach(function (el) { el.style.display = 'none'; });
+                itemsMepet.forEach(function (el) { el.style.display = 'none'; });
+                itemsTidakAktif.forEach(function (el) { el.style.display = 'block'; });
+                if (btnMati) btnMati.classList.add('active');
+            } else {
+                itemsAktif.forEach(function (el) { el.style.display = 'block'; });
+                itemsMepet.forEach(function (el) { el.style.display = 'block'; });
+                itemsTidakAktif.forEach(function (el) { el.style.display = 'block'; });
+                if (btnAll) btnAll.classList.add('active');
+            }
+        }
+
+        // Initialize Popovers and Tooltips on DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function () {
+            const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+            popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl, {
+                    html: true,
+                    sanitize: false
+                });
+            });
+
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

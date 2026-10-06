@@ -1,0 +1,197 @@
+
+================================================================================
+Ynex Description
+================================================================================
+
+Ynex Bootstrap Admin and Dashboard Template is a web-based user interface design that provides a pre-built framework of UI components, styles, and functionalities for creating modern and responsive admin dashboards and web applications. It is based on the Bootstrap 5 framework, which is a popular front-end development framework used for building responsive, mobile-first websites and web applications.
+
+The Ynex Bootstrap Admin and Dashboard Template includes a variety of ready-to-use UI components such as forms, tables, charts, icons, and more. These components are designed to be easily customizable, allowing developers to quickly create unique and visually appealing interfaces that match their specific needs and branding requirements.
+
+This template also comes with a variety of pre-built pages, layouts, and themes that can be used as a starting point for creating new pages and customizing the overall look and feel of the application. The templates and themes are optimized for performance and are responsive, ensuring that they look great on any device or screen size.
+
+Overall, this Bootstrap 5 Admin and Dashboard Template is a powerful tool for developers who want to save time and streamline the development process of building modern and responsive admin dashboards and web applications
+
+It comes with 12 different dashboards and different layouts such as horizontal,RTL,Boxed,Double Menu and many more.
+
+After Purchase you will get all HTML files,CSS Files,JS Files.The template is not jquery dependant and plugins used in the ynex are all js plugins only.
+
+================================================================================
+You can enjoy a lifetime of FREE updates!
+================================================================================
+
+And the best part? You can enjoy a lifetime of free updates with Ynex – Bootstrap 5 Admin Dashboard HTML5 Multipurpose Template. No more worries about paying for future updates or missing out on new features. We’re committed to providing you with the best possible experience, and that includes free updates for life. So, invest in Ynex today and take your dashboard to the next level, knowing that you’ll always have the latest and greatest features at your fingertips!
+
+================================================================================
+Template Features
+================================================================================
+
+• 170+ HTML Pages
+• 20+ Plugins
+• 12 Dashboard variations
+• Vertical & Horizontal
+• Menu Click ,Menu Hover ,icon click and icon Hover
+• 3 types of Charts
+• Responsive Bootstrap 5 Framework
+• Well Commented Code
+• Grid JS Tables
+• Filepond
+• Dropzone
+• Easy to customize
+• Neat, clean and simple design
+• TimeLine
+• Message Chat
+• Google Fonts
+• 3 Types of Maps
+• Mail Inbox
+• 6 Types of Icon sets
+• Lock screen Pages
+• Error Pages
+• Shopping Cart
+• Checkout
+• Order Details
+• Whislist
+• Professional Company Support
+• Regular Updates
+• Form Elements
+• Image Gallery
+• Under Construction Page
+• Invoice Page
+• Calendar
+• Pricing Tables
+• Very Easy to Create your Own Site
+• More Widgets
+• W3C Validated
+
+================================================================================
+Pre-built Dashboard Designs
+================================================================================
+
+• CRM Dashboard
+• Ecommerce Dashboard
+• Crypto Dashboard
+• Jobs Dashboard
+• NFT Dashboard
+• Sales Dashboard
+• Analytics Dashboard
+• Projects Dashboard
+• HRM Dashboard
+• Stocks Dashboard
+• Course Dashboard
+• Personal Dashboard
+
+================================================================================
+New HTML Pages Added
+================================================================================
+
+• Task-kanban-board
+• Task-list-view
+• task-details
+• projects-list
+• projects-overview
+• projects-create
+• job-details
+• job-company-search
+• job-search
+• job-post
+• jobs-List
+• job-candidate-search
+• job-candidate-details
+• nft-marketplace
+• nft-details
+• nft-create
+• nft-Wallet-integration
+• nft-live-auction
+• crm-contacts
+• crm-companies
+• crm-deals
+• crm-leads
+• crypto-transactions
+• crypto-currency-exchange
+• crypto-buy_sell
+• Crypto-marketcap
+• Crypto-wallet
+• Landing-jobs
+
+================================================================================
+Dashboard Template Features highlights
+================================================================================
+
+• No Jquery Dependant
+• Multiple Menu Style Options
+• Dark, Light & Custom Color Options
+• Easy Settings Color Switcher
+• Neat, Clean & Simple Design
+• RTL Supported
+• Well Commented Code
+• Major Browser compatibility
+• Clean, well-structured Code
+• Easy customization
+• User-friendly Interface
+• Responsive Design
+• High-quality Code
+• Extensive Documentation
+• Regular Updates
+• W3C Validated
+• Company Helpdesk Support
+
+================================================================================
+Swither Features :
+================================================================================
+
+    ................................................................................
+    Theme Styles
+    ................................................................................
+
+    • Light & Dark Themes
+    • LTR & RTL
+    • Vertical & Horizontal Navigation Styles
+    • Menu Click & Hover Styles
+    • Icon Click & Hover Styles
+    • Page Regular & Classic Styles
+    • Layout Full Width & Boxed
+    • Menu Fixed & Scrollable
+    • Header Fixed & Scrollable
+    • Sidemenu Closed
+    • Icon Text Menu
+    • Icon Overlay
+    • Detached
+    • Double Menu
+
+    ................................................................................
+    Theme Colors
+    ................................................................................
+
+    • Menu Light
+    • Menu Dark
+    • Menu Color
+    • Menu Gradient
+    • Menu Transparent
+    • Header Light
+    • Header Dark
+    • Header Color
+    • Header Gradient
+    • Header Transparent
+    • Theme Primary Colors & Dynamic Color Change Picker
+    • Theme Background Colors & Dynamic Color Change Picker
+    • Menu With Background Images
+
+================================================================================
+Dependencies
+================================================================================
+
+• Bootstrap v5.3.0
+• Sass
+• Gulp v4.0.2
+
+================================================================================
+What do you get ?
+================================================================================
+
+• All HTML Files.
+• CSS Files.
+• SCSS Files.
+• JS Files
+
+================================================================================
+Updates :
+================================================================================

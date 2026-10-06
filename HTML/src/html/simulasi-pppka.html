@@ -1,0 +1,169 @@
+@SPK@include("partials/mainhead.html")
+
+<style>
+    .pppka-table {
+        min-width: 980px;
+        table-layout: auto;
+    }
+
+    .pppka-table th,
+    .pppka-table td {
+        white-space: normal;
+        vertical-align: middle;
+    }
+
+    .pppka-table th:nth-child(1),
+    .pppka-table td:nth-child(1) {
+        min-width: 290px;
+    }
+
+    .pppka-table th:nth-child(2),
+    .pppka-table td:nth-child(2) {
+        min-width: 180px;
+    }
+
+    .pppka-table th:nth-child(3),
+    .pppka-table td:nth-child(3),
+    .pppka-table th:nth-child(4),
+    .pppka-table td:nth-child(4) {
+        min-width: 190px;
+    }
+
+    .pppka-table th:nth-child(5),
+    .pppka-table td:nth-child(5) {
+        min-width: 230px;
+    }
+
+    .pppka-table select,
+    .pppka-table input {
+        min-width: 100%;
+    }
+</style>
+
+</head>
+
+<body>
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <div class="main-content app-content">
+            <div class="container-fluid">
+                @SPK@include("partials/page-header.html", {"title": "Simulasi PPPKA", "subtitle": 'Simulasi Pungutan'})
+
+                <div class="card custom-card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title mb-1">Simulasi PPPKA</div>
+                            <p class="text-muted fs-13 mb-0">Isi jenis SPP-PPKA, alat tangkap, dan ukuran kapal, lalu pilih Hitung untuk membuat perincian tagihan.</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3 mb-4">
+                            <div class="col-xl-4 col-md-6">
+                                <label for="jenisSppPppka" class="form-label">Jenis SPP-PPKA</label>
+                                <select id="jenisSppPppka" class="form-select">
+                                    <option value="">Pilih jenis SPP-PPKA</option>
+                                    <option value="Perpanjangan">Perpanjangan</option>
+                                    <option value="Pertama">Pertama</option>
+                                </select>
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                                <label for="jenisAlatPppka" class="form-label">Jenis Alat Tangkap</label>
+                                <select id="jenisAlatPppka" class="form-select"></select>
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                                <label for="ukuranKapal" class="form-label">Ukuran Kapal</label>
+                                <input id="ukuranKapal" class="form-control" type="text" inputmode="decimal" placeholder="Contoh: 120 GT">
+                            </div>
+                        </div>
+
+                        <div class="card custom-card border mb-0">
+                            <div class="card-header">
+                                <div class="card-title">PERINCIAN SPP-PPP KAPAL ANGKUT</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-xl-3 col-md-6">
+                                        <label for="ukuranGtHasil" class="form-label">Ukuran GT Kapal</label>
+                                        <input id="ukuranGtHasil" class="form-control" type="text" readonly placeholder="Sesuai inputan ukuran kapal">
+                                    </div>
+                                    <div class="col-xl-3 col-md-6">
+                                        <label for="tarifPerGt" class="form-label">Tarif Per GT (Rupiah)</label>
+                                        <input id="tarifPerGt" class="form-control" type="text" readonly placeholder="Otomatis saat Hitung">
+                                    </div>
+                                    <div class="col-xl-3 col-md-6">
+                                        <label for="jumlahGt" class="form-label">Jumlah GT</label>
+                                        <input id="jumlahGt" class="form-control" type="text" readonly placeholder="Otomatis saat Hitung">
+                                    </div>
+                                    <div class="col-xl-3 col-md-6">
+                                        <label for="jumlahPerincian" class="form-label">Jumlah Perincian SPP-PPP</label>
+                                        <input id="jumlahPerincian" class="form-control" type="text" readonly placeholder="Otomatis saat Hitung">
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="button" id="hitungPppka" class="btn btn-primary"><i class="fe fe-calculator me-1"></i>Hitung</button>
+                                    </div>
+                                </div>
+                                <div id="totalPppka" class="alert alert-success mt-4 mb-0 d-none" role="status"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @SPK@include("partials/footer.html")
+    @SPK@include("partials/commonjs.html")
+
+    <script>
+        const alatTangkapPppka = [
+            "Kapal Pengangkut Ikan antar Pelabuhan Pangkalan",
+            "Kapal Pengangkut Ikan dari Daerah Penangkapan Ikan (WPPNRI)",
+            "Kapal Pengangkut Ikan di Laut Lepas",
+            "Kapal Pengangkut Ikan Hidup Antar Tempat Pembudidayaan Ikan",
+            "Kapal Pengangkut Ikan Hidup dari Tempat Pembudidayaan / Pelabuhan Check Point ke Negara Tujuan Ekspor",
+            "Kapal Pengangkut Ikan Segar/Beku ke Negara Tujuan",
+            "Kapal Pengangkut Ikan Sewa untuk Ikan Hidup dari Check Point ke Negara Tujuan (Berbendera Asing)",
+            "Kapal Pengangkut Ikan Sewa untuk Ikan Segar/Beku ke Negara Tujuan (Berbendera Asing)",
+            "Rumpon"
+        ];
+        const tarifPppka = {
+            "Kapal Pengangkut Ikan antar Pelabuhan Pangkalan": 25000,
+            "Kapal Pengangkut Ikan dari Daerah Penangkapan Ikan (WPPNRI)": 30000,
+            "Kapal Pengangkut Ikan di Laut Lepas": 35000,
+            "Kapal Pengangkut Ikan Hidup Antar Tempat Pembudidayaan Ikan": 28000,
+            "Kapal Pengangkut Ikan Hidup dari Tempat Pembudidayaan / Pelabuhan Check Point ke Negara Tujuan Ekspor": 40000,
+            "Kapal Pengangkut Ikan Segar/Beku ke Negara Tujuan": 42000,
+            "Kapal Pengangkut Ikan Sewa untuk Ikan Hidup dari Check Point ke Negara Tujuan (Berbendera Asing)": 50000,
+            "Kapal Pengangkut Ikan Sewa untuk Ikan Segar/Beku ke Negara Tujuan (Berbendera Asing)": 55000,
+            "Rumpon": 20000
+        };
+        const jenisAlatSelect = document.getElementById("jenisAlatPppka");
+        jenisAlatSelect.innerHTML = `<option value="">Pilih jenis alat tangkap</option>${alatTangkapPppka.map((item) => `<option value="${item}">${item}</option>`).join("")}`;
+
+        function formatRupiahPppka(value) {
+            return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(value);
+        }
+
+        document.getElementById("hitungPppka").addEventListener("click", () => {
+            const ukuran = document.getElementById("ukuranKapal").value.trim();
+            const jenis = jenisAlatSelect.value;
+            const jumlahGt = Number.parseFloat(ukuran.replace(",", ".").replace(/[^0-9.]/g, ""));
+            const tarif = tarifPppka[jenis] || 0;
+            const total = jumlahGt * tarif;
+
+            document.getElementById("ukuranGtHasil").value = ukuran;
+            document.getElementById("tarifPerGt").value = tarif ? formatRupiahPppka(tarif) : "";
+            document.getElementById("jumlahGt").value = jumlahGt > 0 ? `${jumlahGt} GT` : "";
+            document.getElementById("jumlahPerincian").value = total ? formatRupiahPppka(total) : "";
+            const totalElement = document.getElementById("totalPppka");
+            totalElement.textContent = `Total Perincian SPP-PPP Kapal Angkut: ${formatRupiahPppka(total)}`;
+            totalElement.classList.remove("d-none");
+        });
+    </script>
+</body>
+</html>

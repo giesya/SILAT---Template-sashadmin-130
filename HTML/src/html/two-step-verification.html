@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+
+<head>
+
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Sash – Bootstrap 5  Admin &amp; Dashboard Template </title>
+    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
+    <meta name="Author" content="Spruko Technologies Private Limited">
+	<meta name="keywords" content="admin dashboard,dashboard design htmlbootstrap admin template,html admin panel,admin dashboard html,admin panel html template,bootstrap dashboard,html admin template,html dashboard,html admin dashboard template,bootstrap dashboard template,dashboard html template,bootstrap admin panel,dashboard admin bootstrap,bootstrap admin dashboard">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/brand-logos/favicon.ico" type="image/x-icon">
+
+    <!-- Main Theme Js -->
+    <script src="../assets/js/authentication-main.js"></script>
+
+    <!-- Bootstrap Css -->
+    <link id="style" href="../assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+
+    <!-- Style Css -->
+    <link href="../assets/css/styles.min.css" rel="stylesheet" >
+
+    <!-- Icons Css -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet" >
+
+
+</head>
+
+<body>
+
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="autentication-bg">
+
+        <div class="container-lg">
+            <div class="row justify-content-center authentication authentication-basic align-items-center h-100">
+                <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-6 col-sm-8 col-12">
+                    <div class="my-4 d-flex justify-content-center">
+                        <a href="index.html">
+                            <img src="../assets/images/brand-logos/desktop-white.png" alt="logo">
+                        </a>
+                    </div>
+                    <div class="card custom-card">
+                        <div class="card-body p-5">
+                            <p class="h5 fw-semibold mb-2 text-center">Verify Your Account</p>
+                            <p class="mb-4 text-muted op-7 fw-normal text-center">Enter the 4 digit code sent to the registered email Id.</p>
+                            <div class="row gy-3">
+                                <div class="col-xl-12 mb-2">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <input type="text" class="form-control form-control-lg text-center" id="one" maxlength="1" onkeyup="clickEvent(this,'two')">
+                                        </div>
+                                        <div class="col-3">
+                                            <input type="text" class="form-control form-control-lg text-center" id="two" maxlength="1" onkeyup="clickEvent(this,'three')">
+                                        </div>
+                                        <div class="col-3">
+                                            <input type="text" class="form-control form-control-lg text-center" id="three" maxlength="1" onkeyup="clickEvent(this,'four')">
+                                        </div>
+                                        <div class="col-3">
+                                            <input type="text" class="form-control form-control-lg text-center" id="four" maxlength="1">
+                                        </div>
+                                    </div>
+                                    <div class="form-check mt-2">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            Did not recieve a code ?<a href="mail.html" class="text-primary ms-2 d-inline-block">Resend</a>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 d-grid mt-2">
+                                    <a href="index.html" class="btn btn-lg btn-primary">Verify</a>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <p class="fs-12 text-danger mt-3 mb-0"><sup><i class="ri-asterisk"></i></sup>Don't share the verification code with anyone !</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Custom-Switcher JS -->
+    <script src="../assets/js/custom-switcher.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Internal Two Step Verification JS -->
+    <script src="../assets/js/two-step-verification.js"></script>
+</body>
+
+</html>

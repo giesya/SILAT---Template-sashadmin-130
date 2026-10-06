@@ -1,0 +1,147 @@
+
+Project Name: Sash - Bootstrap 5 Admin & Dashboard Template
+
+Version : V.13
+
+Updated-date:  25-September-2023
+ 
+Updates :-     
+                1) Converted from Boostrap-5.2.2 version to Boostrap-5.3.2 (Latest) Version.
+		2) Divided all Html pages into partials(src and dist)
+		3) No jquery dependency
+		4) All jQuery plugins have been removed and added new js plugins 
+		5) Added New Switcher.
+		6) Updated Header and sidemeu.
+		7) Added some Html Pages and imporved ui of all html pages from old to latest .
+		8) Documentation and gulp file is updated
+
+
+**********************************************************************************************************************************************
+
+----------------------------------------------------------------------
+1) Converted from Boostrap-4 version to Boostrap-5 Version.
+----------------------------------------------------------------------
+	In the most recent release of Sash, we have upgraded the Bootstrap version to the latest iteration of v5.3.2.
+
+----------------------------------------------------------------------
+2) Divided all Html pages into partials(src and dist)
+----------------------------------------------------------------------
+
+In this latest version of "Sash," we've introduced a fundamental change in how we manage code in our project. 
+We've adopted a more structured approach by utilizing the "src" and "dist" folders. 
+This change aims to streamline the development process and enhance the efficiency of code deployment on production sites. 
+Please take a moment to familiarize yourself with the distinctions between "src" and "dist" for a smoother development experience.
+
+During development, you should primarily work within the "src" folder, making changes and improvements to the codebase.
+When changes are made in the "src" folder, it's crucial to run the associated "gulp" command to propagate those changes to the "dist" folder.
+Running the "gulp" command ensures that the modifications made in the "src" folder are mirrored in the "dist" folder, ready for production deployment.
+For a more comprehensive understanding of how "src" and "dist" are managed within the "Sash" project, we strongly recommend reviewing our updated documentation. 
+This documentation provides in-depth insights into the workflow, commands, and best practices related to this new approach. 
+
+----------------------------------------------------------------------
+3) No jquery dependency
+----------------------------------------------------------------------
+	The most recent release of Sash has removed jQuery to improve flexibility. 
+	jQuery has been a popular JavaScript library for a long time, but as modern web development has evolved, many developers have moved away from it in favor of native JavaScript or other libraries and frameworks. 
+	Removing jQuery can help reduce the size and complexity of your codebase and improve performance.
+
+----------------------------------------------------------------------
+4) All jQuery plugins have been removed and added new js  plugins 
+----------------------------------------------------------------------
+	We have eliminated all jQuery plugins from our codebase and have replaced them with JavaScript plugins that are framework-agnostic, ensuring maximum flexibility for our users.
+----------------------------------------------------------------------
+5) Added New Switcher Page. 
+----------------------------------------------------------------------
+	New switcher is added to Sash
+	In this switcher we have added new features like 
+
+	1) Single switch Rtl 
+	2) Single switch menus
+	3) Changing colors 
+	4) Dark Theme and many more 
+
+	For a more comprehensive understanding of Switcher ,we strongly recommend reviewing our updated documentation. 
+
+	To add swicher page replace complete assets folder replace switcher content in all html pages.
+----------------------------------------------------------------------
+7) Updated Header and sidemeu.
+----------------------------------------------------------------------
+	 Improved ui .so, replace complete header and appsidebar  section in all html pages. and replace complete assets folder.
+----------------------------------------------------------------------
+8) Added some Html Pages and imporved ui of all html pages from old to latest .
+----------------------------------------------------------------------
+New Html pages are added .please follow below
+
+	Images & Figures
+	Object Fit
+	Borders
+	Breakpoints
+	Colors
+	Columns
+	Flex 
+	Gutters
+	Helpers
+	Position
+	Additional Content
+	Edit Products
+	Order Details
+	Orders
+	Products List
+	Mail Settings
+	Create Invoice
+	Invoice List
+	Reviews
+	Team
+	Timeline-1
+	Timeline-2
+	To Do List
+	Coming Soon
+	Create Password
+	Lock Screen
+	Reset Password
+	Two Step Verification
+	Swiper JS
+	Grid JS Tables
+	Apex charts ( all types of charts)
+----------------------------------------------------------------------
+9) Documentation and gulp file is updated
+----------------------------------------------------------------------
+	Documentation and gulp is Updated please go through it .
+
+Thanking you,
+@spruko.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

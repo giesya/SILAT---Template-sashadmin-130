@@ -1,0 +1,2481 @@
+@SPK@include("partials/mainhead.html")
+
+<!-- Sweetalerts CSS -->
+<link rel="stylesheet" href="../assets/libs/sweetalert2/sweetalert2.min.css">
+
+<style>
+    .modal-custom-card {
+        border-radius: 0.75rem;
+        border: 0;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .history-header-card {
+        border: 1px solid #e2e8f0;
+        border-radius: 0.75rem;
+        background: #ffffff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+    }
+
+    .info-metric-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.625rem;
+        padding: 0.875rem 1.15rem;
+        height: 100%;
+        transition: all 0.2s ease;
+    }
+
+    .info-metric-card:hover {
+        border-color: #cbd5e1;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .info-metric-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #64748b;
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .info-metric-value {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    .nav-tabs-custom {
+        border-bottom: 2px solid #e2e8f0;
+        background: #f8fafc;
+        border-radius: 0.75rem 0.75rem 0 0;
+        padding: 0.5rem 1rem 0 1rem;
+        gap: 0.35rem;
+        overflow-x: auto;
+    }
+
+    .nav-tabs-custom .nav-link {
+        border: none;
+        border-bottom: 3px solid transparent;
+        color: #64748b;
+        font-weight: 600;
+        font-size: 0.85rem;
+        padding: 0.85rem 1.15rem;
+        border-radius: 0.5rem 0.5rem 0 0;
+        background: transparent;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-tabs-custom .nav-link:hover {
+        color: var(--primary-color);
+        background: #ffffff;
+    }
+
+    .nav-tabs-custom .nav-link.active {
+        color: var(--primary-color);
+        border-bottom-color: var(--primary-color);
+        background: #ffffff;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .detail-card-section {
+        border: 1px solid #e2e8f0;
+        border-radius: 0.625rem;
+        background: #ffffff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .detail-card-section .card-header {
+        background: #f8fafc;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 0.85rem 1.25rem;
+    }
+
+    .phone-prefix-badge {
+        font-weight: 600;
+        background-color: #f1f4f8;
+        color: var(--primary-color);
+        border-color: #dce7ea;
+    }
+
+    .matrix-table tbody tr:hover {
+        background-color: #f8fafc;
+    }
+
+    .permohonan-table-wrap {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    #permohonanTable {
+        width: 100%;
+        table-layout: fixed;
+        font-size: 0.72rem;
+    }
+
+    #permohonanTable th,
+    #permohonanTable td {
+        padding: 0.4rem 0.3rem;
+        overflow-wrap: anywhere;
+        vertical-align: top;
+    }
+
+    #permohonanTable thead th {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #permohonanTable tbody td {
+        font-weight: 400;
+    }
+
+    #permohonanTable .permohonan-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    #permohonanTable .permohonan-actions .btn {
+        font-size: 0.68rem;
+        white-space: normal;
+    }
+
+    @media (max-width: 767.98px) {
+        #permohonanTable,
+        #permohonanTable tbody {
+            display: block;
+        }
+
+        #permohonanTable thead {
+            display: none;
+        }
+
+        #permohonanTable tbody tr {
+            display: block;
+            border: 1px solid #dee2e6;
+            margin-bottom: 0.75rem;
+        }
+
+        #permohonanTable tbody td {
+            display: grid;
+            grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr);
+            gap: 0.5rem;
+            border-width: 0 0 1px;
+        }
+
+        #permohonanTable tbody td::before {
+            content: attr(data-label);
+            font-weight: 500;
+        }
+
+        #permohonanTable tbody td:last-child {
+            border-bottom: 0;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <div class="main-content app-content">
+            <div class="container-fluid">
+                @SPK@include("partials/page-header.html", {"title": "Verifikasi Izin Usaha", "subtitle": 'Daftar Permohonan'})
+
+                <!-- START:: Container Riwayat History Pelaku Usaha -->
+                <div id="sectionContainerHistoryPelakuUsaha" class="d-none">
+                    <!-- START:: Header Informasi History Pelaku Usaha (Clean Executive Summary Layout) -->
+                    <div class="card custom-card history-header-card mb-4" id="sectionHeaderHistory">
+                        <div class="card-header bg-white border-bottom py-3 d-flex flex-wrap justify-content-between align-items-center gap-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="avatar avatar-md bg-primary-transparent text-primary rounded-circle flex-shrink-0">
+                                    <i class="fe fe-file-text fs-20"></i>
+                                </div>
+                                <div>
+                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                        <h5 class="fw-bold text-dark mb-0" id="hdrNamaPemilik">PT SAMUDRA BAHARI NUSANTARA</h5>
+                                    </div>
+                                    <p class="text-muted fs-12 mb-0 mt-1">
+                                        <span id="hdrJenisIzin" class="fw-medium text-dark">Surat Izin Usaha Perikanan (SIUP)</span> · Update KBLI 2025
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-2 flex-wrap">
+                                <span class="badge bg-warning-subtle text-warning border border-warning-subtle fs-12 px-3 py-2 fw-semibold rounded-pill">
+                                    <i class="fe fe-clock me-1"></i>Menunggu Verifikasi Verifikator KKP
+                                </span>
+                                <span class="badge bg-light text-muted border fs-12 px-3 py-2 fw-medium rounded-pill">
+                                    <i class="fe fe-calendar me-1"></i><span id="hdrTanggal">15 September 2026</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body p-4 bg-light-subtle">
+                            <div class="row g-3">
+                                <!-- Tile 1: Nomor Agenda -->
+                                <div class="col-xl-3 col-md-6 col-12">
+                                    <div class="info-metric-card">
+                                        <span class="info-metric-label"><i class="fe fe-hash me-1 text-primary"></i>Nomor Agenda</span>
+                                        <span class="info-metric-value font-monospace text-primary fs-14" id="hdrNomorAgenda">AG-KBLI-2026/0091</span>
+                                    </div>
+                                </div>
+
+                                <!-- Tile 2: Nomor Izin (SIUP) -->
+                                <div class="col-xl-3 col-md-6 col-12">
+                                    <div class="info-metric-card">
+                                        <span class="info-metric-label"><i class="fe fe-award me-1 text-info"></i>Nomor Izin (SIUP)</span>
+                                        <span class="info-metric-value font-monospace text-dark fs-13" id="hdrNomorIzin">SIUP-KP-2024/99120</span>
+                                    </div>
+                                </div>
+
+                                <!-- Tile 3: Nomor NIB -->
+                                <div class="col-xl-3 col-md-6 col-12">
+                                    <div class="info-metric-card">
+                                        <span class="info-metric-label"><i class="fe fe-shield me-1 text-success"></i>Nomor NIB</span>
+                                        <span class="info-metric-value font-monospace text-dark fs-13" id="hdrNomorNib">9120001234567</span>
+                                    </div>
+                                </div>
+
+                                <!-- Tile 4: Status Izin -->
+                                <div class="col-xl-3 col-md-6 col-12">
+                                    <div class="info-metric-card">
+                                        <span class="info-metric-label"><i class="fe fe-activity me-1 text-primary"></i>Status Izin</span>
+                                        <span class="info-metric-value text-dark fs-13" id="hdrStatusIzin">Baru/Perubahan</span>
+                                    </div>
+                                </div>
+
+                                <!-- Tile 5: ID Izin OSS -->
+                                <div class="col-xl-6 col-md-6 col-12">
+                                    <div class="info-metric-card">
+                                        <span class="info-metric-label"><i class="fe fe-link me-1 text-secondary"></i>ID Izin OSS</span>
+                                        <span class="info-metric-value font-monospace text-dark fs-13" id="hdrIdIzinOss">IZIN-OSS-883921</span>
+                                    </div>
+                                </div>
+
+                                <!-- Tile 6: ID Proyek OSS -->
+                                <div class="col-xl-6 col-md-6 col-12">
+                                    <div class="info-metric-card">
+                                        <span class="info-metric-label"><i class="fe fe-layers me-1 text-secondary"></i>ID Proyek OSS</span>
+                                        <span class="info-metric-value font-monospace text-dark fs-13" id="hdrIdProyekOss">PRJ-OSS-2026-00452</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END:: Header Informasi History Pelaku Usaha -->
+
+
+                    <!-- ========================================================================= -->
+                    <!-- SECTION A: PROFIL PEMILIK                                                 -->
+                    <!-- ========================================================================= -->
+                    <div class="card custom-card border shadow-sm mb-4" id="sectionA-ProfilPemilik">
+                        <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="avatar avatar-sm bg-primary text-white rounded-circle fs-14 fw-bold">A</span>
+                                <div>
+                                    <h6 class="fw-bold text-dark mb-0 fs-15">A. Profil Pemilik</h6>
+                                    <p class="text-muted fs-12 mb-0">Identitas legal badan usaha, alamat domisili, kontak, penanggung jawab, dan pemilik manfaat</p>
+                                </div>
+                            </div>
+                            <span class="badge bg-primary-transparent text-primary fs-12">Identitas &amp; Legalitas</span>
+                        </div>
+                        <div class="card-body p-4 bg-white">
+                            <!-- SECTION 1: IDENTITAS & LEGALITAS USAHA -->
+                            <div class="detail-card-section mb-4">
+                                <div class="card-header d-flex align-items-center gap-2">
+                                    <span class="avatar avatar-xs bg-primary text-white rounded-circle fs-12">1</span>
+                                    <h6 class="fw-bold text-dark mb-0 fs-14">Data Identitas & Legalitas Usaha</h6>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="row g-3">
+                                        <div class="col-md-6 col-lg-4">
+                                            <label class="form-label text-muted fs-12 mb-1">Nama Perusahaan / Pemohon <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control bg-light" value="PT SAMUDRA BAHARI NUSANTARA" readonly>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <label class="form-label text-muted fs-12 mb-1">Badan Hukum <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control bg-light" value="PERUSAHAAN" readonly>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <label class="form-label text-muted fs-12 mb-1">Kategori Pemohon <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control bg-light" value="PERSEROAN TERBATAS" readonly>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <label class="form-label text-muted fs-12 mb-1">Nomor NIB <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control font-monospace fw-bold bg-light" value="9120001234567" readonly>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <label class="form-label text-muted fs-12 mb-1">NPWP Perusahaan <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control font-monospace bg-light" value="01.234.567.8-012.000" readonly>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <label class="form-label text-muted fs-12 mb-1">NO. KTP <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control font-monospace bg-light" value="5171010311840004" readonly>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <label class="form-label text-muted fs-12 mb-1">Akte Pendirian</label>
+                                            <input type="text" class="form-control bg-light" value="58" readonly>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <label class="form-label text-muted fs-12 mb-1">Tanggal Akte Pendirian</label>
+                                            <input type="text" class="form-control bg-light" value="31-10-2007" readonly>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <label class="form-label text-muted fs-12 mb-1">Status Perusahaan</label>
+                                            <div class="d-flex align-items-center gap-3 pt-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="statusPerusahaanRadio" id="statusPerikanan" checked disabled>
+                                                    <label class="form-check-label fs-13 text-dark fw-medium" for="statusPerikanan">PERIKANAN</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="statusPerusahaanRadio" id="statusNonPerikanan" disabled>
+                                                    <label class="form-check-label fs-13 text-muted" for="statusNonPerikanan">NON PERIKANAN</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <label class="form-label text-muted fs-12 mb-1">Bantuan Pemerintah</label>
+                                            <div class="d-flex align-items-center gap-3 pt-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="bantuanPemerintahRadio" id="bantuanYa" disabled>
+                                                    <label class="form-check-label fs-13 text-muted" for="bantuanYa">YA</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="bantuanPemerintahRadio" id="bantuanTidak" checked disabled>
+                                                    <label class="form-check-label fs-13 text-dark fw-medium" for="bantuanTidak">TIDAK</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-8">
+                                            <label class="form-label text-muted fs-12 mb-1">Status Terpadu</label>
+                                            <input type="text" class="form-control bg-light text-dark" value="Non Terpadu" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SECTION 2: ALAMAT & KONTAK -->
+                            <div class="detail-card-section mb-4">
+                                <div class="card-header d-flex align-items-center gap-2">
+                                    <span class="avatar avatar-xs bg-primary text-white rounded-circle fs-12">2</span>
+                                    <h6 class="fw-bold text-dark mb-0 fs-14">Alamat Domisili & Kontak Perusahaan</h6>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label class="form-label text-muted fs-12 mb-1">Alamat Lengkap Usaha <span class="text-danger">*</span></label>
+                                            <textarea class="form-control bg-light" rows="2" readonly>Jl. Dermaga Pelabuhan Ratu No. 45, Kawasan Industri Perikanan Samudera, Muara Baru</textarea>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <label class="form-label text-muted fs-12 mb-1">RT / RW</label>
+                                            <input type="text" class="form-control bg-light" value="003 / 007" readonly>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <label class="form-label text-muted fs-12 mb-1">Desa / Kelurahan</label>
+                                            <input type="text" class="form-control bg-light" value="Kelurahan Muara Baru" readonly>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <label class="form-label text-muted fs-12 mb-1">Kecamatan</label>
+                                            <input type="text" class="form-control bg-light" value="PENJARINGAN" readonly>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <label class="form-label text-muted fs-12 mb-1">Kabupaten / Kota</label>
+                                            <input type="text" class="form-control bg-light" value="JAKARTA UTARA" readonly>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <label class="form-label text-muted fs-12 mb-1">Provinsi</label>
+                                            <input type="text" class="form-control bg-light" value="DKI JAKARTA" readonly>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <label class="form-label text-muted fs-12 mb-1">Negara Asal <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control bg-light" value="Indonesia" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label text-muted fs-12 mb-1">Email Perusahaan</label>
+                                            <input type="email" class="form-control bg-light" value="kontak@samudrabahari.co.id" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label text-muted fs-12 mb-1">Website Perusahaan</label>
+                                            <input type="text" class="form-control bg-light" value="https://www.samudrabahari.co.id" readonly>
+                                        </div>
+                                        <div class="col-md-6 col-lg-3">
+                                            <label class="form-label text-muted fs-12 mb-1">Telepon 1</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light text-dark fs-12">(+62) Indonesia</span>
+                                                <input type="text" class="form-control bg-light font-monospace" value="361723905" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-3">
+                                            <label class="form-label text-muted fs-12 mb-1">Telepon 2</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light text-dark fs-12">(+62) Indonesia</span>
+                                                <input type="text" class="form-control bg-light font-monospace" value="" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-3">
+                                            <label class="form-label text-muted fs-12 mb-1">Telepon Genggam</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light text-dark fs-12">(+62) Indonesia</span>
+                                                <input type="text" class="form-control bg-light font-monospace" value="8123835829" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-3">
+                                            <label class="form-label text-muted fs-12 mb-1">FAX</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light text-dark fs-12">(+62) Indonesia</span>
+                                                <input type="text" class="form-control bg-light font-monospace" value="361722978" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SECTION 3: PENANGGUNG JAWAB & PEMILIK MANFAAT (SIDE-BY-SIDE) -->
+                            <div class="row g-4">
+                                <div class="col-lg-6">
+                                    <div class="detail-card-section h-100">
+                                        <div class="card-header d-flex align-items-center gap-2">
+                                            <span class="avatar avatar-xs bg-primary-transparent text-primary rounded-circle fs-12"><i class="fe fe-user-check"></i></span>
+                                            <h6 class="fw-bold text-dark mb-0 fs-14">Penanggung Jawab</h6>
+                                        </div>
+                                        <div class="card-body p-4">
+                                            <div class="row g-3">
+                                                <div class="col-12">
+                                                    <label class="form-label text-muted fs-12 mb-1">Nama Lengkap <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control bg-light fw-semibold" value="Hendra Gunawan, S.St.Pi" readonly>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label class="form-label text-muted fs-12 mb-1">Jabatan <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control bg-light" value="Direktur Utama" readonly>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label text-muted fs-12 mb-1">Identitas <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control bg-light text-center" value="KTP" readonly>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <label class="form-label text-muted fs-12 mb-1">Nomor Identitas <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control bg-light font-monospace" value="3174051208850001" readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="detail-card-section h-100">
+                                        <div class="card-header d-flex align-items-center gap-2">
+                                            <span class="avatar avatar-xs bg-info-transparent text-info rounded-circle fs-12"><i class="fe fe-users"></i></span>
+                                            <h6 class="fw-bold text-dark mb-0 fs-14">Pemilik Manfaat (Beneficial Owner)</h6>
+                                        </div>
+                                        <div class="card-body p-4">
+                                            <div class="row g-3">
+                                                <div class="col-12">
+                                                    <label class="form-label text-muted fs-12 mb-1">Nama Lengkap <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control bg-light fw-semibold" value="Ir. Bambang Sudrajat" readonly>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label class="form-label text-muted fs-12 mb-1">Jabatan <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control bg-light" value="Komisaris Utama / Ultimate Beneficial Owner" readonly>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label text-muted fs-12 mb-1">Identitas</label>
+                                                    <input type="text" class="form-control bg-light text-center" value="KTP" readonly>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <label class="form-label text-muted fs-12 mb-1">Nomor Identitas <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control bg-light font-monospace" value="3172011504780003" readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ========================================================================= -->
+                    <!-- SECTION B: PENANGGUNG JAWAB OSS                                           -->
+                    <!-- ========================================================================= -->
+                    <div class="card custom-card border shadow-sm mb-4" id="sectionB-PenanggungJawabOSS">
+                        <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="avatar avatar-sm bg-primary text-white rounded-circle fs-14 fw-bold">B</span>
+                                <div>
+                                    <h6 class="fw-bold text-dark mb-0 fs-15">B. Penanggung Jawab OSS</h6>
+                                    <p class="text-muted fs-12 mb-0">Matriks komparasi data penanggung jawab yang terdaftar pada sistem OSS RBA</p>
+                                </div>
+                            </div>
+                            <span class="badge bg-primary-transparent text-primary fs-12">2 Data Penanggung Jawab Terdaftar</span>
+                        </div>
+                        <div class="card-body p-4 bg-white">
+                            <div class="detail-card-section">
+                                <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="fe fe-users text-primary fs-16"></i>
+                                        <h6 class="fw-bold text-dark mb-0 fs-14">Matriks Perbandingan Penanggung Jawab OSS RBA</h6>
+                                    </div>
+                                    <span class="badge bg-primary-transparent text-primary fs-12">2 Data Terdaftar</span>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover align-middle mb-0 matrix-table">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th style="width: 34%;" class="fw-semibold text-dark ps-4">Atribut Data OSS</th>
+                                                    <th style="width: 33%;" class="fw-semibold text-primary text-center bg-primary-transparent">
+                                                        <i class="fe fe-user me-1"></i>Penanggung Jawab 1
+                                                    </th>
+                                                    <th style="width: 33%;" class="fw-semibold text-info text-center bg-info-transparent">
+                                                        <i class="fe fe-user me-1"></i>Penanggung Jawab 2
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="fs-13">
+                                                <tr>
+                                                    <td class="fw-semibold text-muted ps-4">Nama Penanggung Jawab</td>
+                                                    <td class="text-center fw-bold text-dark">KASDI TAMAN</td>
+                                                    <td class="text-center fw-bold text-dark">RICHI RICHADO</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-semibold text-muted ps-4">Jabatan Penanggung Jawab</td>
+                                                    <td class="text-center"><span class="badge bg-light text-dark border">KOMISARIS</span></td>
+                                                    <td class="text-center"><span class="badge bg-light text-dark border">DIREKTUR</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-semibold text-muted ps-4">Flag Asing</td>
+                                                    <td class="text-center font-monospace">N (WNI)</td>
+                                                    <td class="text-center font-monospace">N (WNI)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-semibold text-muted ps-4">Kebangsaan Penanggung Jawab</td>
+                                                    <td class="text-center font-monospace">01 (Indonesia)</td>
+                                                    <td class="text-center font-monospace">01 (Indonesia)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-semibold text-muted ps-4">No. Identitas Penanggung Jawab</td>
+                                                    <td class="text-center font-monospace">5171010107630006</td>
+                                                    <td class="text-center font-monospace">5171010311840004</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-semibold text-muted ps-4">NPWP Penanggung Jawab</td>
+                                                    <td class="text-center font-monospace">5171010107630006</td>
+                                                    <td class="text-center font-monospace">5171010311840004</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-semibold text-muted ps-4">No. HP Penanggung Jawab</td>
+                                                    <td class="text-center font-monospace text-primary">0811387528</td>
+                                                    <td class="text-center font-monospace text-primary">08123835829</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-semibold text-muted ps-4">Email Penanggung Jawab</td>
+                                                    <td class="text-center">kasditaman41@outlook.com</td>
+                                                    <td class="text-center">richirichado@hotmail.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-semibold text-muted ps-4">Jenis Identitas Penanggung Jawab</td>
+                                                    <td class="text-center font-monospace">01 (KTP)</td>
+                                                    <td class="text-center font-monospace">01 (KTP)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-semibold text-muted ps-4">Alamat Penanggung Jawab</td>
+                                                    <td class="text-center">JL. MERTASARI NO.122, SUWUNG KANGIN</td>
+                                                    <td class="text-center">JL. MERTASARI NO.128, SUWUNG KANGIN</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-semibold text-muted ps-4">Kelurahan Penanggung Jawab</td>
+                                                    <td class="text-center">SIDAKARYA</td>
+                                                    <td class="text-center">SIDAKARYA</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-semibold text-muted ps-4">RT / RW Penanggung Jawab</td>
+                                                    <td class="text-center font-monospace">000 / 000</td>
+                                                    <td class="text-center font-monospace">000 / 000</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ========================================================================= -->
+                    <!-- SECTION C: DOKUMEN PERSYARATAN                                            -->
+                    <!-- ========================================================================= -->
+                    <div class="card custom-card border shadow-sm mb-4" id="sectionC-DokumenPersyaratan">
+                        <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="avatar avatar-sm bg-primary text-white rounded-circle fs-14 fw-bold">C</span>
+                                <div>
+                                    <h6 class="fw-bold text-dark mb-0 fs-15">C. Dokumen Persyaratan</h6>
+                                    <p class="text-muted fs-12 mb-0">Daftar berkas persyaratan permohonan izin usaha yang telah diunggah</p>
+                                </div>
+                            </div>
+                            <span class="badge bg-success-transparent text-success border border-success-subtle px-2 py-1 fs-12">
+                                <i class="fe fe-check-circle me-1"></i>Seluruh Dokumen Lengkap
+                            </span>
+                        </div>
+                        <div class="card-body p-4 bg-white">
+                            <div class="detail-card-section">
+                                <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="fe fe-file-text text-primary fs-16"></i>
+                                        <h6 class="fw-bold text-dark mb-0 fs-14">Daftar Berkas Dokumen Persyaratan</h6>
+                                    </div>
+                                    <span class="badge bg-success-transparent text-success border border-success-subtle px-2 py-1 fs-12">
+                                        <i class="fe fe-check-circle me-1"></i>6 Dokumen Terverifikasi
+                                    </span>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover align-middle mb-0">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th style="width: 8%;" class="text-center fw-semibold text-dark">NO.</th>
+                                                    <th style="width: 72%;" class="fw-semibold text-dark">JENIS DOKUMEN</th>
+                                                    <th style="width: 20%;" class="text-center fw-semibold text-dark">DOKUMEN DIUNGGAH</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="fs-13">
+                                                <!-- Baris 1 -->
+                                                <tr>
+                                                    <td class="text-center text-dark">1</td>
+                                                    <td class="text-dark">Permohonan SIUP</td>
+                                                    <td class="text-center">
+                                                        <button type="button" class="btn btn-sm btn-primary-transparent btn-icon rounded-circle btn-preview-doc" data-title="Permohonan SIUP" data-doc="Permohonan_SIUP.pdf" data-bs-toggle="tooltip" title="Lihat Dokumen: Permohonan SIUP">
+                                                            <i class="fe fe-eye fs-14 text-primary"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Baris 2 -->
+                                                <tr>
+                                                    <td class="text-center text-dark">2</td>
+                                                    <td class="text-dark">NIB dan Izin Usaha OSS</td>
+                                                    <td class="text-center">
+                                                        <button type="button" class="btn btn-sm btn-primary-transparent btn-icon rounded-circle btn-preview-doc" data-title="NIB dan Izin Usaha OSS" data-doc="NIB_Izin_Usaha_OSS.pdf" data-bs-toggle="tooltip" title="Lihat Dokumen: NIB dan Izin Usaha OSS">
+                                                            <i class="fe fe-eye fs-14 text-primary"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Baris 3 -->
+                                                <tr>
+                                                    <td class="text-center text-dark">3</td>
+                                                    <td class="text-dark">Rencana Kegiatan Usaha</td>
+                                                    <td class="text-center">
+                                                        <button type="button" class="btn btn-sm btn-primary-transparent btn-icon rounded-circle btn-preview-doc" data-title="Rencana Kegiatan Usaha" data-doc="Rencana_Kegiatan_Usaha.pdf" data-bs-toggle="tooltip" title="Lihat Dokumen: Rencana Kegiatan Usaha">
+                                                            <i class="fe fe-eye fs-14 text-primary"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Baris 4 -->
+                                                <tr>
+                                                    <td class="text-center text-dark">4</td>
+                                                    <td class="text-dark">Alokasi - Realisasi SIUP</td>
+                                                    <td class="text-center">
+                                                        <button type="button" class="btn btn-sm btn-primary-transparent btn-icon rounded-circle btn-preview-doc" data-title="Alokasi - Realisasi SIUP" data-doc="Alokasi_Realisasi_SIUP.pdf" data-bs-toggle="tooltip" title="Lihat Dokumen: Alokasi - Realisasi SIUP">
+                                                            <i class="fe fe-eye fs-14 text-primary"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Baris 5 -->
+                                                <tr>
+                                                    <td class="text-center text-dark">5</td>
+                                                    <td class="text-dark">Syarat Pendukung (4 Berkas Lampiran)</td>
+                                                    <td class="text-center">
+                                                        <div class="d-flex flex-wrap gap-2 justify-content-center align-items-center">
+                                                            <button type="button" class="btn btn-sm btn-primary-transparent btn-icon rounded-circle btn-preview-doc" data-title="Syarat Pendukung (Lampiran 1)" data-doc="Syarat_Pendukung_1.pdf" data-bs-toggle="tooltip" title="Lampiran 1">
+                                                                <span class="fs-12 fw-bold">1</span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-sm btn-primary-transparent btn-icon rounded-circle btn-preview-doc" data-title="Syarat Pendukung (Lampiran 2)" data-doc="Syarat_Pendukung_2.pdf" data-bs-toggle="tooltip" title="Lampiran 2">
+                                                                <span class="fs-12 fw-bold">2</span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-sm btn-primary-transparent btn-icon rounded-circle btn-preview-doc" data-title="Syarat Pendukung (Lampiran 3)" data-doc="Syarat_Pendukung_3.pdf" data-bs-toggle="tooltip" title="Lampiran 3">
+                                                                <span class="fs-12 fw-bold">3</span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-sm btn-primary-transparent btn-icon rounded-circle btn-preview-doc" data-title="Syarat Pendukung (Lampiran 4)" data-doc="Syarat_Pendukung_4.pdf" data-bs-toggle="tooltip" title="Lampiran 4">
+                                                                <span class="fs-12 fw-bold">4</span>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- Baris 6 -->
+                                                <tr>
+                                                    <td class="text-center text-dark">6</td>
+                                                    <td class="text-dark">Surat Pernyataan Penangkapan Ikan Terukur (PIT)</td>
+                                                    <td class="text-center">
+                                                        <div class="d-flex flex-wrap gap-2 justify-content-center align-items-center">
+                                                            <button type="button" class="btn btn-sm btn-primary-transparent btn-icon rounded-circle btn-preview-doc" data-title="Surat Pernyataan PIT (Lampiran 1)" data-doc="Pernyataan_PIT_1.pdf" data-bs-toggle="tooltip" title="Lampiran 1">
+                                                                <span class="fs-12 fw-bold">1</span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-sm btn-primary-transparent btn-icon rounded-circle btn-preview-doc" data-title="Surat Pernyataan PIT (Lampiran 2)" data-doc="Pernyataan_PIT_2.pdf" data-bs-toggle="tooltip" title="Lampiran 2">
+                                                                <span class="fs-12 fw-bold">2</span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-sm btn-primary-transparent btn-icon rounded-circle btn-preview-doc" data-title="Surat Pernyataan PIT (Lampiran 3)" data-doc="Pernyataan_PIT_3.pdf" data-bs-toggle="tooltip" title="Lampiran 3">
+                                                                <span class="fs-12 fw-bold">3</span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-sm btn-primary-transparent btn-icon rounded-circle btn-preview-doc" data-title="Surat Pernyataan PIT (Lampiran 4)" data-doc="Pernyataan_PIT_4.pdf" data-bs-toggle="tooltip" title="Lampiran 4">
+                                                                <span class="fs-12 fw-bold">4</span>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ========================================================================= -->
+                    <!-- SECTION D: FOTO & TTD                                                     -->
+                    <!-- ========================================================================= -->
+                    <div class="card custom-card border shadow-sm mb-4" id="sectionD-FotoTtd">
+                        <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="avatar avatar-sm bg-primary text-white rounded-circle fs-14 fw-bold">D</span>
+                                <div>
+                                    <h6 class="fw-bold text-dark mb-0 fs-15">D. Foto &amp; TTD</h6>
+                                    <p class="text-muted fs-12 mb-0">Lampiran pasfoto pemilik/penanggung jawab dan tanda tangan resmi</p>
+                                </div>
+                            </div>
+                            <span class="badge bg-primary-transparent text-primary fs-12">Lampiran Berkas Foto &amp; TTD</span>
+                        </div>
+                        <div class="card-body p-4 bg-white">
+                            <form id="formFotoTtd" onsubmit="event.preventDefault();">
+                                <div class="row g-4">
+                                    <!-- Card 1: Pasfoto Pemilik -->
+                                    <div class="col-lg-6">
+                                        <div class="detail-card-section h-100 p-4">
+                                            <div class="d-flex align-items-center gap-2 mb-3">
+                                                <span class="avatar avatar-xs bg-primary text-white rounded-circle fs-12">1</span>
+                                                <h6 class="fw-bold text-dark mb-0 fs-14">Foto Pemilik / Penanggung Jawab</h6>
+                                            </div>
+                                            <p class="text-danger fs-12 mb-3">
+                                                * Foto orang perseorangan / penanggung jawab Korporasi terbaru berukuran 4 x 6 cm dengan latar belakang merah.
+                                            </p>
+                                            <div class="d-flex flex-column align-items-center text-center p-3 bg-light rounded border mb-3">
+                                                <div class="border rounded p-1 bg-white shadow-sm mb-3" style="width: 140px; height: 186px;">
+                                                    <img src="../assets/images/media/pasfoto-pemilik.jpg" id="imgPreviewFotoPemilik" alt="Foto Pemilik" class="rounded w-100 h-100" style="object-fit: cover; display: block;">
+                                                </div>
+                                                <div class="d-flex align-items-center gap-2 flex-wrap justify-content-center">
+                                                    <label for="fileFotoPemilik" class="btn btn-sm btn-outline-primary mb-0 px-3" style="cursor: pointer;">
+                                                        <i class="fe fe-camera me-1"></i>Pilih Pasfoto
+                                                    </label>
+                                                    <input type="file" id="fileFotoPemilik" class="d-none" accept="image/*" onchange="handleFotoFileChange(this)">
+                                                    <span class="text-muted fs-12 d-block" id="textNamaFileFoto">Tidak ada file baru</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card 2: Tanda Tangan Pemilik -->
+                                    <div class="col-lg-6">
+                                        <div class="detail-card-section h-100 p-4">
+                                            <div class="d-flex align-items-center gap-2 mb-3">
+                                                <span class="avatar avatar-xs bg-primary text-white rounded-circle fs-12">2</span>
+                                                <h6 class="fw-bold text-dark mb-0 fs-14">Tanda Tangan Pemilik / Penanggung Jawab</h6>
+                                            </div>
+                                            <p class="text-muted fs-12 mb-3">
+                                                * Tanda tangan basah yang di-scan atau tanda tangan digital resmi penanggung jawab korporasi.
+                                            </p>
+                                            <div class="d-flex flex-column align-items-center text-center p-3 bg-light rounded border mb-3">
+                                                <div class="border rounded p-3 bg-white shadow-sm mb-3 d-flex align-items-center justify-content-center" style="width: 280px; height: 140px;">
+                                                    <img src="../assets/images/media/tanda-tangan-pemilik.jpg" id="imgPreviewTtdPemilik" alt="Tanda Tangan Pemilik" class="img-fluid" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                                                </div>
+                                                <div class="d-flex align-items-center gap-2 flex-wrap justify-content-center">
+                                                    <label for="fileTtdPemilik" class="btn btn-sm btn-outline-primary mb-0 px-3" style="cursor: pointer;">
+                                                        <i class="fe fe-edit me-1"></i>Pilih TTD
+                                                    </label>
+                                                    <input type="file" id="fileTtdPemilik" class="d-none" accept="image/*" onchange="handleTtdFileChange(this)">
+                                                    <span class="text-muted fs-12 d-block" id="textNamaFileTtd">Tidak ada file baru</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Save Button -->
+                                <div class="text-center pt-4 border-top mt-4">
+                                    <button type="button" class="btn btn-primary px-5 py-2 fw-semibold shadow-sm text-uppercase" id="btnSimpanFotoTtd">
+                                        <i class="fe fe-save me-2"></i>SIMPAN PERUBAHAN FOTO & TTD
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- ========================================================================= -->
+                    <!-- SECTION E: KEGIATAN USAHA & ALOKASI                                       -->
+                    <!-- ========================================================================= -->
+                    <div class="card custom-card border shadow-sm mb-4" id="sectionE-KegiatanUsahaAlokasi">
+                        <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="avatar avatar-sm bg-primary text-white rounded-circle fs-14 fw-bold">E</span>
+                                <div>
+                                    <h6 class="fw-bold text-dark mb-0 fs-15">E. Kegiatan Usaha &amp; Alokasi</h6>
+                                    <p class="text-muted fs-12 mb-0">Parameter kegiatan usaha SIUP dan daftar rincian alokasi kapal serta wilayah penangkapan</p>
+                                </div>
+                            </div>
+                            <span class="badge bg-primary-transparent text-primary fs-12">180 Alokasi Terdaftar</span>
+                        </div>
+                        <div class="card-body p-4 bg-white">
+                            <!-- Parameter Kegiatan Usaha Summary Tile -->
+                            <div class="detail-card-section mb-4 p-4 bg-light-subtle">
+                                <h6 class="fw-bold text-primary mb-3">
+                                    <i class="fe fe-briefcase me-2"></i>Parameter Kegiatan Usaha SIUP
+                                </h6>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="bg-white border rounded p-3">
+                                            <span class="text-muted fs-12 d-block mb-1">Parameter Resiko <span class="text-danger">*</span></span>
+                                            <span class="badge bg-danger-transparent text-danger fs-13 fw-bold px-3 py-1">TINGGI</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="bg-white border rounded p-3">
+                                            <span class="text-muted fs-12 d-block mb-1">Jenis Kegiatan Usaha <span class="text-danger">*</span></span>
+                                            <span class="fw-bold text-dark fs-13">USAHA PENANGKAPAN IKAN</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="bg-white border rounded p-3">
+                                            <span class="text-muted fs-12 d-block mb-1">Alasan Perubahan</span>
+                                            <span class="badge bg-primary-transparent text-primary fs-13 fw-semibold px-3 py-1">Perubahan KBLI 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Header Tabel Rincian Alokasi Izin Usaha -->
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+                                <div>
+                                    <h6 class="fw-bold text-dark mb-1">Daftar Rincian Alokasi Kapal & Wilayah Tangkap</h6>
+                                    <span class="text-muted fs-12">Menampilkan spesifikasi alokasi kapal penangkapan, alat tangkap, DPI, dan pelabuhan pangkalan.</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-2 flex-wrap">
+                                    <div class="d-flex align-items-center gap-1">
+                                        <span class="text-muted fs-12">Tampilkan:</span>
+                                        <select id="alokasiEntriesPerPage" class="form-select form-select-sm" style="width: 105px;">
+                                            <option value="10" selected>10 data</option>
+                                            <option value="25">25 data</option>
+                                            <option value="50">50 data</option>
+                                            <option value="100">100 data</option>
+                                            <option value="180">Semua (180)</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group input-group-sm" style="width: 240px;">
+                                        <input type="text" id="inputSearchAlokasi" class="form-control" placeholder="Cari kapal/KBLI/WPP...">
+                                        <button class="btn btn-light border" type="button"><i class="fe fe-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tabel Data Alokasi Izin Usaha (12 Kolom Standar Alokasi KKP) -->
+                            <div class="table-responsive border rounded mb-2">
+                                <table class="table table-bordered table-hover align-middle mb-0 fs-13" id="tableAlokasiVerifikasi">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th class="text-center fw-semibold text-dark ps-3" style="width: 45px;">No.</th>
+                                            <th class="fw-semibold text-dark">Jenis Sub Alat Tangkap</th>
+                                            <th class="fw-semibold text-dark" style="min-width: 220px;">Kode dan Judul KBLI</th>
+                                            <th class="text-center fw-semibold text-dark">Ukuran Kapal</th>
+                                            <th class="text-center fw-semibold text-dark">Diajukan - Disetujui</th>
+                                            <th class="text-center fw-semibold text-dark">Operasi Laut Lepas</th>
+                                            <th class="text-center fw-semibold text-dark">Armada/Tunggal</th>
+                                            <th class="fw-semibold text-dark" style="min-width: 280px;">Daerah Penangkapan</th>
+                                            <th class="fw-semibold text-dark" style="min-width: 140px;">Daerah Terlarang</th>
+                                            <th class="fw-semibold text-dark" style="min-width: 220px;">Pangkalan</th>
+                                            <th class="text-center fw-semibold text-dark">Muat/Singgah</th>
+                                            <th class="text-center fw-semibold text-dark pe-3">Negara Tujuan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="alokasiTableBody"></tbody>
+                                </table>
+                            </div>
+
+                            <!-- Keterangan Total GT Alokasi (Sebelah Kiri, Non-Scrollable) & Navigasi Pagination -->
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 pt-1">
+                                <div>
+                                    <p class="fs-13 text-dark fw-bold mb-0">Total GT Alokasi = 18,450 GT</p>
+                                    <span id="alokasiTableSummary" class="text-muted fs-12"></span>
+                                </div>
+                                <nav aria-label="Navigasi halaman alokasi">
+                                    <ul id="alokasiPagination" class="pagination pagination-sm mb-0"></ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END:: Tabbed Detailed Sections -->
+
+                    <!-- Tombol Tutup Riwayat Form -->
+                    <div class="d-flex justify-content-center my-4" id="containerBtnTutupHistory">
+                        <button type="button" class="btn btn-danger px-5 py-2 fw-semibold shadow-sm text-uppercase" id="btnTutupHistory">
+                            <i class="fe fe-x-circle me-2"></i>Tutup
+                        </button>
+                    </div>
+                </div>
+                <!-- END:: Container Riwayat History Pelaku Usaha -->
+
+            <!-- START:: Tabel Seluruh Daftar Permohonan Izin Usaha -->
+            <div class="card custom-card" id="cardDaftarPermohonanContainer">
+                <div class="card-header justify-content-between align-items-center d-flex flex-wrap gap-2">
+                    <div>
+                        <div class="card-title mb-1">Daftar Verifikasi Izin Usaha</div>
+                        <p class="text-muted fs-13 mb-0">Menampilkan seluruh permohonan yang pernah diajukan oleh akun pelaku usaha ini.</p>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <div id="btnBukaHistoryContainer" class="d-none">
+                            <button type="button" class="btn btn-sm btn-primary-transparent rounded-pill" id="btnBukaHistory">
+                                <i class="fe fe-eye me-1"></i>Buka Riwayat Pemohon (Update KBLI 2025)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                    <div class="card-body">
+                        <div class="permohonan-table-wrap">
+                            <table class="table table-bordered table-hover mb-0" id="permohonanTable">
+                                <colgroup>
+                                    <col style="width: 3%">
+                                    <col style="width: 8%">
+                                    <col style="width: 12%">
+                                    <col style="width: 9%">
+                                    <col style="width: 9%">
+                                    <col style="width: 19%">
+                                    <col style="width: 9%">
+                                    <col style="width: 13%">
+                                    <col style="width: 18%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Tanggal Pengajuan</th>
+                                        <th>Pemohon</th>
+                                        <th>No. Agenda</th>
+                                        <th>Jenis Permohonan</th>
+                                        <th>Perubahan yang Diajukan</th>
+                                        <th>Status Permohonan</th>
+                                        <th>Keterangan</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="permohonanTableBody"></tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex flex-wrap gap-3 align-items-center justify-content-between mt-4">
+                            <span id="permohonanTableSummary" class="text-muted fs-13"></span>
+                            <nav aria-label="Navigasi halaman permohonan">
+                                <ul id="permohonanPagination" class="pagination mb-0"></ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <!-- END:: Tabel Seluruh Daftar Permohonan Izin Usaha -->
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 1: Persetujuan Update KBLI 2025 -->
+    <div class="modal fade" id="modalUpdateKbliPersetujuan" tabindex="-1"
+        aria-labelledby="modalUpdateKbliPersetujuanLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-custom-card">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-semibold text-dark" id="modalUpdateKbliPersetujuanLabel">
+                        <i class="fe fe-refresh-cw text-primary me-2"></i>Pengajuan Update KBLI 2025
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="border rounded p-3 bg-light text-start mb-3 fs-13 text-dark leading-relaxed">
+                        Dengan ini Anda menyetujui untuk mengajukan perubahan PB SIUP dalam rangka penyesuaian dan
+                        pemutakhiran Klasifikasi Baku Lapangan Usaha Indonesia (KBLI) 2025 sesuai ketentuan yang
+                        berlaku.
+                    </div>
+                    <div class="form-check text-start">
+                        <input class="form-check-input" type="checkbox" id="agreeKbliCheckbox">
+                        <label class="form-check-label fw-semibold fs-13 cursor-pointer" for="agreeKbliCheckbox">
+                            Saya setuju dengan pernyataan di atas
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer border-top bg-light">
+                    <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary px-4" id="btnOkKbliPersetujuan" disabled>
+                        <i class="fe fe-check me-1"></i>Lanjutkan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Proses Penarikan Dokumen OSS/NIB & Upload Manual -->
+    <div class="modal fade" id="modalProsesTarikDokumen" tabindex="-1" aria-labelledby="modalProsesTarikDokumenLabel"
+        aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-custom-card">
+
+                <!-- Fase 1: Sedang Menarik Data Otomatis (Loading) -->
+                <div id="faseLoadingTarik" class="modal-body text-center p-5">
+                    <div class="spinner-border text-primary mb-3" style="width: 3.5rem; height: 3.5rem;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <h5 class="fw-semibold mb-2">Mohon tunggu...</h5>
+                    <p class="text-muted fs-14 mb-3">
+                        sedang mengambil / memeriksa dokumen NIB dan OSS, lalu membuat permohonan Update KBLI 2025
+                    </p>
+                    <div class="progress progress-xs rounded-pill mb-2">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                            style="width: 75%"></div>
+                    </div>
+                    <span class="text-muted fs-12">Menghubungkan ke server integrasi OSS...</span>
+                </div>
+
+                <!-- Fase 2: Gagal Tarik Otomatis -> Unggah Manual -->
+                <div id="faseManualUpload" class="d-none">
+                    <div class="modal-header border-bottom">
+                        <h5 class="modal-title fw-semibold text-dark">
+                            <i class="fe fe-upload-cloud text-warning me-2"></i>Unggah Dokumen Manual
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <div class="alert alert-warning d-flex align-items-start mb-4 text-start fs-13 rounded"
+                            role="alert">
+                            <i class="ri-error-warning-line fs-22 me-2 flex-shrink-0 text-warning"></i>
+                            <div>
+                                Data gagal ditarik otomatis dari sistem OSS/NIB. Silakan unggah file
+                                <strong>NIB</strong> dan <strong>SIUP</strong> secara manual pada form ini untuk
+                                melanjutkan permohonan Update KBLI 2025.
+                            </div>
+                        </div>
+
+                        <form id="formManualKbli">
+                            <div class="mb-3 text-start">
+                                <label for="fileNibManual" class="form-label fw-semibold">Unggah File NIB <span
+                                        class="text-danger">*</span></label>
+                                <input class="form-control" type="file" id="fileNibManual" accept=".pdf,.png,.jpg,.jpeg"
+                                    required>
+                                <span class="text-muted fs-11 mt-1 d-block">Format file: PDF, JPG, PNG (Maksimal
+                                    5MB)</span>
+                            </div>
+
+                            <div class="mb-3 text-start">
+                                <label for="fileSiupManual" class="form-label fw-semibold">Unggah File SIUP Lama <span
+                                        class="text-danger">*</span></label>
+                                <input class="form-control" type="file" id="fileSiupManual"
+                                    accept=".pdf,.png,.jpg,.jpeg" required>
+                                <span class="text-muted fs-11 mt-1 d-block">Format file: PDF, JPG, PNG (Maksimal
+                                    5MB)</span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer border-top bg-light">
+                        <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary px-4" id="btnSubmitManualKbli">
+                            <i class="fe fe-send me-1"></i>Unggah &amp; Buat Permohonan
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Informasi Update KBLI 2025 -->
+    <div class="modal fade" id="modalInfoKbli2025" tabindex="-1" aria-labelledby="modalInfoKbli2025Label" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-custom-card">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-semibold text-primary" id="modalInfoKbli2025Label">
+                        <i class="fe fe-info me-2"></i>Informasi Update KBLI 2025
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body p-4 text-start">
+                    <div class="alert alert-info-transparent d-flex align-items-start mb-0 rounded p-3 border" role="alert">
+                        <i class="ri-information-line fs-24 me-3 text-primary flex-shrink-0 mt-1"></i>
+                        <div class="fs-14 text-dark leading-relaxed">
+                            Proses SIUP Update KBLI 2025 telah selesai di sisi Anda. Permohonan saat ini sedang dalam proses verifikasi oleh Verifikator KKP. Anda tidak perlu melakukan tindakan apapun selanjutnya.
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top bg-light">
+                    <button type="button" class="btn btn-primary px-4" id="btnOkKbliModalInfo" data-bs-dismiss="modal">
+                        <i class="fe fe-check me-1"></i>OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Pratinjau Dokumen PDF -->
+    <div class="modal fade" id="modalPreviewDokumen" tabindex="-1" aria-labelledby="modalPreviewDokumenLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content modal-custom-card">
+                <div class="modal-header border-bottom">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="avatar avatar-sm bg-primary-transparent text-primary">
+                            <i class="fe fe-file-text fs-18"></i>
+                        </span>
+                        <div>
+                            <h6 class="modal-title fw-semibold text-dark mb-0" id="previewDocTitleText">Pratinjau Dokumen</h6>
+                            <span class="text-muted fs-12 font-monospace" id="previewDocFileNameText">dokumen.pdf</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body p-4 bg-light">
+                    <!-- Lembar Dokumen Simulasi PDF -->
+                    <div class="card shadow-sm border p-4 p-md-5 bg-white mx-auto" style="max-width: 720px; min-height: 480px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        <!-- Kop Surat -->
+                        <div class="text-center border-bottom pb-3 mb-4">
+                            <div class="d-flex justify-content-center align-items-center gap-3 mb-2">
+                                <i class="ri-government-line fs-32 text-primary"></i>
+                                <div>
+                                    <h5 class="fw-bold mb-0 text-dark">KEMENTERIAN KELAUTAN DAN PERIKANAN</h5>
+                                    <span class="fs-12 text-muted text-uppercase">Direktorat Jenderal Perikanan Tangkap - SILAT OSS</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Judul Dokumen -->
+                        <div class="text-center mb-4">
+                            <h6 class="fw-bold text-dark text-uppercase mb-1" id="previewDocMainTitle">DOKUMEN PERSYARATAN SIUP</h6>
+                            <span class="badge bg-primary-transparent text-primary fs-11">Terverifikasi Sistem Terpadu OSS KKP</span>
+                        </div>
+
+                        <!-- Data Rincian Dokumen -->
+                        <table class="table table-sm table-bordered mb-4 fs-13">
+                            <tbody>
+                                <tr>
+                                    <th class="bg-light text-muted fw-semibold" style="width: 35%;">Nama Dokumen</th>
+                                    <td class="fw-semibold text-dark" id="previewDocTypeField">Permohonan SIUP</td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light text-muted fw-semibold">Nama Pemohon</th>
+                                    <td>PT SAMUDRA BAHARI NUSANTARA</td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light text-muted fw-semibold">Nomor Agenda</th>
+                                    <td class="font-monospace text-primary fw-bold" id="previewDocAgendaField">AG-KBLI-2026/0091</td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light text-muted fw-semibold">Nomor NIB</th>
+                                    <td class="font-monospace">9120001234567</td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light text-muted fw-semibold">Tanggal Unggah</th>
+                                    <td>15 September 2026, 09:15 WIB</td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light text-muted fw-semibold">Status Dokumen</th>
+                                    <td><span class="badge bg-success-transparent text-success"><i class="fe fe-check-circle me-1"></i>Dokumen Sah & Lengkap</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Tanda Tangan & QR Validasi -->
+                        <div class="d-flex justify-content-between align-items-end mt-auto pt-4 border-top">
+                            <div class="text-start">
+                                <div class="border p-2 bg-light rounded text-center d-inline-block">
+                                    <i class="ri-qr-code-line fs-36 text-dark"></i>
+                                    <span class="d-block fs-10 text-muted mt-1 font-monospace">VALIDASI ELEKTRONIK</span>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <span class="fs-12 text-muted d-block mb-3">Jakarta, 15 September 2026</span>
+                                <strong class="fs-13 text-dark d-block">Direktorat Jenderal Perikanan Tangkap</strong>
+                                <span class="fs-11 text-muted">Ditandatangani secara elektronik</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top bg-light d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-danger" onclick="window.print()">
+                        <i class="fe fe-printer me-1"></i>Cetak Dokumen
+                    </button>
+                    <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- START:: MODAL DETAIL DATA ALOKASI IZIN USAHA -->
+    <div class="modal fade" id="modalDetailAlokasi" tabindex="-1" aria-labelledby="modalDetailAlokasiLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg rounded-3">
+                <div class="modal-header bg-primary text-white py-3 px-4">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="avatar avatar-sm bg-white-transparent text-white rounded-circle">
+                            <i class="fe fe-file-text fs-16"></i>
+                        </div>
+                        <h5 class="modal-title fs-15 fw-bold text-white mb-0" id="modalDetailAlokasiLabel">
+                            Data ID Alokasi : <span id="mHdrIdAlokasi" class="font-monospace text-warning">329347</span>
+                        </h5>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+
+                <div class="modal-body p-4 bg-light">
+                    <!-- SECTION 1: DATA ALOKASI -->
+                    <div class="card custom-card border mb-3 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="fe fe-file-text me-1"></i>DATA ALOKASI
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">ID Alokasi <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm font-monospace fw-bold text-primary bg-light" id="mIdAlokasi" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">Tgl. Terbit Alokasi <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-semibold text-dark bg-light" id="mTglTerbitAlokasi" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 2: DATA USAHA -->
+                    <div class="card custom-card border mb-3 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="fe fe-briefcase me-1"></i>DATA USAHA
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">NIB <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm font-monospace fw-bold text-dark bg-light" id="mNibUsaha" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">KBLI <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-semibold text-dark bg-light" id="mKbliUsaha" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 3: DATA PEMILIK -->
+                    <div class="card custom-card border mb-3 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="fe fe-user me-1"></i>DATA PEMILIK
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">No. SIUP <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm font-monospace fw-bold text-dark bg-light" id="mNoSiupPemilik" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">Nama Pemilik <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-bold text-dark bg-light" id="mNamaPemilik" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 4: DATA KAPAL -->
+                    <div class="card custom-card border mb-3 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="fe fe-anchor me-1"></i>DATA KAPAL
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">Jenis Kapal <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-semibold text-dark bg-light" id="mJenisKapal" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">Alat Penangkapan Ikan / Tipe Operasi <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-semibold text-dark bg-light" id="mAlatPenangkapan" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">Range Ukuran Kapal <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-bold text-dark bg-light" id="mRangeUkuran" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">Jumlah Kapal (Unit) <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-bold text-primary bg-light" id="mJumlahKapal" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 5: DATA DAERAH PENANGKAPAN IKAN -->
+                    <div class="card custom-card border mb-3 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="ri-compass-3-line me-1"></i>DATA DAERAH PENANGKAPAN IKAN
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Zona <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-bold text-dark bg-light" id="mZonaDpi" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Jalur Penangkapan Ikan <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-semibold text-dark bg-light" id="mJpiDpi" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">WPP NRI <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm fw-bold text-primary bg-light" id="mWppDpi" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 6: DATA PELABUHAN -->
+                    <div class="card custom-card border mb-3 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="fe fe-map-pin me-1"></i>DATA PELABUHAN
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label fs-12 text-muted mb-1">Pelabuhan Pangkalan <span class="text-danger">*</span></label>
+                                    <textarea class="form-control form-control-sm fw-semibold text-dark bg-light" id="mPelabuhanPangkalan" rows="2" readonly></textarea>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Pelabuhan Domisili <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light" id="mPelabuhanDomisili" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Pelabuhan Muat (Kapal Angkut) <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light" id="mPelabuhanMuat" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fs-12 text-muted mb-1">Pelabuhan Negara Tujuan (Kapal Angkut) <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light" id="mPelabuhanTujuan" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 7: DATA REALISASI KAPAL -->
+                    <div class="card custom-card border mb-0 shadow-none">
+                        <div class="card-header bg-white py-2 px-3 border-bottom">
+                            <h6 class="card-title fs-13 mb-0 text-primary fw-bold">
+                                <i class="ri-pulse-line me-1"></i>DATA REALISASI KAPAL
+                            </h6>
+                        </div>
+                        <div class="card-body p-3 bg-white">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">No. BKP <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light" id="mNoBkp" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fs-12 text-muted mb-1">Nama Kapal <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-sm bg-light" id="mNamaKapalRealisasi" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-top bg-white py-2 px-4 d-flex justify-content-between">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.print()">
+                        <i class="fe fe-printer me-1"></i>Cetak Data
+                    </button>
+                    <button type="button" class="btn btn-sm btn-primary px-4" data-bs-dismiss="modal">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END:: MODAL DETAIL DATA ALOKASI IZIN USAHA -->>
+
+    @SPK@include("partials/footer.html")
+    @SPK@include("partials/commonjs.html")
+
+    <script>
+        const permohonanData = [
+            { tanggal: "15-09-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-KBLI-2026/0091", jenis: "SIUP (Update KBLI 2025)", perubahan: "Perubahan KBLI", status: "Dalam Proses", keterangan: "Menunggu verifikasi Verifikator KKP" },
+            { tanggal: "02-09-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0001", jenis: "SIUP", perubahan: "Perubahan Alat Tangkap, Perubahan Daerah Penangkapan, Perubahan KBLI, Perubahan Pelabuhan Pangkalan", status: "Dalam Proses", keterangan: "Dokumen sedang diperiksa" },
+            { tanggal: "01-09-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0002", jenis: "SIPI/SIKPI", perubahan: "PERUBAHAN BALIK KEMBALI ALOKASI MENJADI 11 PANCING CUMI DARI PANCING ULUR TUNA YANG BELUM REALISASI DIKARENAKAN KONDISI DI LAPANGAN YANG TERBATAS UNTUK UMPAN TUNA", status: "Dalam Proses", keterangan: "Dokumen lengkap" },
+            { tanggal: "29-08-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0003", jenis: "SIUP", status: "Ditolak", keterangan: "Dokumen persyaratan teknis tidak memenuhi ketentuan" },
+            { tanggal: "27-08-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0004", jenis: "SIPI/SIKPI", status: "Terbit", keterangan: "Izin dapat dicetak" },
+            { tanggal: "25-08-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0005", jenis: "SIUP", status: "Dalam Proses", keterangan: "Dokumen sedang diperiksa" },
+            { tanggal: "22-08-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0006", jenis: "SIPI/SIKPI", status: "Dalam Proses", keterangan: "Dokumen lengkap" },
+            { tanggal: "20-08-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0007", jenis: "SIUP", status: "Ditolak", keterangan: "Ketidaksesuaian data administrasi pemohon" },
+            { tanggal: "18-08-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0008", jenis: "SIPI/SIKPI", status: "Terbit", keterangan: "Izin dapat dicetak" },
+            { tanggal: "15-08-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0009", jenis: "SIUP", status: "Ditolak", keterangan: "Persyaratan belum terpenuhi" }
+        ];
+        const rowsPerPage = 10;
+        let currentPage = 1;
+
+        function renderPermohonanTable() {
+            const start = (currentPage - 1) * rowsPerPage;
+            const pageRows = permohonanData.slice(start, start + rowsPerPage);
+            const tableBody = document.getElementById("permohonanTableBody");
+            tableBody.innerHTML = pageRows.map((item, index) => `
+                ${item.status === "Ditolak" || item.status === "Dalam Proses" ? `
+                    <tr>
+                        <td data-label="No.">${start + index + 1}</td>
+                        <td data-label="Tanggal Pengajuan">${item.tanggal}</td>
+                        <td data-label="Pemohon">${item.pemohon}</td>
+                        <td data-label="No. Agenda">${item.agenda}</td>
+                        <td data-label="Jenis Permohonan">${item.jenis}</td>
+                        <td data-label="Perubahan yang Diajukan">${item.perubahan || ""}</td>
+                        <td data-label="Status Permohonan">${item.status}</td>
+                        <td data-label="Keterangan">${item.status === "Ditolak" ? item.keterangan : ""}</td>
+                        <td data-label="Aksi"><button type="button" class="btn btn-sm btn-secondary"><i class="fe fe-eye me-1"></i>Lihat</button></td>
+                    </tr>
+                ` : `
+                <tr>
+                    <td data-label="No.">${start + index + 1}</td>
+                    <td data-label="Tanggal Pengajuan">${item.tanggal}</td>
+                    <td data-label="Pemohon">${item.pemohon}</td>
+                    <td data-label="No. Agenda">${item.agenda}</td>
+                    <td data-label="Jenis Permohonan">${item.jenis}</td>
+                    <td data-label="Perubahan yang Diajukan">${item.perubahan || ""}</td>
+                    <td data-label="Status Permohonan">${item.status}</td>
+                    <td data-label="Keterangan">${item.status === "Ditolak" ? item.keterangan : ""}</td>
+                    <td data-label="Aksi">
+                        <div class="permohonan-actions">
+                            <a href="surat-preview.html?pemohon=${encodeURIComponent(item.pemohon)}&agenda=${encodeURIComponent(item.agenda)}&jenis=${encodeURIComponent(item.jenis)}&tanggal=${encodeURIComponent(item.tanggal)}&status=${encodeURIComponent(item.status)}" class="btn btn-sm btn-primary"><i class="fe fe-printer me-1"></i>Cetak Izin OSS</a>
+                            <button type="button" class="btn btn-sm btn-success"><i class="fe fe-printer me-1"></i>Cetak Izin</button>
+                            <button type="button" class="btn btn-sm btn-info"><i class="fe fe-paperclip me-1"></i>Lampiran Data Teknis</button>
+                        </div>
+                    </td>
+                </tr>
+                `}
+            `).join("");
+
+            const first = permohonanData.length ? start + 1 : 0;
+            const last = Math.min(start + rowsPerPage, permohonanData.length);
+            document.getElementById("permohonanTableSummary").textContent = `Menampilkan ${first} sampai ${last} data dari total ${permohonanData.length} data`;
+
+            renderPermohonanPagination();
+        }
+
+        function renderPermohonanPagination() {
+            const totalPages = Math.ceil(permohonanData.length / rowsPerPage);
+            const pagination = document.getElementById("permohonanPagination");
+            let items = `<li class="page-item ${currentPage === 1 ? "disabled" : ""}"><button class="page-link" type="button" data-page="${currentPage - 1}">Sebelumnya</button></li>`;
+            for (let i = 1; i <= totalPages; i++) {
+                items += `<li class="page-item ${i === currentPage ? "active" : ""}"><button class="page-link" type="button" data-page="${i}">${i}</button></li>`;
+            }
+            items += `<li class="page-item ${currentPage === totalPages ? "disabled" : ""}"><button class="page-link" type="button" data-page="${currentPage + 1}">Selanjutnya</button></li>`;
+            pagination.innerHTML = items;
+            pagination.querySelectorAll("button[data-page]").forEach((button) => {
+                button.addEventListener("click", () => {
+                    const page = Number(button.dataset.page);
+                    if (page >= 1 && page <= totalPages) {
+                        currentPage = page;
+                        renderPermohonanTable();
+                    }
+                });
+            });
+        }
+        // ==========================================
+        // DATA 180 BARIS DATA ALOKASI IZIN USAHA (12 KOLOM STANDAR KKP)
+        // ==========================================
+        const alokasiDataMaster = [
+            {
+                id: 1,
+                no: 1,
+                idAlokasi: "329349",
+                tglAlokasi: "18-SEP-2026",
+                nib: "1806250046134",
+                subAlatTangkap: "Rawai Tuna (Tuna Longline)",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                noSiup: "01.26.01.0000.20269",
+                namaPemilik: "SUMBER MAKMUR RAYA FISHERIES, PT",
+                materialLokasiSkema: "-",
+                jenisKapal: "Kapal Penangkap",
+                alatTangkap: "Rawai Tuna (Tuna Longline)",
+                ukuranKapal: "60 - 100",
+                rangeUkuran: "60 - 100",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Ya",
+                armadaTunggal: "Armada",
+                daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPP NRI 572; Jalur Penangkapan Ikan III di ZEEI WPP NRI 572; Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPP NRI 573; Jalur Penangkapan Ikan III di ZEEI WPP NRI 573; Laut Lepas Samudera Hindia",
+                daerahTerlarang: "Jalur I & II; Jalur I & II",
+                pangkalan: "PP. Teluk Awang, PPN. Pengambengan, PPN. Prigi, PPS. Cilacap, PU. Benoa",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                jumlahKapal: "1 Unit",
+                jumlahKapalNum: "1",
+                zona: "ZONA 01",
+                jpi: "Jalur Penangkapan Ikan III",
+                wpp: "WPP-RI 572, WPP-RI 573",
+                pp: "PP. Teluk Awang, PPN. Pengambengan, PPN. Prigi, PPS. Cilacap, PU. Benoa",
+                pd: "PPS. Cilacap",
+                pelabuhanMuat: "-",
+                pelabuhanTujuan: "-",
+                realisasiKapal: "-",
+                noBkp: "-",
+                namaKapal: "-"
+            },
+            {
+                id: 2,
+                no: 2,
+                idAlokasi: "329347",
+                tglAlokasi: "18-SEP-2026",
+                nib: "1806250046134",
+                subAlatTangkap: "Jaring Hela Udang Berkantong",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                noSiup: "01.26.01.0000.20269",
+                namaPemilik: "SUMBER MAKMUR RAYA FISHERIES, PT",
+                materialLokasiSkema: "-",
+                jenisKapal: "Kapal Penangkap",
+                alatTangkap: "Jaring Hela Udang Berkantong",
+                ukuranKapal: "250 - 300",
+                rangeUkuran: "250 - 300",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Tidak",
+                armadaTunggal: "Tunggal",
+                daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPP NRI 718; Jalur Penangkapan Ikan III di ZEEI WPP NRI 718",
+                daerahTerlarang: "Jalur I & II",
+                pangkalan: "PP. Poumako, PP. Tual, PPN. Merauke",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                jumlahKapal: "1 Unit",
+                jumlahKapalNum: "1",
+                zona: "ZONA 03",
+                jpi: "Jalur Penangkapan Ikan III",
+                wpp: "WPP-RI 718",
+                pp: "PP. Poumako; PP. Tual; PPN. Merauke",
+                pd: "-",
+                pelabuhanMuat: "-",
+                pelabuhanTujuan: "-",
+                realisasiKapal: "-",
+                noBkp: "-",
+                namaKapal: "-"
+            },
+            {
+                id: 3,
+                no: 3,
+                idAlokasi: "329350",
+                tglAlokasi: "19-SEP-2026",
+                nib: "0220001234567",
+                subAlatTangkap: "Rawai Tuna (Tuna Longline)",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                noSiup: "01.26.01.0000.20311",
+                namaPemilik: "PT SAMUDRA BAHARI NUSANTARA",
+                materialLokasiSkema: "-",
+                jenisKapal: "Kapal Penangkap",
+                alatTangkap: "Rawai Tuna (Tuna Longline)",
+                ukuranKapal: "100 - 150",
+                rangeUkuran: "100 - 150",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Ya",
+                armadaTunggal: "Armada",
+                daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPP NRI 572; Jalur Penangkapan Ikan III di ZEEI WPP NRI 572; Laut Lepas Samudera Hindia",
+                daerahTerlarang: "Jalur I & II",
+                pangkalan: "PPS Nizam Zachman Jakarta, PPN Sibolga, PP. Teluk Awang",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                jumlahKapal: "1 Unit",
+                jumlahKapalNum: "1",
+                zona: "ZONA 01",
+                jpi: "Jalur Penangkapan Ikan III",
+                wpp: "WPP-RI 572",
+                pp: "PPS Nizam Zachman Jakarta; PPN Sibolga",
+                pd: "PPS Nizam Zachman Jakarta",
+                pelabuhanMuat: "-",
+                pelabuhanTujuan: "-",
+                realisasiKapal: "-",
+                noBkp: "-",
+                namaKapal: "-"
+            },
+            {
+                id: 4,
+                no: 4,
+                idAlokasi: "329352",
+                tglAlokasi: "19-SEP-2026",
+                nib: "0220001234567",
+                subAlatTangkap: "Pukat Cincin Pelagis Besar",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                noSiup: "01.26.01.0000.20311",
+                namaPemilik: "PT SAMUDRA BAHARI NUSANTARA",
+                materialLokasiSkema: "-",
+                jenisKapal: "Kapal Penangkap",
+                alatTangkap: "Pukat Cincin Pelagis Besar",
+                ukuranKapal: "150 - 200",
+                rangeUkuran: "150 - 200",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Tidak",
+                armadaTunggal: "Armada",
+                daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPP NRI 573; Jalur Penangkapan Ikan III di ZEEI WPP NRI 573",
+                daerahTerlarang: "Jalur I & II",
+                pangkalan: "PPS Cilacap, PPN Prigi, PPN Pengambengan",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                jumlahKapal: "1 Unit",
+                jumlahKapalNum: "1",
+                zona: "ZONA 02",
+                jpi: "Jalur Penangkapan Ikan III",
+                wpp: "WPP-RI 573",
+                pp: "PPS Cilacap; PPN Prigi; PPN Pengambengan",
+                pd: "PPS Cilacap",
+                pelabuhanMuat: "-",
+                pelabuhanTujuan: "-",
+                realisasiKapal: "-",
+                noBkp: "-",
+                namaKapal: "-"
+            },
+            {
+                id: 5,
+                no: 5,
+                idAlokasi: "329355",
+                tglAlokasi: "20-SEP-2026",
+                nib: "9120003456789",
+                subAlatTangkap: "Bouke Ami (Cumi-cumi)",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                noSiup: "01.24.01.0000.18820",
+                namaPemilik: "PT MINA MAKMUR SEJAHTERA",
+                materialLokasiSkema: "-",
+                jenisKapal: "Kapal Penangkap",
+                alatTangkap: "Bouke Ami (Cumi-cumi)",
+                ukuranKapal: "100 - 150",
+                rangeUkuran: "100 - 150",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Tidak",
+                armadaTunggal: "Armada",
+                daerahPenangkapan: "Jalur Penangkapan Ikan III di Selat Karimata dan Laut Natuna WPP NRI 711",
+                daerahTerlarang: "Jalur I & II",
+                pangkalan: "PPS Nizam Zachman Jakarta, PPN Sungailiat, PPN Pemangkat",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                jumlahKapal: "1 Unit",
+                jumlahKapalNum: "1",
+                zona: "ZONA 03",
+                jpi: "Jalur Penangkapan Ikan III",
+                wpp: "WPP-RI 711",
+                pp: "PPS Nizam Zachman Jakarta; PPN Sungailiat; PPN Pemangkat",
+                pd: "PPS Nizam Zachman Jakarta",
+                pelabuhanMuat: "-",
+                pelabuhanTujuan: "-",
+                realisasiKapal: "-",
+                noBkp: "-",
+                namaKapal: "-"
+            },
+            {
+                id: 6,
+                no: 6,
+                idAlokasi: "329358",
+                tglAlokasi: "20-SEP-2026",
+                nib: "9120003456789",
+                subAlatTangkap: "Jaring Insang Hanyut",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                noSiup: "01.24.01.0000.18820",
+                namaPemilik: "PT MINA MAKMUR SEJAHTERA",
+                materialLokasiSkema: "-",
+                jenisKapal: "Kapal Penangkap",
+                alatTangkap: "Jaring Insang Hanyut",
+                ukuranKapal: "60 - 100",
+                rangeUkuran: "60 - 100",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Tidak",
+                armadaTunggal: "Tunggal",
+                daerahPenangkapan: "Jalur Penangkapan Ikan II & III di Laut Jawa WPP NRI 712",
+                daerahTerlarang: "Jalur I",
+                pangkalan: "PPN Pekalongan, PPN Brondong, PPP. Bajomulyo",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                jumlahKapal: "1 Unit",
+                jumlahKapalNum: "1",
+                zona: "ZONA 02",
+                jpi: "Jalur Penangkapan Ikan II",
+                wpp: "WPP-RI 712",
+                pp: "PPN Pekalongan; PPN Brondong",
+                pd: "PPN Pekalongan",
+                pelabuhanMuat: "-",
+                pelabuhanTujuan: "-",
+                realisasiKapal: "-",
+                noBkp: "-",
+                namaKapal: "-"
+            },
+            {
+                id: 7,
+                no: 7,
+                idAlokasi: "329360",
+                tglAlokasi: "21-SEP-2026",
+                nib: "3100098765432",
+                subAlatTangkap: "Pukat Cincin Cakalang & Tuna",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                noSiup: "03.25.01.0000.12901",
+                namaPemilik: "PT PACIFIC BITUNG TANGKAP",
+                materialLokasiSkema: "-",
+                jenisKapal: "Kapal Penangkap",
+                alatTangkap: "Pukat Cincin Cakalang & Tuna",
+                ukuranKapal: "150 - 200",
+                rangeUkuran: "150 - 200",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Ya",
+                armadaTunggal: "Armada",
+                daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPP NRI 716; Jalur Penangkapan Ikan III di ZEEI WPP NRI 716; Laut Lepas Samudera Pasifik",
+                daerahTerlarang: "Jalur I & II",
+                pangkalan: "PPS Bitung, PPN Ternate, PPN Ambon",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                jumlahKapal: "1 Unit",
+                jumlahKapalNum: "1",
+                zona: "ZONA 04",
+                jpi: "Jalur Penangkapan Ikan III",
+                wpp: "WPP-RI 716",
+                pp: "PPS Bitung; PPN Ternate; PPN Ambon",
+                pd: "PPS Bitung",
+                pelabuhanMuat: "-",
+                pelabuhanTujuan: "-",
+                realisasiKapal: "-",
+                noBkp: "-",
+                namaKapal: "-"
+            },
+            {
+                id: 8,
+                no: 8,
+                idAlokasi: "329362",
+                tglAlokasi: "21-SEP-2026",
+                nib: "3100098765432",
+                subAlatTangkap: "Rawai Tuna Hanyut",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                noSiup: "03.25.01.0000.12901",
+                namaPemilik: "PT PACIFIC BITUNG TANGKAP",
+                materialLokasiSkema: "-",
+                jenisKapal: "Kapal Penangkap",
+                alatTangkap: "Rawai Tuna Hanyut",
+                ukuranKapal: "100 - 150",
+                rangeUkuran: "100 - 150",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Ya",
+                armadaTunggal: "Armada",
+                daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPP NRI 717; Jalur Penangkapan Ikan III di ZEEI WPP NRI 717; Laut Lepas Samudera Pasifik",
+                daerahTerlarang: "Jalur I & II",
+                pangkalan: "PPN Merauke, PPN Sorong, PPS Bitung",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                jumlahKapal: "1 Unit",
+                jumlahKapalNum: "1",
+                zona: "ZONA 05",
+                jpi: "Jalur Penangkapan Ikan III",
+                wpp: "WPP-RI 717",
+                pp: "PPN Merauke; PPN Sorong; PPS Bitung",
+                pd: "PPN Merauke",
+                pelabuhanMuat: "-",
+                pelabuhanTujuan: "-",
+                realisasiKapal: "-",
+                noBkp: "-",
+                namaKapal: "-"
+            },
+            {
+                id: 9,
+                no: 9,
+                idAlokasi: "329365",
+                tglAlokasi: "21-SEP-2026",
+                nib: "1806250046134",
+                subAlatTangkap: "Kapal Pengangkut Berpendingin (Carrier)",
+                kbli: "[50122] Angkutan Laut Dalam Negeri Untuk Barang Khusus",
+                noSiup: "01.26.01.0000.20269",
+                namaPemilik: "SUMBER MAKMUR RAYA FISHERIES, PT",
+                materialLokasiSkema: "-",
+                jenisKapal: "Kapal Pengangkut",
+                alatTangkap: "Kapal Pengangkut Berpendingin (Carrier)",
+                ukuranKapal: "250 - 300",
+                rangeUkuran: "250 - 300",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Tidak",
+                armadaTunggal: "Armada",
+                daerahPenangkapan: "Jalur Penangkapan Ikan III di ZEEI WPP NRI 718; Jalur Penangkapan Ikan III di ZEEI WPP NRI 716",
+                daerahTerlarang: "Jalur I & II",
+                pangkalan: "PP. Poumako, PP. Tual, PPS Nizam Zachman Jakarta, PPS Bitung",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                jumlahKapal: "1 Unit",
+                jumlahKapalNum: "1",
+                zona: "ZONA 03",
+                jpi: "Jalur Penangkapan Ikan III",
+                wpp: "WPP-RI 718",
+                pp: "PP. Poumako; PP. Tual; PPS Nizam Zachman Jakarta",
+                pd: "-",
+                pelabuhanMuat: "-",
+                pelabuhanTujuan: "-",
+                realisasiKapal: "-",
+                noBkp: "-",
+                namaKapal: "-"
+            },
+            {
+                id: 10,
+                no: 10,
+                idAlokasi: "329370",
+                tglAlokasi: "21-SEP-2026",
+                nib: "2302220070114",
+                subAlatTangkap: "Rawai Dasar",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                noSiup: "02.23.01.0000.14579",
+                namaPemilik: "SUTOMO",
+                materialLokasiSkema: "-",
+                jenisKapal: "Kapal Penangkap",
+                alatTangkap: "Rawai Dasar",
+                ukuranKapal: "60 - 100",
+                rangeUkuran: "60 - 100",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Tidak",
+                armadaTunggal: "Tunggal",
+                daerahPenangkapan: "Jalur Penangkapan Ikan II & III di Laut Jawa WPP NRI 712",
+                daerahTerlarang: "Jalur I",
+                pangkalan: "PPP. Bajomulyo, PPP. Klidang Lor, PPN Brondong",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                jumlahKapal: "1 Unit",
+                jumlahKapalNum: "1",
+                zona: "ZONA 02",
+                jpi: "Jalur Penangkapan Ikan II",
+                wpp: "WPP-RI 712",
+                pp: "PPP. Bajomulyo; PPP. Klidang Lor",
+                pd: "PPP. Bajomulyo",
+                pelabuhanMuat: "-",
+                pelabuhanTujuan: "-",
+                realisasiKapal: "-",
+                noBkp: "-",
+                namaKapal: "-"
+            }
+        ];
+
+        // Synthesize additional rows up to 180 allocations
+        const synthesizedAlokasiData = [...alokasiDataMaster];
+        const dummyTemplatesVerif = [
+            {
+                subAlatTangkap: "Rawai Tuna (Tuna Longline)",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                ukuranKapal: "60 - 100",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Ya",
+                armadaTunggal: "Armada",
+                daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPP NRI 572; Jalur Penangkapan Ikan III di ZEEI WPP NRI 572; Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPP NRI 573; Jalur Penangkapan Ikan III di ZEEI WPP NRI 573; Laut Lepas Samudera Hindia",
+                daerahTerlarang: "Jalur I & II; Jalur I & II",
+                pangkalan: "PP. Teluk Awang, PPN. Pengambengan, PPN. Prigi, PPS. Cilacap, PU. Benoa",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                wpp: "WPP-RI 572",
+                zona: "ZONA 01",
+                jpi: "Jalur Penangkapan Ikan III",
+                pd: "PPS. Cilacap"
+            },
+            {
+                subAlatTangkap: "Pukat Cincin Pelagis Besar",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                ukuranKapal: "150 - 200",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Tidak",
+                armadaTunggal: "Armada",
+                daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPP NRI 718; Jalur Penangkapan Ikan III di ZEEI WPP NRI 718",
+                daerahTerlarang: "Jalur I & II",
+                pangkalan: "PP. Poumako, PP. Tual, PPN. Merauke, PPP. Dobo",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                wpp: "WPP-RI 718",
+                zona: "ZONA 03",
+                jpi: "Jalur Penangkapan Ikan III",
+                pd: "PPN. Merauke"
+            },
+            {
+                subAlatTangkap: "Jaring Hela Udang Berkantong",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                ukuranKapal: "250 - 300",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Tidak",
+                armadaTunggal: "Tunggal",
+                daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Laut Arafura WPP NRI 718",
+                daerahTerlarang: "Jalur I & II",
+                pangkalan: "PP. Banjarmasin, PP. Manggar Baru, PP. Kota Baru, PPP. Bajomulyo, PPP. Klidang Lor",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                wpp: "WPP-RI 718",
+                zona: "ZONA 03",
+                jpi: "Jalur Penangkapan Ikan III",
+                pd: "PPP. Bajomulyo"
+            },
+            {
+                subAlatTangkap: "Bouke Ami (Cumi-cumi)",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                ukuranKapal: "100 - 150",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Tidak",
+                armadaTunggal: "Armada",
+                daerahPenangkapan: "Jalur Penangkapan Ikan III di Selat Karimata dan Laut Natuna WPP NRI 711",
+                daerahTerlarang: "Jalur I & II",
+                pangkalan: "PPS Nizam Zachman Jakarta, PPN Sungailiat, PPN Pemangkat, PP. Muara Angke",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                wpp: "WPP-RI 711",
+                zona: "ZONA 03",
+                jpi: "Jalur Penangkapan Ikan III",
+                pd: "PPS Nizam Zachman Jakarta"
+            },
+            {
+                subAlatTangkap: "Jaring Insang Hanyut",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                ukuranKapal: "60 - 100",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Tidak",
+                armadaTunggal: "Tunggal",
+                daerahPenangkapan: "Jalur Penangkapan Ikan II & III di Laut Jawa WPP NRI 712",
+                daerahTerlarang: "Jalur I",
+                pangkalan: "PPN Pekalongan, PPN Brondong, PPP. Bajomulyo",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                wpp: "WPP-RI 712",
+                zona: "ZONA 02",
+                jpi: "Jalur Penangkapan Ikan II",
+                pd: "PPN Pekalongan"
+            },
+            {
+                subAlatTangkap: "Pukat Cincin Cakalang & Tuna",
+                kbli: "[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut",
+                ukuranKapal: "150 - 200",
+                diajukanDisetujui: "1 - 1",
+                operasiLautLepas: "Ya",
+                armadaTunggal: "Armada",
+                daerahPenangkapan: "Jalur Penangkapan Ikan III di Perairan Kepulauan dan Laut Teritorial WPP NRI 716; Jalur Penangkapan Ikan III di ZEEI WPP NRI 716; Laut Lepas Samudera Pasifik",
+                daerahTerlarang: "Jalur I & II",
+                pangkalan: "PPS Bitung, PPN Ternate, PPN Ambon",
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                wpp: "WPP-RI 716",
+                zona: "ZONA 04",
+                jpi: "Jalur Penangkapan Ikan III",
+                pd: "PPS Bitung"
+            }
+        ];
+
+        for (let i = 11; i <= 180; i++) {
+            const t = dummyTemplatesVerif[(i - 11) % dummyTemplatesVerif.length];
+            const idNum = 329370 + (i - 10);
+            const isCarrier = i % 15 === 0;
+            synthesizedAlokasiData.push({
+                id: i,
+                no: i,
+                idAlokasi: String(idNum),
+                tglAlokasi: "21-SEP-2026",
+                nib: i % 2 === 0 ? "1806250046134" : "2302220070114",
+                subAlatTangkap: isCarrier ? "Kapal Pengangkut Berpendingin (Carrier)" : t.subAlatTangkap,
+                kbli: isCarrier ? "[50122] Angkutan Laut Dalam Negeri Untuk Barang Khusus" : t.kbli,
+                noSiup: i % 2 === 0 ? "01.26.01.0000.20269" : "02.23.01.0000.14579",
+                namaPemilik: i % 2 === 0 ? "SUMBER MAKMUR RAYA FISHERIES, PT" : "SUTOMO",
+                materialLokasiSkema: "-",
+                jenisKapal: isCarrier ? "Kapal Pengangkut" : "Kapal Penangkap",
+                alatTangkap: isCarrier ? "Kapal Pengangkut Berpendingin (Carrier)" : t.subAlatTangkap,
+                ukuranKapal: isCarrier ? "250 - 300" : t.ukuranKapal,
+                rangeUkuran: isCarrier ? "250 - 300" : t.ukuranKapal,
+                diajukanDisetujui: t.diajukanDisetujui,
+                operasiLautLepas: isCarrier ? "Tidak" : t.operasiLautLepas,
+                armadaTunggal: t.armadaTunggal,
+                daerahPenangkapan: isCarrier ? "Jalur Penangkapan Ikan III di ZEEI WPP NRI 718; Jalur Penangkapan Ikan III di ZEEI WPP NRI 716" : t.daerahPenangkapan,
+                daerahTerlarang: t.daerahTerlarang,
+                pangkalan: isCarrier ? "PP. Poumako, PP. Tual, PPS Nizam Zachman Jakarta, PPS Bitung" : t.pangkalan,
+                muatSinggah: "-",
+                negaraTujuan: "-",
+                jumlahKapal: "1 Unit",
+                jumlahKapalNum: "1",
+                zona: t.zona,
+                jpi: t.jpi,
+                wpp: t.wpp,
+                pp: isCarrier ? "PP. Poumako, PP. Tual, PPS Nizam Zachman Jakarta, PPS Bitung" : t.pangkalan,
+                pd: t.pd,
+                pelabuhanMuat: "-",
+                pelabuhanTujuan: "-",
+                realisasiKapal: "-",
+                noBkp: "-",
+                namaKapal: "-"
+            });
+        }
+
+        const alokasiData = synthesizedAlokasiData;
+        let alokasiFilteredData = [...alokasiData];
+        let alokasiRowsPerPage = 10;
+        let alokasiCurrentPage = 1;
+
+        function renderAlokasiTable() {
+            const tbody = document.getElementById("alokasiTableBody");
+            if (!tbody) return;
+
+            const total = alokasiFilteredData.length;
+            const start = (alokasiCurrentPage - 1) * alokasiRowsPerPage;
+            const end = alokasiRowsPerPage === 180 ? total : Math.min(start + alokasiRowsPerPage, total);
+            const pageRows = alokasiRowsPerPage === 180 ? alokasiFilteredData : alokasiFilteredData.slice(start, end);
+
+            if (pageRows.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="12" class="text-center py-5 text-muted"><i class="ri-inbox-line fs-36 d-block mb-2 text-muted"></i>Tidak ada data alokasi yang sesuai dengan kriteria pencarian</td></tr>`;
+                const summaryEl = document.getElementById("alokasiTableSummary");
+                if (summaryEl) summaryEl.textContent = "Menampilkan 0 data";
+                renderAlokasiPagination(0);
+                return;
+            }
+
+            tbody.innerHTML = pageRows.map(item => `
+                <tr>
+                    <!-- 1. No. -->
+                    <td class="text-center ps-3 text-dark">${item.no}</td>
+
+                    <!-- 2. Jenis Sub Alat Tangkap -->
+                    <td class="text-dark">${item.subAlatTangkap}</td>
+
+                    <!-- 3. Kode dan Judul KBLI -->
+                    <td class="text-dark fs-12">${item.kbli}</td>
+
+                    <!-- 4. Ukuran Kapal -->
+                    <td class="text-center text-dark">${item.ukuranKapal}</td>
+
+                    <!-- 5. Diajukan - Disetujui -->
+                    <td class="text-center text-dark">${item.diajukanDisetujui}</td>
+
+                    <!-- 6. Operasi Laut Lepas -->
+                    <td class="text-center text-dark">${item.operasiLautLepas}</td>
+
+                    <!-- 7. Armada/Tunggal -->
+                    <td class="text-center text-dark">${item.armadaTunggal}</td>
+
+                    <!-- 8. Daerah Penangkapan -->
+                    <td class="text-dark fs-12" style="min-width: 280px; max-width: 380px;">${item.daerahPenangkapan}</td>
+
+                    <!-- 9. Daerah Terlarang -->
+                    <td class="text-dark fs-12" style="min-width: 140px; max-width: 200px;">${item.daerahTerlarang}</td>
+
+                    <!-- 10. Pangkalan -->
+                    <td class="text-dark fs-12" style="min-width: 220px; max-width: 320px;">${item.pangkalan}</td>
+
+                    <!-- 11. Muat/Singgah -->
+                    <td class="text-center text-dark">${item.muatSinggah || '-'}</td>
+
+                    <!-- 12. Negara Tujuan -->
+                    <td class="text-center text-dark pe-3">${item.negaraTujuan || '-'}</td>
+                </tr>
+            `).join("");
+
+            const summaryEl = document.getElementById("alokasiTableSummary");
+            if (summaryEl) {
+                summaryEl.textContent = `Menampilkan ${start + 1} sampai ${end} dari total ${total} data`;
+            }
+            renderAlokasiPagination(total);
+        }
+
+        function openModalDetailAlokasi(item) {
+            // Header
+            const hdrEl = document.getElementById("mHdrIdAlokasi");
+            if (hdrEl) hdrEl.textContent = item.idAlokasi;
+
+            // SECTION 1: DATA ALOKASI
+            const mId = document.getElementById("mIdAlokasi");
+            if (mId) mId.value = item.idAlokasi;
+            const mTgl = document.getElementById("mTglTerbitAlokasi");
+            if (mTgl) mTgl.value = item.tglAlokasi;
+
+            // SECTION 2: DATA USAHA
+            const mNib = document.getElementById("mNibUsaha");
+            if (mNib) mNib.value = item.nib;
+            const mKbli = document.getElementById("mKbliUsaha");
+            if (mKbli) mKbli.value = item.kbli;
+
+            // SECTION 3: DATA PEMILIK
+            const mSiup = document.getElementById("mNoSiupPemilik");
+            if (mSiup) mSiup.value = item.noSiup;
+            const mPemilik = document.getElementById("mNamaPemilik");
+            if (mPemilik) mPemilik.value = item.namaPemilik;
+
+            // SECTION 4: DATA KAPAL
+            const mJenis = document.getElementById("mJenisKapal");
+            if (mJenis) mJenis.value = item.jenisKapal;
+            const mAlat = document.getElementById("mAlatPenangkapan");
+            if (mAlat) mAlat.value = item.subAlatTangkap;
+            const mRange = document.getElementById("mRangeUkuran");
+            if (mRange) mRange.value = item.ukuranKapal;
+            const mJml = document.getElementById("mJumlahKapal");
+            if (mJml) mJml.value = item.jumlahKapalNum || "1";
+
+            // SECTION 5: DATA DAERAH PENANGKAPAN IKAN
+            const mZona = document.getElementById("mZonaDpi");
+            if (mZona) mZona.value = item.zona;
+            const mJpi = document.getElementById("mJpiDpi");
+            if (mJpi) mJpi.value = item.jpi;
+            const mWpp = document.getElementById("mWppDpi");
+            if (mWpp) mWpp.value = item.wpp;
+
+            // SECTION 6: DATA PELABUHAN
+            const mPp = document.getElementById("mPelabuhanPangkalan");
+            if (mPp) mPp.value = item.pangkalan;
+            const mPd = document.getElementById("mPelabuhanDomisili");
+            if (mPd) mPd.value = item.pd || "-";
+            const mMuat = document.getElementById("mPelabuhanMuat");
+            if (mMuat) mMuat.value = item.muatSinggah || "-";
+            const mTujuan = document.getElementById("mPelabuhanTujuan");
+            if (mTujuan) mTujuan.value = item.negaraTujuan || "-";
+
+            // SECTION 7: DATA REALISASI KAPAL
+            const mBkp = document.getElementById("mNoBkp");
+            if (mBkp) mBkp.value = item.noBkp || "-";
+            const mKapal = document.getElementById("mNamaKapalRealisasi");
+            if (mKapal) mKapal.value = item.namaKapal || "-";
+
+            // Show modal
+            const modalEl = document.getElementById("modalDetailAlokasi");
+            if (modalEl) {
+                const modalInstance = new bootstrap.Modal(modalEl);
+                modalInstance.show();
+            }
+        }
+
+        function renderAlokasiPagination(total) {
+            const paginationEl = document.getElementById("alokasiPagination");
+            if (!paginationEl) return;
+
+            const totalPages = Math.ceil(total / alokasiRowsPerPage);
+            if (totalPages <= 1) {
+                paginationEl.innerHTML = "";
+                return;
+            }
+
+            let html = `<li class="page-item ${alokasiCurrentPage === 1 ? 'disabled' : ''}"><button class="page-link" type="button" data-alokasi-page="${alokasiCurrentPage - 1}">Sebelumnya</button></li>`;
+
+            let startPage = Math.max(1, alokasiCurrentPage - 2);
+            let endPage = Math.min(totalPages, startPage + 4);
+            if (endPage - startPage < 4) {
+                startPage = Math.max(1, endPage - 4);
+            }
+
+            if (startPage > 1) {
+                html += `<li class="page-item"><button class="page-link" type="button" data-alokasi-page="1">1</button></li>`;
+                if (startPage > 2) html += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+            }
+
+            for (let p = startPage; p <= endPage; p++) {
+                html += `<li class="page-item ${p === alokasiCurrentPage ? 'active' : ''}"><button class="page-link" type="button" data-alokasi-page="${p}">${p}</button></li>`;
+            }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) html += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+                html += `<li class="page-item"><button class="page-link" type="button" data-alokasi-page="${totalPages}">${totalPages}</button></li>`;
+            }
+
+            html += `<li class="page-item ${alokasiCurrentPage === totalPages ? 'disabled' : ''}"><button class="page-link" type="button" data-alokasi-page="${alokasiCurrentPage + 1}">Selanjutnya</button></li>`;
+            paginationEl.innerHTML = html;
+
+            paginationEl.querySelectorAll("button[data-alokasi-page]").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const page = Number(btn.getAttribute("data-alokasi-page"));
+                    if (page >= 1 && page <= totalPages) {
+                        alokasiCurrentPage = page;
+                        renderAlokasiTable();
+                    }
+                });
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderPermohonanTable();
+            renderAlokasiTable();
+
+            // Search Alokasi Table (across all column fields)
+            const searchInput = document.getElementById("inputSearchAlokasi");
+            if (searchInput) {
+                searchInput.addEventListener("input", function () {
+                    const query = this.value.toLowerCase().trim();
+                    alokasiFilteredData = alokasiData.filter((item) =>
+                        !query ||
+                        item.subAlatTangkap.toLowerCase().includes(query) ||
+                        item.kbli.toLowerCase().includes(query) ||
+                        item.ukuranKapal.toLowerCase().includes(query) ||
+                        item.daerahPenangkapan.toLowerCase().includes(query) ||
+                        item.pangkalan.toLowerCase().includes(query) ||
+                        item.idAlokasi.toLowerCase().includes(query) ||
+                        item.nib.toLowerCase().includes(query) ||
+                        item.noSiup.toLowerCase().includes(query) ||
+                        item.namaPemilik.toLowerCase().includes(query) ||
+                        item.wpp.toLowerCase().includes(query) ||
+                        String(item.no).includes(query)
+                    );
+                    alokasiCurrentPage = 1;
+                    renderAlokasiTable();
+                });
+            }
+
+            // Entries per page select
+            const entriesSelect = document.getElementById("alokasiEntriesPerPage");
+            if (entriesSelect) {
+                entriesSelect.addEventListener("change", function () {
+                    alokasiRowsPerPage = Number(this.value);
+                    alokasiCurrentPage = 1;
+                    renderAlokasiTable();
+                });
+            }
+
+            // Cek parameter URL atau localStorage untuk menampilkan modal info KBLI 2025
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromKbli = urlParams.get("from") === "kbli-update";
+            const showKbliInfoFlag = localStorage.getItem("showKbliUpdateInfo");
+            const agendaParam = urlParams.get("agenda") || localStorage.getItem("lastKbliAgenda");
+
+            if (agendaParam) {
+                const hdrAgendaEl = document.getElementById("hdrNomorAgenda");
+                if (hdrAgendaEl) hdrAgendaEl.textContent = agendaParam;
+                if (permohonanData.length > 0) permohonanData[0].agenda = agendaParam;
+                renderPermohonanTable();
+            }
+
+            // Tampilkan modal Informasi Update KBLI 2025
+            if (fromKbli || showKbliInfoFlag === "true") {
+                localStorage.removeItem("showKbliUpdateInfo"); // clear flag after consuming
+                const modalInfoEl = document.getElementById("modalInfoKbli2025");
+                if (modalInfoEl) {
+                    const modalInfo = new bootstrap.Modal(modalInfoEl);
+                    modalInfo.show();
+                }
+            }
+
+            // Handler saat klik OK di modal info
+            const btnOkModal = document.getElementById("btnOkKbliModalInfo");
+            if (btnOkModal) {
+                btnOkModal.addEventListener("click", () => {
+                    const headerSection = document.getElementById("sectionHeaderHistory");
+                    if (headerSection) {
+                        headerSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                });
+            }
+
+            // Inisialisasi Preview Dokumen PDF saat tombol ikon diklik
+            const previewButtons = document.querySelectorAll(".btn-preview-doc");
+            const modalPreviewEl = document.getElementById("modalPreviewDokumen");
+            let bsModalPreview = null;
+            if (modalPreviewEl) {
+                bsModalPreview = new bootstrap.Modal(modalPreviewEl);
+            }
+
+            previewButtons.forEach((btn) => {
+                btn.addEventListener("click", function () {
+                    const title = this.getAttribute("data-title") || "Dokumen Persyaratan";
+                    const docName = this.getAttribute("data-doc") || "dokumen.pdf";
+                    const currentAgenda = document.getElementById("hdrNomorAgenda") ? document.getElementById("hdrNomorAgenda").textContent : "AG-KBLI-2026/0091";
+
+                    document.getElementById("previewDocTitleText").textContent = title;
+                    document.getElementById("previewDocFileNameText").textContent = docName;
+                    document.getElementById("previewDocMainTitle").textContent = title.toUpperCase();
+                    document.getElementById("previewDocTypeField").textContent = title;
+                    document.getElementById("previewDocAgendaField").textContent = currentAgenda;
+
+                    if (bsModalPreview) {
+                        bsModalPreview.show();
+                    }
+                });
+            });
+
+            // Handler Tombol Simpan Foto & TTD
+            const btnSimpan = document.getElementById("btnSimpanFotoTtd");
+            if (btnSimpan) {
+                btnSimpan.addEventListener("click", () => {
+                    if (typeof Swal !== "undefined") {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Data Berhasil Disimpan",
+                            text: "Foto Pemilik dan Tanda Tangan Pemilik berhasil disimpan ke dalam sistem.",
+                            confirmButtonText: "OK",
+                            customClass: {
+                                confirmButton: "btn btn-primary px-4"
+                            },
+                            buttonsStyling: false
+                        });
+                    } else {
+                        alert("Foto Pemilik dan Tanda Tangan Pemilik berhasil disimpan ke dalam sistem.");
+                    }
+                });
+            }
+
+            // Handler Tombol Tutup Riwayat Form -> Menampilkan kembali tabel daftar permohonan
+            const btnTutupHistory = document.getElementById("btnTutupHistory");
+            const containerHistory = document.getElementById("sectionContainerHistoryPelakuUsaha");
+            const btnBukaHistoryContainer = document.getElementById("btnBukaHistoryContainer");
+            const cardDaftarPermohonan = document.getElementById("cardDaftarPermohonanContainer");
+
+            if (btnTutupHistory && containerHistory) {
+                btnTutupHistory.addEventListener("click", () => {
+                    containerHistory.classList.add("d-none");
+                    if (cardDaftarPermohonan) {
+                        cardDaftarPermohonan.classList.remove("d-none");
+                    }
+                    if (btnBukaHistoryContainer) {
+                        btnBukaHistoryContainer.classList.remove("d-none");
+                    }
+                    if (cardDaftarPermohonan) {
+                        cardDaftarPermohonan.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                });
+            }
+
+            // Handler Tombol Buka Riwayat Form
+            const btnBukaHistory = document.getElementById("btnBukaHistory");
+            if (btnBukaHistory && containerHistory) {
+                btnBukaHistory.addEventListener("click", () => {
+                    containerHistory.classList.remove("d-none");
+                    if (cardDaftarPermohonan) {
+                        cardDaftarPermohonan.classList.add("d-none");
+                    }
+                    if (btnBukaHistoryContainer) {
+                        btnBukaHistoryContainer.classList.add("d-none");
+                    }
+                    containerHistory.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+            }
+
+            // Inisialisasi Trigger Modal Update KBLI 2025
+            const modalKbliPersetujuanEl = document.getElementById("modalUpdateKbliPersetujuan");
+            const modalProsesTarikEl = document.getElementById("modalProsesTarikDokumen");
+            const agreeCheckbox = document.getElementById("agreeKbliCheckbox");
+            const btnOkPersetujuan = document.getElementById("btnOkKbliPersetujuan");
+            const btnSubmitManual = document.getElementById("btnSubmitManualKbli");
+
+            let bsModalKbliPersetujuan = modalKbliPersetujuanEl ? new bootstrap.Modal(modalKbliPersetujuanEl) : null;
+            let bsModalProsesTarik = modalProsesTarikEl ? new bootstrap.Modal(modalProsesTarikEl) : null;
+
+            document.querySelectorAll(".btn-trigger-kbli-modal").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    if (agreeCheckbox) agreeCheckbox.checked = false;
+                    if (btnOkPersetujuan) btnOkPersetujuan.disabled = true;
+                    if (bsModalKbliPersetujuan) bsModalKbliPersetujuan.show();
+                });
+            });
+
+            if (agreeCheckbox && btnOkPersetujuan) {
+                agreeCheckbox.addEventListener("change", function () {
+                    btnOkPersetujuan.disabled = !this.checked;
+                });
+            }
+
+            if (btnOkPersetujuan) {
+                btnOkPersetujuan.addEventListener("click", () => {
+                    if (bsModalKbliPersetujuan) bsModalKbliPersetujuan.hide();
+
+                    document.getElementById("faseLoadingTarik").classList.remove("d-none");
+                    document.getElementById("faseManualUpload").classList.add("d-none");
+
+                    if (bsModalProsesTarik) bsModalProsesTarik.show();
+
+                    setTimeout(() => {
+                        document.getElementById("faseLoadingTarik").classList.add("d-none");
+                        document.getElementById("faseManualUpload").classList.remove("d-none");
+                    }, 2500);
+                });
+            }
+
+            if (btnSubmitManual) {
+                btnSubmitManual.addEventListener("click", () => {
+                    const fileNib = document.getElementById("fileNibManual");
+                    const fileSiup = document.getElementById("fileSiupManual");
+
+                    if (!fileNib.value || !fileSiup.value) {
+                        alert("Mohon pilih file NIB dan file SIUP lama terlebih dahulu.");
+                        return;
+                    }
+
+                    if (bsModalProsesTarik) bsModalProsesTarik.hide();
+
+                    const randomAgenda = "AG-KBLI-2026/" + Math.floor(1000 + Math.random() * 9000);
+                    
+                    // Update header & table data
+                    const hdrAgendaEl = document.getElementById("hdrNomorAgenda");
+                    if (hdrAgendaEl) hdrAgendaEl.textContent = randomAgenda;
+
+                    permohonanData.unshift({
+                        tanggal: new Date().toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-'),
+                        pemohon: "PT Samudra Bahari Nusantara",
+                        agenda: randomAgenda,
+                        jenis: "SIUP (Update KBLI 2025)",
+                        perubahan: "Perubahan KBLI",
+                        status: "Dalam Proses",
+                        keterangan: "Menunggu verifikasi Verifikator KKP"
+                    });
+                    renderPermohonanTable();
+
+                    // Tampilkan container riwayat
+                    if (containerHistory) containerHistory.classList.remove("d-none");
+                    if (cardDaftarPermohonan) cardDaftarPermohonan.classList.add("d-none");
+
+                    // Tampilkan modal info
+                    const modalInfoEl = document.getElementById("modalInfoKbli2025");
+                    if (modalInfoEl) {
+                        const modalInfo = new bootstrap.Modal(modalInfoEl);
+                        modalInfo.show();
+                    }
+                });
+            }
+        });
+
+        // Handler perubahan file foto
+        function handleFotoFileChange(input) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                const textEl = document.getElementById("textNamaFileFoto");
+                if (textEl) {
+                    textEl.textContent = file.name;
+                    textEl.classList.remove("text-muted");
+                    textEl.classList.add("text-dark", "fw-medium");
+                }
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const imgEl = document.getElementById("imgPreviewFotoPemilik");
+                    if (imgEl) {
+                        imgEl.src = e.target.result;
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Handler perubahan file tanda tangan
+        function handleTtdFileChange(input) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                const textEl = document.getElementById("textNamaFileTtd");
+                if (textEl) {
+                    textEl.textContent = file.name;
+                    textEl.classList.remove("text-muted");
+                    textEl.classList.add("text-dark", "fw-medium");
+                }
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const imgEl = document.getElementById("imgPreviewTtdPemilik");
+                    if (imgEl) {
+                        imgEl.src = e.target.result;
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+    <!-- SweetAlert JS -->
+    <script src="../assets/libs/sweetalert2/sweetalert2.min.js"></script>
+</body>
+</html>
+

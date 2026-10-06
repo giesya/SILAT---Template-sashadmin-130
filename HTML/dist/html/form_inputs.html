@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+
+<head>
+
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Sash – Bootstrap 5  Admin &amp; Dashboard Template </title>
+    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
+    <meta name="Author" content="Spruko Technologies Private Limited">
+	<meta name="keywords" content="admin dashboard,dashboard design htmlbootstrap admin template,html admin panel,admin dashboard html,admin panel html template,bootstrap dashboard,html admin template,html dashboard,html admin dashboard template,bootstrap dashboard template,dashboard html template,bootstrap admin panel,dashboard admin bootstrap,bootstrap admin dashboard">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/brand-logos/favicon.ico" type="image/x-icon">
+
+    <!-- Choices JS -->
+    <script src="../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <!-- Main Theme Js -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Bootstrap Css -->
+    <link id="style" href="../assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+
+    <!-- Style Css -->
+    <link href="../assets/css/styles.min.css" rel="stylesheet" >
+
+    <!-- Icons Css -->
+    <link href="../assets/css/icons.css" rel="stylesheet" >
+
+    <!-- Node Waves Css -->
+    <link href="../assets/libs/node-waves/waves.min.css" rel="stylesheet" >
+
+    <!-- Simplebar Css -->
+    <link href="../assets/libs/simplebar/simplebar.min.css" rel="stylesheet" >
+
+    <!-- Color Picker Css -->
+    <link rel="stylesheet" href="../assets/libs/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" href="../assets/libs/@simonwep/pickr/themes/nano.min.css">
+
+    <!-- Choices Css -->
+    <link rel="stylesheet" href="../assets/libs/choices.js/public/assets/styles/choices.min.css">
+
+<!-- Prism CSS -->
+<link rel="stylesheet" href="../assets/libs/prismjs/themes/prism-coy.min.css">
+
+</head>
+
+<body>
+
+    <!-- Start Switcher -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="switcher-canvas" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title text-default" id="offcanvasRightLabel">Switcher</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="border-bottom border-block-end-dashed">
+                <div class="nav nav-tabs nav-justified" id="switcher-main-tab" role="tablist">
+                    <button class="nav-link active" id="switcher-home-tab" data-bs-toggle="tab" data-bs-target="#switcher-home"
+                        type="button" role="tab" aria-controls="switcher-home" aria-selected="true">Theme Styles</button>
+                    <button class="nav-link" id="switcher-profile-tab" data-bs-toggle="tab" data-bs-target="#switcher-profile"
+                        type="button" role="tab" aria-controls="switcher-profile" aria-selected="false">Theme Colors</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active border-0" id="switcher-home" role="tabpanel" aria-labelledby="switcher-home-tab"
+                    tabindex="0">
+                    <div class="">
+                        <p class="switcher-style-head">Theme Color Mode:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-light-theme">
+                                        Light
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="theme-style" id="switcher-light-theme"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-dark-theme">
+                                        Dark
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="theme-style" id="switcher-dark-theme">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Directions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-ltr">
+                                        LTR
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="direction" id="switcher-ltr" checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-rtl">
+                                        RTL
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="direction" id="switcher-rtl">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Navigation Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-vertical">
+                                        Vertical
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-style" id="switcher-vertical"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-horizontal">
+                                        Horizontal
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-style"
+                                        id="switcher-horizontal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navigation-menu-styles">
+                        <p class="switcher-style-head">Vertical & Horizontal Menu Styles:</p>
+                        <div class="row switcher-style gx-0 pb-2 gy-2">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-click">
+                                        Menu Click
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-menu-click">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-hover">
+                                        Menu Hover
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-menu-hover">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-click">
+                                        Icon Click
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-icon-click">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-hover">
+                                        Icon Hover
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-icon-hover">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidemenu-layout-styles">
+                        <p class="switcher-style-head">Sidemenu Layout Styles:</p>
+                        <div class="row switcher-style gx-0 pb-2 gy-2">
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-default-menu">
+                                        Default Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-default-menu" checked>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-closed-menu">
+                                        Closed Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-closed-menu">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icontext-menu">
+                                        Icon Text
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-icontext-menu">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-overlay">
+                                        Icon Overlay
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-icon-overlay">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-detached">
+                                        Detached
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-detached">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-double-menu">
+                                        Double Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-double-menu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Page Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-regular">
+                                        Regular
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-styles" id="switcher-regular"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-classic">
+                                        Classic
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-styles" id="switcher-classic">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Layout Width Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-full-width">
+                                        Full Width
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="layout-width" id="switcher-full-width"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-boxed">
+                                        Boxed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="layout-width" id="switcher-boxed">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Menu Positions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-fixed">
+                                        Fixed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="menu-positions" id="switcher-menu-fixed"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-scroll">
+                                        Scrollable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="menu-positions" id="switcher-menu-scroll">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Header Positions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-header-fixed">
+                                        Fixed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="header-positions"
+                                        id="switcher-header-fixed" checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-header-scroll">
+                                        Scrollable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="header-positions"
+                                        id="switcher-header-scroll">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Loader:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-loader-enable">
+                                        Enable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-loader"
+                                        id="switcher-loader-enable">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-loader-disable">
+                                        Disable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-loader"
+                                        id="switcher-loader-disable" checked>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade border-0" id="switcher-profile" role="tabpanel" aria-labelledby="switcher-profile-tab" tabindex="0">
+                    <div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Menu Colors:</p>
+                            <div class="d-flex switcher-style pb-2">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-white" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Light Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-light">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-dark" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Dark Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-dark" checked>
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Color Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-gradient" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Gradient Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-gradient">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-transparent"
+                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Transparent Menu"
+                                        type="radio" name="menu-colors" id="switcher-menu-transparent">
+                                </div>
+                            </div>
+                            <div class="px-4 pb-3 text-muted fs-11">Note:If you want to change color Menu dynamically change from below Theme Primary color picker</div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Header Colors:</p>
+                            <div class="d-flex switcher-style pb-2">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-white" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Light Header" type="radio" name="header-colors"
+                                        id="switcher-header-light" checked>
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-dark" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Dark Header" type="radio" name="header-colors"
+                                        id="switcher-header-dark">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Color Header" type="radio" name="header-colors"
+                                        id="switcher-header-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-gradient" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Gradient Header" type="radio" name="header-colors"
+                                        id="switcher-header-gradient">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-transparent" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Transparent Header" type="radio" name="header-colors"
+                                        id="switcher-header-transparent">
+                                </div>
+                            </div>
+                            <div class="px-4 pb-3 text-muted fs-11">Note:If you want to change color Header dynamically change from below Theme Primary color picker</div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Theme Primary:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-1" type="radio"
+                                        name="theme-primary" id="switcher-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-2" type="radio"
+                                        name="theme-primary" id="switcher-primary1">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-3" type="radio" name="theme-primary"
+                                        id="switcher-primary2">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-4" type="radio" name="theme-primary"
+                                        id="switcher-primary3">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-5" type="radio" name="theme-primary"
+                                        id="switcher-primary4">
+                                </div>
+                                <div class="form-check switch-select ps-0 mt-1 color-primary-light">
+                                    <div class="theme-container-primary"></div>
+                                    <div class="pickr-container-primary"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Theme Background:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-1" type="radio"
+                                        name="theme-background" id="switcher-background">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-2" type="radio"
+                                        name="theme-background" id="switcher-background1">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-3" type="radio" name="theme-background"
+                                        id="switcher-background2">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-4" type="radio"
+                                        name="theme-background" id="switcher-background3">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-5" type="radio"
+                                        name="theme-background" id="switcher-background4">
+                                </div>
+                                <div class="form-check switch-select ps-0 mt-1 tooltip-static-demo color-bg-transparent">
+                                    <div class="theme-container-background"></div>
+                                    <div class="pickr-container-background"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-image mb-3">
+                            <p class="switcher-style-head">Menu With Background Image:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img1" type="radio"
+                                        name="theme-background" id="switcher-bg-img">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img2" type="radio"
+                                        name="theme-background" id="switcher-bg-img1">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img3" type="radio" name="theme-background"
+                                        id="switcher-bg-img2">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img4" type="radio"
+                                        name="theme-background" id="switcher-bg-img3">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img5" type="radio"
+                                        name="theme-background" id="switcher-bg-img4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center canvas-footer flex-wrap px-0 px-sm-5">
+                    <a href="javascript:void(0);" id="reset-all" class="btn btn-danger m-1">Reset</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Switcher -->
+
+
+    <!-- Loader -->
+    <div id="loader" >
+        <img src="../assets/images/media/loader.svg" alt="">
+    </div>
+    <!-- Loader -->
+
+    <div class="page">
+
+             <!-- app-header -->
+             <header class="app-header">
+
+                <!-- Start::main-header-container -->
+                <div class="main-header-container container-fluid">
+
+                    <!-- Start::header-content-left -->
+                    <div class="header-content-left">
+
+                        <!-- Start::header-element (Logo) -->
+                        <div class="header-element">
+                            <div class="horizontal-logo">
+                                <a href="index.html" class="header-logo">
+                                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-logo">
+                                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-logo">
+                                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-dark">
+                                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-dark">
+                                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-white">
+                                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-white">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- End::header-element -->
+
+                        <!-- Start::header-element (Hamburger Toggle) -->
+                        <div class="header-element">
+                            <!-- Start::header-link -->
+                            <a aria-label="Hide Sidebar" class="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle" data-bs-toggle="sidebar" href="javascript:void(0);"><span></span></a>
+                            <!-- End::header-link -->
+                        </div>
+                        <!-- End::header-element -->
+
+                    </div>
+                    <!-- End::header-content-left -->
+
+                    <!-- Start::header-content-right -->
+                    <div class="header-content-right">
+
+                        <!-- Start::header-element (Inbox Chat / Pesan) -->
+                        <div class="header-element message-dropdown">
+                            <!-- Start::header-link|dropdown-toggle -->
+                            <a aria-label="Kotak Masuk Pesan" href="javascript:void(0);" class="header-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" id="messageDropdown2" aria-expanded="false">
+                                <i class="fe fe-message-square header-link-icon"></i>
+                                <span class="w-9 h-9 p-0 bg-primary rounded-pill header-icon-badge pulse pulse-primary" id="message-icon-badge"></span>
+                            </a>
+                            <!-- End::header-link|dropdown-toggle -->
+                            <!-- Start::main-header-dropdown -->
+                            <div class="main-header-dropdown dropdown-menu dropdown-menu-end shadow" data-popper-placement="none">
+                                <div class="p-3 bg-primary-transparent border-bottom">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <p class="mb-0 fs-15 fw-semibold text-dark"><i class="fe fe-message-square me-1 text-primary"></i>Pesan Masuk</p>
+                                        <span class="badge bg-primary text-white fs-11" id="message-data">3 Belum Dibaca</span>
+                                    </div>
+                                </div>
+                                <ul class="list-unstyled mb-0" id="header-message-scroll" style="max-height: 280px; overflow-y: auto;">
+                                    <li class="dropdown-item p-3 border-bottom">
+                                        <a href="chat.html?contact=Helpdesk%20Perizinan%20KKP" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                             <span class="avatar avatar-md bg-primary-transparent text-primary rounded-circle flex-shrink-0"><i class="fe fe-shield fs-16"></i></span>
+                                             <div class="w-100">
+                                                <div class="d-flex align-items-center justify-content-between mb-1">
+                                                    <h6 class="mb-0 fw-semibold fs-13 text-dark">Helpdesk Perizinan KKP</h6>
+                                                    <span class="text-muted fs-11">09:15</span>
+                                                </div>
+                                                <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Dokumen permohonan verifikasi kapal telah diterima sistem.</p>
+                                             </div>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-item p-3 border-bottom">
+                                        <a href="chat.html?contact=Syahbandar%20Muara%20Baru" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                             <span class="avatar avatar-md bg-info-transparent text-info rounded-circle flex-shrink-0"><i class="fe fe-anchor fs-16"></i></span>
+                                             <div class="w-100">
+                                                <div class="d-flex align-items-center justify-content-between mb-1">
+                                                    <h6 class="mb-0 fw-semibold fs-13 text-dark">Syahbandar Muara Baru</h6>
+                                                    <span class="text-muted fs-11">Kemarin</span>
+                                                </div>
+                                                <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Konfirmasi jadwal tambat pangkalan PPS Nizam Zachman.</p>
+                                             </div>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-item p-3">
+                                        <a href="chat.html?contact=Staf%20Operasional%20Kapal" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                             <span class="avatar avatar-md bg-success-transparent text-success rounded-circle flex-shrink-0"><i class="fe fe-user-check fs-16"></i></span>
+                                             <div class="w-100">
+                                                <div class="d-flex align-items-center justify-content-between mb-1">
+                                                    <h6 class="mb-0 fw-semibold fs-13 text-dark">Staf Operasional Kapal</h6>
+                                                    <span class="text-muted fs-11">2 hari lalu</span>
+                                                </div>
+                                                <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Data dokumen awak kapal KM. Bahari Nusantara telah diperbarui.</p>
+                                             </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="p-2 border-top text-center bg-light-subtle">
+                                    <a href="chat.html" class="fs-12 text-primary fw-semibold text-decoration-none d-block">Lihat Semua Pesan</a>
+                                </div>
+                            </div>
+                            <!-- End::main-header-dropdown -->
+                        </div>
+                        <!-- End::header-element -->
+
+                        <!-- Start::header-element (Profile: Pengaturan Akun & Logout) -->
+                        <div class="header-element main-profile-user">
+                            <!-- Start::header-link|dropdown-toggle -->
+                            <a href="javascript:void(0);" class="header-link dropdown-toggle" id="mainHeaderProfile" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-xxl-2 me-0">
+                                        <img src="../assets/images/faces/9.jpg" alt="Foto Profil" width="34" height="34" class="rounded-circle border border-2 border-primary-subtle">
+                                    </div>
+                                    <div class="d-xxl-block d-none my-auto text-start">
+                                        <h6 class="fw-semibold mb-0 lh-1 fs-14 text-dark">Ir. H. Hendra Wijaya</h6>
+                                        <span class="op-7 fw-normal d-block fs-11 text-muted">Pemilik Usaha</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End::header-link|dropdown-toggle -->
+                            <ul class="main-header-dropdown dropdown-menu pt-0 header-profile-dropdown dropdown-menu-end shadow" aria-labelledby="mainHeaderProfile">
+                                <li class="drop-heading d-xxl-none d-block border-bottom p-3">
+                                     <div class="text-center">
+                                        <h6 class="text-dark mb-0 fs-14 fw-semibold">Ir. H. Hendra Wijaya</h6>
+                                        <small class="text-muted fs-11">Pemilik Usaha</small>
+                                    </div>
+                                </li>
+                                <li class="dropdown-item py-2">
+                                    <a class="d-flex align-items-center w-100" href="profile.html">
+                                        <i class="fe fe-settings fs-16 me-2 text-primary"></i>Pengaturan Akun
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider my-1"></li>
+                                <li class="dropdown-item py-2">
+                                    <a class="d-flex align-items-center w-100 text-danger" href="login.html">
+                                        <i class="fe fe-log-out fs-16 me-2 text-danger"></i>Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End::header-element -->
+
+                    </div>
+                    <!-- End::header-content-right -->
+
+                </div>
+                <!-- End::main-header-container -->
+
+            </header>
+            <!-- /app-header -->
+            <!-- Start::app-sidebar -->
+            <aside class="app-sidebar sticky" id="sidebar">
+
+                <!-- Start::main-sidebar-header -->
+                <div class="main-sidebar-header">
+                    <a href="index.html" class="header-logo">
+                        <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-logo">
+                        <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-logo">
+                        <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-dark">
+                        <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-dark">
+                        <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-white">
+                        <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-white">
+                    </a>
+                </div>
+                <!-- End::main-sidebar-header -->
+
+                <!-- Start::main-sidebar -->
+                <div class="main-sidebar" id="sidebar-scroll">
+                    <nav class="main-menu-container nav nav-pills flex-column sub-open">
+                        <div class="slide-left" id="slide-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg>
+                        </div>
+
+                        <ul class="main-menu">
+                            <li class="slide__category"><span class="category-name">Menu Utama</span></li>
+                            <li class="slide">
+                                <a href="index.html" class="side-menu__item">
+                                    <i class="fe fe-home side-menu__icon"></i>
+                                    <span class="side-menu__label">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="slide has-sub">
+                                <a href="javascript:void(0);" class="side-menu__item">
+                                    <i class="fe fe-briefcase side-menu__icon"></i>
+                                    <span class="side-menu__label">Manajemen Usaha</span>
+                                    <i class="fe fe-chevron-right side-menu__angle"></i>
+                                </a>
+                                <ul class="slide-menu child1">
+                                    <li class="slide side-menu__label1"><a href="javascript:void(0)">Manajemen Usaha</a></li>
+                                    <li class="slide"><a href="daftar-alokasi.html" class="side-menu__item">Daftar Alokasi</a></li>
+                                    <li class="slide"><a href="javascript:void(0);" class="side-menu__item disabled opacity-50" tabindex="-1" aria-disabled="true" style="pointer-events: none; cursor: not-allowed;">Daftar Realisasi</a></li>
+                                </ul>
+                            </li>
+                            <li class="slide has-sub">
+                                <a href="javascript:void(0);" class="side-menu__item">
+                                    <i class="fe fe-file-text side-menu__icon"></i>
+                                    <span class="side-menu__label">Daftar Permohonan</span>
+                                    <i class="fe fe-chevron-right side-menu__angle"></i>
+                                </a>
+                                <ul class="slide-menu child1">
+                                    <li class="slide side-menu__label1"><a href="javascript:void(0)">Daftar Permohonan</a></li>
+                                    <li class="slide"><a href="verifikasi-izin-usaha.html" class="side-menu__item">Verifikasi Izin Usaha</a></li>
+                                    <li class="slide"><a href="verifikasi-izin-kapal.html" class="side-menu__item">Verifikasi Izin Kapal</a></li>
+                                    <li class="slide"><a href="verifikasi-izin-rumpon.html" class="side-menu__item">Verifikasi Izin Rumpon</a></li>
+                                </ul>
+                            </li>
+                            <li class="slide has-sub">
+                                <a href="javascript:void(0);" class="side-menu__item">
+                                    <i class="fe fe-credit-card side-menu__icon"></i>
+                                    <span class="side-menu__label">Simulasi Pungutan</span>
+                                    <i class="fe fe-chevron-right side-menu__angle"></i>
+                                </a>
+                                <ul class="slide-menu child1">
+                                    <li class="slide side-menu__label1"><a href="javascript:void(0)">Simulasi Pungutan</a></li>
+                                    <li class="slide"><a href="simulasi-ppp.html" class="side-menu__item">Simulasi PPP</a></li>
+                                    <li class="slide"><a href="simulasi-pppka.html" class="side-menu__item">Simulasi PPPKA</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <div class="slide-right" id="slide-right">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="m10.707 17.707 5.707-5.707-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path></svg>
+                        </div>
+                    </nav>
+                </div>
+            </aside>
+            <!-- End::app-sidebar -->
+
+
+            <!--APP-CONTENT START-->
+            <div class="main-content app-content">
+                <div class="container-fluid">
+
+                    <!-- PAGE-HEADER -->
+                    <div class="page-header">
+                      <h1 class="page-title my-auto">Inputs</h1>
+                      <div>
+                        <ol class="breadcrumb mb-0">
+                          <li class="breadcrumb-item">
+                            <a href="javascript:void(0)">Form Elements</a>
+                          </li>
+                          <li class="breadcrumb-item active" aria-current="page">Inputs</li>
+                        </ol>
+                      </div>
+                    </div>
+                    <!-- PAGE-HEADER END -->
+
+
+                    <!-- Start:: row-1 -->
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Input Types
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row gy-4">
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-label" class="form-label">Basic Input:</label>
+                                            <input type="text" class="form-control" id="input">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-label" class="form-label">Form Input With Label</label>
+                                            <input type="text" class="form-control" id="input-label">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-placeholder" class="form-label">Form Input With Placeholder</label>
+                                            <input type="text" class="form-control" id="input-placeholder" placeholder="Placeholder">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-text" class="form-label">Type Text</label>
+                                            <input type="text" class="form-control" id="input-text" placeholder="Text">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-number" class="form-label">Type Number</label>
+                                            <input type="number" class="form-control" id="input-number" placeholder="Number">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-password" class="form-label">Type Password</label>
+                                            <input type="password" class="form-control" id="input-password" placeholder="Password">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-email" class="form-label">Type Email</label>
+                                            <input type="email" class="form-control" id="input-email" placeholder="Email@xyz.com">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-tel" class="form-label">Type Tel</label>
+                                            <input type="tel" class="form-control" id="input-tel" placeholder="+1100-2031-1233">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-date" class="form-label">Type Date</label>
+                                            <input type="date" class="form-control" id="input-date">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-week" class="form-label">Type Week</label>
+                                            <input type="week" class="form-control" id="input-week">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-month" class="form-label">Type Month</label>
+                                            <input type="month" class="form-control" id="input-month">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-time" class="form-label">Type Time</label>
+                                            <input type="time" class="form-control" id="input-time">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-datetime-local" class="form-label">Type datetime-local</label>
+                                            <input type="datetime-local" class="form-control" id="input-datetime-local">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-search" class="form-label">Type Search</label>
+                                            <input type="search" class="form-control" id="input-search" placeholder="Search">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-submit" class="form-label">Type Submit</label>
+                                            <input type="submit" class="form-control" id="input-submit" value="Submit">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-reset" class="form-label">Type Reset</label>
+                                            <input type="reset" class="form-control" id="input-reset">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-button" class="form-label">Type Button</label>
+                                            <input type="button" class="form-control btn btn-primary" id="input-button"  value="Button">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <div class="row">
+                                                <div class="col-xl-3">
+                                                    <label class="form-label">Type Color</label>
+                                                    <input class="form-control form-input-color" type="color" value="#136bd0">
+                                                </div>
+                                                <div class="col-xl-5">
+                                                    <div class="form-check">
+                                                        <p class="mb-3 px-0 text-muted">Type Checkbox</p>
+                                                        <input class="form-check-input ms-2" type="checkbox" value="" checked="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4">
+                                                    <div class="form-check">
+                                                        <p class="mb-3 px-0 text-muted">Type Radio</p>
+                                                        <input class="form-check-input ms-2" type="radio" checked="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-file" class="form-label">Type File</label>
+                                            <input class="form-control" type="file" id="input-file">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label class="form-label">Type Url</label>
+                                            <input class="form-control" type="url"  name="website" placeholder="http://example.com">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-disabled" class="form-label">Type Disabled</label>
+                                            <input type="text" id="input-disabled" class="form-control" placeholder="Disabled input" disabled="">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-readonlytext" class="form-label">Input Readonly Text</label>
+                                            <input type="text" readonly="" class="form-control-plaintext" id="input-readonlytext" value="email@example.com">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="disabled-readonlytext" class="form-label">Disabled Readonly Input</label>
+                                            <input class="form-control" type="text" value="Disabled readonly input" id="disabled-readonlytext" aria-label="Disabled input example" disabled="" readonly="">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label class="form-label">Type Readonly Input</label>
+                                            <input class="form-control" type="text" value="Readonly input here..." aria-label="readonly input example" readonly="">
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="text-area" class="form-label">Textarea</label>
+                                            <textarea class="form-control" id="text-area" rows="1"></textarea>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                            <label for="input-DataList" class="form-label">Datalist example</label>
+                                            <input class="form-control" list="datalistOptions" id="input-DataList" placeholder="Type to search...">
+                                            <datalist id="datalistOptions">
+                                                <option value="San Francisco">
+                                                </option>
+                                                <option value="New York">
+                                                </option>
+                                                <option value="Seattle">
+                                                </option>
+                                                <option value="Los Angeles">
+                                                </option>
+                                                <option value="Chicago">
+                                                </option>
+                                            </datalist>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="row gy-4"&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;p class="mb-2 text-muted"&gt;Basic Input:&lt;/p&gt;
+        &lt;input type="text" class="form-control" id="input"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-label" class="form-label"&gt;Form Input With Label&lt;/label&gt;
+        &lt;input type="text" class="form-control" id="input-label"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-placeholder" class="form-label"&gt;Form Input With Placeholder&lt;/label&gt;
+        &lt;input type="text" class="form-control" id="input-placeholder" placeholder="Placeholder"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-text" class="form-label"&gt;Type Text&lt;/label&gt;
+        &lt;input type="text" class="form-control" id="input-text" placeholder="Text"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-number" class="form-label"&gt;Type Number&lt;/label&gt;
+        &lt;input type="number" class="form-control" id="input-number" placeholder="Number"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-password" class="form-label"&gt;Type Password&lt;/label&gt;
+        &lt;input type="password" class="form-control" id="input-password" placeholder="Password"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-email" class="form-label"&gt;Type Email&lt;/label&gt;
+        &lt;input type="email" class="form-control" id="input-email" placeholder="Email@xyz.com"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-tel" class="form-label"&gt;Type Tel&lt;/label&gt;
+        &lt;input type="tel" class="form-control" id="input-tel" placeholder="+1100-2031-1233"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-date" class="form-label"&gt;Type Date&lt;/label&gt;
+        &lt;input type="date" class="form-control" id="input-date"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-week" class="form-label"&gt;Type Week&lt;/label&gt;
+        &lt;input type="week" class="form-control" id="input-week"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-month" class="form-label"&gt;Type Month&lt;/label&gt;
+        &lt;input type="month" class="form-control" id="input-month"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-time" class="form-label"&gt;Type Time&lt;/label&gt;
+        &lt;input type="time" class="form-control" id="input-time"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-datetime-local" class="form-label"&gt;Type datetime-local&lt;/label&gt;
+        &lt;input type="datetime-local" class="form-control" id="input-datetime-local"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-search" class="form-label"&gt;Type Search&lt;/label&gt;
+        &lt;input type="search" class="form-control" id="input-search" placeholder="Search"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-submit" class="form-label"&gt;Type Submit&lt;/label&gt;
+        &lt;input type="submit" class="form-control" id="input-submit" value="Submit"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-reset" class="form-label"&gt;Type Reset&lt;/label&gt;
+        &lt;input type="reset" class="form-control" id="input-reset"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-button" class="form-label"&gt;Type Button&lt;/label&gt;
+        &lt;input type="button" class="form-control btn btn-primary" id="input-button"  value="Button"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-xl-4"&gt;
+                &lt;label class="form-label"&gt;Type Color&lt;/label&gt;
+                &lt;input class="form-control form-input-color" type="color" value="#136bd0"&gt;
+            &lt;/div&gt;
+            &lt;div class="col-xl-4"&gt;
+                &lt;div class="form-check"&gt;
+                    &lt;p class="mb-3 px-0 text-muted"&gt;Type Checkbox&lt;/p&gt;
+                    &lt;input class="form-check-input ms-2" type="checkbox" value="" checked=""&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="col-xl-3"&gt;
+                &lt;div class="form-check"&gt;
+                    &lt;p class="mb-3 px-0 text-muted"&gt;Type Radio&lt;/p&gt;
+                    &lt;input class="form-check-input ms-2" type="radio" checked=""&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-file" class="form-label"&gt;Type File&lt;/label&gt;
+        &lt;input class="form-control" type="file" id="input-file"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label class="form-label"&gt;Type Url&lt;/label&gt;
+        &lt;input class="form-control" type="url"  name="website" placeholder="http://example.com"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-disabled" class="form-label"&gt;Type Disabled&lt;/label&gt;
+        &lt;input type="text" id="input-disabled" class="form-control" placeholder="Disabled input" disabled=""&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-readonlytext" class="form-label"&gt;Input Readonly Text&lt;/label&gt;
+        &lt;input type="text" readonly="" class="form-control-plaintext" id="input-readonlytext" value="email@example.com"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="disabled-readonlytext" class="form-label"&gt;Disabled Readonly Input&lt;/label&gt;
+        &lt;input class="form-control" type="text" value="Disabled readonly input" id="disabled-readonlytext" aria-label="Disabled input example" disabled="" readonly=""&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label class="form-label"&gt;Type Readonly Input&lt;/label&gt;
+        &lt;input class="form-control" type="text" value="Readonly input here..." aria-label="readonly input example" readonly=""&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="text-area" class="form-label"&gt;Textarea&lt;/label&gt;
+        &lt;textarea class="form-control" id="text-area" rows="1"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-4 col-lg-6 col-md-6 col-sm-12"&gt;
+        &lt;label for="input-DataList" class="form-label"&gt;Datalist example&lt;/label&gt;
+        &lt;input class="form-control" list="datalistOptions" id="input-DataList" placeholder="Type to search..."&gt;
+        &lt;datalist id="datalistOptions"&gt;
+            &lt;option value="San Francisco"&gt;
+            &lt;/option&gt;
+            &lt;option value="New York"&gt;
+            &lt;/option&gt;
+            &lt;option value="Seattle"&gt;
+            &lt;/option&gt;
+            &lt;option value="Los Angeles"&gt;
+            &lt;/option&gt;
+            &lt;option value="Chicago"&gt;
+            &lt;/option&gt;
+        &lt;/datalist&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End:: row-1 -->
+
+                    <!-- Start:: row-2 -->
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Input shapes
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row gy-3">
+                                        <div class="col-xl-12">
+                                            <label for="input-noradius" class="form-label">Input With No Radius</label>
+                                            <input type="text" class="form-control rounded-0" id="input-noradius" placeholder="No Radius">
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <label for="input-rounded" class="form-label">Input With Radius</label>
+                                            <input type="text" class="form-control" id="input-rounded" placeholder="Default Radius">
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <label for="input-rounded-pill" class="form-label">Rounded Input</label>
+                                            <input type="text" class="form-control rounded-pill" id="input-rounded-pill" placeholder="Rounded">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="row gy-3"&gt;
+    &lt;div class="col-xl-12"&gt;
+        &lt;label for="input-noradius" class="form-label"&gt;Input With No Radius&lt;/label&gt;
+        &lt;input type="text" class="form-control rounded-0" id="input-noradius" placeholder="No Radius"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-12"&gt;
+        &lt;label for="input-rounded" class="form-label"&gt;Input With Radius&lt;/label&gt;
+        &lt;input type="text" class="form-control" id="input-rounded" placeholder="Default Radius"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-12"&gt;
+        &lt;label for="input-rounded-pill" class="form-label"&gt;Rounded Input&lt;/label&gt;
+        &lt;input type="text" class="form-control rounded-pill" id="input-rounded-pill" placeholder="Rounded"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Input border Styles
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row gy-3">
+                                        <div class="col-xl-12">
+                                            <label for="input-rounded1" class="form-label">Default</label>
+                                            <input type="text" class="form-control" id="input-rounded1" placeholder="Default">
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <label for="input-rounded2" class="form-label">Dotted Input</label>
+                                            <input type="text" class="form-control border-dotted" id="input-rounded2" placeholder="Dotted">
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <label for="input-rounded3" class="form-label">Dashed Input</label>
+                                            <input type="text" class="form-control border-dashed" id="input-rounded3" placeholder="Dashed">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="row gy-3"&gt;
+    &lt;div class="col-xl-12"&gt;
+        &lt;label for="input-rounded1" class="form-label"&gt;Default&lt;/label&gt;
+        &lt;input type="text" class="form-control" id="input-rounded1" placeholder="Default"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-12"&gt;
+        &lt;label for="input-rounded2" class="form-label"&gt;Dotted Input&lt;/label&gt;
+        &lt;input type="text" class="form-control border-dotted" id="input-rounded2" placeholder="Dotted"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xl-12"&gt;
+        &lt;label for="input-rounded3" class="form-label"&gt;Dashed Input&lt;/label&gt;
+        &lt;input type="text" class="form-control border-dashed" id="input-rounded3" placeholder="Dashed"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End:: row-2 -->
+
+                    <!-- Start:: row-3 -->
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Input Sizing
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <input class="form-control form-control-sm mb-3" type="text"
+                                    placeholder=".form-control-sm" aria-label=".form-control-sm example">
+                                    <input class="form-control mb-3" type="text" placeholder="Default input"
+                                        aria-label="default input example">
+                                    <input class="form-control form-control-lg" type="text"
+                                    placeholder=".form-control-lg" aria-label=".form-control-lg example">
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;input class="form-control form-control-sm mb-3" type="text"
+placeholder=".form-control-sm" aria-label=".form-control-sm example"&gt;
+&lt;input class="form-control mb-3" type="text" placeholder="Default input"
+    aria-label="default input example"&gt;
+&lt;input class="form-control form-control-lg" type="text"
+placeholder=".form-control-lg" aria-label=".form-control-lg example"&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End:: row-3 -->
+
+                    <!--ROW-START-->
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Overview
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Email
+                                                address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp">
+                                            <div id="emailHelp" class="form-text">We'll
+                                                never share your email
+                                                with
+                                                anyone else.</div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1">
+                                        </div>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Check
+                                                me out</label>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;form&gt;
+    &lt;div class="mb-3"&gt;
+        &lt;label for="exampleInputEmail1" class="form-label"&gt;Email
+            address&lt;/label&gt;
+        &lt;input type="email" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp"&gt;
+        &lt;div id="emailHelp" class="form-text"&gt;We'll
+            never share your email
+            with
+            anyone else.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="mb-3"&gt;
+        &lt;label for="exampleInputPassword1" class="form-label"&gt;Password&lt;/label&gt;
+        &lt;input type="password" class="form-control" id="exampleInputPassword1"&gt;
+    &lt;/div&gt;
+    &lt;div class="mb-3 form-check"&gt;
+        &lt;input type="checkbox" class="form-check-input" id="exampleCheck1"&gt;
+        &lt;label class="form-check-label" for="exampleCheck1"&gt;Check
+            me out&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="card custom-card">
+                                        <div class="card-header justify-content-between">
+                                            <div class="card-title">
+                                                Form text
+                                            </div>
+                                            <div class="prism-toggle">
+                                                <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <label for="inputPassword5" class="form-label">Password</label>
+                                            <input type="password" id="inputPassword5" class="form-control"
+                                                aria-describedby="passwordHelpBlock">
+                                            <div id="passwordHelpBlock" class="form-text">
+                                                Your password must be 8-20 characters long, contain letters and
+                                                numbers,
+                                                and
+                                                must not contain spaces, special characters, or emoji.
+                                            </div>
+                                        </div>
+                                        <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;label for="inputPassword5" class="form-label"&gt;Password&lt;/label&gt;
+&lt;input type="password" id="inputPassword5" class="form-control"
+    aria-describedby="passwordHelpBlock"&gt;
+&lt;div id="passwordHelpBlock" class="form-text"&gt;
+    Your password must be 8-20 characters long, contain letters and
+    numbers,
+    and
+    must not contain spaces, special characters, or emoji.
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="card custom-card">
+                                        <div class="card-header justify-content-between">
+                                            <div class="card-title">
+                                                Inline text can use any typical inline HTML element with nothing more
+                                                than
+                                                the <span class="text-danger">.form-text</span> class.
+                                            </div>
+                                            <div class="prism-toggle">
+                                                <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row g-3 align-items-center">
+                                                <div class="col-auto">
+                                                    <label for="inputPassword6" class="col-form-label">Password</label>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <input type="password" id="inputPassword6" class="form-control"
+                                                        aria-describedby="passwordHelpInline">
+                                                </div>
+                                                <div class="col-auto">
+                                                    <span id="passwordHelpInline" class="form-text">
+                                                        Must be 8-20 characters long.
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="row g-3 align-items-center"&gt;
+    &lt;div class="col-auto"&gt;
+        &lt;label for="inputPassword6" class="col-form-label"&gt;Password&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="col-auto"&gt;
+        &lt;input type="password" id="inputPassword6" class="form-control"
+            aria-describedby="passwordHelpInline"&gt;
+    &lt;/div&gt;
+    &lt;div class="col-auto"&gt;
+        &lt;span id="passwordHelpInline" class="form-text"&gt;
+            Must be 8-20 characters long.
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Disabled forms
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <fieldset disabled="">
+                                            <legend class="mb-4">Disabled fieldset example</legend>
+                                            <div class="mb-3">
+                                                <label for="disabledTextInput" class="form-label">Disabled
+                                                    input</label>
+                                                <input type="text" id="disabledTextInput" class="form-control"
+                                                    placeholder="Disabled input">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="disabledSelect" class="form-label">Disabled select
+                                                    menu</label>
+                                                <select id="disabledSelect" class="form-select">
+                                                    <option>Disabled select</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="disabledFieldsetCheck" disabled="">
+                                                    <label class="form-check-label" for="disabledFieldsetCheck">
+                                                        Can't check this
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;form&gt;
+    &lt;fieldset disabled=""&gt;
+        &lt;legend&gt;Disabled fieldset example&lt;/legend&gt;
+        &lt;div class="mb-3"&gt;
+            &lt;label for="disabledTextInput" class="form-label"&gt;Disabled
+                input&lt;/label&gt;
+            &lt;input type="text" id="disabledTextInput" class="form-control"
+                placeholder="Disabled input"&gt;
+        &lt;/div&gt;
+        &lt;div class="mb-3"&gt;
+            &lt;label for="disabledSelect" class="form-label"&gt;Disabled select
+                menu&lt;/label&gt;
+            &lt;select id="disabledSelect" class="form-select"&gt;
+                &lt;option&gt;Disabled select&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        &lt;div class="mb-3"&gt;
+            &lt;div class="form-check"&gt;
+                &lt;input class="form-check-input" type="checkbox"
+                    id="disabledFieldsetCheck" disabled=""&gt;
+                &lt;label class="form-check-label" for="disabledFieldsetCheck"&gt;
+                    Can't check this
+                &lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--ROW-END-->
+                </div>
+            </div>
+            <!--APP-CONTENT CLOSE-->
+
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="input-group">
+                    <a href="javascript:void(0);" class="input-group-text" id="Search-Grid"><i class="fe fe-search header-link-icon fs-18"></i></a>
+                    <input type="search" class="form-control border-0 px-2" placeholder="Search" aria-label="Username">
+                    <a href="javascript:void(0);" class="input-group-text" id="voice-search"><i class="fe fe-mic header-link-icon"></i></a>
+                    <a href="javascript:void(0);" class="btn btn-light btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fe fe-more-vertical"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                  </div>
+                  <div class="mt-4">
+                    <p class="font-weight-semibold text-muted mb-2">Are You Looking For...</p>
+                    <span class="search-tags"><i class="fe fe-user me-2"></i>People<a href="javascript:void(0)" class="tag-addon"><i class="fe fe-x"></i></a></span>
+                    <span class="search-tags"><i class="fe fe-file-text me-2"></i>Pages<a href="javascript:void(0)" class="tag-addon"><i class="fe fe-x"></i></a></span>
+                    <span class="search-tags"><i class="fe fe-align-left me-2"></i>Articles<a href="javascript:void(0)" class="tag-addon"><i class="fe fe-x"></i></a></span>
+                    <span class="search-tags"><i class="fe fe-server me-2"></i>Tags<a href="javascript:void(0)" class="tag-addon"><i class="fe fe-x"></i></a></span>
+                  </div>
+                  <div class="my-4">
+                    <p class="font-weight-semibold text-muted mb-2">Recent Search :</p>
+                    <div class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert">
+                      <a href="notifications.html"><span>Notifications</span></a>
+                      <a class="ms-auto lh-1" href="javascript:void(0);" data-bs-dismiss="alert" aria-label="Close"><i class="fe fe-x text-muted"></i></a>
+                    </div>
+                    <div class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert">
+                      <a href="alerts.html"><span>Alerts</span></a>
+                      <a class="ms-auto lh-1" href="javascript:void(0);" data-bs-dismiss="alert" aria-label="Close"><i class="fe fe-x text-muted"></i></a>
+                    </div>
+                    <div class="p-2 border br-5 d-flex align-items-center text-muted mb-0 alert">
+                      <a href="mail.html"><span>Mail</span></a>
+                      <a class="ms-auto lh-1" href="javascript:void(0);" data-bs-dismiss="alert" aria-label="Close"><i class="fe fe-x text-muted"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div class="btn-group ms-auto">
+                    <button class="btn btn-sm btn-primary-light">Search</button>
+                    <button class="btn btn-sm btn-primary">Clear Recents</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- Start Switcher -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebar-right" aria-labelledby="offcanvasRightLabel2">
+            <div class="offcanvas-header border-bottom bg-primary text-fixed-white">
+                <h6 class="offcanvas-title d-inline-flex text-fixed-white" id="offcanvasRightLabel2">
+                    <span class=" me-2 d-inline-flex">
+                        <i class="fe fe-bell my-auto"></i> <span class=" pulse w-9 h-9 bg-success rounded-circle"></span>
+                    </span>
+                    Notifications
+                </h6>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body p-0">
+                <nav class="nav nav-tabs nav-justified" role="tablist">
+                    <button class="nav-link active" id="sidebar-side1" data-bs-toggle="tab" data-bs-target="#sidebar-slidepane-1"
+                        type="button" role="tab" aria-controls="sidebar-slidepane-1" aria-selected="true"><i class="d-inline-flex fe fe-settings me-1"></i> Feeds</button>
+                    <button class="nav-link" id="sidebar-side2" data-bs-toggle="tab" data-bs-target="#sidebar-slidepane-2"
+                        type="button" role="tab" aria-controls="sidebar-slidepane-2" aria-selected="false"><i class="d-inline-flex fe fe-message-circle me-1"></i>Chat</button>
+                    <button class="nav-link" id="sidebar-side3" data-bs-toggle="tab" data-bs-target="#sidebar-slidepane-3"
+                        type="button" role="tab" aria-controls="sidebar-slidepane-3" aria-selected="false"><i class="d-inline-flex fe fe-anchor me-1"></i>Timeline</button>
+                </nav>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active border-0 p-0" id="sidebar-slidepane-1" role="tabpanel" aria-labelledby="sidebar-side1" tabindex="0">
+                        <div class="p-3 fw-semibold">Feeds</div>
+                        <div class="py-3 px-4 pt-0">
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-primary-transparent"><i class="fe fe-user text-primary"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">New user registered</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-secondary-transparent"><i class="fe fe-shopping-cart text-secondary"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">New order delivered</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-danger-transparent"><i class="fe fe-bell text-danger"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">You have pending tasks</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-warning-transparent"><i class="fe fe-gitlab text-warning"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">New version arrived</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-pink-transparent"><i class="fe fe-database text-pink"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Server #1 overloaded</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-info-transparent"><i class="fe fe-check-circle text-info"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">New project launched</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 fw-semibold">Settings</div>
+                        <div class="py-3 px-4 pt-0">
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-primary-transparent"><i class="fe fe-settings text-primary"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">General Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-secondary-transparent"><i class="fe fe-map-pin text-secondary"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Map Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-danger-transparent"><i class="fe fe-headphones text-danger"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Support Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-warning-transparent"><i class="fe fe-credit-card text-warning"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Payment  Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-pink-transparent"><i class="fe fe-bell text-pink"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Notification Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade border-0 p-0" id="sidebar-slidepane-2" role="tabpanel" aria-labelledby="sidebar-side2" tabindex="0">
+                        <div class="p-3 fw-semibold">Today</div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/2.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark" >Addie Minstra</div>
+                                    <p class="mb-0 fs-12 text-muted"> Hey! there I' am available.... </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/11.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Rose Bush</div>
+                                    <p class="mb-0 fs-12 text-muted"> Okay...I will be waiting for you </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/10.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Claude Strophobia</div>
+                                    <p class="mb-0 fs-12 text-muted"> Hi we can explain our new project......</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/13.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Eileen Dover</div>
+                                    <p class="mb-0 fs-12 text-muted"> New product Launching...</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/12.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Willie Findit</div>
+                                    <p class="mb-0 fs-12 text-muted"> Okay...I will be waiting for you </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/15.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Manny Jah</div>
+                                    <p class="mb-0 fs-12 text-muted">  Hi we can explain our new project......</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-0 px-3">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/4.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Cherry Blossom</div>
+                                    <p class="mb-0 fs-12 text-muted"> Hey! there I' am available....</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-3 fw-semibold">Yesterday</div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/7.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Simon Sais</div>
+                                    <p class="mb-0 fs-12 text-muted">Schedule Realease...... </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/9.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Laura Biding</div>
+                                    <p class="mb-0 fs-12 text-muted">Hi we can explain our new project...... </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/2.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Addie Minstra</div>
+                                    <p class="mb-0 fs-12 text-muted">Contact me for details....</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/9.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Ivan Notheridiya</div>
+                                    <p class="mb-0 fs-12 text-muted">Hi we can explain our new project......</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/14.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Dulcie Veeta</div>
+                                    <p class="mb-0 fs-12 text-muted"> Okay...I will be waiting for you</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/11.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Florinda Carasco</div>
+                                    <p class="mb-0 fs-12 text-muted">New product Launching...</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/11.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Cherry Blossom</div>
+                                    <p class="mb-0 fs-12 text-muted">cherryblossom@gmail.com</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade border-0 p-3" id="sidebar-slidepane-3" role="tabpanel" aria-labelledby="sidebar-side3" tabindex="0">
+                        <ul class="task-list timeline-task">
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">Task Finished<span
+                                            class="text-muted fs-11 mx-2 fw-normal">09 July 2021</span></h6>
+                                    <p class="text-muted fs-12 mb-0">Adam Berry finished task on<a href="javascript:void(0)" class="fw-semibold text-primary"> Project Management</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">New Comment<span
+                                            class="text-muted fs-11 mx-2 fw-normal">05 July 2021</span></h6>
+                                    <p class="text-muted fs-12 mb-0">Victoria commented on Project <a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> AngularJS Template</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">New Comment<span
+                                            class="text-muted fs-11 mx-2 fw-normal">25 June 2021</span></h6>
+                                    <p class="text-muted fs-12 mb-0">Victoria commented on Project <a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> AngularJS Template</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">Task Overdue<span
+                                            class="text-muted fs-11 mx-2 fw-normal">14 June 2021</span></h6>
+                                    <p class="text-muted mb-0 fs-12">Petey Cruiser finished task <a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> Integrated management</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">Task Overdue<span
+                                            class="text-muted fs-11 mx-2 fw-normal">29 June 2021</span></h6>
+                                    <p class="text-muted mb-0 fs-12">Petey Cruiser finished task <a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> Integrated management</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">Task Finished<span
+                                            class="text-muted fs-11 mx-2 fw-normal">09 July 2021</span></h6>
+                                    <p class="text-muted fs-12 mb-0">Adam Berry finished task on<a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> Project Management</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Switcher -->
+
+
+        <!-- Footer Start -->
+        <footer class="footer mt-auto py-3 text-center">
+            <div class="container">
+                <span class=""> Copyright © 2026 <a href="https://perizinan.kkp.go.id/" target="_blank" rel="noopener noreferrer">Digitalisasi Perizinan</a>, <a href="https://kkp.go.id/unit-kerja/djpt.html" target="_blank" rel="noopener noreferrer">Direktorat Jenderal Perikanan Tangkap</a> . All rights reserved.
+                </span>
+            </div>
+        </footer>
+        <!-- Footer End -->
+
+    </div>
+
+    
+    <!-- Scroll To Top -->
+    <div class="scrollToTop">
+        <span class="arrow"><i class="ri-arrow-up-s-fill fs-20"></i></span>
+    </div>
+    <div id="responsive-overlay"></div>
+    <!-- Scroll To Top -->
+
+    <!-- Popper JS -->
+    <script src="../assets/libs/@popperjs/core/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Defaultmenu JS -->
+    <script src="../assets/js/defaultmenu.min.js"></script>
+
+    <!-- Node Waves JS-->
+    <script src="../assets/libs/node-waves/waves.min.js"></script>
+
+    <!-- Sticky JS -->
+    <script src="../assets/js/sticky.js"></script>
+
+    <!-- Simplebar JS -->
+    <script src="../assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../assets/js/simplebar.js"></script>
+
+    <!-- Color Picker JS -->
+    <script src="../assets/libs/@simonwep/pickr/pickr.es5.min.js"></script>
+
+
+    
+    <!-- Custom-Switcher JS -->
+    <script src="../assets/js/custom-switcher.min.js"></script>
+
+    <!-- Prism JS -->
+    <script src="../assets/libs/prismjs/prism.js"></script>
+    <script src="../assets/js/prism-custom.js"></script>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/custom.js"></script>
+
+</body>
+
+</html>

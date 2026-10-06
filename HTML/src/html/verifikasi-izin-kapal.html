@@ -1,0 +1,134 @@
+@SPK@include("partials/mainhead.html")
+
+</head>
+
+<body>
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <div class="main-content app-content">
+            <div class="container-fluid">
+                @SPK@include("partials/page-header.html", {"title": "Verifikasi Izin Kapal", "subtitle": 'Daftar Permohonan'})
+
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div>
+                            <div class="card-title mb-1">Daftar Verifikasi Izin Kapal</div>
+                            <p class="text-muted fs-13 mb-0">Menampilkan permohonan yang pernah diajukan oleh akun pelaku usaha ini.</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover align-middle text-nowrap mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Tanggal Pengajuan Permohonan</th>
+                                        <th>Pemohon</th>
+                                        <th>Jenis &amp; Status Permohonan</th>
+                                        <th>Skema Produksi &amp; Jenis Operasi Kapal</th>
+                                        <th>Nama Kapal</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="permohonanTableBody"></tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex flex-wrap gap-3 align-items-center justify-content-between mt-4">
+                            <span id="permohonanTableSummary" class="text-muted fs-13"></span>
+                            <nav aria-label="Navigasi halaman permohonan">
+                                <ul id="permohonanPagination" class="pagination mb-0"></ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @SPK@include("partials/footer.html")
+    @SPK@include("partials/commonjs.html")
+
+    <script>
+        const permohonanData = [
+            { tanggal: "02-09-2026", pemohon: "PT Samudra Bahari", jenis: "SIPI DI WPPNRI", status: "Baru", skema: "PASCA PRODUKSI", operasi: "TUNGGAL", kapal: "KM Samudra Jaya" },
+            { tanggal: "01-09-2026", pemohon: "PT Samudra Bahari", jenis: "SIKPI DARI DAERAH PENANGKAPAN IKAN (WPPNRI)", status: "PASCA PRODUKSI", skema: "Korporasi", operasi: "TUNGGAL", kapal: "KM Bahari Nusantara" },
+            { tanggal: "29-08-2026", pemohon: "PT Samudra Bahari", jenis: "SIPI", status: "Baru", skema: "PASCA PRODUKSI", operasi: "TUNGGAL", kapal: "KM Mina Sejahtera" },
+            { tanggal: "27-08-2026", pemohon: "PT Samudra Bahari", jenis: "SIKPI", status: "Perubahan", skema: "PASCA PRODUKSI", operasi: "TUNGGAL", kapal: "KM Bahari Jaya" },
+            { tanggal: "25-08-2026", pemohon: "PT Samudra Bahari", jenis: "SIPI DI LAUT LEPAS", status: "Perubahan", skema: "PRA PRODUKSI", operasi: "TUNGGAL", kapal: "KM Nelayan Mandiri" },
+            { tanggal: "22-08-2026", pemohon: "PT Samudra Bahari", jenis: "SIKPI", status: "Baru", skema: "PRA PRODUKSI", operasi: "TUNGGAL", kapal: "KM Pelita Samudra" },
+            { tanggal: "20-08-2026", pemohon: "PT Samudra Bahari", jenis: "SIPI", status: "Prubahan", skema: "Individu", operasi: "TUNGGAL", kapal: "KM Tirta Bahari" },
+            { tanggal: "18-08-2026", pemohon: "PT Samudra Bahari", jenis: "SIKPI", status: "Perubahan", skema: "Korporasi", operasi: "TUNGGAL", kapal: "KM Sumber Laut" },
+            { tanggal: "15-08-2026", pemohon: "PT Samudra Bahari", jenis: "SIPI", status: "Perubahan", skema: "Individu", operasi: "TUNGGAL", kapal: "KM Laut Makmur" }
+        ];
+        const rowsPerPage = 5;
+        let currentPage = 1;
+
+        function renderPermohonanTable() {
+            const start = (currentPage - 1) * rowsPerPage;
+            const pageRows = permohonanData.slice(start, start + rowsPerPage);
+            const tableBody = document.getElementById("permohonanTableBody");
+            tableBody.innerHTML = pageRows.map((item, index) => `
+                ${item.status === "Ditolak" ? `
+                    <tr>
+                        <td>${start + index + 1}</td>
+                        <td>${item.tanggal}</td>
+                        <td>${item.pemohon}</td>
+                        <td><span class="d-block">${item.jenis}</span><span class="d-block text-muted fs-12">${item.status}</span></td>
+                        <td><span class="d-block">${item.skema}</span><span class="d-block text-muted fs-12">${item.operasi}</span></td>
+                        <td>${item.kapal}</td>
+                        <td><button type="button" class="btn btn-sm btn-secondary"><i class="fe fe-eye me-1"></i>Lihat</button></td>
+                    </tr>
+                ` : `
+                <tr>
+                    <td>${start + index + 1}</td>
+                    <td>${item.tanggal}</td>
+                    <td>${item.pemohon}</td>
+                    <td><span class="d-block">${item.jenis}</span><span class="d-block text-muted fs-12">${item.status}</span></td>
+                    <td><span class="d-block">${item.skema}</span><span class="d-block text-muted fs-12">${item.operasi}</span></td>
+                    <td>${item.kapal}</td>
+                    <td>
+                        <div class="row g-1" style="min-width: 245px;">
+                            <div class="col-6"><a href="surat-preview.html?pemohon=${encodeURIComponent(item.pemohon)}&jenis=${encodeURIComponent(item.jenis)}&kapal=${encodeURIComponent(item.kapal)}&tanggal=${encodeURIComponent(item.tanggal)}&status=${encodeURIComponent(item.status)}" class="btn btn-sm btn-primary w-100"><i class="fe fe-printer me-1"></i>Cetak Izin OSS</a></div>
+                            <div class="col-6"><button type="button" class="btn btn-sm btn-success w-100"><i class="fe fe-printer me-1"></i>Cetak Izin</button></div>
+                            <div class="col-12"><button type="button" class="btn btn-sm btn-info w-100"><i class="fe fe-paperclip me-1"></i>Lampiran Data Teknis</button></div>
+                        </div>
+                    </td>
+                </tr>
+                `}
+            `).join("");
+
+            const first = permohonanData.length ? start + 1 : 0;
+            const last = Math.min(start + rowsPerPage, permohonanData.length);
+            document.getElementById("permohonanTableSummary").textContent = `Menampilkan ${first} sampai ${last} data dari total ${permohonanData.length} data`;
+            renderPagination();
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(permohonanData.length / rowsPerPage);
+            const pagination = document.getElementById("permohonanPagination");
+            let items = `<li class="page-item ${currentPage === 1 ? "disabled" : ""}"><button class="page-link" type="button" data-page="${currentPage - 1}">Sebelumnya</button></li>`;
+            for (let page = 1; page <= totalPages; page += 1) {
+                items += `<li class="page-item ${page === currentPage ? "active" : ""}"><button class="page-link" type="button" data-page="${page}">${page}</button></li>`;
+            }
+            items += `<li class="page-item ${currentPage === totalPages ? "disabled" : ""}"><button class="page-link" type="button" data-page="${currentPage + 1}">Selanjutnya</button></li>`;
+            pagination.innerHTML = items;
+            pagination.querySelectorAll("button[data-page]").forEach((button) => {
+                button.addEventListener("click", () => {
+                    const page = Number(button.dataset.page);
+                    if (page >= 1 && page <= totalPages) {
+                        currentPage = page;
+                        renderPermohonanTable();
+                    }
+                });
+            });
+        }
+
+        renderPermohonanTable();
+    </script>
+</body>
+</html>

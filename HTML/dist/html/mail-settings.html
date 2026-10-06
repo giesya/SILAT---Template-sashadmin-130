@@ -1,0 +1,2335 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+
+<head>
+
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Sash – Bootstrap 5  Admin &amp; Dashboard Template </title>
+    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
+    <meta name="Author" content="Spruko Technologies Private Limited">
+	<meta name="keywords" content="admin dashboard,dashboard design htmlbootstrap admin template,html admin panel,admin dashboard html,admin panel html template,bootstrap dashboard,html admin template,html dashboard,html admin dashboard template,bootstrap dashboard template,dashboard html template,bootstrap admin panel,dashboard admin bootstrap,bootstrap admin dashboard">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/brand-logos/favicon.ico" type="image/x-icon">
+
+    <!-- Choices JS -->
+    <script src="../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <!-- Main Theme Js -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Bootstrap Css -->
+    <link id="style" href="../assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+
+    <!-- Style Css -->
+    <link href="../assets/css/styles.min.css" rel="stylesheet" >
+
+    <!-- Icons Css -->
+    <link href="../assets/css/icons.css" rel="stylesheet" >
+
+    <!-- Node Waves Css -->
+    <link href="../assets/libs/node-waves/waves.min.css" rel="stylesheet" >
+
+    <!-- Simplebar Css -->
+    <link href="../assets/libs/simplebar/simplebar.min.css" rel="stylesheet" >
+
+    <!-- Color Picker Css -->
+    <link rel="stylesheet" href="../assets/libs/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" href="../assets/libs/@simonwep/pickr/themes/nano.min.css">
+
+    <!-- Choices Css -->
+    <link rel="stylesheet" href="../assets/libs/choices.js/public/assets/styles/choices.min.css">
+
+</head>
+
+<body>
+
+    <!-- Start Switcher -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="switcher-canvas" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title text-default" id="offcanvasRightLabel">Switcher</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="border-bottom border-block-end-dashed">
+                <div class="nav nav-tabs nav-justified" id="switcher-main-tab" role="tablist">
+                    <button class="nav-link active" id="switcher-home-tab" data-bs-toggle="tab" data-bs-target="#switcher-home"
+                        type="button" role="tab" aria-controls="switcher-home" aria-selected="true">Theme Styles</button>
+                    <button class="nav-link" id="switcher-profile-tab" data-bs-toggle="tab" data-bs-target="#switcher-profile"
+                        type="button" role="tab" aria-controls="switcher-profile" aria-selected="false">Theme Colors</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active border-0" id="switcher-home" role="tabpanel" aria-labelledby="switcher-home-tab"
+                    tabindex="0">
+                    <div class="">
+                        <p class="switcher-style-head">Theme Color Mode:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-light-theme">
+                                        Light
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="theme-style" id="switcher-light-theme"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-dark-theme">
+                                        Dark
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="theme-style" id="switcher-dark-theme">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Directions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-ltr">
+                                        LTR
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="direction" id="switcher-ltr" checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-rtl">
+                                        RTL
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="direction" id="switcher-rtl">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Navigation Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-vertical">
+                                        Vertical
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-style" id="switcher-vertical"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-horizontal">
+                                        Horizontal
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-style"
+                                        id="switcher-horizontal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navigation-menu-styles">
+                        <p class="switcher-style-head">Vertical & Horizontal Menu Styles:</p>
+                        <div class="row switcher-style gx-0 pb-2 gy-2">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-click">
+                                        Menu Click
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-menu-click">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-hover">
+                                        Menu Hover
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-menu-hover">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-click">
+                                        Icon Click
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-icon-click">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-hover">
+                                        Icon Hover
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-icon-hover">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidemenu-layout-styles">
+                        <p class="switcher-style-head">Sidemenu Layout Styles:</p>
+                        <div class="row switcher-style gx-0 pb-2 gy-2">
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-default-menu">
+                                        Default Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-default-menu" checked>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-closed-menu">
+                                        Closed Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-closed-menu">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icontext-menu">
+                                        Icon Text
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-icontext-menu">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-overlay">
+                                        Icon Overlay
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-icon-overlay">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-detached">
+                                        Detached
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-detached">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-double-menu">
+                                        Double Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-double-menu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Page Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-regular">
+                                        Regular
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-styles" id="switcher-regular"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-classic">
+                                        Classic
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-styles" id="switcher-classic">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Layout Width Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-full-width">
+                                        Full Width
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="layout-width" id="switcher-full-width"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-boxed">
+                                        Boxed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="layout-width" id="switcher-boxed">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Menu Positions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-fixed">
+                                        Fixed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="menu-positions" id="switcher-menu-fixed"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-scroll">
+                                        Scrollable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="menu-positions" id="switcher-menu-scroll">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Header Positions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-header-fixed">
+                                        Fixed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="header-positions"
+                                        id="switcher-header-fixed" checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-header-scroll">
+                                        Scrollable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="header-positions"
+                                        id="switcher-header-scroll">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Loader:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-loader-enable">
+                                        Enable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-loader"
+                                        id="switcher-loader-enable">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-loader-disable">
+                                        Disable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-loader"
+                                        id="switcher-loader-disable" checked>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade border-0" id="switcher-profile" role="tabpanel" aria-labelledby="switcher-profile-tab" tabindex="0">
+                    <div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Menu Colors:</p>
+                            <div class="d-flex switcher-style pb-2">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-white" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Light Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-light">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-dark" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Dark Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-dark" checked>
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Color Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-gradient" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Gradient Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-gradient">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-transparent"
+                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Transparent Menu"
+                                        type="radio" name="menu-colors" id="switcher-menu-transparent">
+                                </div>
+                            </div>
+                            <div class="px-4 pb-3 text-muted fs-11">Note:If you want to change color Menu dynamically change from below Theme Primary color picker</div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Header Colors:</p>
+                            <div class="d-flex switcher-style pb-2">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-white" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Light Header" type="radio" name="header-colors"
+                                        id="switcher-header-light" checked>
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-dark" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Dark Header" type="radio" name="header-colors"
+                                        id="switcher-header-dark">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Color Header" type="radio" name="header-colors"
+                                        id="switcher-header-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-gradient" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Gradient Header" type="radio" name="header-colors"
+                                        id="switcher-header-gradient">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-transparent" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Transparent Header" type="radio" name="header-colors"
+                                        id="switcher-header-transparent">
+                                </div>
+                            </div>
+                            <div class="px-4 pb-3 text-muted fs-11">Note:If you want to change color Header dynamically change from below Theme Primary color picker</div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Theme Primary:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-1" type="radio"
+                                        name="theme-primary" id="switcher-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-2" type="radio"
+                                        name="theme-primary" id="switcher-primary1">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-3" type="radio" name="theme-primary"
+                                        id="switcher-primary2">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-4" type="radio" name="theme-primary"
+                                        id="switcher-primary3">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-5" type="radio" name="theme-primary"
+                                        id="switcher-primary4">
+                                </div>
+                                <div class="form-check switch-select ps-0 mt-1 color-primary-light">
+                                    <div class="theme-container-primary"></div>
+                                    <div class="pickr-container-primary"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Theme Background:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-1" type="radio"
+                                        name="theme-background" id="switcher-background">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-2" type="radio"
+                                        name="theme-background" id="switcher-background1">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-3" type="radio" name="theme-background"
+                                        id="switcher-background2">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-4" type="radio"
+                                        name="theme-background" id="switcher-background3">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-5" type="radio"
+                                        name="theme-background" id="switcher-background4">
+                                </div>
+                                <div class="form-check switch-select ps-0 mt-1 tooltip-static-demo color-bg-transparent">
+                                    <div class="theme-container-background"></div>
+                                    <div class="pickr-container-background"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-image mb-3">
+                            <p class="switcher-style-head">Menu With Background Image:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img1" type="radio"
+                                        name="theme-background" id="switcher-bg-img">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img2" type="radio"
+                                        name="theme-background" id="switcher-bg-img1">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img3" type="radio" name="theme-background"
+                                        id="switcher-bg-img2">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img4" type="radio"
+                                        name="theme-background" id="switcher-bg-img3">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img5" type="radio"
+                                        name="theme-background" id="switcher-bg-img4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center canvas-footer flex-wrap px-0 px-sm-5">
+                    <a href="javascript:void(0);" id="reset-all" class="btn btn-danger m-1">Reset</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Switcher -->
+
+
+    <!-- Loader -->
+    <div id="loader" >
+        <img src="../assets/images/media/loader.svg" alt="">
+    </div>
+    <!-- Loader -->
+
+    <div class="page">
+         <!-- app-header -->
+         <header class="app-header">
+
+            <!-- Start::main-header-container -->
+            <div class="main-header-container container-fluid">
+
+                <!-- Start::header-content-left -->
+                <div class="header-content-left">
+
+                    <!-- Start::header-element (Logo) -->
+                    <div class="header-element">
+                        <div class="horizontal-logo">
+                            <a href="index.html" class="header-logo">
+                                <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-logo">
+                                <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-logo">
+                                <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-dark">
+                                <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-dark">
+                                <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-white">
+                                <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-white">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- End::header-element -->
+
+                    <!-- Start::header-element (Hamburger Toggle) -->
+                    <div class="header-element">
+                        <!-- Start::header-link -->
+                        <a aria-label="Hide Sidebar" class="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle" data-bs-toggle="sidebar" href="javascript:void(0);"><span></span></a>
+                        <!-- End::header-link -->
+                    </div>
+                    <!-- End::header-element -->
+
+                </div>
+                <!-- End::header-content-left -->
+
+                <!-- Start::header-content-right -->
+                <div class="header-content-right">
+
+                    <!-- Start::header-element (Inbox Chat / Pesan) -->
+                    <div class="header-element message-dropdown">
+                        <!-- Start::header-link|dropdown-toggle -->
+                        <a aria-label="Kotak Masuk Pesan" href="javascript:void(0);" class="header-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" id="messageDropdown2" aria-expanded="false">
+                            <i class="fe fe-message-square header-link-icon"></i>
+                            <span class="w-9 h-9 p-0 bg-primary rounded-pill header-icon-badge pulse pulse-primary" id="message-icon-badge"></span>
+                        </a>
+                        <!-- End::header-link|dropdown-toggle -->
+                        <!-- Start::main-header-dropdown -->
+                        <div class="main-header-dropdown dropdown-menu dropdown-menu-end shadow" data-popper-placement="none">
+                            <div class="p-3 bg-primary-transparent border-bottom">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <p class="mb-0 fs-15 fw-semibold text-dark"><i class="fe fe-message-square me-1 text-primary"></i>Pesan Masuk</p>
+                                    <span class="badge bg-primary text-white fs-11" id="message-data">3 Belum Dibaca</span>
+                                </div>
+                            </div>
+                            <ul class="list-unstyled mb-0" id="header-message-scroll" style="max-height: 280px; overflow-y: auto;">
+                                <li class="dropdown-item p-3 border-bottom">
+                                    <a href="chat.html?contact=Helpdesk%20Perizinan%20KKP" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                         <span class="avatar avatar-md bg-primary-transparent text-primary rounded-circle flex-shrink-0"><i class="fe fe-shield fs-16"></i></span>
+                                         <div class="w-100">
+                                            <div class="d-flex align-items-center justify-content-between mb-1">
+                                                <h6 class="mb-0 fw-semibold fs-13 text-dark">Helpdesk Perizinan KKP</h6>
+                                                <span class="text-muted fs-11">09:15</span>
+                                            </div>
+                                            <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Dokumen permohonan verifikasi kapal telah diterima sistem.</p>
+                                         </div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-item p-3 border-bottom">
+                                    <a href="chat.html?contact=Syahbandar%20Muara%20Baru" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                         <span class="avatar avatar-md bg-info-transparent text-info rounded-circle flex-shrink-0"><i class="fe fe-anchor fs-16"></i></span>
+                                         <div class="w-100">
+                                            <div class="d-flex align-items-center justify-content-between mb-1">
+                                                <h6 class="mb-0 fw-semibold fs-13 text-dark">Syahbandar Muara Baru</h6>
+                                                <span class="text-muted fs-11">Kemarin</span>
+                                            </div>
+                                            <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Konfirmasi jadwal tambat pangkalan PPS Nizam Zachman.</p>
+                                         </div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-item p-3">
+                                    <a href="chat.html?contact=Staf%20Operasional%20Kapal" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                         <span class="avatar avatar-md bg-success-transparent text-success rounded-circle flex-shrink-0"><i class="fe fe-user-check fs-16"></i></span>
+                                         <div class="w-100">
+                                            <div class="d-flex align-items-center justify-content-between mb-1">
+                                                <h6 class="mb-0 fw-semibold fs-13 text-dark">Staf Operasional Kapal</h6>
+                                                <span class="text-muted fs-11">2 hari lalu</span>
+                                            </div>
+                                            <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Data dokumen awak kapal KM. Bahari Nusantara telah diperbarui.</p>
+                                         </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="p-2 border-top text-center bg-light-subtle">
+                                <a href="chat.html" class="fs-12 text-primary fw-semibold text-decoration-none d-block">Lihat Semua Pesan</a>
+                            </div>
+                        </div>
+                        <!-- End::main-header-dropdown -->
+                    </div>
+                    <!-- End::header-element -->
+
+                    <!-- Start::header-element (Profile: Pengaturan Akun & Logout) -->
+                    <div class="header-element main-profile-user">
+                        <!-- Start::header-link|dropdown-toggle -->
+                        <a href="javascript:void(0);" class="header-link dropdown-toggle" id="mainHeaderProfile" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            <div class="d-flex align-items-center">
+                                <div class="me-xxl-2 me-0">
+                                    <img src="../assets/images/faces/9.jpg" alt="Foto Profil" width="34" height="34" class="rounded-circle border border-2 border-primary-subtle">
+                                </div>
+                                <div class="d-xxl-block d-none my-auto text-start">
+                                    <h6 class="fw-semibold mb-0 lh-1 fs-14 text-dark">Ir. H. Hendra Wijaya</h6>
+                                    <span class="op-7 fw-normal d-block fs-11 text-muted">Pemilik Usaha</span>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- End::header-link|dropdown-toggle -->
+                        <ul class="main-header-dropdown dropdown-menu pt-0 header-profile-dropdown dropdown-menu-end shadow" aria-labelledby="mainHeaderProfile">
+                            <li class="drop-heading d-xxl-none d-block border-bottom p-3">
+                                 <div class="text-center">
+                                    <h6 class="text-dark mb-0 fs-14 fw-semibold">Ir. H. Hendra Wijaya</h6>
+                                    <small class="text-muted fs-11">Pemilik Usaha</small>
+                                </div>
+                            </li>
+                            <li class="dropdown-item py-2">
+                                <a class="d-flex align-items-center w-100" href="profile.html">
+                                    <i class="fe fe-settings fs-16 me-2 text-primary"></i>Pengaturan Akun
+                                </a>
+                            </li>
+                            <li class="dropdown-divider my-1"></li>
+                            <li class="dropdown-item py-2">
+                                <a class="d-flex align-items-center w-100 text-danger" href="login.html">
+                                    <i class="fe fe-log-out fs-16 me-2 text-danger"></i>Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End::header-element -->
+
+                </div>
+                <!-- End::header-content-right -->
+
+            </div>
+            <!-- End::main-header-container -->
+
+        </header>
+        <!-- /app-header -->
+        <!-- Start::app-sidebar -->
+        <aside class="app-sidebar sticky" id="sidebar">
+
+            <!-- Start::main-sidebar-header -->
+            <div class="main-sidebar-header">
+                <a href="index.html" class="header-logo">
+                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-logo">
+                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-logo">
+                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-dark">
+                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-dark">
+                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-white">
+                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-white">
+                </a>
+            </div>
+            <!-- End::main-sidebar-header -->
+
+            <!-- Start::main-sidebar -->
+            <div class="main-sidebar" id="sidebar-scroll">
+                <nav class="main-menu-container nav nav-pills flex-column sub-open">
+                    <div class="slide-left" id="slide-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg>
+                    </div>
+
+                    <ul class="main-menu">
+                        <li class="slide__category"><span class="category-name">Menu Utama</span></li>
+                        <li class="slide">
+                            <a href="index.html" class="side-menu__item">
+                                <i class="fe fe-home side-menu__icon"></i>
+                                <span class="side-menu__label">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <i class="fe fe-briefcase side-menu__icon"></i>
+                                <span class="side-menu__label">Manajemen Usaha</span>
+                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide side-menu__label1"><a href="javascript:void(0)">Manajemen Usaha</a></li>
+                                <li class="slide"><a href="daftar-alokasi.html" class="side-menu__item">Daftar Alokasi</a></li>
+                                <li class="slide"><a href="javascript:void(0);" class="side-menu__item disabled opacity-50" tabindex="-1" aria-disabled="true" style="pointer-events: none; cursor: not-allowed;">Daftar Realisasi</a></li>
+                            </ul>
+                        </li>
+                        <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <i class="fe fe-file-text side-menu__icon"></i>
+                                <span class="side-menu__label">Daftar Permohonan</span>
+                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide side-menu__label1"><a href="javascript:void(0)">Daftar Permohonan</a></li>
+                                <li class="slide"><a href="verifikasi-izin-usaha.html" class="side-menu__item">Verifikasi Izin Usaha</a></li>
+                                <li class="slide"><a href="verifikasi-izin-kapal.html" class="side-menu__item">Verifikasi Izin Kapal</a></li>
+                                <li class="slide"><a href="verifikasi-izin-rumpon.html" class="side-menu__item">Verifikasi Izin Rumpon</a></li>
+                            </ul>
+                        </li>
+                        <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <i class="fe fe-credit-card side-menu__icon"></i>
+                                <span class="side-menu__label">Simulasi Pungutan</span>
+                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide side-menu__label1"><a href="javascript:void(0)">Simulasi Pungutan</a></li>
+                                <li class="slide"><a href="simulasi-ppp.html" class="side-menu__item">Simulasi PPP</a></li>
+                                <li class="slide"><a href="simulasi-pppka.html" class="side-menu__item">Simulasi PPPKA</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="slide-right" id="slide-right">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="m10.707 17.707 5.707-5.707-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path></svg>
+                    </div>
+                </nav>
+            </div>
+        </aside>
+        <!-- End::app-sidebar -->
+
+
+        <!-- Start::app-content -->
+        <div class="main-content app-content">
+            <div class="container">
+
+                <!-- PAGE-HEADER -->
+                <div class="page-header">
+                  <h1 class="page-title my-auto">Mail Settings</h1>
+                  <div>
+                    <ol class="breadcrumb mb-0">
+                      <li class="breadcrumb-item">
+                        <a href="javascript:void(0)">Mail</a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">Mail Settings</li>
+                    </ol>
+                  </div>
+                </div>
+                <!-- PAGE-HEADER END -->
+
+
+                <!-- Start::row-1 -->
+                <div class="row mb-5">
+                    <div class="col-xl-12">
+                        <div class="card custom-card">
+                            <div class="card-header d-sm-flex d-block">
+                                <ul class="nav nav-tabs nav-tabs-header mb-0 d-sm-flex d-block" role="tablist">
+                                    <li class="nav-item m-1">
+                                        <a class="nav-link active" data-bs-toggle="tab" role="tab" aria-current="page"
+                                        href="#personal-info" aria-selected="true">Personal Information</a>
+                                    </li>
+                                    <li class="nav-item m-1">
+                                        <a class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page"
+                                        href="#account-settings" aria-selected="true">Account Settings</a>
+                                    </li>
+                                    <li class="nav-item m-1">
+                                        <a class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page"
+                                        href="#email-settings" aria-selected="true">Email</a>
+                                    </li>
+                                    <li class="nav-item m-1">
+                                        <a class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page"
+                                        href="#labels" aria-selected="true">Labels</a>
+                                    </li>
+                                    <li class="nav-item m-1">
+                                        <a class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page"
+                                        href="#notification-settings" aria-selected="true">Notifications</a>
+                                    </li>
+                                    <li class="nav-item m-1">
+                                        <a class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page"
+                                        href="#security" aria-selected="true">Security</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane show active" id="personal-info"
+                                        role="tabpanel">
+                                        <div class="p-sm-3 p-0">
+                                            <h6 class="fw-semibold mb-3">
+                                                Photo :
+                                            </h6>
+                                            <div class="mb-4 d-sm-flex align-items-center">
+                                                <div class="mb-0 me-5">
+                                                    <span class="avatar avatar-xxl avatar-rounded">
+                                                        <img src="../assets/images/faces/9.jpg" alt="" id="profile-img">
+                                                        <a aria-label="anchor" href="javascript:void(0);" class="badge rounded-pill bg-primary avatar-badge">
+                                                            <input type="file" name="photo" class="position-absolute w-100 h-100 op-0" id="profile-change">
+                                                            <i class="fe fe-camera"></i>
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-primary">Change</button>
+                                                    <button type="button" class="btn btn-light">Remove</button>
+                                                </div>
+                                            </div>
+                                            <h6 class="fw-semibold mb-3">
+                                                Profile :
+                                            </h6>
+                                            <div class="row gy-4 mb-4">
+                                                <div class="col-xl-6">
+                                                    <label for="first-name" class="form-label">First Name</label>
+                                                    <input type="text" class="form-control" id="first-name" placeholder="Firt Name">
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <label for="last-name" class="form-label">Last Name</label>
+                                                    <input type="text" class="form-control" id="last-name" placeholder="Last Name">
+                                                </div>
+                                                <div class="col-xl-12">
+                                                    <label class="form-label">User Name</label>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text" id="basic-addon3">user2413@gmail.com</span>
+                                                        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h6 class="fw-semibold mb-3">
+                                                Personal information :
+                                            </h6>
+                                            <div class="row gy-4 mb-4">
+                                                <div class="col-xl-6">
+                                                    <label for="email-address" class="form-label">Email Address :</label>
+                                                    <input type="text" class="form-control" id="email-address" placeholder="xyz@gmail.com">
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <label for="Contact-Details" class="form-label">Contact Details :</label>
+                                                    <input type="text" class="form-control" id="Contact-Details" placeholder="contact details">
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <label for="language" class="form-label">Language :</label>
+                                                    <select class="form-control" name="language" id="language" multiple>
+                                                    <option value="Choice 1" selected>English</option>
+                                                    <option value="Choice 2">French</option>
+                                                    <option value="Choice 3">Arabic</option>
+                                                    <option value="Choice 4">Hindi</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <label class="form-label">Country :</label>
+                                                    <select class="form-control" data-trigger name="country-select" id="country-select">
+                                                        <option value="Choice 1">Usa</option>
+                                                        <option value="Choice 2">Australia</option>
+                                                        <option value="Choice 3">Dubai</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-xl-12">
+                                                    <label for="bio" class="form-label">Bio :</label>
+                                                    <textarea class="form-control" id="bio" rows="5">Lorem ipsum dolor sit amet consectetur adipisicing elit. At sit impedit, officiis non minima saepe voluptates a magnam enim sequi porro veniam ea suscipit dolorum vel mollitia voluptate iste nemo!</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="account-settings"
+                                        role="tabpanel">
+                                        <div class="row">
+                                            <div class="col-xl-7">
+                                                <div class="card custom-card shadow-none mb-0 border">
+                                                    <div class="card-body">
+                                                        <div class="d-sm-flex d-block align-items-top mb-4 justify-content-between">
+                                                            <div>
+                                                                <p class="fs-14 mb-1 fw-semibold">Two Step Verification</p>
+                                                                <p class="fs-12 text-muted mb-0">Two step verificatoin is very secured and restricts in happening faulty practices.</p>
+                                                            </div>
+                                                            <div class="custom-toggle-switch ms-sm-2 ms-0">
+                                                                <input id="two-step" name="toggleswitchsize" type="checkbox" checked>
+                                                                <label for="two-step" class="label-primary mb-1"></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-sm-flex d-block align-items-top mb-4 justify-content-between">
+                                                            <div class="mb-sm-0 mb-2">
+                                                                <p class="fs-14 mb-2 fw-semibold">Authentication</p>
+                                                                <div class="mb-0">
+                                                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked>
+                                                                        <label class="btn btn-outline-primary d-inline-flex align-items-center" for="btnradio1"><i class="ri-lock-unlock-line me-1 align-middle d-inline-block"></i>Pin</label>
+                                                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2">
+                                                                        <label class="btn btn-outline-primary d-inline-flex align-items-center" for="btnradio2"><i class="ri-lock-password-line me-1 align-middle d-inline-block"></i>Password</label>
+                                                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3">
+                                                                        <label class="btn btn-outline-primary d-inline-flex align-items-center" for="btnradio3"><i class="ri-fingerprint-line me-1 align-middle d-inline-block"></i>Finger Print</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="custom-toggle-switch ms-sm-2 ms-0">
+                                                                <input id="authentication" name="authentication" type="checkbox" checked>
+                                                                <label for="authentication" class="label-primary mb-1"></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-sm-flex d-block align-items-top mb-4 justify-content-between">
+                                                            <div>
+                                                                <p class="fs-14 mb-1 fw-semibold">Recovery Mail</p>
+                                                                <p class="fs-12 text-muted mb-0">Incase of forgetting password mails are sent to  heifo@gmail.com</p>
+                                                            </div>
+                                                            <div class="custom-toggle-switch ms-sm-2 ms-0">
+                                                                <input id="recovery-mail" name="recovery-mail" type="checkbox" checked>
+                                                                <label for="recovery-mail" class="label-primary mb-1"></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-sm-flex d-block align-items-top mb-4 justify-content-between">
+                                                            <div>
+                                                                <p class="fs-14 mb-1 fw-semibold">SMS Recovery</p>
+                                                                <p class="fs-12 text-muted mb-0">SMS are sent to 9102312xx in case of recovery</p>
+                                                            </div>
+                                                            <div class="custom-toggle-switch ms-sm-2 ms-0">
+                                                                <input id="sms-recovery" name="sms-recovery" type="checkbox" checked>
+                                                                <label for="sms-recovery" class="label-primary mb-1"></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-top justify-content-between">
+                                                            <div>
+                                                                <p class="fs-14 mb-1 fw-semibold">Reset Password</p>
+                                                                <p class="fs-12 text-muted">Password should be min of <b class="text-success">8 digits<sup>*</sup></b>,atleast <b class="text-success">One Capital letter<sup>*</sup></b> and <b class="text-success">One Special Character<sup>*</sup></b> included.</p>
+                                                                <div class="mb-2">
+                                                                    <label for="current-password" class="form-label">Current Password</label>
+                                                                    <input type="text" class="form-control" id="current-password" placeholder="Current Password">
+                                                                </div>
+                                                                <div class="mb-2">
+                                                                    <label for="new-password" class="form-label">New Password</label>
+                                                                    <input type="text" class="form-control" id="new-password" placeholder="New Password">
+                                                                </div>
+                                                                <div class="mb-0">
+                                                                    <label for="confirm-password" class="form-label">Confirm Password</label>
+                                                                    <input type="text" class="form-control" id="confirm-password" placeholder="Confirm PAssword">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-5">
+                                                <div class="card custom-card shadow-none mb-0 border">
+                                                    <div class="card-header justify-content-between d-sm-flex d-block">
+                                                        <div class="card-title">Registered Devices</div>
+                                                        <div class="mt-sm-0 mt-2">
+                                                            <button type="button" class="btn btn-sm btn-primary">Signout from all devices</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <ul class="list-group">
+                                                            <li class="list-group-item">
+                                                                <div class="d-sm-flex d-block align-items-top">
+                                                                    <div class="lh-1 mb-sm-0 mb-2"><i class="bi bi-phone me-2 fs-16 align-middle text-muted"></i></div>
+                                                                    <div class="lh-1 flex-fill">
+                                                                        <p class="mb-1">
+                                                                            <span class="fw-semibold">Mobile-LG-1023</span>
+                                                                        </p>
+                                                                        <p class="mb-0">
+                                                                            <span class="text-muted fs-11">Manchester, UK-Nov 30, 04:45PM</span>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="dropdown mt-sm-0 mt-2">
+                                                                        <a aria-label="anchor" href="javascript:void(0);" class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                            <i class="fe fe-more-vertical"></i>
+                                                                        </a>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li><a class="dropdown-item" href="javascript:void(0);">Action</a></li>
+                                                                            <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
+                                                                            <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <div class="d-sm-flex d-block align-items-top">
+                                                                    <div class="lh-1 mb-sm-0 mb-2"><i class="bi bi-laptop me-2 fs-16 align-middle text-muted"></i></div>
+                                                                    <div class="lh-1 flex-fill">
+                                                                        <p class="mb-1">
+                                                                            <span class="fw-semibold">Lenovo-1291203</span>
+                                                                        </p>
+                                                                        <p class="mb-0">
+                                                                            <span class="text-muted fs-11">England, UK-Aug 12, 12:25PM</span>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="dropdown mt-sm-0 mt-2">
+                                                                        <a aria-label="anchor" href="javascript:void(0);" class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                            <i class="fe fe-more-vertical"></i>
+                                                                        </a>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li><a class="dropdown-item" href="javascript:void(0);">Action</a></li>
+                                                                            <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
+                                                                            <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <div class="d-sm-flex d-block align-items-top">
+                                                                    <div class="lh-1 mb-sm-0 mb-2"><i class="bi bi-laptop me-2 fs-16 align-middle text-muted"></i></div>
+                                                                    <div class="lh-1 flex-fill">
+                                                                        <p class="mb-1">
+                                                                            <span class="fw-semibold">Macbook-Suzika</span>
+                                                                        </p>
+                                                                        <p class="mb-0">
+                                                                            <span class="text-muted fs-11">Brightoon, UK-Jul 18, 8:34AM</span>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="dropdown mt-sm-0 mt-2">
+                                                                        <a aria-label="anchor" href="javascript:void(0);" class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                            <i class="fe fe-more-vertical"></i>
+                                                                        </a>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li><a class="dropdown-item" href="javascript:void(0);">Action</a></li>
+                                                                            <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
+                                                                            <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <div class="d-sm-flex d-block align-items-top">
+                                                                    <div class="lh-1 mb-sm-0 mb-2"><i class="bi bi-pc-display-horizontal me-2 fs-16 align-middle text-muted"></i></div>
+                                                                    <div class="lh-1 flex-fill">
+                                                                        <p class="mb-1">
+                                                                            <span class="fw-semibold">Apple-Desktop</span>
+                                                                        </p>
+                                                                        <p class="mb-0">
+                                                                            <span class="text-muted fs-11">Darlington, UK-Jan 14, 11:14AM</span>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="dropdown mt-sm-0 mt-2">
+                                                                        <a aria-label="anchor" href="javascript:void(0);" class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                            <i class="fe fe-more-vertical"></i>
+                                                                        </a>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li><a class="dropdown-item" href="javascript:void(0);">Action</a></li>
+                                                                            <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
+                                                                            <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane p-0" id="email-settings" role="tabpanel">
+                                        <ul class="list-group list-group-flush rounded">
+                                            <li class="list-group-item">
+                                                <div class="row gy-2 d-sm-flex align-items-center justify-content-between">
+                                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                                                        <span class="fs-14 fw-semibold mb-0">Menu View :</span>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                                Default View
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                                Advanced View
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-5">
+                                                        <div class="custom-toggle-switch float-sm-end">
+                                                            <input id="menu-view" name="toggleswitchsize1" type="checkbox" checked>
+                                                            <label for="menu-view" class="label-danger mb-1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row gy-3 d-sm-flex align-items-center justify-content-between">
+                                                    <div class="col-xl-3">
+                                                        <span class="fs-14 fw-semibold mb-0">Language :</span>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <label for="mail-language" class="form-label">Languages :</label>
+                                                        <select class="form-control" name="mail-language" id="mail-language" multiple>
+                                                        <option value="Choice 1" selected>English</option>
+                                                        <option value="Choice 2" selected>French</option>
+                                                        <option value="Choice 3">Arabic</option>
+                                                        <option value="Choice 4">Hindi</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xl-5">
+                                                        <div class="custom-toggle-switch float-sm-end">
+                                                            <input id="mail-languages" name="toggleswitchsize2" type="checkbox">
+                                                            <label for="mail-languages" class="label-danger mb-1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row gy-2 d-sm-flex align-items-center justify-content-between">
+                                                    <div class="col-xl-3">
+                                                        <span class="fs-14 fw-semibold mb-0">Images :</span>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="images-open" id="images-open1">
+                                                            <label class="form-check-label" for="images-open1">
+                                                                Always Open Images
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="images-hide" id="images-hide2" checked>
+                                                            <label class="form-check-label" for="images-hide2">
+                                                                Ask For Permission
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-5">
+                                                        <div class="custom-toggle-switch float-sm-end">
+                                                            <input id="mails-images" name="toggleswitchsize3" type="checkbox">
+                                                            <label for="mails-images" class="label-danger mb-1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row gy-2 d-sm-flex align-items-center justify-content-between">
+                                                    <div class="col-xl-3">
+                                                        <span class="fs-14 fw-semibold mb-0">Keyboard Shortcuts :</span>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="keyboard-enable" id="keyboard-enable1">
+                                                            <label class="form-check-label" for="keyboard-enable1">
+                                                                Keyboard Shortcuts Enable
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="keyboard-disable" id="keyboard-disable2" checked>
+                                                            <label class="form-check-label" for="keyboard-disable2">
+                                                                Keyboard Shortcuts Disable
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-5">
+                                                        <div class="custom-toggle-switch float-sm-end">
+                                                            <input id="keyboard-shortcuts" name="toggleswitchsize4" type="checkbox">
+                                                            <label for="keyboard-shortcuts" class="label-danger mb-1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row gy-2 d-sm-flex align-items-center justify-content-between">
+                                                    <div class="col-xl-3">
+                                                        <span class="fs-14 fw-semibold mb-0">Notifications :</span>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="desktop-notifications" checked>
+                                                            <label class="form-check-label" for="desktop-notifications">
+                                                                Desktop Notifications
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="mobile-notifications">
+                                                            <label class="form-check-label" for="mobile-notifications">
+                                                                Mobile Notifications
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-5">
+                                                        <div class="float-sm-end">
+                                                            <a href="javascript:void(0)" class="btn btn-success-ghost btn-sm">Learn-more</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row gy-3 d-sm-flex align-items-center justify-content-between">
+                                                    <div class="col-xl-3">
+                                                        <span class="fs-14 fw-semibold mb-0">Maximum Mails Per Page :</span>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <select class="form-control" data-trigger name="mail-per-page" id="mail-per-page">
+                                                        <option value="Choice 1" selected>10</option>
+                                                        <option value="Choice 2">50</option>
+                                                        <option value="Choice 3">100</option>
+                                                        <option value="Choice 3">120</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xl-5">
+                                                        <div class="custom-toggle-switch float-sm-end">
+                                                            <input id="mails-per-page" name="toggleswitchsize5" type="checkbox">
+                                                            <label for="mails-per-page" class="label-danger mb-1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row gy-2 d-sm-flex align-items-center justify-content-between">
+                                                    <div class="col-xl-3">
+                                                        <span class="fs-14 fw-semibold mb-0">Mail Composer :</span>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="mail-composeron" id="mail-composeron1">
+                                                            <label class="form-check-label" for="mail-composeron1">
+                                                                Mail Composer On
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="mail-composeroff" id="mail-composeroff2" checked>
+                                                            <label class="form-check-label" for="mail-composeroff2">
+                                                                Mail Composer Off
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-5">
+                                                        <div class="custom-toggle-switch float-sm-end">
+                                                            <input id="mail-composer" name="toggleswitchsize6" type="checkbox">
+                                                            <label for="mail-composer" class="label-danger mb-1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row gy-2 d-sm-flex align-items-center justify-content-between">
+                                                    <div class="col-xl-3">
+                                                        <span class="fs-14 fw-semibold mb-0">Auto Correct :</span>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="auto-correcton" id="auto-correcton1">
+                                                            <label class="form-check-label" for="auto-correcton1">
+                                                                Auto Correct On
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="auto-correctoff" id="auto-correctoff2" checked>
+                                                            <label class="form-check-label" for="auto-correctoff2">
+                                                                Auto Correct Off
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-5">
+                                                        <div class="custom-toggle-switch float-sm-end">
+                                                            <input id="auto-correct" name="toggleswitchsize7" type="checkbox">
+                                                            <label for="auto-correct" class="label-danger mb-1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row gy-2 d-sm-flex align-items-center justify-content-between">
+                                                    <div class="col-xl-3">
+                                                        <span class="fs-14 fw-semibold mb-0">Mail Send Action :</span>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="on-keyboard" checked>
+                                                            <label class="form-check-label" for="on-keyboard">
+                                                                On Keyboard Action
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="on-buttonclick">
+                                                            <label class="form-check-label" for="on-buttonclick">
+                                                                On Button Click
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-5">
+                                                        <div class="float-sm-end">
+                                                            <a href="javascript:void(0)" class="btn btn-success-ghost btn-sm">Learn-more</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-pane" id="labels" role="tabpanel">
+                                        <p class="fs-14 fw-semibold mb-3">Mail Labels :</p>
+                                        <div class="row gy-2">
+                                            <div class="col-xl-3">
+                                                <div class="card custom-card shadow-none border">
+                                                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                        <div class="">
+                                                            <span class="fw-semibold">All Mails</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                <input type="radio" class="btn-check" name="label-allmails" id="all-mails-enable" checked>
+                                                                <label class="btn btn-sm btn-outline-primary" for="all-mails-enable">Enable</label>
+                                                                <input type="radio" class="btn-check" name="label-allmails" id="all-mails-disable">
+                                                                <label class="btn btn-sm btn-outline-primary" for="all-mails-disable">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3">
+                                                <div class="card custom-card shadow-none border">
+                                                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                        <div class="">
+                                                            <span class="fw-semibold">Inbox</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                <input type="radio" class="btn-check" name="label-inbox" id="inbox-enable" checked>
+                                                                <label class="btn btn-sm btn-outline-primary" for="inbox-enable">Enable</label>
+                                                                <input type="radio" class="btn-check" name="label-inbox" id="inbox-disable">
+                                                                <label class="btn btn-sm btn-outline-primary" for="inbox-disable">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3">
+                                                <div class="card custom-card shadow-none border">
+                                                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                        <div class="">
+                                                            <span class="fw-semibold">Sent</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                <input type="radio" class="btn-check" name="label-sent" id="sent-enable" checked>
+                                                                <label class="btn btn-sm btn-outline-primary" for="sent-enable">Enable</label>
+                                                                <input type="radio" class="btn-check" name="label-sent" id="sent-disable">
+                                                                <label class="btn btn-sm btn-outline-primary" for="sent-disable">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3">
+                                                <div class="card custom-card shadow-none border">
+                                                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                        <div class="">
+                                                            <span class="fw-semibold">Drafts</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                <input type="radio" class="btn-check" name="label-drafts" id="drafts-enable" checked>
+                                                                <label class="btn btn-sm btn-outline-primary" for="drafts-enable">Enable</label>
+                                                                <input type="radio" class="btn-check" name="label-drafts" id="drafts-disable">
+                                                                <label class="btn btn-sm btn-outline-primary" for="drafts-disable">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3">
+                                                <div class="card custom-card shadow-none border">
+                                                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                        <div class="">
+                                                            <span class="fw-semibold">Spam</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                <input type="radio" class="btn-check" name="label-spam" id="spam-enable" checked>
+                                                                <label class="btn btn-sm btn-outline-primary" for="spam-enable">Enable</label>
+                                                                <input type="radio" class="btn-check" name="label-spam" id="spam-disable">
+                                                                <label class="btn btn-sm btn-outline-primary" for="spam-disable">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3">
+                                                <div class="card custom-card shadow-none border">
+                                                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                        <div class="">
+                                                            <span class="fw-semibold">Important</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                <input type="radio" class="btn-check" name="label-important" id="important-enable" checked>
+                                                                <label class="btn btn-sm btn-outline-primary" for="important-enable">Enable</label>
+                                                                <input type="radio" class="btn-check" name="label-important" id="important-disable">
+                                                                <label class="btn btn-sm btn-outline-primary" for="important-disable">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3">
+                                                <div class="card custom-card shadow-none border">
+                                                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                        <div class="">
+                                                            <span class="fw-semibold">Trash</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                <input type="radio" class="btn-check" name="label-trash" id="trash-enable" checked>
+                                                                <label class="btn btn-sm btn-outline-primary" for="trash-enable">Enable</label>
+                                                                <input type="radio" class="btn-check" name="label-trash" id="trash-disable">
+                                                                <label class="btn btn-sm btn-outline-primary" for="trash-disable">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3">
+                                                <div class="card custom-card shadow-none border">
+                                                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                        <div class="">
+                                                            <span class="fw-semibold">Archive</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                <input type="radio" class="btn-check" name="label-archive" id="archive-enable" checked>
+                                                                <label class="btn btn-sm btn-outline-primary" for="archive-enable">Enable</label>
+                                                                <input type="radio" class="btn-check" name="label-archive" id="archive-disable">
+                                                                <label class="btn btn-sm btn-outline-primary" for="archive-disable">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3">
+                                                <div class="card custom-card shadow-none border">
+                                                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                        <div class="">
+                                                            <span class="fw-semibold">Starred</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                <input type="radio" class="btn-check" name="label-starred" id="starred-enable" checked>
+                                                                <label class="btn btn-sm btn-outline-primary" for="starred-enable">Enable</label>
+                                                                <input type="radio" class="btn-check" name="label-starred" id="starred-disable">
+                                                                <label class="btn btn-sm btn-outline-primary" for="starred-disable">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="fs-14 fw-semibold mb-3">Settings :</p>
+                                        <div class="row gy-2">
+                                            <div class="col-xl-3">
+                                                <div class="card custom-card shadow-none border">
+                                                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                        <div class="">
+                                                            <span class="fw-semibold">Settings</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                <input type="radio" class="btn-check" name="label-settings" id="settings-enable" checked>
+                                                                <label class="btn btn-sm btn-outline-primary" for="settings-enable">Enable</label>
+                                                                <input type="radio" class="btn-check" name="label-settings" id="settings-disable">
+                                                                <label class="btn btn-sm btn-outline-primary" for="settings-disable">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="fs-14 fw-semibold mb-3">Custom Labels :</p>
+                                        <div class="row gy-2">
+                                            <div class="col-xl-3">
+                                                <div class="card custom-card shadow-none border">
+                                                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                        <div class="">
+                                                            <span class="fw-semibold">Mail</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                <input type="radio" class="btn-check" name="label-custom-mail" id="custom-mail-enable" checked>
+                                                                <label class="btn btn-sm btn-outline-primary" for="custom-mail-enable">Enable</label>
+                                                                <input type="radio" class="btn-check" name="label-custom-mail" id="custom-mail-disable">
+                                                                <label class="btn btn-sm btn-outline-primary" for="custom-mail-disable">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3">
+                                                <div class="card custom-card shadow-none border">
+                                                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                        <div class="">
+                                                            <span class="fw-semibold">Home</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                <input type="radio" class="btn-check" name="label-home" id="home-enable" checked>
+                                                                <label class="btn btn-sm btn-outline-primary" for="home-enable">Enable</label>
+                                                                <input type="radio" class="btn-check" name="label-home" id="home-disable">
+                                                                <label class="btn btn-sm btn-outline-primary" for="home-disable">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3">
+                                                <div class="card custom-card shadow-none border">
+                                                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                        <div class="">
+                                                            <span class="fw-semibold">Work</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                <input type="radio" class="btn-check" name="label-work" id="work-enable" checked>
+                                                                <label class="btn btn-sm btn-outline-primary" for="work-enable">Enable</label>
+                                                                <input type="radio" class="btn-check" name="label-work" id="work-disable">
+                                                                <label class="btn btn-sm btn-outline-primary" for="work-disable">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3">
+                                                <div class="card custom-card shadow-none border">
+                                                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                        <div class="">
+                                                            <span class="fw-semibold">Friends</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                                <input type="radio" class="btn-check" name="label-friends" id="friends-enable" checked>
+                                                                <label class="btn btn-sm btn-outline-primary" for="friends-enable">Enable</label>
+                                                                <input type="radio" class="btn-check" name="label-friends" id="friends-disable">
+                                                                <label class="btn btn-sm btn-outline-primary" for="friends-disable">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane p-0" id="notification-settings"
+                                        role="tabpanel">
+                                        <ul class="list-group list-group-flush list-unstyled rounded rounded">
+                                            <li class="list-group-item">
+                                                <div class="row gx-5 gy-3">
+                                                    <div class="col-xl-5">
+                                                        <p class="fs-16 mb-1 fw-semibold">Email Notifications</p>
+                                                        <p class="fs-12 mb-0 text-muted">Email notifications are the notifications you will receeive when you are offline, you can customize them by enabling or disabling them.</p>
+                                                    </div>
+                                                    <div class="col-xl-7">
+                                                        <div class="d-flex align-items-top justify-content-between mt-sm-0 mt-3">
+                                                            <div class="mail-notification-settings">
+                                                                <p class="fs-14 mb-1 fw-semibold">Updates &amp; Features</p>
+                                                                <p class="fs-12 mb-0 text-muted">Notifications about new updates and their features.</p>
+                                                            </div>
+                                                            <div>
+                                                                <div class="custom-toggle-switch float-sm-end">
+                                                                    <input id="update-features" name="toggleswitchsize8" type="checkbox" checked>
+                                                                    <label for="update-features" class="label-success mb-1"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-top justify-content-between mt-3">
+                                                            <div class="mail-notification-settings">
+                                                                <p class="fs-14 mb-1 fw-semibold">Early Access</p>
+                                                                <p class="fs-12 mb-0 text-muted">Users are selected for beta testing of new update,notifications relating or participate in any of paid product promotion.</p>
+                                                            </div>
+                                                            <div>
+                                                                <div class="custom-toggle-switch float-sm-end">
+                                                                    <input id="early-access" name="toggleswitchsize9" type="checkbox">
+                                                                    <label for="early-access" class="label-success mb-1"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-top justify-content-between mt-3">
+                                                            <div class="mail-notification-settings">
+                                                                <p class="fs-14 mb-1 fw-semibold">Email Shortcuts</p>
+                                                                <p class="fs-12 mb-0 text-muted">Shortcut notifications for email.</p>
+                                                            </div>
+                                                            <div>
+                                                                <div class="custom-toggle-switch float-sm-end">
+                                                                    <input id="email-shortcut" name="toggleswitchsize10" type="checkbox" checked>
+                                                                    <label for="email-shortcut" class="label-success mb-1"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-top justify-content-between mt-3">
+                                                            <div class="mail-notification-settings">
+                                                                <p class="fs-14 mb-1 fw-semibold">New Mails</p>
+                                                                <p class="fs-12 mb-0 text-muted">Notifications related to new mails received.</p>
+                                                            </div>
+                                                            <div>
+                                                                <div class="custom-toggle-switch float-sm-end">
+                                                                    <input id="new-mails" name="toggleswitchsize11" type="checkbox" checked>
+                                                                    <label for="new-mails" class="label-success mb-1"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-top justify-content-between mt-3">
+                                                            <div class="mail-notification-settings">
+                                                                <p class="fs-14 mb-1 fw-semibold">Mail Chat Messages</p>
+                                                                <p class="fs-12 mb-0 text-muted">Any of new messages are received will be updated through notifications.</p>
+                                                            </div>
+                                                            <div>
+                                                                <div class="custom-toggle-switch float-sm-end">
+                                                                    <input id="mail-chat-messages" name="toggleswitchsize12" type="checkbox" checked>
+                                                                    <label for="mail-chat-messages" class="label-success mb-1"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row gx-5 gy-3">
+                                                    <div class="col-xl-5">
+                                                        <p class="fs-16 mb-1 fw-semibold">Push Notifications</p>
+                                                        <p class="fs-12 mb-0 text-muted">Push notifications are recieved when you are online, you can customize them by enabling or disabling them.</p>
+                                                    </div>
+                                                    <div class="col-xl-7">
+                                                        <div class="d-flex align-items-top justify-content-between mt-sm-0 mt-3">
+                                                            <div class="mail-notification-settings">
+                                                                <p class="fs-14 mb-1 fw-semibold">New Mails</p>
+                                                                <p class="fs-12 mb-0 text-muted">Notifications related to new mails received.</p>
+                                                            </div>
+                                                            <div>
+                                                                <div class="custom-toggle-switch float-sm-end">
+                                                                    <input id="push-new-mails" name="toggleswitchsize13" type="checkbox" checked>
+                                                                    <label for="push-new-mails" class="label-success mb-1"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-top justify-content-between mt-3">
+                                                            <div class="mail-notification-settings">
+                                                                <p class="fs-14 mb-1 fw-semibold">Mail Chat Messages</p>
+                                                                <p class="fs-12 mb-0 text-muted">Any of new messages are received will be updated through notifications.</p>
+                                                            </div>
+                                                            <div>
+                                                                <div class="custom-toggle-switch float-sm-end">
+                                                                    <input id="push-mail-chat-messages" name="toggleswitchsize14" type="checkbox" checked>
+                                                                    <label for="push-mail-chat-messages" class="label-success mb-1"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-items-top justify-content-between mt-3">
+                                                            <div class="mail-notification-settings">
+                                                                <p class="fs-14 mb-1 fw-semibold">Mail Extensions</p>
+                                                                <p class="fs-12 mb-0 text-muted">Notifications related to the extensions received by new emails and thier propertied also been displayed.</p>
+                                                            </div>
+                                                            <div>
+                                                                <div class="custom-toggle-switch float-sm-end">
+                                                                    <input id="mail-extensions" name="toggleswitchsize15" type="checkbox">
+                                                                    <label for="mail-extensions" class="label-success mb-1"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-pane p-0" id="security"
+                                        role="tabpanel">
+                                        <ul class="list-group list-group-flush list-unstyled rounded">
+                                            <li class="list-group-item">
+                                                <div class="row gx-5 gy-3">
+                                                    <div class="col-xl-4">
+                                                        <p class="fs-16 mb-1 fw-semibold">Logging In</p>
+                                                        <p class="fs-12 mb-0 text-muted">Security settings related to logging into our email account and taking down account if any mischevious action happended.</p>
+                                                    </div>
+                                                    <div class="col-xl-8">
+                                                        <div class="d-sm-flex d-block align-items-top justify-content-between mt-sm-0 mt-3">
+                                                            <div class="mail-security-settings">
+                                                                <p class="fs-14 mb-1 fw-semibold">Max Limit for login attempts</p>
+                                                                <p class="fs-12 mb-0 text-muted">Account will freeze for 24hrs while attempt to login with wrong credentials for selected number of times</p>
+                                                            </div>
+                                                            <div>
+                                                                <select class="form-control" data-trigger name="max-login-attempts" id="max-login-attempts">
+                                                                <option value="Choice 1" selected>3</option>
+                                                                <option value="Choice 2">5</option>
+                                                                <option value="Choice 3">10</option>
+                                                                <option value="Choice 3">20</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-sm-flex d-block align-items-top justify-content-between mt-3">
+                                                            <div>
+                                                                <p class="fs-14 mb-1 fw-semibold">Account Freeze time management</p>
+                                                                <p class="fs-12 mb-0 text-muted">You can change the time for the account freeze when attempts for </p>
+                                                            </div>
+                                                            <div>
+                                                                <select class="form-control" data-trigger name="account-freeze-time-format" id="account-freeze-time-format">
+                                                                <option value="Choice 1" selected>1 Day</option>
+                                                                <option value="Choice 2">1 Hour</option>
+                                                                <option value="Choice 3">1 Month</option>
+                                                                <option value="Choice 3">1 Year</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row gx-5 gy-3">
+                                                    <div class="col-xl-4">
+                                                        <p class="fs-16 mb-1 fw-semibold">Password Requirements</p>
+                                                        <p class="fs-12 mb-0 text-muted">Security settings related to password strength.</p>
+                                                    </div>
+                                                    <div class="col-xl-8">
+                                                        <div class="d-sm-flex d-block align-items-top justify-content-between mt-sm-0 mt-3">
+                                                            <div class="mail-security-settings">
+                                                                <p class="fs-14 mb-1 fw-semibold">Minimum number of characters in the password</p>
+                                                                <p class="fs-12 mb-0 text-muted">There should be a minimum number of characters for a password to be validated that shouls be set here.</p>
+                                                            </div>
+                                                            <div>
+                                                                <input type="text" class="form-control" value="8">
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-sm-flex d-block align-items-top justify-content-between mt-3">
+                                                            <div>
+                                                                <p class="fs-14 mb-1 fw-semibold">Contain A Number</p>
+                                                                <p class="fs-12 mb-0 text-muted">Password should contain a number.</p>
+                                                            </div>
+                                                            <div>
+                                                                <div class="custom-toggle-switch float-sm-end">
+                                                                    <input id="password-number" name="toggleswitchsize16" type="checkbox">
+                                                                    <label for="password-number" class="label-success mb-1"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-sm-flex d-block align-items-top justify-content-between mt-3">
+                                                            <div>
+                                                                <p class="fs-14 mb-1 fw-semibold">Contain A Special Character</p>
+                                                                <p class="fs-12 mb-0 text-muted">Password should contain a special Character.</p>
+                                                            </div>
+                                                            <div>
+                                                                <div class="custom-toggle-switch float-sm-end">
+                                                                    <input id="password-special-character" name="toggleswitchsize17" type="checkbox" checked>
+                                                                    <label for="password-special-character" class="label-success mb-1"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-sm-flex d-block align-items-top justify-content-between mt-3">
+                                                            <div>
+                                                                <p class="fs-14 mb-1 fw-semibold">Atleast One Capital Letter</p>
+                                                                <p class="fs-12 mb-0 text-muted">Password should contain atleast one capital letter.</p>
+                                                            </div>
+                                                            <div>
+                                                                <div class="custom-toggle-switch float-sm-end">
+                                                                    <input id="password-capital" name="toggleswitchsize18" type="checkbox" checked>
+                                                                    <label for="password-capital" class="label-success mb-1"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-sm-flex d-block align-items-top justify-content-between mt-3">
+                                                            <div>
+                                                                <p class="fs-14 mb-1 fw-semibold">Maximum Password Length</p>
+                                                                <p class="fs-12 mb-0 text-muted">Maximum password lenth should be selected here.</p>
+                                                            </div>
+                                                            <div>
+                                                                <input type="text" class="form-control" value="16">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row gx-5 gy-3">
+                                                    <div class="col-xl-4">
+                                                        <p class="fs-16 mb-1 fw-semibold">Unknown Chats</p>
+                                                        <p class="fs-12 mb-0 text-muted">Security settings related to unknown chats.</p>
+                                                    </div>
+                                                    <div class="col-xl-8">
+                                                        <div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="unknown-messages-show" id="unknown-messages-show1">
+                                                                <label class="form-check-label" for="unknown-messages-show1">
+                                                                    Show
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="unknown-messages-hide" id="unknown-messages-hide2" checked>
+                                                                <label class="form-check-label" for="unknown-messages-hide2">
+                                                                    Hide
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="float-end">
+                                    <button type="button" class="btn btn-light m-1">
+                                        Restore Defaults
+                                    </button>
+                                    <button type="button" class="btn btn-primary m-1">
+                                        Save Changes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End::row-1 -->
+
+            </div>
+        </div>
+        <!-- End::app-content -->
+
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="input-group">
+                    <a href="javascript:void(0);" class="input-group-text" id="Search-Grid"><i class="fe fe-search header-link-icon fs-18"></i></a>
+                    <input type="search" class="form-control border-0 px-2" placeholder="Search" aria-label="Username">
+                    <a href="javascript:void(0);" class="input-group-text" id="voice-search"><i class="fe fe-mic header-link-icon"></i></a>
+                    <a href="javascript:void(0);" class="btn btn-light btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fe fe-more-vertical"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                  </div>
+                  <div class="mt-4">
+                    <p class="font-weight-semibold text-muted mb-2">Are You Looking For...</p>
+                    <span class="search-tags"><i class="fe fe-user me-2"></i>People<a href="javascript:void(0)" class="tag-addon"><i class="fe fe-x"></i></a></span>
+                    <span class="search-tags"><i class="fe fe-file-text me-2"></i>Pages<a href="javascript:void(0)" class="tag-addon"><i class="fe fe-x"></i></a></span>
+                    <span class="search-tags"><i class="fe fe-align-left me-2"></i>Articles<a href="javascript:void(0)" class="tag-addon"><i class="fe fe-x"></i></a></span>
+                    <span class="search-tags"><i class="fe fe-server me-2"></i>Tags<a href="javascript:void(0)" class="tag-addon"><i class="fe fe-x"></i></a></span>
+                  </div>
+                  <div class="my-4">
+                    <p class="font-weight-semibold text-muted mb-2">Recent Search :</p>
+                    <div class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert">
+                      <a href="notifications.html"><span>Notifications</span></a>
+                      <a class="ms-auto lh-1" href="javascript:void(0);" data-bs-dismiss="alert" aria-label="Close"><i class="fe fe-x text-muted"></i></a>
+                    </div>
+                    <div class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert">
+                      <a href="alerts.html"><span>Alerts</span></a>
+                      <a class="ms-auto lh-1" href="javascript:void(0);" data-bs-dismiss="alert" aria-label="Close"><i class="fe fe-x text-muted"></i></a>
+                    </div>
+                    <div class="p-2 border br-5 d-flex align-items-center text-muted mb-0 alert">
+                      <a href="mail.html"><span>Mail</span></a>
+                      <a class="ms-auto lh-1" href="javascript:void(0);" data-bs-dismiss="alert" aria-label="Close"><i class="fe fe-x text-muted"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div class="btn-group ms-auto">
+                    <button class="btn btn-sm btn-primary-light">Search</button>
+                    <button class="btn btn-sm btn-primary">Clear Recents</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- Start Switcher -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebar-right" aria-labelledby="offcanvasRightLabel2">
+            <div class="offcanvas-header border-bottom bg-primary text-fixed-white">
+                <h6 class="offcanvas-title d-inline-flex text-fixed-white" id="offcanvasRightLabel2">
+                    <span class=" me-2 d-inline-flex">
+                        <i class="fe fe-bell my-auto"></i> <span class=" pulse w-9 h-9 bg-success rounded-circle"></span>
+                    </span>
+                    Notifications
+                </h6>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body p-0">
+                <nav class="nav nav-tabs nav-justified" role="tablist">
+                    <button class="nav-link active" id="sidebar-side1" data-bs-toggle="tab" data-bs-target="#sidebar-slidepane-1"
+                        type="button" role="tab" aria-controls="sidebar-slidepane-1" aria-selected="true"><i class="d-inline-flex fe fe-settings me-1"></i> Feeds</button>
+                    <button class="nav-link" id="sidebar-side2" data-bs-toggle="tab" data-bs-target="#sidebar-slidepane-2"
+                        type="button" role="tab" aria-controls="sidebar-slidepane-2" aria-selected="false"><i class="d-inline-flex fe fe-message-circle me-1"></i>Chat</button>
+                    <button class="nav-link" id="sidebar-side3" data-bs-toggle="tab" data-bs-target="#sidebar-slidepane-3"
+                        type="button" role="tab" aria-controls="sidebar-slidepane-3" aria-selected="false"><i class="d-inline-flex fe fe-anchor me-1"></i>Timeline</button>
+                </nav>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active border-0 p-0" id="sidebar-slidepane-1" role="tabpanel" aria-labelledby="sidebar-side1" tabindex="0">
+                        <div class="p-3 fw-semibold">Feeds</div>
+                        <div class="py-3 px-4 pt-0">
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-primary-transparent"><i class="fe fe-user text-primary"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">New user registered</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-secondary-transparent"><i class="fe fe-shopping-cart text-secondary"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">New order delivered</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-danger-transparent"><i class="fe fe-bell text-danger"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">You have pending tasks</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-warning-transparent"><i class="fe fe-gitlab text-warning"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">New version arrived</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-pink-transparent"><i class="fe fe-database text-pink"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Server #1 overloaded</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-info-transparent"><i class="fe fe-check-circle text-info"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">New project launched</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 fw-semibold">Settings</div>
+                        <div class="py-3 px-4 pt-0">
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-primary-transparent"><i class="fe fe-settings text-primary"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">General Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-secondary-transparent"><i class="fe fe-map-pin text-secondary"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Map Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-danger-transparent"><i class="fe fe-headphones text-danger"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Support Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-warning-transparent"><i class="fe fe-credit-card text-warning"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Payment  Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-pink-transparent"><i class="fe fe-bell text-pink"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Notification Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade border-0 p-0" id="sidebar-slidepane-2" role="tabpanel" aria-labelledby="sidebar-side2" tabindex="0">
+                        <div class="p-3 fw-semibold">Today</div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/2.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark" >Addie Minstra</div>
+                                    <p class="mb-0 fs-12 text-muted"> Hey! there I' am available.... </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/11.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Rose Bush</div>
+                                    <p class="mb-0 fs-12 text-muted"> Okay...I will be waiting for you </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/10.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Claude Strophobia</div>
+                                    <p class="mb-0 fs-12 text-muted"> Hi we can explain our new project......</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/13.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Eileen Dover</div>
+                                    <p class="mb-0 fs-12 text-muted"> New product Launching...</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/12.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Willie Findit</div>
+                                    <p class="mb-0 fs-12 text-muted"> Okay...I will be waiting for you </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/15.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Manny Jah</div>
+                                    <p class="mb-0 fs-12 text-muted">  Hi we can explain our new project......</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-0 px-3">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/4.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Cherry Blossom</div>
+                                    <p class="mb-0 fs-12 text-muted"> Hey! there I' am available....</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-3 fw-semibold">Yesterday</div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/7.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Simon Sais</div>
+                                    <p class="mb-0 fs-12 text-muted">Schedule Realease...... </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/9.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Laura Biding</div>
+                                    <p class="mb-0 fs-12 text-muted">Hi we can explain our new project...... </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/2.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Addie Minstra</div>
+                                    <p class="mb-0 fs-12 text-muted">Contact me for details....</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/9.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Ivan Notheridiya</div>
+                                    <p class="mb-0 fs-12 text-muted">Hi we can explain our new project......</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/14.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Dulcie Veeta</div>
+                                    <p class="mb-0 fs-12 text-muted"> Okay...I will be waiting for you</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/11.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Florinda Carasco</div>
+                                    <p class="mb-0 fs-12 text-muted">New product Launching...</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/11.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Cherry Blossom</div>
+                                    <p class="mb-0 fs-12 text-muted">cherryblossom@gmail.com</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade border-0 p-3" id="sidebar-slidepane-3" role="tabpanel" aria-labelledby="sidebar-side3" tabindex="0">
+                        <ul class="task-list timeline-task">
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">Task Finished<span
+                                            class="text-muted fs-11 mx-2 fw-normal">09 July 2021</span></h6>
+                                    <p class="text-muted fs-12 mb-0">Adam Berry finished task on<a href="javascript:void(0)" class="fw-semibold text-primary"> Project Management</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">New Comment<span
+                                            class="text-muted fs-11 mx-2 fw-normal">05 July 2021</span></h6>
+                                    <p class="text-muted fs-12 mb-0">Victoria commented on Project <a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> AngularJS Template</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">New Comment<span
+                                            class="text-muted fs-11 mx-2 fw-normal">25 June 2021</span></h6>
+                                    <p class="text-muted fs-12 mb-0">Victoria commented on Project <a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> AngularJS Template</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">Task Overdue<span
+                                            class="text-muted fs-11 mx-2 fw-normal">14 June 2021</span></h6>
+                                    <p class="text-muted mb-0 fs-12">Petey Cruiser finished task <a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> Integrated management</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">Task Overdue<span
+                                            class="text-muted fs-11 mx-2 fw-normal">29 June 2021</span></h6>
+                                    <p class="text-muted mb-0 fs-12">Petey Cruiser finished task <a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> Integrated management</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">Task Finished<span
+                                            class="text-muted fs-11 mx-2 fw-normal">09 July 2021</span></h6>
+                                    <p class="text-muted fs-12 mb-0">Adam Berry finished task on<a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> Project Management</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Switcher -->
+
+
+        <!-- Footer Start -->
+        <footer class="footer mt-auto py-3 text-center">
+            <div class="container">
+                <span class=""> Copyright © 2026 <a href="https://perizinan.kkp.go.id/" target="_blank" rel="noopener noreferrer">Digitalisasi Perizinan</a>, <a href="https://kkp.go.id/unit-kerja/djpt.html" target="_blank" rel="noopener noreferrer">Direktorat Jenderal Perikanan Tangkap</a> . All rights reserved.
+                </span>
+            </div>
+        </footer>
+        <!-- Footer End -->
+
+    </div>
+
+    
+    <!-- Scroll To Top -->
+    <div class="scrollToTop">
+        <span class="arrow"><i class="ri-arrow-up-s-fill fs-20"></i></span>
+    </div>
+    <div id="responsive-overlay"></div>
+    <!-- Scroll To Top -->
+
+    <!-- Popper JS -->
+    <script src="../assets/libs/@popperjs/core/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Defaultmenu JS -->
+    <script src="../assets/js/defaultmenu.min.js"></script>
+
+    <!-- Node Waves JS-->
+    <script src="../assets/libs/node-waves/waves.min.js"></script>
+
+    <!-- Sticky JS -->
+    <script src="../assets/js/sticky.js"></script>
+
+    <!-- Simplebar JS -->
+    <script src="../assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../assets/js/simplebar.js"></script>
+
+    <!-- Color Picker JS -->
+    <script src="../assets/libs/@simonwep/pickr/pickr.es5.min.js"></script>
+
+
+    
+    <!-- Custom-Switcher JS -->
+    <script src="../assets/js/custom-switcher.min.js"></script>
+
+    <!-- Mail Settings -->
+    <script src="../assets/js/mail-settings.js"></script>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/custom.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,2737 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+
+<head>
+
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Sash – Bootstrap 5  Admin &amp; Dashboard Template </title>
+    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
+    <meta name="Author" content="Spruko Technologies Private Limited">
+	<meta name="keywords" content="admin dashboard,dashboard design htmlbootstrap admin template,html admin panel,admin dashboard html,admin panel html template,bootstrap dashboard,html admin template,html dashboard,html admin dashboard template,bootstrap dashboard template,dashboard html template,bootstrap admin panel,dashboard admin bootstrap,bootstrap admin dashboard">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/brand-logos/favicon.ico" type="image/x-icon">
+
+    <!-- Choices JS -->
+    <script src="../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <!-- Main Theme Js -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Bootstrap Css -->
+    <link id="style" href="../assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+
+    <!-- Style Css -->
+    <link href="../assets/css/styles.min.css" rel="stylesheet" >
+
+    <!-- Icons Css -->
+    <link href="../assets/css/icons.css" rel="stylesheet" >
+
+    <!-- Node Waves Css -->
+    <link href="../assets/libs/node-waves/waves.min.css" rel="stylesheet" >
+
+    <!-- Simplebar Css -->
+    <link href="../assets/libs/simplebar/simplebar.min.css" rel="stylesheet" >
+
+    <!-- Color Picker Css -->
+    <link rel="stylesheet" href="../assets/libs/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" href="../assets/libs/@simonwep/pickr/themes/nano.min.css">
+
+    <!-- Choices Css -->
+    <link rel="stylesheet" href="../assets/libs/choices.js/public/assets/styles/choices.min.css">
+
+<!-- Prism CSS -->
+<link rel="stylesheet" href="../assets/libs/prismjs/themes/prism-coy.min.css">
+
+
+</head>
+
+<body>
+
+    <!-- Start Switcher -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="switcher-canvas" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title text-default" id="offcanvasRightLabel">Switcher</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="border-bottom border-block-end-dashed">
+                <div class="nav nav-tabs nav-justified" id="switcher-main-tab" role="tablist">
+                    <button class="nav-link active" id="switcher-home-tab" data-bs-toggle="tab" data-bs-target="#switcher-home"
+                        type="button" role="tab" aria-controls="switcher-home" aria-selected="true">Theme Styles</button>
+                    <button class="nav-link" id="switcher-profile-tab" data-bs-toggle="tab" data-bs-target="#switcher-profile"
+                        type="button" role="tab" aria-controls="switcher-profile" aria-selected="false">Theme Colors</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active border-0" id="switcher-home" role="tabpanel" aria-labelledby="switcher-home-tab"
+                    tabindex="0">
+                    <div class="">
+                        <p class="switcher-style-head">Theme Color Mode:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-light-theme">
+                                        Light
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="theme-style" id="switcher-light-theme"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-dark-theme">
+                                        Dark
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="theme-style" id="switcher-dark-theme">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Directions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-ltr">
+                                        LTR
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="direction" id="switcher-ltr" checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-rtl">
+                                        RTL
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="direction" id="switcher-rtl">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Navigation Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-vertical">
+                                        Vertical
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-style" id="switcher-vertical"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-horizontal">
+                                        Horizontal
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-style"
+                                        id="switcher-horizontal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navigation-menu-styles">
+                        <p class="switcher-style-head">Vertical & Horizontal Menu Styles:</p>
+                        <div class="row switcher-style gx-0 pb-2 gy-2">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-click">
+                                        Menu Click
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-menu-click">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-hover">
+                                        Menu Hover
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-menu-hover">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-click">
+                                        Icon Click
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-icon-click">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-hover">
+                                        Icon Hover
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-icon-hover">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidemenu-layout-styles">
+                        <p class="switcher-style-head">Sidemenu Layout Styles:</p>
+                        <div class="row switcher-style gx-0 pb-2 gy-2">
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-default-menu">
+                                        Default Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-default-menu" checked>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-closed-menu">
+                                        Closed Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-closed-menu">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icontext-menu">
+                                        Icon Text
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-icontext-menu">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-overlay">
+                                        Icon Overlay
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-icon-overlay">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-detached">
+                                        Detached
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-detached">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-double-menu">
+                                        Double Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-double-menu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Page Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-regular">
+                                        Regular
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-styles" id="switcher-regular"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-classic">
+                                        Classic
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-styles" id="switcher-classic">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Layout Width Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-full-width">
+                                        Full Width
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="layout-width" id="switcher-full-width"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-boxed">
+                                        Boxed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="layout-width" id="switcher-boxed">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Menu Positions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-fixed">
+                                        Fixed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="menu-positions" id="switcher-menu-fixed"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-scroll">
+                                        Scrollable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="menu-positions" id="switcher-menu-scroll">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Header Positions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-header-fixed">
+                                        Fixed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="header-positions"
+                                        id="switcher-header-fixed" checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-header-scroll">
+                                        Scrollable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="header-positions"
+                                        id="switcher-header-scroll">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Loader:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-loader-enable">
+                                        Enable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-loader"
+                                        id="switcher-loader-enable">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-loader-disable">
+                                        Disable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-loader"
+                                        id="switcher-loader-disable" checked>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade border-0" id="switcher-profile" role="tabpanel" aria-labelledby="switcher-profile-tab" tabindex="0">
+                    <div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Menu Colors:</p>
+                            <div class="d-flex switcher-style pb-2">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-white" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Light Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-light">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-dark" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Dark Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-dark" checked>
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Color Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-gradient" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Gradient Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-gradient">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-transparent"
+                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Transparent Menu"
+                                        type="radio" name="menu-colors" id="switcher-menu-transparent">
+                                </div>
+                            </div>
+                            <div class="px-4 pb-3 text-muted fs-11">Note:If you want to change color Menu dynamically change from below Theme Primary color picker</div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Header Colors:</p>
+                            <div class="d-flex switcher-style pb-2">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-white" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Light Header" type="radio" name="header-colors"
+                                        id="switcher-header-light" checked>
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-dark" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Dark Header" type="radio" name="header-colors"
+                                        id="switcher-header-dark">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Color Header" type="radio" name="header-colors"
+                                        id="switcher-header-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-gradient" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Gradient Header" type="radio" name="header-colors"
+                                        id="switcher-header-gradient">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-transparent" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Transparent Header" type="radio" name="header-colors"
+                                        id="switcher-header-transparent">
+                                </div>
+                            </div>
+                            <div class="px-4 pb-3 text-muted fs-11">Note:If you want to change color Header dynamically change from below Theme Primary color picker</div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Theme Primary:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-1" type="radio"
+                                        name="theme-primary" id="switcher-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-2" type="radio"
+                                        name="theme-primary" id="switcher-primary1">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-3" type="radio" name="theme-primary"
+                                        id="switcher-primary2">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-4" type="radio" name="theme-primary"
+                                        id="switcher-primary3">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-5" type="radio" name="theme-primary"
+                                        id="switcher-primary4">
+                                </div>
+                                <div class="form-check switch-select ps-0 mt-1 color-primary-light">
+                                    <div class="theme-container-primary"></div>
+                                    <div class="pickr-container-primary"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Theme Background:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-1" type="radio"
+                                        name="theme-background" id="switcher-background">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-2" type="radio"
+                                        name="theme-background" id="switcher-background1">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-3" type="radio" name="theme-background"
+                                        id="switcher-background2">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-4" type="radio"
+                                        name="theme-background" id="switcher-background3">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-5" type="radio"
+                                        name="theme-background" id="switcher-background4">
+                                </div>
+                                <div class="form-check switch-select ps-0 mt-1 tooltip-static-demo color-bg-transparent">
+                                    <div class="theme-container-background"></div>
+                                    <div class="pickr-container-background"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-image mb-3">
+                            <p class="switcher-style-head">Menu With Background Image:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img1" type="radio"
+                                        name="theme-background" id="switcher-bg-img">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img2" type="radio"
+                                        name="theme-background" id="switcher-bg-img1">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img3" type="radio" name="theme-background"
+                                        id="switcher-bg-img2">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img4" type="radio"
+                                        name="theme-background" id="switcher-bg-img3">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img5" type="radio"
+                                        name="theme-background" id="switcher-bg-img4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center canvas-footer flex-wrap px-0 px-sm-5">
+                    <a href="javascript:void(0);" id="reset-all" class="btn btn-danger m-1">Reset</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Switcher -->
+
+
+    <!-- Loader -->
+    <div id="loader" >
+        <img src="../assets/images/media/loader.svg" alt="">
+    </div>
+    <!-- Loader -->
+
+    <div class="page">
+
+             <!-- app-header -->
+             <header class="app-header">
+
+                <!-- Start::main-header-container -->
+                <div class="main-header-container container-fluid">
+
+                    <!-- Start::header-content-left -->
+                    <div class="header-content-left">
+
+                        <!-- Start::header-element (Logo) -->
+                        <div class="header-element">
+                            <div class="horizontal-logo">
+                                <a href="index.html" class="header-logo">
+                                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-logo">
+                                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-logo">
+                                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-dark">
+                                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-dark">
+                                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-white">
+                                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-white">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- End::header-element -->
+
+                        <!-- Start::header-element (Hamburger Toggle) -->
+                        <div class="header-element">
+                            <!-- Start::header-link -->
+                            <a aria-label="Hide Sidebar" class="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle" data-bs-toggle="sidebar" href="javascript:void(0);"><span></span></a>
+                            <!-- End::header-link -->
+                        </div>
+                        <!-- End::header-element -->
+
+                    </div>
+                    <!-- End::header-content-left -->
+
+                    <!-- Start::header-content-right -->
+                    <div class="header-content-right">
+
+                        <!-- Start::header-element (Inbox Chat / Pesan) -->
+                        <div class="header-element message-dropdown">
+                            <!-- Start::header-link|dropdown-toggle -->
+                            <a aria-label="Kotak Masuk Pesan" href="javascript:void(0);" class="header-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" id="messageDropdown2" aria-expanded="false">
+                                <i class="fe fe-message-square header-link-icon"></i>
+                                <span class="w-9 h-9 p-0 bg-primary rounded-pill header-icon-badge pulse pulse-primary" id="message-icon-badge"></span>
+                            </a>
+                            <!-- End::header-link|dropdown-toggle -->
+                            <!-- Start::main-header-dropdown -->
+                            <div class="main-header-dropdown dropdown-menu dropdown-menu-end shadow" data-popper-placement="none">
+                                <div class="p-3 bg-primary-transparent border-bottom">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <p class="mb-0 fs-15 fw-semibold text-dark"><i class="fe fe-message-square me-1 text-primary"></i>Pesan Masuk</p>
+                                        <span class="badge bg-primary text-white fs-11" id="message-data">3 Belum Dibaca</span>
+                                    </div>
+                                </div>
+                                <ul class="list-unstyled mb-0" id="header-message-scroll" style="max-height: 280px; overflow-y: auto;">
+                                    <li class="dropdown-item p-3 border-bottom">
+                                        <a href="chat.html?contact=Helpdesk%20Perizinan%20KKP" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                             <span class="avatar avatar-md bg-primary-transparent text-primary rounded-circle flex-shrink-0"><i class="fe fe-shield fs-16"></i></span>
+                                             <div class="w-100">
+                                                <div class="d-flex align-items-center justify-content-between mb-1">
+                                                    <h6 class="mb-0 fw-semibold fs-13 text-dark">Helpdesk Perizinan KKP</h6>
+                                                    <span class="text-muted fs-11">09:15</span>
+                                                </div>
+                                                <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Dokumen permohonan verifikasi kapal telah diterima sistem.</p>
+                                             </div>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-item p-3 border-bottom">
+                                        <a href="chat.html?contact=Syahbandar%20Muara%20Baru" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                             <span class="avatar avatar-md bg-info-transparent text-info rounded-circle flex-shrink-0"><i class="fe fe-anchor fs-16"></i></span>
+                                             <div class="w-100">
+                                                <div class="d-flex align-items-center justify-content-between mb-1">
+                                                    <h6 class="mb-0 fw-semibold fs-13 text-dark">Syahbandar Muara Baru</h6>
+                                                    <span class="text-muted fs-11">Kemarin</span>
+                                                </div>
+                                                <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Konfirmasi jadwal tambat pangkalan PPS Nizam Zachman.</p>
+                                             </div>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-item p-3">
+                                        <a href="chat.html?contact=Staf%20Operasional%20Kapal" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                             <span class="avatar avatar-md bg-success-transparent text-success rounded-circle flex-shrink-0"><i class="fe fe-user-check fs-16"></i></span>
+                                             <div class="w-100">
+                                                <div class="d-flex align-items-center justify-content-between mb-1">
+                                                    <h6 class="mb-0 fw-semibold fs-13 text-dark">Staf Operasional Kapal</h6>
+                                                    <span class="text-muted fs-11">2 hari lalu</span>
+                                                </div>
+                                                <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Data dokumen awak kapal KM. Bahari Nusantara telah diperbarui.</p>
+                                             </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="p-2 border-top text-center bg-light-subtle">
+                                    <a href="chat.html" class="fs-12 text-primary fw-semibold text-decoration-none d-block">Lihat Semua Pesan</a>
+                                </div>
+                            </div>
+                            <!-- End::main-header-dropdown -->
+                        </div>
+                        <!-- End::header-element -->
+
+                        <!-- Start::header-element (Profile: Pengaturan Akun & Logout) -->
+                        <div class="header-element main-profile-user">
+                            <!-- Start::header-link|dropdown-toggle -->
+                            <a href="javascript:void(0);" class="header-link dropdown-toggle" id="mainHeaderProfile" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-xxl-2 me-0">
+                                        <img src="../assets/images/faces/9.jpg" alt="Foto Profil" width="34" height="34" class="rounded-circle border border-2 border-primary-subtle">
+                                    </div>
+                                    <div class="d-xxl-block d-none my-auto text-start">
+                                        <h6 class="fw-semibold mb-0 lh-1 fs-14 text-dark">Ir. H. Hendra Wijaya</h6>
+                                        <span class="op-7 fw-normal d-block fs-11 text-muted">Pemilik Usaha</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End::header-link|dropdown-toggle -->
+                            <ul class="main-header-dropdown dropdown-menu pt-0 header-profile-dropdown dropdown-menu-end shadow" aria-labelledby="mainHeaderProfile">
+                                <li class="drop-heading d-xxl-none d-block border-bottom p-3">
+                                     <div class="text-center">
+                                        <h6 class="text-dark mb-0 fs-14 fw-semibold">Ir. H. Hendra Wijaya</h6>
+                                        <small class="text-muted fs-11">Pemilik Usaha</small>
+                                    </div>
+                                </li>
+                                <li class="dropdown-item py-2">
+                                    <a class="d-flex align-items-center w-100" href="profile.html">
+                                        <i class="fe fe-settings fs-16 me-2 text-primary"></i>Pengaturan Akun
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider my-1"></li>
+                                <li class="dropdown-item py-2">
+                                    <a class="d-flex align-items-center w-100 text-danger" href="login.html">
+                                        <i class="fe fe-log-out fs-16 me-2 text-danger"></i>Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End::header-element -->
+
+                    </div>
+                    <!-- End::header-content-right -->
+
+                </div>
+                <!-- End::main-header-container -->
+
+            </header>
+            <!-- /app-header -->
+            <!-- Start::app-sidebar -->
+            <aside class="app-sidebar sticky" id="sidebar">
+
+                <!-- Start::main-sidebar-header -->
+                <div class="main-sidebar-header">
+                    <a href="index.html" class="header-logo">
+                        <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-logo">
+                        <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-logo">
+                        <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-dark">
+                        <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-dark">
+                        <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-white">
+                        <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-white">
+                    </a>
+                </div>
+                <!-- End::main-sidebar-header -->
+
+                <!-- Start::main-sidebar -->
+                <div class="main-sidebar" id="sidebar-scroll">
+                    <nav class="main-menu-container nav nav-pills flex-column sub-open">
+                        <div class="slide-left" id="slide-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg>
+                        </div>
+
+                        <ul class="main-menu">
+                            <li class="slide__category"><span class="category-name">Menu Utama</span></li>
+                            <li class="slide">
+                                <a href="index.html" class="side-menu__item">
+                                    <i class="fe fe-home side-menu__icon"></i>
+                                    <span class="side-menu__label">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="slide has-sub">
+                                <a href="javascript:void(0);" class="side-menu__item">
+                                    <i class="fe fe-briefcase side-menu__icon"></i>
+                                    <span class="side-menu__label">Manajemen Usaha</span>
+                                    <i class="fe fe-chevron-right side-menu__angle"></i>
+                                </a>
+                                <ul class="slide-menu child1">
+                                    <li class="slide side-menu__label1"><a href="javascript:void(0)">Manajemen Usaha</a></li>
+                                    <li class="slide"><a href="daftar-alokasi.html" class="side-menu__item">Daftar Alokasi</a></li>
+                                    <li class="slide"><a href="javascript:void(0);" class="side-menu__item disabled opacity-50" tabindex="-1" aria-disabled="true" style="pointer-events: none; cursor: not-allowed;">Daftar Realisasi</a></li>
+                                </ul>
+                            </li>
+                            <li class="slide has-sub">
+                                <a href="javascript:void(0);" class="side-menu__item">
+                                    <i class="fe fe-file-text side-menu__icon"></i>
+                                    <span class="side-menu__label">Daftar Permohonan</span>
+                                    <i class="fe fe-chevron-right side-menu__angle"></i>
+                                </a>
+                                <ul class="slide-menu child1">
+                                    <li class="slide side-menu__label1"><a href="javascript:void(0)">Daftar Permohonan</a></li>
+                                    <li class="slide"><a href="verifikasi-izin-usaha.html" class="side-menu__item">Verifikasi Izin Usaha</a></li>
+                                    <li class="slide"><a href="verifikasi-izin-kapal.html" class="side-menu__item">Verifikasi Izin Kapal</a></li>
+                                    <li class="slide"><a href="verifikasi-izin-rumpon.html" class="side-menu__item">Verifikasi Izin Rumpon</a></li>
+                                </ul>
+                            </li>
+                            <li class="slide has-sub">
+                                <a href="javascript:void(0);" class="side-menu__item">
+                                    <i class="fe fe-credit-card side-menu__icon"></i>
+                                    <span class="side-menu__label">Simulasi Pungutan</span>
+                                    <i class="fe fe-chevron-right side-menu__angle"></i>
+                                </a>
+                                <ul class="slide-menu child1">
+                                    <li class="slide side-menu__label1"><a href="javascript:void(0)">Simulasi Pungutan</a></li>
+                                    <li class="slide"><a href="simulasi-ppp.html" class="side-menu__item">Simulasi PPP</a></li>
+                                    <li class="slide"><a href="simulasi-pppka.html" class="side-menu__item">Simulasi PPPKA</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <div class="slide-right" id="slide-right">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="m10.707 17.707 5.707-5.707-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path></svg>
+                        </div>
+                    </nav>
+                </div>
+            </aside>
+            <!-- End::app-sidebar -->
+
+
+            <!--APP-CONTENT START-->
+            <div class="main-content app-content">
+                <div class="container-fluid">
+
+                    <!-- PAGE-HEADER -->
+                    <div class="page-header">
+                      <h1 class="page-title my-auto">Alerts</h1>
+                      <div>
+                        <ol class="breadcrumb mb-0">
+                          <li class="breadcrumb-item">
+                            <a href="javascript:void(0)">Ui Elements</a>
+                          </li>
+                          <li class="breadcrumb-item active" aria-current="page">Alerts</li>
+                        </ol>
+                      </div>
+                    </div>
+                    <!-- PAGE-HEADER END -->
+
+
+                    <!--ROW-START-->
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Basic Alert
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <strong>Holy guacamole!</strong> You should check in on some of those fields
+                                        below.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-warning alert-dismissible fade show" role="alert"&gt;
+&lt;strong&gt;Holy guacamole!&lt;/strong&gt; You should check in on some of those fields
+below.
+&lt;button type="button" class="btn-close" data-bs-dismiss="alert"
+    aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button>
+&lt;/div>
+</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Live example
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div id="liveAlertPlaceholder">
+                                        <div class="mb-2"></div>
+                                        <div class="mb-2"></div>
+                                        <div class="mb-2"></div>
+                                        <div class="mb-2"></div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live
+                                        alert
+                                    </button>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div id="liveAlertPlaceholder"&gt;
+    &lt;div class="mb-2"&gt;&lt;/div&gt;
+    &lt;div class="mb-2"&gt;&lt;/div&gt;
+    &lt;div class="mb-2"&gt;&lt;/div&gt;
+    &lt;div class="mb-2"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;button type="button" class="btn btn-primary" id="liveAlertBtn"&gt;Show live
+    alert
+&lt;/button&gt;
+</code>
+</pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Default alerts
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-primary" role="alert">
+                                        A simple primary alert—check it out!
+                                    </div>
+                                    <div class="alert alert-secondary" role="alert">
+                                        A simple secondary alert—check it out!
+                                    </div>
+                                    <div class="alert alert-success" role="alert">
+                                        A simple success alert—check it out!
+                                    </div>
+                                    <div class="alert alert-danger" role="alert">
+                                        A simple danger alert—check it out!
+                                    </div>
+                                    <div class="alert alert-warning" role="alert">
+                                        A simple warning alert—check it out!
+                                    </div>
+                                    <div class="alert alert-info" role="alert">
+                                        A simple info alert—check it out!
+                                    </div>
+                                    <div class="alert alert-light" role="alert">
+                                        A simple light alert—check it out!
+                                    </div>
+                                    <div class="alert alert-dark" role="alert">
+                                        A simple dark alert—check it out!
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-primary" role="alert"&gt;
+    A simple primary alert—check it out!
+&lt;/div&gt;
+
+&lt;div class="alert alert-secondary" role="alert"&gt;
+    A simple secondary alert—check it out!
+&lt;/div&gt;
+
+&lt;div class="alert alert-success" role="alert"&gt;
+    A simple success alert—check it out!
+&lt;/div&gt;
+
+&lt;div class="alert alert-danger" role="alert"&gt;
+    A simple danger alert—check it out!
+&lt;/div&gt;
+
+&lt;div class="alert alert-warning" role="alert"&gt;
+    A simple warning alert—check it out!
+&lt;/div&gt;
+
+&lt;div class="alert alert-info" role="alert"&gt;
+    A simple info alert—check it out!
+&lt;/div&gt;
+
+&lt;div class="alert alert-light" role="alert"&gt;
+    A simple light alert—check it out!
+&lt;/div&gt;
+
+&lt;div class="alert alert-dark" role="alert"&gt;
+    A simple dark alert—check it out!
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Links in alerts
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-primary" role="alert">
+                                        A simple primary alert with <a href="#" class="alert-link">an example
+                                            link</a>.
+                                        Give it a click if you like.
+                                    </div>
+                                    <div class="alert alert-secondary" role="alert">
+                                        A simple secondary alert with <a href="#" class="alert-link">an example
+                                            link</a>. Give it a click if you like.
+                                    </div>
+                                    <div class="alert alert-success" role="alert">
+                                        A simple success alert with <a href="#" class="alert-link">an example
+                                            link</a>.
+                                        Give it a click if you like.
+                                    </div>
+                                    <div class="alert alert-danger" role="alert">
+                                        A simple danger alert with <a href="#" class="alert-link">an example
+                                            link</a>.
+                                        Give it a click if you like.
+                                    </div>
+                                    <div class="alert alert-warning" role="alert">
+                                        A simple warning alert with <a href="#" class="alert-link">an example
+                                            link</a>.
+                                        Give it a click if you like.
+                                    </div>
+                                    <div class="alert alert-info" role="alert">
+                                        A simple info alert with <a href="#" class="alert-link">an example link</a>.
+                                        Give it a click if you like.
+                                    </div>
+                                    <div class="alert alert-light" role="alert">
+                                        A simple light alert with <a href="#" class="alert-link">an example
+                                            link</a>.
+                                        Give it a click if you like.
+                                    </div>
+                                    <div class="alert alert-dark" role="alert">
+                                        A simple dark alert with <a href="#" class="alert-link">an example link</a>.
+                                        Give it a click if you like.
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-primary" role="alert"&gt;
+    A simple primary alert with &lt;a href="#" class="alert-link"&gt;an example
+        link&lt;/a&gt;.
+    Give it a click if you like.
+&lt;/div&gt;
+
+&lt;div class="alert alert-secondary" role="alert"&gt;
+    A simple secondary alert with &lt;a href="#" class="alert-link"&gt;an example
+        link&lt;/a&gt;. Give it a click if you like.
+&lt;/div&gt;
+
+&lt;div class="alert alert-success" role="alert"&gt;
+    A simple success alert with &lt;a href="#" class="alert-link"&gt;an example
+        link&lt;/a&gt;.
+    Give it a click if you like.
+&lt;/div&gt;
+
+&lt;div class="alert alert-danger" role="alert"&gt;
+    A simple danger alert with &lt;a href="#" class="alert-link"&gt;an example
+        link&lt;/a&gt;.
+    Give it a click if you like.
+&lt;/div&gt;
+
+&lt;div class="alert alert-warning" role="alert"&gt;
+    A simple warning alert with &lt;a href="#" class="alert-link"&gt;an example
+        link&lt;/a&gt;.
+    Give it a click if you like.
+&lt;/div&gt;
+
+&lt;div class="alert alert-info" role="alert"&gt;
+    A simple info alert with &lt;a href="#" class="alert-link"&gt;an example link&lt;/a&gt;.
+    Give it a click if you like.
+&lt;/div&gt;
+
+&lt;div class="alert alert-light" role="alert"&gt;
+    A simple light alert with &lt;a href="#" class="alert-link"&gt;an example
+        link&lt;/a&gt;.
+    Give it a click if you like.
+&lt;/div&gt;
+
+&lt;div class="alert alert-dark" role="alert"&gt;
+    A simple dark alert with &lt;a href="#" class="alert-link"&gt;an example link&lt;/a&gt;.
+    Give it a click if you like.
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Solid Colored Alerts
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-solid-primary alert-dismissible fade show">
+                                        A simple solid primary alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-solid-secondary alert-dismissible fade show">
+                                        A simple solid secondary alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-solid-info alert-dismissible fade show">
+                                        A simple solid info alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-solid-warning alert-dismissible fade show">
+                                        A simple solid warning alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-solid-success alert-dismissible fade show">
+                                        A simple solid success alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-solid-danger alert-dismissible fade show">
+                                        A simple solid danger alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-solid-light alert-dismissible fade show">
+                                        A simple solid light alert—check it out!
+                                        <button type="button" class="btn-close text-default" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-solid-dark alert-dismissible fade show text-white">
+                                        A simple solid dark alert—check it out!
+                                        <button type="button" class="btn-close text-white" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-solid-primary alert-dismissible fade show"&gt;
+    A simple solid primary alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-secondary alert-dismissible fade show"&gt;
+    A simple solid secondary alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-info alert-dismissible fade show"&gt;
+    A simple solid info alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-warning alert-dismissible fade show"&gt;
+    A simple solid warning alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-success alert-dismissible fade show"&gt;
+    A simple solid success alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-danger alert-dismissible fade show"&gt;
+    A simple solid danger alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-light alert-dismissible fade show"&gt;
+    A simple solid light alert—check it out!
+    &lt;button type="button" class="btn-close text-default" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-dark alert-dismissible fade show text-white"&gt;
+    A simple solid dark alert—check it out!
+    &lt;button type="button" class="btn-close text-white" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Outline Alerts
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-outline-primary alert-dismissible fade show">
+                                        A simple outline primary alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-outline-secondary alert-dismissible fade show">
+                                        A simple outline secondary alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-outline-info alert-dismissible fade show">
+                                        A simple outline info alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-outline-warning alert-dismissible fade show">
+                                        A simple outline warning alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-outline-success alert-dismissible fade show">
+                                        A simple outline success alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-outline-danger alert-dismissible fade show">
+                                        A simple outline danger alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-outline-light alert-dismissible fade show">
+                                        A simple outline light alert—check it out!
+                                        <button type="button" class="btn-close text-default" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-outline-dark alert-dismissible fade show">
+                                        A simple outline dark alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-solid-primary alert-dismissible fade show"&gt;
+    A simple solid primary alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-secondary alert-dismissible fade show"&gt;
+    A simple solid secondary alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-info alert-dismissible fade show"&gt;
+    A simple solid info alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-warning alert-dismissible fade show"&gt;
+    A simple solid warning alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-success alert-dismissible fade show"&gt;
+    A simple solid success alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-danger alert-dismissible fade show"&gt;
+    A simple solid danger alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-light alert-dismissible fade show"&gt;
+    A simple solid light alert—check it out!
+    &lt;button type="button" class="btn-close text-default" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-dark alert-dismissible fade show text-white"&gt;
+    A simple solid dark alert—check it out!
+    &lt;button type="button" class="btn-close text-white" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Solid Alerts With Different Shadows
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-solid-primary shadow-sm alert-dismissible fade show">
+                                        A simple solid primary alert with small shadow—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-solid-primary shadow alert-dismissible fade show">
+                                        A simple solid primary alert with normal shadow—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-solid-primary shadow-lg alert-dismissible fade show">
+                                        A simple solid primary alert with large shadow—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-solid-secondary shadow-sm alert-dismissible fade show">
+                                        A simple solid secondary alert with small shadow—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button></div>
+                                    <div class="alert alert-solid-secondary shadow alert-dismissible fade show">
+                                        A simple solid secondary alert with normal shadow—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button></div>
+                                    <div class="alert alert-solid-secondary shadow-lg alert-dismissible fade show">
+                                        A simple solid secondary alert with large shadow—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-solid-primary shadow-sm alert-dismissible fade show"&gt;
+    A simple solid primary alert with small shadow—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-primary shadow alert-dismissible fade show"&gt;
+    A simple solid primary alert with normal shadow—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-primary shadow-lg alert-dismissible fade show"&gt;
+    A simple solid primary alert with large shadow—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-secondary shadow-sm alert-dismissible fade show"&gt;
+    A simple solid secondary alert with small shadow—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;
+
+&lt;div class="alert alert-solid-secondary shadow alert-dismissible fade show"&gt;
+    A simple solid secondary alert with normal shadow—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;
+
+&lt;div class="alert alert-solid-secondary shadow-lg alert-dismissible fade show"&gt;
+    A simple solid secondary alert with large shadow—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Default Alerts With Different Shadows
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-primary shadow-sm">A simple primary alert with small shadow—check it out!</div>
+                                    <div class="alert alert-primary shadow">A simple primary alert with normal shadow—check it out!</div>
+                                    <div class="alert alert-primary shadow-lg">A simple primary alert with large shadow—check it out!</div>
+                                    <div class="alert alert-secondary shadow-sm">A simple secondary alert with small shadow—check it out!</div>
+                                    <div class="alert alert-secondary shadow">A simple secondary alert with normal shadow—check it out!</div>
+                                    <div class="alert alert-secondary shadow-lg">A simple secondary alert with large shadow—check it out!</div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-primary shadow-sm">A simple primary alert with small shadow—check it out!&lt;/div&gt;
+
+    &lt;div class="alert alert-primary shadow"&gt;A simple primary alert with normal shadow—check it out!&lt;/div&gt;
+
+    &lt;div class="alert alert-primary shadow-lg"&gt;A simple primary alert with large shadow—check it out!&lt;/div&gt;
+
+    &lt;div class="alert alert-secondary shadow-sm"&gt;A simple secondary alert with small shadow—check it out!&lt;/div&gt;
+
+    &lt;div class="alert alert-secondary shadow"&gt;A simple secondary alert with normal shadow—check it out!&lt;/div&gt;
+
+    &lt;div class="alert alert-secondary shadow-lg"&gt;A simple secondary alert with large shadow—check it out!&lt;/div&gt; </code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Rounded Solid Alerts
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-solid-primary rounded-pill alert-dismissible fade show">
+                                        A simple solid rounded primary alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-solid-secondary rounded-pill alert-dismissible fade show">
+                                        A simple solid rounded secondary alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-solid-warning rounded-pill alert-dismissible fade show">
+                                        A simple solid rounded warning alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-solid-danger rounded-pill alert-dismissible fade show">
+                                        A simple solid rounded danger alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-solid-primary rounded-pill alert-dismissible fade show"&gt;
+    A simple solid rounded primary alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-secondary rounded-pill alert-dismissible fade show"&gt;
+    A simple solid rounded secondary alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-warning rounded-pill alert-dismissible fade show"&gt;
+    A simple solid rounded warning alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-solid-danger rounded-pill alert-dismissible fade show"&gt;
+    A simple solid rounded danger alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Rounded Outline Alerts
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-outline-primary rounded-pill alert-dismissible fade show">
+                                        A simple outline rounded primary alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-outline-secondary rounded-pill alert-dismissible fade show">
+                                        A simple outline rounded secondary alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-outline-warning rounded-pill alert-dismissible fade show">
+                                        A simple outline rounded warning alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-outline-danger rounded-pill alert-dismissible fade show">
+                                        A simple outline rounded danger alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-outline-primary rounded-pill alert-dismissible fade show"&gt;
+    A simple outline rounded primary alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-outline-secondary rounded-pill alert-dismissible fade show"&gt;
+    A simple outline rounded secondary alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-outline-warning rounded-pill alert-dismissible fade show"&gt;
+    A simple outline rounded warning alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-outline-danger rounded-pill alert-dismissible fade show"&gt;
+    A simple outline rounded danger alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Rounded Default Alerts
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-primary rounded-pill alert-dismissible fade show">
+                                        A simple rounded primary alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-secondary rounded-pill alert-dismissible fade show">
+                                        A simple rounded secondary alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-warning rounded-pill alert-dismissible fade show">
+                                        A simple rounded warning alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-danger rounded-pill alert-dismissible fade show">
+                                        A simple rounded danger alert—check it out!
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-primary rounded-pill alert-dismissible fade show"&gt;
+    A simple rounded primary alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-secondary rounded-pill alert-dismissible fade show"&gt;
+    A simple rounded secondary alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-warning rounded-pill alert-dismissible fade show"&gt;
+    A simple rounded warning alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-danger rounded-pill alert-dismissible fade show"&gt;
+    A simple rounded danger alert—check it out!
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Rounded Alerts With Custom Close Button
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-primary rounded-pill alert-dismissible fade show">
+                                        A simple rounded primary alert—check it out!
+                                        <button type="button" class="btn-close custom-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-secondary rounded-pill alert-dismissible fade show">
+                                        A simple rounded secondary alert—check it out!
+                                        <button type="button" class="btn-close custom-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-warning rounded-pill alert-dismissible fade show">
+                                        A simple rounded warning alert—check it out!
+                                        <button type="button" class="btn-close custom-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-danger rounded-pill alert-dismissible fade show">
+                                        A simple rounded danger alert—check it out!
+                                        <button type="button" class="btn-close custom-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-primary rounded-pill alert-dismissible fade show"&gt;
+    A simple rounded primary alert—check it out!
+    &lt;button type="button" class="btn-close custom-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-secondary rounded-pill alert-dismissible fade show"&gt;
+    A simple rounded secondary alert—check it out!
+    &lt;button type="button" class="btn-close custom-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-warning rounded-pill alert-dismissible fade show"&gt;
+    A simple rounded warning alert—check it out!
+    &lt;button type="button" class="btn-close custom-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-danger rounded-pill alert-dismissible fade show"&gt;
+    A simple rounded danger alert—check it out!
+    &lt;button type="button" class="btn-close custom-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Alerts with icons
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                        <svg class="flex-shrink-0 me-2 svg-primary" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                                        <div>
+                                            An example alert with an icon
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-success d-flex align-items-center" role="alert">
+                                        <svg class="flex-shrink-0 me-2 svg-success" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none"/><path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
+                                        <div>
+                                            An example success alert with an icon
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                        <svg class="flex-shrink-0 me-2 svg-warning" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,5.99L19.53,19H4.47L12,5.99 M12,2L1,21h22L12,2L12,2z"/><polygon points="13,16 11,16 11,18 13,18"/><polygon points="13,10 11,10 11,15 13,15"/></g></g></g></svg>
+                                        <div>
+                                            An example warning alert with an icon
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                        <svg class="flex-shrink-0 me-2 svg-danger" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M15.73,3H8.27L3,8.27v7.46L8.27,21h7.46L21,15.73V8.27L15.73,3z M19,14.9L14.9,19H9.1L5,14.9V9.1L9.1,5h5.8L19,9.1V14.9z"/><rect height="6" width="2" x="11" y="7"/><rect height="2" width="2" x="11" y="15"/></g></g></g></svg>
+                                        <div>
+                                            An example danger alert with an icon
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-primary d-flex align-items-center" role="alert"&gt;
+    &lt;svg class="flex-shrink-0 me-2 svg-primary" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"&gt;&lt;path d="M0 0h24v24H0V0z" fill="none"/&gt;&lt;path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/&gt;&lt;/svg&gt;
+    &lt;div&gt;
+        An example alert with an icon
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-success d-flex align-items-center" role="alert"&gt;
+    &lt;svg class="flex-shrink-0 me-2 svg-success" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"&gt;&lt;path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none"/&gt;&lt;path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/&gt;&lt;/svg&gt;
+    &lt;div&gt;
+        An example success alert with an icon
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-warning d-flex align-items-center" role="alert"&gt;
+    &lt;svg class="flex-shrink-0 me-2 svg-warning" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"&gt;&lt;g&gt;&lt;rect fill="none" height="24" width="24"/&gt;&lt;/g&gt;&lt;g&gt;&lt;g&gt;&lt;g&gt;&lt;path d="M12,5.99L19.53,19H4.47L12,5.99 M12,2L1,21h22L12,2L12,2z"/&gt;&lt;polygon points="13,16 11,16 11,18 13,18"/&gt;&lt;polygon points="13,10 11,10 11,15 13,15"/&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;/svg&gt;
+    &lt;div&gt;
+        An example warning alert with an icon
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-danger d-flex align-items-center" role="alert"&gt;
+    &lt;svg class="flex-shrink-0 me-2 svg-danger" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"&gt;&lt;g&gt;&lt;rect fill="none" height="24" width="24"/&gt;&lt;/g&gt;&lt;g&gt;&lt;g&gt;&lt;g&gt;&lt;path d="M15.73,3H8.27L3,8.27v7.46L8.27,21h7.46L21,15.73V8.27L15.73,3z M19,14.9L14.9,19H9.1L5,14.9V9.1L9.1,5h5.8L19,9.1V14.9z"/&gt;&lt;rect height="6" width="2" x="11" y="7"/&gt;&lt;rect height="2" width="2" x="11" y="15"/&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;/svg&gt;
+    &lt;div&gt;
+        An example danger alert with an icon
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Customized Alerts With SVG's
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-primary alert-dismissible fade show custom-alert-icon shadow-sm" role="alert">
+                                        <svg class="svg-primary" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                                        A customized primary alert with an icon
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-secondary alert-dismissible fade show custom-alert-icon shadow-sm" role="alert">
+                                        <svg class="svg-secondary" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                        A customized secondary alert with an icon
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-warning alert-dismissible fade show custom-alert-icon shadow-sm" role="alert">
+                                        <svg class="svg-warning" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                                        A customized warning alert with an icon
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-danger alert-dismissible fade show custom-alert-icon shadow-sm" role="alert">
+                                        <svg class="svg-danger" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3zM12 17.3c-.72 0-1.3-.58-1.3-1.3 0-.72.58-1.3 1.3-1.3.72 0 1.3.58 1.3 1.3 0 .72-.58 1.3-1.3 1.3zm1-4.3h-2V7h2v6z"/></svg>
+                                        A customized danger alert with an icon
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-primary alert-dismissible fade show custom-alert-icon shadow-sm" role="alert"&gt;
+    &lt;svg class="svg-primary" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"&gt;&lt;path d="M0 0h24v24H0z" fill="none"/&gt;&lt;path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/&gt;&lt;/svg&gt;
+    A customized primary alert with an icon
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-secondary alert-dismissible fade show custom-alert-icon shadow-sm" role="alert"&gt;
+    &lt;svg class="svg-secondary" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"&gt;&lt;path d="M0 0h24v24H0z" fill="none"/&gt;&lt;path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/&gt;&lt;/svg&gt;
+    A customized secondary alert with an icon
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-warning alert-dismissible fade show custom-alert-icon shadow-sm" role="alert"&gt;
+    &lt;svg class="svg-warning" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"&gt;&lt;path d="M0 0h24v24H0z" fill="none"/&gt;&lt;path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/&gt;&lt;/svg&gt;
+    A customized warning alert with an icon
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-danger alert-dismissible fade show custom-alert-icon shadow-sm" role="alert"&gt;
+    &lt;svg class="svg-danger" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"&gt;&lt;path d="M0 0h24v24H0z" fill="none"/&gt;&lt;path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3zM12 17.3c-.72 0-1.3-.58-1.3-1.3 0-.72.58-1.3 1.3-1.3.72 0 1.3.58 1.3 1.3 0 .72-.58 1.3-1.3 1.3zm1-4.3h-2V7h2v6z"/&gt;&lt;/svg&gt;
+    A customized danger alert with an icon
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Alerts With Images
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-img alert-primary alert-dismissible fase show rounded-pill flex-wrap" role="alert">
+                                        <div class="avatar avatar-sm me-3 avatar-rounded">
+                                            <img src="../assets/images/faces/3.jpg" alt="img">
+                                        </div>
+                                        <div>A simple primary alert with image—check it out!</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-img alert-secondary alert-dismissible fase show rounded-pill flex-wrap" role="alert">
+                                        <div class="avatar avatar-sm me-3 avatar-rounded">
+                                            <img src="../assets/images/faces/5.jpg" alt="img">
+                                        </div>
+                                        <div>A simple secondary alert with image—check it out!</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-img alert-warning alert-dismissible fase show rounded-pill flex-wrap" role="alert">
+                                        <div class="avatar avatar-sm me-3 avatar-rounded">
+                                            <img src="../assets/images/faces/8.jpg" alt="img">
+                                        </div>
+                                        <div>A simple warning alert with image—check it out!</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-img alert-danger alert-dismissible fase show rounded-pill flex-wrap" role="alert">
+                                        <div class="avatar avatar-sm me-3 avatar-rounded">
+                                            <img src="../assets/images/faces/11.jpg" alt="img">
+                                        </div>
+                                        <div>A simple danger alert with image—check it out!</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-img alert-info alert-dismissible fase show rounded-pill flex-wrap" role="alert">
+                                        <div class="avatar avatar-sm me-3 avatar-rounded">
+                                            <img src="../assets/images/faces/13.jpg" alt="img">
+                                        </div>
+                                        <div>A simple info alert with image—check it out!</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-img alert-light alert-dismissible fase show rounded-pill flex-wrap" role="alert">
+                                        <div class="avatar avatar-sm me-3 avatar-rounded">
+                                            <img src="../assets/images/faces/10.jpg" alt="img">
+                                        </div>
+                                        <div>A simple light alert with image—check it out!</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-img alert-dark alert-dismissible fase show rounded-pill flex-wrap" role="alert">
+                                        <div class="avatar avatar-sm me-3 avatar-rounded">
+                                            <img src="../assets/images/faces/15.jpg" alt="img">
+                                        </div>
+                                        <div>A simple dark alert with image—check it out!</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x text-muted"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-img alert-primary alert-dismissible fase show rounded-pill flex-wrap" role="alert"&gt;
+    &lt;div class="avatar avatar-sm me-3 avatar-rounded"&gt;
+        &lt;img src="../assets/images/faces/3.jpg" alt="img"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;A simple primary alert with image—check it out!&lt;/div&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-img alert-secondary alert-dismissible fase show rounded-pill flex-wrap" role="alert"&gt;
+    &lt;div class="avatar avatar-sm me-3 avatar-rounded"&gt;
+        &lt;img src="../assets/images/faces/5.jpg" alt="img"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;A simple secondary alert with image—check it out!&lt;/div&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-img alert-warning alert-dismissible fase show rounded-pill flex-wrap" role="alert"&gt;
+    &lt;div class="avatar avatar-sm me-3 avatar-rounded"&gt;
+        &lt;img src="../assets/images/faces/8.jpg" alt="img"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;A simple warning alert with image—check it out!&lt;/div&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-img alert-danger alert-dismissible fase show rounded-pill flex-wrap" role="alert"&gt;
+    &lt;div class="avatar avatar-sm me-3 avatar-rounded"&gt;
+        &lt;img src="../assets/images/faces/11.jpg" alt="img"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;A simple danger alert with image—check it out!&lt;/div&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-img alert-info alert-dismissible fase show rounded-pill flex-wrap" role="alert"&gt;
+    &lt;div class="avatar avatar-sm me-3 avatar-rounded"&gt;
+        &lt;img src="../assets/images/faces/13.jpg" alt="img"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;A simple info alert with image—check it out!&lt;/div&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-img alert-light alert-dismissible fase show rounded-pill flex-wrap" role="alert"&gt;
+    &lt;div class="avatar avatar-sm me-3 avatar-rounded"&gt;
+        &lt;img src="../assets/images/faces/10.jpg" alt="img"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;A simple light alert with image—check it out!&lt;/div&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-img alert-dark alert-dismissible fase show rounded-pill flex-wrap" role="alert"&gt;
+    &lt;div class="avatar avatar-sm me-3 avatar-rounded"&gt;
+        &lt;img src="../assets/images/faces/15.jpg" alt="img"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;A simple dark alert with image—check it out!&lt;/div&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x text-muted"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Alerts With Different size Images
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-img alert-primary alert-dismissible fase show flex-wrap" role="alert">
+                                        <div class="avatar avatar-xs me-3">
+                                            <img src="../assets/images/faces/3.jpg" alt="img">
+                                        </div>
+                                        <div>A simple primary alert with image—check it out!</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-img alert-secondary alert-dismissible fase show flex-wrap" role="alert">
+                                        <div class="avatar avatar-sm me-3">
+                                            <img src="../assets/images/faces/5.jpg" alt="img">
+                                        </div>
+                                        <div>A simple secondary alert with image—check it out!</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-img alert-warning alert-dismissible fase show flex-wrap" role="alert">
+                                        <div class="avatar me-3">
+                                            <img src="../assets/images/faces/8.jpg" alt="img">
+                                        </div>
+                                        <div>A simple warning alert with image—check it out!</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-img alert-danger alert-dismissible fase show flex-wrap" role="alert">
+                                        <div class="avatar avatar-md me-3">
+                                            <img src="../assets/images/faces/11.jpg" alt="img">
+                                        </div>
+                                        <div>A simple danger alert with image—check it out!</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-img alert-info alert-dismissible fase show flex-wrap" role="alert">
+                                        <div class="avatar avatar-lg me-3">
+                                            <img src="../assets/images/faces/13.jpg" alt="img">
+                                        </div>
+                                        <div>A simple info alert with image—check it out!</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                    </div>
+                                    <div class="alert alert-img alert-dark alert-dismissible fase show flex-wrap" role="alert">
+                                        <div class="avatar avatar-xl me-3">
+                                            <img src="../assets/images/faces/14.jpg" alt="img">
+                                        </div>
+                                        <div>A simple info alert with image—check it out!</div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x text-muted"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="alert alert-img alert-primary alert-dismissible fase show flex-wrap" role="alert"&gt;
+    &lt;div class="avatar avatar-xs me-3"&gt;
+        &lt;img src="../assets/images/faces/3.jpg" alt="img"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;A simple primary alert with image—check it out!&lt;/div&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-img alert-secondary alert-dismissible fase show flex-wrap" role="alert"&gt;
+    &lt;div class="avatar avatar-sm me-3"&gt;
+        &lt;img src="../assets/images/faces/5.jpg" alt="img"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;A simple secondary alert with image—check it out!&lt;/div&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-img alert-warning alert-dismissible fase show flex-wrap" role="alert"&gt;
+    &lt;div class="avatar me-3"&gt;
+        &lt;img src="../assets/images/faces/8.jpg" alt="img"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;A simple warning alert with image—check it out!&lt;/div&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-img alert-danger alert-dismissible fase show flex-wrap" role="alert"&gt;
+    &lt;div class="avatar avatar-md me-3"&gt;
+        &lt;img src="../assets/images/faces/11.jpg" alt="img"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;A simple danger alert with image—check it out!&lt;/div&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-img alert-info alert-dismissible fase show flex-wrap" role="alert"&gt;
+    &lt;div class="avatar avatar-lg me-3"&gt;
+        &lt;img src="../assets/images/faces/13.jpg" alt="img"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;A simple info alert with image—check it out!&lt;/div&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-img alert-dark alert-dismissible fase show flex-wrap" role="alert"&gt;
+    &lt;div class="avatar avatar-xl me-3"&gt;
+        &lt;img src="../assets/images/faces/14.jpg" alt="img"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;A simple info alert with image—check it out!&lt;/div&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x text-muted"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="row">
+                                <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="card bg-white border-0">
+                                        <div class="alert custom-alert1 alert-primary">
+                                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                            <div class="text-center px-5 pb-0">
+                                                <svg class="custom-alert-icon svg-primary" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                                                <h5>Information?</h5>
+                                                <p class="">This alert is created to just show the related information.</p>
+                                                <div class="">
+                                                    <button class="btn btn-sm btn-outline-danger m-1">Decline</button>
+                                                    <button class="btn btn-sm btn-primary m-1">Accept</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="card bg-white border-0">
+                                        <div class="alert custom-alert1 alert-secondary">
+                                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                            <div class="text-center px-5 pb-0">
+                                                <svg class="custom-alert-icon svg-secondary" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                                <h5>Confirmed</h5>
+                                                <p class="">This alert is created to just show the confirmation message.</p>
+                                                <div class="">
+                                                    <button class="btn btn-sm btn-secondary m-1">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="card bg-white border-0">
+                                        <div class="alert custom-alert1 alert-warning">
+                                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                            <div class="text-center px-5 pb-0">
+                                                <svg class="custom-alert-icon svg-warning" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                                                <h5>Warning</h5>
+                                                <p class="">This alert is created to just show the warning message.</p>
+                                                <div class="">
+                                                    <button class="btn btn-sm btn-outline-secondary m-1">Back</button>
+                                                    <button class="btn btn-sm btn-warning m-1">Continue</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="card bg-white border-0">
+                                        <div class="alert custom-alert1 alert-danger">
+                                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                            <div class="text-center px-5 pb-0">
+                                                <svg class="custom-alert-icon svg-danger" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3zM12 17.3c-.72 0-1.3-.58-1.3-1.3 0-.72.58-1.3 1.3-1.3.72 0 1.3.58 1.3 1.3 0 .72-.58 1.3-1.3 1.3zm1-4.3h-2V7h2v6z"/></svg>
+                                                <h5>danger</h5>
+                                                <p class="">This alert is created to just show the danger message.</p>
+                                                <div class="">
+                                                    <button class="btn btn-sm btn-danger m-1">Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="row">
+                                <div class="col-xl-3">
+                                    <div class="card border-0">
+                                        <div class="alert alert-primary border border-primary mb-0 p-3">
+                                            <div class="d-flex align-items-start">
+                                                <div class="me-2">
+                                                    <svg class="flex-shrink-0 svg-primary" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                                                </div>
+                                                <div class="text-primary w-100">
+                                                    <div class="fw-semibold d-flex justify-content-between">Information Alert<button type="button" class="btn-close p-0" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button></div>
+                                                    <div class="fs-12 op-8 mb-1">Information alert to show to information</div>
+                                                    <div class="fs-12">
+                                                        <a href="javascript:void(0);" class="text-secondary fw-semibold me-2 d-inline-block">cancel</a>
+                                                        <a href="javascript:void(0);" class="text-primary fw-semibold">open</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3">
+                                    <div class="card border-0">
+                                        <div class="alert alert-secondary border border-secondary mb-0 p-3">
+                                            <div class="d-flex align-items-start">
+                                                <div class="me-2">
+                                                    <svg class="flex-shrink-0 svg-secondary" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none"/><path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
+                                                </div>
+                                                <div class="text-secondary w-100">
+                                                    <div class="fw-semibold d-flex justify-content-between">Success Alert<button type="button" class="btn-close p-0" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button></div>
+                                                    <div class="fs-12 op-8 mb-1">Success alert to show to success message</div>
+                                                    <div class="fs-12">
+                                                        <a href="javascript:void(0);" class="text-danger fw-semibold me-2 d-inline-block">cancel</a>
+                                                        <a href="javascript:void(0);" class="text-secondary fw-semibold">open</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3">
+                                    <div class="card border-0">
+                                        <div class="alert alert-warning border border-warning mb-0 p-3">
+                                            <div class="d-flex align-items-start">
+                                                <div class="me-2">
+                                                    <svg class="flex-shrink-0 svg-warning" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,5.99L19.53,19H4.47L12,5.99 M12,2L1,21h22L12,2L12,2z"/><polygon points="13,16 11,16 11,18 13,18"/><polygon points="13,10 11,10 11,15 13,15"/></g></g></g></svg>
+                                                </div>
+                                                <div class="text-warning w-100">
+                                                    <div class="fw-semibold d-flex justify-content-between">Warning Alert<button type="button" class="btn-close p-0" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button></div>
+                                                    <div class="fs-12 op-8 mb-1">Warning alert to show warning message</div>
+                                                    <div class="fs-12">
+                                                        <a href="javascript:void(0);" class="text-dark fw-semibold me-2 d-inline-block">cancel</a>
+                                                        <a href="javascript:void(0);" class="text-warning fw-semibold">open</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3">
+                                    <div class="card border-0">
+                                        <div class="alert alert-danger border border-danger mb-0 p-3">
+                                            <div class="d-flex align-items-start">
+                                                <div class="me-2">
+                                                    <svg class="flex-shrink-0 svg-danger" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M15.73,3H8.27L3,8.27v7.46L8.27,21h7.46L21,15.73V8.27L15.73,3z M19,14.9L14.9,19H9.1L5,14.9V9.1L9.1,5h5.8L19,9.1V14.9z"/><rect height="6" width="2" x="11" y="7"/><rect height="2" width="2" x="11" y="15"/></g></g></g></svg>
+                                                </div>
+                                                <div class="text-danger w-100">
+                                                    <div class="fw-semibold d-flex justify-content-between">Danger Alert<button type="button" class="btn-close p-0" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button></div>
+                                                    <div class="fs-12 op-8 mb-1">Danger alert to show the danger message</div>
+                                                    <div class="fs-12">
+                                                        <a href="javascript:void(0);" class="text-info fw-semibold me-2 d-inline-block">cancel</a>
+                                                        <a href="javascript:void(0);" class="text-danger fw-semibold">open</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="row">
+                                <div class="col-xl-3">
+                                    <div class="card border-0">
+                                        <div class="alert alert-solid-primary border border-primary mb-0 p-3">
+                                            <div class="d-flex align-items-start">
+                                                <div class="me-2">
+                                                    <svg class="flex-shrink-0 svg-white" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                                                </div>
+                                                <div class="text-fixed-white w-100">
+                                                    <div class="fw-semibold d-flex justify-content-between">Information Alert<button type="button" class="btn-close p-0" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button></div>
+                                                    <div class="fs-12 op-8 mb-1">Information alert to show to information</div>
+                                                    <div class="fs-12">
+                                                        <a href="javascript:void(0);" class="text-fixed-white fw-semibold me-2 op-7">cancel</a>
+                                                        <a href="javascript:void(0);" class="text-fixed-white fw-semibold">open</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3">
+                                    <div class="card border-0">
+                                        <div class="alert alert-solid-secondary border border-secondary mb-0 p-3">
+                                            <div class="d-flex align-items-start">
+                                                <div class="me-2">
+                                                    <svg class="flex-shrink-0 svg-white" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none"/><path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
+                                                </div>
+                                                <div class="text-fixed-white w-100">
+                                                    <div class="fw-semibold d-flex justify-content-between">Success Alert<button type="button" class="btn-close p-0" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button></div>
+                                                    <div class="fs-12 op-8 mb-1">Success alert to show to success message</div>
+                                                    <div class="fs-12">
+                                                        <a href="javascript:void(0);" class="text-fixed-white fw-semibold me-2">close</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3">
+                                    <div class="card border-0">
+                                        <div class="alert alert-solid-warning border border-warning mb-0 p-3">
+                                            <div class="d-flex align-items-start">
+                                                <div class="me-2">
+                                                    <svg class="flex-shrink-0 svg-white" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,5.99L19.53,19H4.47L12,5.99 M12,2L1,21h22L12,2L12,2z"/><polygon points="13,16 11,16 11,18 13,18"/><polygon points="13,10 11,10 11,15 13,15"/></g></g></g></svg>
+                                                </div>
+                                                <div class="text-fixed-white w-100">
+                                                    <div class="fw-semibold d-flex justify-content-between">Warning Alert<button type="button" class="btn-close p-0" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button></div>
+                                                    <div class="fs-12 op-8 mb-1">Warning alert to show to warning message</div>
+                                                    <div class="fs-12">
+                                                        <a href="javascript:void(0);" class="text-fixed-white fw-semibold me-2 op-7">skip</a>
+                                                        <a href="javascript:void(0);" class="text-fixed-white fw-semibold">open</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3">
+                                    <div class="card border-0">
+                                        <div class="alert alert-solid-danger border border-danger mb-0 p-3">
+                                            <div class="d-flex align-items-start">
+                                                <div class="me-2">
+                                                    <svg class="flex-shrink-0 svg-white" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M15.73,3H8.27L3,8.27v7.46L8.27,21h7.46L21,15.73V8.27L15.73,3z M19,14.9L14.9,19H9.1L5,14.9V9.1L9.1,5h5.8L19,9.1V14.9z"/><rect height="6" width="2" x="11" y="7"/><rect height="2" width="2" x="11" y="15"/></g></g></g></svg>
+                                                </div>
+                                                <div class="text-fixed-white w-100">
+                                                    <div class="fw-semibold d-flex justify-content-between">Danger Alert<button type="button" class="btn-close p-0" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button></div>
+                                                    <div class="fs-12 op-8 mb-1">Danger alert to show to danger message</div>
+                                                    <div class="fs-12">
+                                                        <a href="javascript:void(0);" class="text-fixed-white fw-semibold me-2 op-7">close</a>
+                                                        <a href="javascript:void(0);" class="text-fixed-white fw-semibold">continue</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="card custom-card">
+                                <div class="card-header justify-content-between">
+                                    <div class="card-title">
+                                        Additional content
+                                    </div>
+                                    <div class="prism-toggle">
+                                        <button class="btn btn-sm btn-primary-light">Show Code<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row gy-3">
+                                        <div class="col-xl-6">
+                                            <div class="alert alert-primary overflow-hidden p-0" role="alert">
+                                                <div class="p-3 bg-primary text-fixed-white d-flex justify-content-between">
+                                                    <h6 class="aletr-heading mb-0 text-fixed-white">Thank you for reporting this.</h6>
+                                                    <button type="button" class="btn-close p-0 text-fixed-white" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                                </div>
+                                                <hr class="my-0">
+                                                <div class="p-3">
+                                                    <p class="mb-0">We appreciate you to let us know the bug in the template and for warning us about future consequences <a href="javascript:void(0);" class="fw-semibold text-decoration-underline text-primary">Visit for support for queries ?</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="alert alert-secondary overflow-hidden p-0" role="alert">
+                                                <div class="p-3 bg-secondary text-fixed-white d-flex justify-content-between">
+                                                    <h6 class="aletr-heading mb-0 text-fixed-white">Thank you for reporting this.</h6>
+                                                    <button type="button" class="btn-close p-0 text-fixed-white" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                                </div>
+                                                <hr class="my-0">
+                                                <div class="p-3">
+                                                    <p class="mb-0">We appreciate you to let us know the bug in the template and for warning us about future consequences <a href="javascript:void(0);" class="fw-semibold text-decoration-underline text-secondary">Visit for support for queries ?</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="alert alert-success overflow-hidden p-0" role="alert">
+                                                <div class="p-3 bg-success text-fixed-white d-flex justify-content-between">
+                                                    <h6 class="aletr-heading mb-0 text-fixed-white">Thank you for reporting this.</h6>
+                                                    <button type="button" class="btn-close p-0 text-fixed-white" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                                </div>
+                                                <hr class="my-0">
+                                                <div class="p-3">
+                                                    <p class="mb-0">We appreciate you to let us know the bug in the template and for warning us about future consequences <a href="javascript:void(0);" class="fw-semibold text-decoration-underline text-success">Visit for support for queries ?</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="alert alert-warning overflow-hidden p-0" role="alert">
+                                                <div class="p-3 bg-warning text-fixed-white d-flex justify-content-between">
+                                                    <h6 class="aletr-heading mb-0 text-fixed-white">Thank you for reporting this.</h6>
+                                                    <button type="button" class="btn-close p-0 text-fixed-white" data-bs-dismiss="alert" aria-label="Close"><i class="bi bi-x"></i></button>
+                                                </div>
+                                                <hr class="my-0">
+                                                <div class="p-3">
+                                                    <p class="mb-0">We appreciate you to let us know the bug in the template and for warning us about future consequences <a href="javascript:void(0);" class="fw-semibold text-decoration-underline text-warning">Visit for support for queries ?</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-none border-top-0">
+<!-- Prism Code -->
+<pre class="language-html"><code class="language-html">&lt;div class="col-xl-6"&gt;
+    &lt;div class="alert alert-primary overflow-hidden p-0" role="alert"&gt;
+        &lt;div class="p-3 bg-primary text-fixed-white d-flex justify-content-between"&gt;
+            &lt;h6 class="aletr-heading mb-0"&gt;Thank you for reporting this.&lt;/h6&gt;
+            &lt;button type="button" class="btn-close p-0 text-fixed-white" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;hr class="my-0"&gt;
+        &lt;div class="p-3"&gt;
+            &lt;p class="mb-0"&gt;We appreciate you to let us know the bug in the template and for warning us about future consequences &lt;a href="javascript:void(0);" class="fw-semibold text-decoration-underline"&gt;Visit for support for queries ?&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="col-xl-6"&gt;
+    &lt;div class="alert alert-secondary overflow-hidden p-0" role="alert"&gt;
+        &lt;div class="p-3 bg-secondary text-fixed-white d-flex justify-content-between"&gt;
+            &lt;h6 class="aletr-heading mb-0"&gt;Thank you for reporting this.&lt;/h6&gt;
+            &lt;button type="button" class="btn-close p-0 text-fixed-white" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;hr class="my-0"&gt;
+        &lt;div class="p-3"&gt;
+            &lt;p class="mb-0"&gt;We appreciate you to let us know the bug in the template and for warning us about future consequences &lt;a href="javascript:void(0);" class="fw-semibold text-decoration-underline"&gt;Visit for support for queries ?&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="col-xl-6"&gt;
+    &lt;div class="alert alert-success overflow-hidden p-0" role="alert"&gt;
+        &lt;div class="p-3 bg-success text-fixed-white d-flex justify-content-between"&gt;
+            &lt;h6 class="aletr-heading mb-0"&gt;Thank you for reporting this.&lt;/h6&gt;
+            &lt;button type="button" class="btn-close p-0 text-fixed-white" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;hr class="my-0"&gt;
+        &lt;div class="p-3"&gt;
+            &lt;p class="mb-0"&gt;We appreciate you to let us know the bug in the template and for warning us about future consequences &lt;a href="javascript:void(0);" class="fw-semibold text-decoration-underline"&gt;Visit for support for queries ?&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="col-xl-6"&gt;
+    &lt;div class="alert alert-warning overflow-hidden p-0" role="alert"&gt;
+        &lt;div class="p-3 bg-warning text-fixed-white d-flex justify-content-between"&gt;
+            &lt;h6 class="aletr-heading mb-0"&gt;Thank you for reporting this.&lt;/h6&gt;
+            &lt;button type="button" class="btn-close p-0 text-fixed-white" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;i class="bi bi-x"&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;hr class="my-0"&gt;
+        &lt;div class="p-3"&gt;
+            &lt;p class="mb-0"&gt;We appreciate you to let us know the bug in the template and for warning us about future consequences &lt;a href="javascript:void(0);" class="fw-semibold text-decoration-underline"&gt;Visit for support for queries ?&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<!-- Prism Code -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--ROW-END-->
+                </div>
+            </div>
+            <!--APP-CONTENT CLOSE-->
+
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="input-group">
+                    <a href="javascript:void(0);" class="input-group-text" id="Search-Grid"><i class="fe fe-search header-link-icon fs-18"></i></a>
+                    <input type="search" class="form-control border-0 px-2" placeholder="Search" aria-label="Username">
+                    <a href="javascript:void(0);" class="input-group-text" id="voice-search"><i class="fe fe-mic header-link-icon"></i></a>
+                    <a href="javascript:void(0);" class="btn btn-light btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fe fe-more-vertical"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                  </div>
+                  <div class="mt-4">
+                    <p class="font-weight-semibold text-muted mb-2">Are You Looking For...</p>
+                    <span class="search-tags"><i class="fe fe-user me-2"></i>People<a href="javascript:void(0)" class="tag-addon"><i class="fe fe-x"></i></a></span>
+                    <span class="search-tags"><i class="fe fe-file-text me-2"></i>Pages<a href="javascript:void(0)" class="tag-addon"><i class="fe fe-x"></i></a></span>
+                    <span class="search-tags"><i class="fe fe-align-left me-2"></i>Articles<a href="javascript:void(0)" class="tag-addon"><i class="fe fe-x"></i></a></span>
+                    <span class="search-tags"><i class="fe fe-server me-2"></i>Tags<a href="javascript:void(0)" class="tag-addon"><i class="fe fe-x"></i></a></span>
+                  </div>
+                  <div class="my-4">
+                    <p class="font-weight-semibold text-muted mb-2">Recent Search :</p>
+                    <div class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert">
+                      <a href="notifications.html"><span>Notifications</span></a>
+                      <a class="ms-auto lh-1" href="javascript:void(0);" data-bs-dismiss="alert" aria-label="Close"><i class="fe fe-x text-muted"></i></a>
+                    </div>
+                    <div class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert">
+                      <a href="alerts.html"><span>Alerts</span></a>
+                      <a class="ms-auto lh-1" href="javascript:void(0);" data-bs-dismiss="alert" aria-label="Close"><i class="fe fe-x text-muted"></i></a>
+                    </div>
+                    <div class="p-2 border br-5 d-flex align-items-center text-muted mb-0 alert">
+                      <a href="mail.html"><span>Mail</span></a>
+                      <a class="ms-auto lh-1" href="javascript:void(0);" data-bs-dismiss="alert" aria-label="Close"><i class="fe fe-x text-muted"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div class="btn-group ms-auto">
+                    <button class="btn btn-sm btn-primary-light">Search</button>
+                    <button class="btn btn-sm btn-primary">Clear Recents</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- Start Switcher -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebar-right" aria-labelledby="offcanvasRightLabel2">
+            <div class="offcanvas-header border-bottom bg-primary text-fixed-white">
+                <h6 class="offcanvas-title d-inline-flex text-fixed-white" id="offcanvasRightLabel2">
+                    <span class=" me-2 d-inline-flex">
+                        <i class="fe fe-bell my-auto"></i> <span class=" pulse w-9 h-9 bg-success rounded-circle"></span>
+                    </span>
+                    Notifications
+                </h6>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body p-0">
+                <nav class="nav nav-tabs nav-justified" role="tablist">
+                    <button class="nav-link active" id="sidebar-side1" data-bs-toggle="tab" data-bs-target="#sidebar-slidepane-1"
+                        type="button" role="tab" aria-controls="sidebar-slidepane-1" aria-selected="true"><i class="d-inline-flex fe fe-settings me-1"></i> Feeds</button>
+                    <button class="nav-link" id="sidebar-side2" data-bs-toggle="tab" data-bs-target="#sidebar-slidepane-2"
+                        type="button" role="tab" aria-controls="sidebar-slidepane-2" aria-selected="false"><i class="d-inline-flex fe fe-message-circle me-1"></i>Chat</button>
+                    <button class="nav-link" id="sidebar-side3" data-bs-toggle="tab" data-bs-target="#sidebar-slidepane-3"
+                        type="button" role="tab" aria-controls="sidebar-slidepane-3" aria-selected="false"><i class="d-inline-flex fe fe-anchor me-1"></i>Timeline</button>
+                </nav>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active border-0 p-0" id="sidebar-slidepane-1" role="tabpanel" aria-labelledby="sidebar-side1" tabindex="0">
+                        <div class="p-3 fw-semibold">Feeds</div>
+                        <div class="py-3 px-4 pt-0">
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-primary-transparent"><i class="fe fe-user text-primary"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">New user registered</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-secondary-transparent"><i class="fe fe-shopping-cart text-secondary"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">New order delivered</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-danger-transparent"><i class="fe fe-bell text-danger"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">You have pending tasks</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-warning-transparent"><i class="fe fe-gitlab text-warning"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">New version arrived</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-pink-transparent"><i class="fe fe-database text-pink"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Server #1 overloaded</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-info-transparent"><i class="fe fe-check-circle text-info"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">New project launched</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings me-1"></i></a>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 fw-semibold">Settings</div>
+                        <div class="py-3 px-4 pt-0">
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-primary-transparent"><i class="fe fe-settings text-primary"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">General Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-secondary-transparent"><i class="fe fe-map-pin text-secondary"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Map Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-danger-transparent"><i class="fe fe-headphones text-danger"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Support Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-warning-transparent"><i class="fe fe-credit-card text-warning"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Payment  Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 mb-sm-0 mb-3">
+                                    <span class="feeds avatar avatar-sm avatar-rounded bg-pink-transparent"><i class="fe fe-bell text-pink"></i></span>
+                                </div>
+                                <div class="col-sm-10 ps-sm-0 my-auto">
+                                    <div class="d-flex align-items-end justify-content-between ms-2">
+                                        <h6 class="mb-0 fw-normal fs-14">Notification Settings</h6>
+                                        <div>
+                                            <a aria-label="anchor" href="javascript:void(0)" class="text-primary"><i class="fe fe-settings"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade border-0 p-0" id="sidebar-slidepane-2" role="tabpanel" aria-labelledby="sidebar-side2" tabindex="0">
+                        <div class="p-3 fw-semibold">Today</div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/2.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark" >Addie Minstra</div>
+                                    <p class="mb-0 fs-12 text-muted"> Hey! there I' am available.... </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/11.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Rose Bush</div>
+                                    <p class="mb-0 fs-12 text-muted"> Okay...I will be waiting for you </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/10.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Claude Strophobia</div>
+                                    <p class="mb-0 fs-12 text-muted"> Hi we can explain our new project......</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/13.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Eileen Dover</div>
+                                    <p class="mb-0 fs-12 text-muted"> New product Launching...</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/12.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Willie Findit</div>
+                                    <p class="mb-0 fs-12 text-muted"> Okay...I will be waiting for you </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/15.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Manny Jah</div>
+                                    <p class="mb-0 fs-12 text-muted">  Hi we can explain our new project......</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-0 px-3">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/4.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Cherry Blossom</div>
+                                    <p class="mb-0 fs-12 text-muted"> Hey! there I' am available....</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-3 fw-semibold">Yesterday</div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/7.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Simon Sais</div>
+                                    <p class="mb-0 fs-12 text-muted">Schedule Realease...... </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/9.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Laura Biding</div>
+                                    <p class="mb-0 fs-12 text-muted">Hi we can explain our new project...... </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/2.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Addie Minstra</div>
+                                    <p class="mb-0 fs-12 text-muted">Contact me for details....</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/9.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Ivan Notheridiya</div>
+                                    <p class="mb-0 fs-12 text-muted">Hi we can explain our new project......</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/14.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Dulcie Veeta</div>
+                                    <p class="mb-0 fs-12 text-muted"> Okay...I will be waiting for you</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/11.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Florinda Carasco</div>
+                                    <p class="mb-0 fs-12 text-muted">New product Launching...</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center py-3 px-3 pt-0">
+                            <div class="me-2">
+                                <span class="avatar avatar-md online avatar-rounded cover-image"  data-bs-image-src="../assets/images/faces/11.jpg"></span>
+                            </div>
+                            <div class="">
+                                <a href="chat.html">
+                                    <div class="fw-semibold text-dark">Cherry Blossom</div>
+                                    <p class="mb-0 fs-12 text-muted">cherryblossom@gmail.com</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade border-0 p-3" id="sidebar-slidepane-3" role="tabpanel" aria-labelledby="sidebar-side3" tabindex="0">
+                        <ul class="task-list timeline-task">
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">Task Finished<span
+                                            class="text-muted fs-11 mx-2 fw-normal">09 July 2021</span></h6>
+                                    <p class="text-muted fs-12 mb-0">Adam Berry finished task on<a href="javascript:void(0)" class="fw-semibold text-primary"> Project Management</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">New Comment<span
+                                            class="text-muted fs-11 mx-2 fw-normal">05 July 2021</span></h6>
+                                    <p class="text-muted fs-12 mb-0">Victoria commented on Project <a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> AngularJS Template</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">New Comment<span
+                                            class="text-muted fs-11 mx-2 fw-normal">25 June 2021</span></h6>
+                                    <p class="text-muted fs-12 mb-0">Victoria commented on Project <a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> AngularJS Template</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">Task Overdue<span
+                                            class="text-muted fs-11 mx-2 fw-normal">14 June 2021</span></h6>
+                                    <p class="text-muted mb-0 fs-12">Petey Cruiser finished task <a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> Integrated management</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">Task Overdue<span
+                                            class="text-muted fs-11 mx-2 fw-normal">29 June 2021</span></h6>
+                                    <p class="text-muted mb-0 fs-12">Petey Cruiser finished task <a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> Integrated management</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                            <li class="d-sm-flex">
+                                <div>
+                                    <i class="task-icon1"></i>
+                                    <h6 class="fw-semibold fs-14">Task Finished<span
+                                            class="text-muted fs-11 mx-2 fw-normal">09 July 2021</span></h6>
+                                    <p class="text-muted fs-12 mb-0">Adam Berry finished task on<a href="javascript:void(0)"
+                                            class="fw-semibold text-primary"> Project Management</a></p>
+                                </div>
+                                <div class="ms-auto d-md-flex task-icon-link">
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted me-2"><i class="fe fe-edit"></i></a>
+                                    <a aria-label="anchor" href="javascript:void(0)" class="text-muted"><i class="fe fe-trash-2 fs-12"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Switcher -->
+
+
+        <!-- Footer Start -->
+        <footer class="footer mt-auto py-3 text-center">
+            <div class="container">
+                <span class=""> Copyright © 2026 <a href="https://perizinan.kkp.go.id/" target="_blank" rel="noopener noreferrer">Digitalisasi Perizinan</a>, <a href="https://kkp.go.id/unit-kerja/djpt.html" target="_blank" rel="noopener noreferrer">Direktorat Jenderal Perikanan Tangkap</a> . All rights reserved.
+                </span>
+            </div>
+        </footer>
+        <!-- Footer End -->
+
+    </div>
+
+    
+    <!-- Scroll To Top -->
+    <div class="scrollToTop">
+        <span class="arrow"><i class="ri-arrow-up-s-fill fs-20"></i></span>
+    </div>
+    <div id="responsive-overlay"></div>
+    <!-- Scroll To Top -->
+
+    <!-- Popper JS -->
+    <script src="../assets/libs/@popperjs/core/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Defaultmenu JS -->
+    <script src="../assets/js/defaultmenu.min.js"></script>
+
+    <!-- Node Waves JS-->
+    <script src="../assets/libs/node-waves/waves.min.js"></script>
+
+    <!-- Sticky JS -->
+    <script src="../assets/js/sticky.js"></script>
+
+    <!-- Simplebar JS -->
+    <script src="../assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../assets/js/simplebar.js"></script>
+
+    <!-- Color Picker JS -->
+    <script src="../assets/libs/@simonwep/pickr/pickr.es5.min.js"></script>
+
+
+    
+    <!-- Custom-Switcher JS -->
+    <script src="../assets/js/custom-switcher.min.js"></script>
+
+    <!-- Prism JS -->
+    <script src="../assets/libs/prismjs/prism.js"></script>
+    <script src="../assets/js/prism-custom.js"></script>
+
+    <!-- Alerts JS -->
+    <script src="../assets/js/alerts.js"></script>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/custom.js"></script>
+
+</body>
+
+</html>

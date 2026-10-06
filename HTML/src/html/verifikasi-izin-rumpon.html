@@ -1,0 +1,109 @@
+@SPK@include("partials/mainhead.html")
+
+<style>
+    .rumpon-service-card {
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        border-radius: 0.75rem;
+    }
+    .rumpon-service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.09) !important;
+        border-color: var(--primary-color) !important;
+    }
+</style>
+
+</head>
+
+<body>
+    @SPK@include("partials/switcher.html")
+    @SPK@include("partials/loader.html")
+
+    <div class="page">
+        @SPK@include("partials/header.html")
+        @SPK@include("partials/sidebar.html")
+
+        <div class="main-content app-content">
+            <div class="container-fluid">
+                @SPK@include("partials/page-header.html", {"title": "Verifikasi Izin Rumpon (SIPR)", "subtitle": 'Daftar Permohonan'})
+
+                <!-- Start:: 3 Card Pilihan Permohonan SIPR -->
+                <div class="row g-4 mb-4">
+                    <!-- Card 1: Surat Izin Penempatan Rumpon Baru -->
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card custom-card h-100 border shadow-sm rumpon-service-card">
+                            <div class="card-body d-flex flex-column p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <div class="avatar avatar-xl bg-primary-transparent text-primary rounded-circle">
+                                        <i class="ri-anchor-line fs-24"></i>
+                                    </div>
+                                    <span class="badge bg-primary-transparent text-primary px-3 py-2 rounded-pill fs-12 fw-semibold">
+                                        <i class="fe fe-plus-circle me-1"></i>SIPR Baru
+                                    </span>
+                                </div>
+                                <h5 class="fw-bold text-dark mb-2">Surat Izin Penempatan Rumpon Baru</h5>
+                                <p class="text-muted fs-13 mb-4 flex-grow-1">
+                                    Layanan pengajuan izin penempatan alat bantu penangkapan ikan (Rumpon) baru untuk pemasangan rumpon hanyut, menetap permukaan, atau dasar perairan.
+                                </p>
+                                <a href="pengajuan-rumpon-baru.html" class="btn btn-primary w-100 py-2 fw-semibold shadow-sm">
+                                    <i class="fe fe-send me-1"></i>Ajukan
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Surat Izin Penempatan Rumpon Perpanjangan -->
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card custom-card h-100 border shadow-sm rumpon-service-card">
+                            <div class="card-body d-flex flex-column p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <div class="avatar avatar-xl bg-success-transparent text-success rounded-circle">
+                                        <i class="ri-refresh-line fs-24"></i>
+                                    </div>
+                                    <span class="badge bg-success-transparent text-success px-3 py-2 rounded-pill fs-12 fw-semibold">
+                                        <i class="fe fe-repeat me-1"></i>SIPR Perpanjangan
+                                    </span>
+                                </div>
+                                <h5 class="fw-bold text-dark mb-2">Surat Izin Penempatan Rumpon Perpanjangan</h5>
+                                <p class="text-muted fs-13 mb-4 flex-grow-1">
+                                    Layanan perpanjangan masa berlaku Surat Izin Penempatan Rumpon (SIPR) yang telah terdaftar sebelum masa berlaku izin berakhir.
+                                </p>
+                                <a href="pengajuan-rumpon-perpanjangan.html" class="btn btn-success w-100 py-2 fw-semibold shadow-sm">
+                                    <i class="fe fe-send me-1"></i>Ajukan
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Surat Izin Penempatan Rumpon Perubahan -->
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card custom-card h-100 border shadow-sm rumpon-service-card">
+                            <div class="card-body d-flex flex-column p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <div class="avatar avatar-xl bg-warning-transparent text-warning rounded-circle">
+                                        <i class="ri-edit-2-line fs-24"></i>
+                                    </div>
+                                    <span class="badge bg-warning-transparent text-warning px-3 py-2 rounded-pill fs-12 fw-semibold">
+                                        <i class="fe fe-edit-3 me-1"></i>SIPR Perubahan
+                                    </span>
+                                </div>
+                                <h5 class="fw-bold text-dark mb-2">Surat Izin Penempatan Rumpon Perubahan</h5>
+                                <p class="text-muted fs-13 mb-4 flex-grow-1">
+                                    Layanan pembaruan data teknis, spesifikasi pelampung, pemindahan titik koordinat WPPNRI, atau perubahan data pendukung rumpon.
+                                </p>
+                                <a href="pengajuan-rumpon-perubahan.html" class="btn btn-warning text-white w-100 py-2 fw-semibold shadow-sm">
+                                    <i class="fe fe-send me-1"></i>Ajukan
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End:: 3 Card Pilihan Permohonan SIPR -->
+
+            </div>
+        </div>
+    </div>
+
+    @SPK@include("partials/footer.html")
+    @SPK@include("partials/commonjs.html")
+</body>
+</html>

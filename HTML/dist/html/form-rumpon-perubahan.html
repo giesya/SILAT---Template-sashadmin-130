@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+
+<head>
+
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Sash – Bootstrap 5  Admin &amp; Dashboard Template </title>
+    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
+    <meta name="Author" content="Spruko Technologies Private Limited">
+	<meta name="keywords" content="admin dashboard,dashboard design htmlbootstrap admin template,html admin panel,admin dashboard html,admin panel html template,bootstrap dashboard,html admin template,html dashboard,html admin dashboard template,bootstrap dashboard template,dashboard html template,bootstrap admin panel,dashboard admin bootstrap,bootstrap admin dashboard">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/brand-logos/favicon.ico" type="image/x-icon">
+
+    <!-- Choices JS -->
+    <script src="../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <!-- Main Theme Js -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Bootstrap Css -->
+    <link id="style" href="../assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+
+    <!-- Style Css -->
+    <link href="../assets/css/styles.min.css" rel="stylesheet" >
+
+    <!-- Icons Css -->
+    <link href="../assets/css/icons.css" rel="stylesheet" >
+
+    <!-- Node Waves Css -->
+    <link href="../assets/libs/node-waves/waves.min.css" rel="stylesheet" >
+
+    <!-- Simplebar Css -->
+    <link href="../assets/libs/simplebar/simplebar.min.css" rel="stylesheet" >
+
+    <!-- Color Picker Css -->
+    <link rel="stylesheet" href="../assets/libs/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" href="../assets/libs/@simonwep/pickr/themes/nano.min.css">
+
+    <!-- Choices Css -->
+    <link rel="stylesheet" href="../assets/libs/choices.js/public/assets/styles/choices.min.css">
+
+<!-- Sweetalerts CSS -->
+<link rel="stylesheet" href="../assets/libs/sweetalert2/sweetalert2.min.css">
+
+<style>
+    /* Wizard Stepper Styling */
+    .wizard-nav {
+        display: flex;
+        border-bottom: 2px solid #e2e8f0;
+        background: #ffffff;
+        border-radius: 0.75rem 0.75rem 0 0;
+        overflow-x: auto;
+    }
+    .wizard-nav-item {
+        flex: 1;
+        min-width: 180px;
+        padding: 1.15rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: #64748b;
+        font-weight: 600;
+        font-size: 0.825rem;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.25s ease;
+        border-bottom: 3px solid transparent;
+        margin-bottom: -2px;
+        background: transparent;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        text-align: left;
+    }
+    .wizard-nav-item:hover {
+        color: var(--primary-color);
+        background: #f8fafc;
+    }
+    .wizard-nav-item.active {
+        color: var(--primary-color);
+        border-bottom-color: var(--primary-color);
+        background: #f8fafc;
+    }
+    .wizard-nav-item.completed {
+        color: #10b981;
+    }
+    .wizard-step-badge {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #e2e8f0;
+        color: #475569;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        flex-shrink: 0;
+        transition: all 0.25s ease;
+    }
+    .wizard-nav-item.active .wizard-step-badge {
+        background: var(--primary-color);
+        color: #ffffff;
+        box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.2);
+    }
+    .wizard-nav-item.completed .wizard-step-badge {
+        background: #10b981;
+        color: #ffffff;
+    }
+
+    /* Form Section & Cards */
+    .form-subcard {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.625rem;
+        padding: 1.25rem;
+        margin-bottom: 1.25rem;
+        transition: all 0.2s ease;
+    }
+    .form-subcard:hover {
+        border-color: #cbd5e1;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .form-subcard-title {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .form-subcard-title i {
+        color: var(--primary-color);
+        font-size: 1.1rem;
+    }
+
+    /* Document Upload Item */
+    .doc-upload-item {
+        background: #f8fafc;
+        border: 1px dashed #cbd5e1;
+        border-radius: 0.5rem;
+        padding: 0.85rem 1rem;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        transition: all 0.2s ease;
+    }
+    .doc-upload-item:hover {
+        background: #ffffff;
+        border-color: var(--primary-color);
+    }
+    .doc-upload-item.verified {
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+    }
+
+    /* Helper label */
+    .form-label-custom {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: #334155;
+        margin-bottom: 0.35rem;
+    }
+    .helper-text {
+        font-size: 0.72rem;
+        color: #64748b;
+    }
+
+    /* Context Info Box */
+    .context-info-tile {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+    .context-info-tile:hover {
+        background: #ffffff;
+        border-color: #cbd5e1;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    .context-info-label {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #64748b;
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+        line-height: 1.2;
+    }
+    .context-info-value {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #1e293b;
+        line-height: 1.3;
+    }
+</style>
+
+</head>
+
+<body>
+    <!-- Start Switcher -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="switcher-canvas" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title text-default" id="offcanvasRightLabel">Switcher</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="border-bottom border-block-end-dashed">
+                <div class="nav nav-tabs nav-justified" id="switcher-main-tab" role="tablist">
+                    <button class="nav-link active" id="switcher-home-tab" data-bs-toggle="tab" data-bs-target="#switcher-home"
+                        type="button" role="tab" aria-controls="switcher-home" aria-selected="true">Theme Styles</button>
+                    <button class="nav-link" id="switcher-profile-tab" data-bs-toggle="tab" data-bs-target="#switcher-profile"
+                        type="button" role="tab" aria-controls="switcher-profile" aria-selected="false">Theme Colors</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active border-0" id="switcher-home" role="tabpanel" aria-labelledby="switcher-home-tab"
+                    tabindex="0">
+                    <div class="">
+                        <p class="switcher-style-head">Theme Color Mode:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-light-theme">
+                                        Light
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="theme-style" id="switcher-light-theme"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-dark-theme">
+                                        Dark
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="theme-style" id="switcher-dark-theme">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Directions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-ltr">
+                                        LTR
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="direction" id="switcher-ltr" checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-rtl">
+                                        RTL
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="direction" id="switcher-rtl">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Navigation Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-vertical">
+                                        Vertical
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-style" id="switcher-vertical"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-horizontal">
+                                        Horizontal
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-style"
+                                        id="switcher-horizontal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navigation-menu-styles">
+                        <p class="switcher-style-head">Vertical & Horizontal Menu Styles:</p>
+                        <div class="row switcher-style gx-0 pb-2 gy-2">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-click">
+                                        Menu Click
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-menu-click">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-hover">
+                                        Menu Hover
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-menu-hover">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-click">
+                                        Icon Click
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-icon-click">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-hover">
+                                        Icon Hover
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="navigation-menu-styles"
+                                        id="switcher-icon-hover">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidemenu-layout-styles">
+                        <p class="switcher-style-head">Sidemenu Layout Styles:</p>
+                        <div class="row switcher-style gx-0 pb-2 gy-2">
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-default-menu">
+                                        Default Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-default-menu" checked>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-closed-menu">
+                                        Closed Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-closed-menu">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icontext-menu">
+                                        Icon Text
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-icontext-menu">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-icon-overlay">
+                                        Icon Overlay
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-icon-overlay">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-detached">
+                                        Detached
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-detached">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-double-menu">
+                                        Double Menu
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="sidemenu-layout-styles"
+                                        id="switcher-double-menu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Page Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-regular">
+                                        Regular
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-styles" id="switcher-regular"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-classic">
+                                        Classic
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-styles" id="switcher-classic">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Layout Width Styles:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-full-width">
+                                        Full Width
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="layout-width" id="switcher-full-width"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-boxed">
+                                        Boxed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="layout-width" id="switcher-boxed">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Menu Positions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-fixed">
+                                        Fixed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="menu-positions" id="switcher-menu-fixed"
+                                        checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-menu-scroll">
+                                        Scrollable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="menu-positions" id="switcher-menu-scroll">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Header Positions:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-header-fixed">
+                                        Fixed
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="header-positions"
+                                        id="switcher-header-fixed" checked>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-header-scroll">
+                                        Scrollable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="header-positions"
+                                        id="switcher-header-scroll">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p class="switcher-style-head">Loader:</p>
+                        <div class="row switcher-style gx-0">
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-loader-enable">
+                                        Enable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-loader"
+                                        id="switcher-loader-enable">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check switch-select">
+                                    <label class="form-check-label" for="switcher-loader-disable">
+                                        Disable
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="page-loader"
+                                        id="switcher-loader-disable" checked>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade border-0" id="switcher-profile" role="tabpanel" aria-labelledby="switcher-profile-tab" tabindex="0">
+                    <div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Menu Colors:</p>
+                            <div class="d-flex switcher-style pb-2">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-white" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Light Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-light">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-dark" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Dark Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-dark" checked>
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Color Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-gradient" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Gradient Menu" type="radio" name="menu-colors"
+                                        id="switcher-menu-gradient">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-transparent"
+                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Transparent Menu"
+                                        type="radio" name="menu-colors" id="switcher-menu-transparent">
+                                </div>
+                            </div>
+                            <div class="px-4 pb-3 text-muted fs-11">Note:If you want to change color Menu dynamically change from below Theme Primary color picker</div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Header Colors:</p>
+                            <div class="d-flex switcher-style pb-2">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-white" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Light Header" type="radio" name="header-colors"
+                                        id="switcher-header-light" checked>
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-dark" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Dark Header" type="radio" name="header-colors"
+                                        id="switcher-header-dark">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Color Header" type="radio" name="header-colors"
+                                        id="switcher-header-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-gradient" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Gradient Header" type="radio" name="header-colors"
+                                        id="switcher-header-gradient">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-transparent" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Transparent Header" type="radio" name="header-colors"
+                                        id="switcher-header-transparent">
+                                </div>
+                            </div>
+                            <div class="px-4 pb-3 text-muted fs-11">Note:If you want to change color Header dynamically change from below Theme Primary color picker</div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Theme Primary:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-1" type="radio"
+                                        name="theme-primary" id="switcher-primary">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-2" type="radio"
+                                        name="theme-primary" id="switcher-primary1">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-3" type="radio" name="theme-primary"
+                                        id="switcher-primary2">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-4" type="radio" name="theme-primary"
+                                        id="switcher-primary3">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-primary-5" type="radio" name="theme-primary"
+                                        id="switcher-primary4">
+                                </div>
+                                <div class="form-check switch-select ps-0 mt-1 color-primary-light">
+                                    <div class="theme-container-primary"></div>
+                                    <div class="pickr-container-primary"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="theme-colors">
+                            <p class="switcher-style-head">Theme Background:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-1" type="radio"
+                                        name="theme-background" id="switcher-background">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-2" type="radio"
+                                        name="theme-background" id="switcher-background1">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-3" type="radio" name="theme-background"
+                                        id="switcher-background2">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-4" type="radio"
+                                        name="theme-background" id="switcher-background3">
+                                </div>
+                                <div class="form-check switch-select me-3">
+                                    <input class="form-check-input color-input color-bg-5" type="radio"
+                                        name="theme-background" id="switcher-background4">
+                                </div>
+                                <div class="form-check switch-select ps-0 mt-1 tooltip-static-demo color-bg-transparent">
+                                    <div class="theme-container-background"></div>
+                                    <div class="pickr-container-background"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-image mb-3">
+                            <p class="switcher-style-head">Menu With Background Image:</p>
+                            <div class="d-flex flex-wrap align-items-center switcher-style">
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img1" type="radio"
+                                        name="theme-background" id="switcher-bg-img">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img2" type="radio"
+                                        name="theme-background" id="switcher-bg-img1">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img3" type="radio" name="theme-background"
+                                        id="switcher-bg-img2">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img4" type="radio"
+                                        name="theme-background" id="switcher-bg-img3">
+                                </div>
+                                <div class="form-check switch-select m-2">
+                                    <input class="form-check-input bgimage-input bg-img5" type="radio"
+                                        name="theme-background" id="switcher-bg-img4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center canvas-footer flex-wrap px-0 px-sm-5">
+                    <a href="javascript:void(0);" id="reset-all" class="btn btn-danger m-1">Reset</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Switcher -->
+
+
+    <!-- Loader -->
+    <div id="loader" >
+        <img src="../assets/images/media/loader.svg" alt="">
+    </div>
+    <!-- Loader -->
+
+    <div class="page">
+         <!-- app-header -->
+         <header class="app-header">
+
+            <!-- Start::main-header-container -->
+            <div class="main-header-container container-fluid">
+
+                <!-- Start::header-content-left -->
+                <div class="header-content-left">
+
+                    <!-- Start::header-element (Logo) -->
+                    <div class="header-element">
+                        <div class="horizontal-logo">
+                            <a href="index.html" class="header-logo">
+                                <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-logo">
+                                <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-logo">
+                                <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-dark">
+                                <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-dark">
+                                <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-white">
+                                <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-white">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- End::header-element -->
+
+                    <!-- Start::header-element (Hamburger Toggle) -->
+                    <div class="header-element">
+                        <!-- Start::header-link -->
+                        <a aria-label="Hide Sidebar" class="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle" data-bs-toggle="sidebar" href="javascript:void(0);"><span></span></a>
+                        <!-- End::header-link -->
+                    </div>
+                    <!-- End::header-element -->
+
+                </div>
+                <!-- End::header-content-left -->
+
+                <!-- Start::header-content-right -->
+                <div class="header-content-right">
+
+                    <!-- Start::header-element (Inbox Chat / Pesan) -->
+                    <div class="header-element message-dropdown">
+                        <!-- Start::header-link|dropdown-toggle -->
+                        <a aria-label="Kotak Masuk Pesan" href="javascript:void(0);" class="header-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" id="messageDropdown2" aria-expanded="false">
+                            <i class="fe fe-message-square header-link-icon"></i>
+                            <span class="w-9 h-9 p-0 bg-primary rounded-pill header-icon-badge pulse pulse-primary" id="message-icon-badge"></span>
+                        </a>
+                        <!-- End::header-link|dropdown-toggle -->
+                        <!-- Start::main-header-dropdown -->
+                        <div class="main-header-dropdown dropdown-menu dropdown-menu-end shadow" data-popper-placement="none">
+                            <div class="p-3 bg-primary-transparent border-bottom">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <p class="mb-0 fs-15 fw-semibold text-dark"><i class="fe fe-message-square me-1 text-primary"></i>Pesan Masuk</p>
+                                    <span class="badge bg-primary text-white fs-11" id="message-data">3 Belum Dibaca</span>
+                                </div>
+                            </div>
+                            <ul class="list-unstyled mb-0" id="header-message-scroll" style="max-height: 280px; overflow-y: auto;">
+                                <li class="dropdown-item p-3 border-bottom">
+                                    <a href="chat.html?contact=Helpdesk%20Perizinan%20KKP" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                         <span class="avatar avatar-md bg-primary-transparent text-primary rounded-circle flex-shrink-0"><i class="fe fe-shield fs-16"></i></span>
+                                         <div class="w-100">
+                                            <div class="d-flex align-items-center justify-content-between mb-1">
+                                                <h6 class="mb-0 fw-semibold fs-13 text-dark">Helpdesk Perizinan KKP</h6>
+                                                <span class="text-muted fs-11">09:15</span>
+                                            </div>
+                                            <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Dokumen permohonan verifikasi kapal telah diterima sistem.</p>
+                                         </div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-item p-3 border-bottom">
+                                    <a href="chat.html?contact=Syahbandar%20Muara%20Baru" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                         <span class="avatar avatar-md bg-info-transparent text-info rounded-circle flex-shrink-0"><i class="fe fe-anchor fs-16"></i></span>
+                                         <div class="w-100">
+                                            <div class="d-flex align-items-center justify-content-between mb-1">
+                                                <h6 class="mb-0 fw-semibold fs-13 text-dark">Syahbandar Muara Baru</h6>
+                                                <span class="text-muted fs-11">Kemarin</span>
+                                            </div>
+                                            <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Konfirmasi jadwal tambat pangkalan PPS Nizam Zachman.</p>
+                                         </div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-item p-3">
+                                    <a href="chat.html?contact=Staf%20Operasional%20Kapal" class="text-decoration-none text-default d-flex align-items-start gap-2 w-100">
+                                         <span class="avatar avatar-md bg-success-transparent text-success rounded-circle flex-shrink-0"><i class="fe fe-user-check fs-16"></i></span>
+                                         <div class="w-100">
+                                            <div class="d-flex align-items-center justify-content-between mb-1">
+                                                <h6 class="mb-0 fw-semibold fs-13 text-dark">Staf Operasional Kapal</h6>
+                                                <span class="text-muted fs-11">2 hari lalu</span>
+                                            </div>
+                                            <p class="text-muted fw-normal fs-12 mb-0 text-truncate" style="max-width: 220px;">Data dokumen awak kapal KM. Bahari Nusantara telah diperbarui.</p>
+                                         </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="p-2 border-top text-center bg-light-subtle">
+                                <a href="chat.html" class="fs-12 text-primary fw-semibold text-decoration-none d-block">Lihat Semua Pesan</a>
+                            </div>
+                        </div>
+                        <!-- End::main-header-dropdown -->
+                    </div>
+                    <!-- End::header-element -->
+
+                    <!-- Start::header-element (Profile: Pengaturan Akun & Logout) -->
+                    <div class="header-element main-profile-user">
+                        <!-- Start::header-link|dropdown-toggle -->
+                        <a href="javascript:void(0);" class="header-link dropdown-toggle" id="mainHeaderProfile" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            <div class="d-flex align-items-center">
+                                <div class="me-xxl-2 me-0">
+                                    <img src="../assets/images/faces/9.jpg" alt="Foto Profil" width="34" height="34" class="rounded-circle border border-2 border-primary-subtle">
+                                </div>
+                                <div class="d-xxl-block d-none my-auto text-start">
+                                    <h6 class="fw-semibold mb-0 lh-1 fs-14 text-dark">Ir. H. Hendra Wijaya</h6>
+                                    <span class="op-7 fw-normal d-block fs-11 text-muted">Pemilik Usaha</span>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- End::header-link|dropdown-toggle -->
+                        <ul class="main-header-dropdown dropdown-menu pt-0 header-profile-dropdown dropdown-menu-end shadow" aria-labelledby="mainHeaderProfile">
+                            <li class="drop-heading d-xxl-none d-block border-bottom p-3">
+                                 <div class="text-center">
+                                    <h6 class="text-dark mb-0 fs-14 fw-semibold">Ir. H. Hendra Wijaya</h6>
+                                    <small class="text-muted fs-11">Pemilik Usaha</small>
+                                </div>
+                            </li>
+                            <li class="dropdown-item py-2">
+                                <a class="d-flex align-items-center w-100" href="profile.html">
+                                    <i class="fe fe-settings fs-16 me-2 text-primary"></i>Pengaturan Akun
+                                </a>
+                            </li>
+                            <li class="dropdown-divider my-1"></li>
+                            <li class="dropdown-item py-2">
+                                <a class="d-flex align-items-center w-100 text-danger" href="login.html">
+                                    <i class="fe fe-log-out fs-16 me-2 text-danger"></i>Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End::header-element -->
+
+                </div>
+                <!-- End::header-content-right -->
+
+            </div>
+            <!-- End::main-header-container -->
+
+        </header>
+        <!-- /app-header -->
+        <!-- Start::app-sidebar -->
+        <aside class="app-sidebar sticky" id="sidebar">
+
+            <!-- Start::main-sidebar-header -->
+            <div class="main-sidebar-header">
+                <a href="index.html" class="header-logo">
+                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-logo">
+                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-logo">
+                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-dark">
+                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-dark">
+                    <img src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="logo" class="desktop-white">
+                    <img src="../assets/images/brand-logos/SILAT-logo.png" alt="logo" class="toggle-white">
+                </a>
+            </div>
+            <!-- End::main-sidebar-header -->
+
+            <!-- Start::main-sidebar -->
+            <div class="main-sidebar" id="sidebar-scroll">
+                <nav class="main-menu-container nav nav-pills flex-column sub-open">
+                    <div class="slide-left" id="slide-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg>
+                    </div>
+
+                    <ul class="main-menu">
+                        <li class="slide__category"><span class="category-name">Menu Utama</span></li>
+                        <li class="slide">
+                            <a href="index.html" class="side-menu__item">
+                                <i class="fe fe-home side-menu__icon"></i>
+                                <span class="side-menu__label">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <i class="fe fe-briefcase side-menu__icon"></i>
+                                <span class="side-menu__label">Manajemen Usaha</span>
+                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide side-menu__label1"><a href="javascript:void(0)">Manajemen Usaha</a></li>
+                                <li class="slide"><a href="daftar-alokasi.html" class="side-menu__item">Daftar Alokasi</a></li>
+                                <li class="slide"><a href="javascript:void(0);" class="side-menu__item disabled opacity-50" tabindex="-1" aria-disabled="true" style="pointer-events: none; cursor: not-allowed;">Daftar Realisasi</a></li>
+                            </ul>
+                        </li>
+                        <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <i class="fe fe-file-text side-menu__icon"></i>
+                                <span class="side-menu__label">Daftar Permohonan</span>
+                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide side-menu__label1"><a href="javascript:void(0)">Daftar Permohonan</a></li>
+                                <li class="slide"><a href="verifikasi-izin-usaha.html" class="side-menu__item">Verifikasi Izin Usaha</a></li>
+                                <li class="slide"><a href="verifikasi-izin-kapal.html" class="side-menu__item">Verifikasi Izin Kapal</a></li>
+                                <li class="slide"><a href="verifikasi-izin-rumpon.html" class="side-menu__item">Verifikasi Izin Rumpon</a></li>
+                            </ul>
+                        </li>
+                        <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <i class="fe fe-credit-card side-menu__icon"></i>
+                                <span class="side-menu__label">Simulasi Pungutan</span>
+                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide side-menu__label1"><a href="javascript:void(0)">Simulasi Pungutan</a></li>
+                                <li class="slide"><a href="simulasi-ppp.html" class="side-menu__item">Simulasi PPP</a></li>
+                                <li class="slide"><a href="simulasi-pppka.html" class="side-menu__item">Simulasi PPPKA</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="slide-right" id="slide-right">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="m10.707 17.707 5.707-5.707-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path></svg>
+                    </div>
+                </nav>
+            </div>
+        </aside>
+        <!-- End::app-sidebar -->
+
+
+        <main class="main-content app-content">
+            <div class="container-fluid">
+                <!-- PAGE-HEADER -->
+                <div class="page-header">
+                  <h1 class="page-title my-auto">Form Permohonan SIPR Perubahan</h1>
+                  <div>
+                    <ol class="breadcrumb mb-0">
+                      <li class="breadcrumb-item">
+                        <a href="javascript:void(0)">Daftar Permohonan</a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">Form Permohonan SIPR Perubahan</li>
+                    </ol>
+                  </div>
+                </div>
+                <!-- PAGE-HEADER END -->
+
+
+                <!-- Top Context Bar -->
+                <div class="card custom-card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4 bg-white border rounded-3">
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 pb-3 mb-3 border-bottom">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="avatar avatar-md bg-warning-transparent text-warning rounded-circle">
+                                    <i class="ri-edit-2-line fs-20"></i>
+                                </div>
+                                <div>
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <h5 class="fw-bold text-dark mb-0 fs-16">BANDAR NELAYAN, PT</h5>
+                                        <span class="badge bg-warning text-white fs-11 px-2.5 py-1 rounded-pill">Permohonan Perubahan</span>
+                                    </div>
+                                    <span class="text-muted fs-12">Surat Izin Penempatan Rumpon (SIPR)</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge bg-light text-muted border px-3 py-2 fs-12 rounded-pill">
+                                    <i class="fe fe-calendar me-1 text-primary"></i>21 September 2026
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- 4 Clean Info Tiles -->
+                        <div class="row g-3">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                                <div class="context-info-tile">
+                                    <span class="context-info-label">Nomor Agenda</span>
+                                    <span class="context-info-value text-primary font-monospace">424218/2026</span>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                                <div class="context-info-tile">
+                                    <span class="context-info-label">Nomor NIB</span>
+                                    <span class="context-info-value font-monospace">8120003752084</span>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                                <div class="context-info-tile">
+                                    <span class="context-info-label">Nomor SIUP</span>
+                                    <span class="context-info-value font-monospace">01.02.01.0079.0282 <span class="text-muted fw-normal fs-11">(Rev. 40)</span></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-12">
+                                <div class="context-info-tile">
+                                    <span class="context-info-label">Skema PNBP</span>
+                                    <span class="context-info-value text-success">PRA PRODUKSI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Form Card with Stepper -->
+                <div class="card custom-card border-0 shadow-sm mb-4">
+                    <!-- Stepper Tab Navigation -->
+                    <div class="wizard-nav" id="wizardTabs" role="tablist">
+                        <button type="button" class="wizard-nav-item active" id="tab-step1" onclick="goToStep(1)">
+                            <div class="wizard-step-badge">1</div>
+                            <div>
+                                <div class="wizard-step-name">1. Dokumen Persyaratan</div>
+                                <div class="helper-text d-none d-sm-block">Upload Berkas &amp; Legalitas</div>
+                            </div>
+                        </button>
+                        <button type="button" class="wizard-nav-item" id="tab-step2" onclick="goToStep(2)">
+                            <div class="wizard-step-badge">2</div>
+                            <div>
+                                <div class="wizard-step-name">2. Spesifikasi Teknis</div>
+                                <div class="helper-text d-none d-sm-block">Konstruksi &amp; Material Rumpon</div>
+                            </div>
+                        </button>
+                        <button type="button" class="wizard-nav-item" id="tab-step3" onclick="goToStep(3)">
+                            <div class="wizard-step-badge">3</div>
+                            <div>
+                                <div class="wizard-step-name">3. Lokasi &amp; Pemanfaatan</div>
+                                <div class="helper-text d-none d-sm-block">Koordinat &amp; Estimasi Tangkapan</div>
+                            </div>
+                        </button>
+                        <button type="button" class="wizard-nav-item" id="tab-step4" onclick="goToStep(4)">
+                            <div class="wizard-step-badge">4</div>
+                            <div>
+                                <div class="wizard-step-name">4. Daftar Pernyataan</div>
+                                <div class="helper-text d-none d-sm-block">Pakta Integritas &amp; Kesanggupan</div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Form Content Body -->
+                    <div class="card-body p-4">
+                        <form id="rumponMasterForm" novalidate>
+
+                            <!-- ========================================== -->
+                            <!-- STEP 1: DOKUMEN PERSYARATAN -->
+                            <!-- ========================================== -->
+                            <div class="wizard-pane" id="step1-content">
+                                <!-- Dokumen Terintegrasi Sistem -->
+                                <h6 class="fs-12 text-uppercase fw-bold text-muted mb-2 tracking-wide">
+                                    <i class="fe fe-check-circle text-success me-1"></i>Dokumen Terintegrasi Sistem
+                                </h6>
+                                <div class="doc-upload-item verified">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="avatar avatar-sm bg-success text-white rounded-circle flex-shrink-0">
+                                            <i class="fe fe-file-text"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fs-13 fw-bold text-dark mb-0">Preview SIUP</h6>
+                                            <span class="helper-text text-muted">BANDAR NELAYAN, PT · No: 01.02.01.0079.0282 (Revisi 40)</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <a href="surat-preview.html?jenis=SIUP&pemohon=BANDAR%20NELAYAN%2C%20PT" target="_blank" class="btn btn-sm btn-outline-primary py-1 px-3 fs-12">
+                                            <i class="fe fe-eye me-1"></i>Lihat
+                                        </a>
+                                        <span class="badge bg-success-transparent text-success px-2 py-1 fs-11">Tersedia</span>
+                                    </div>
+                                </div>
+
+                                <div class="doc-upload-item verified mb-4">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="avatar avatar-sm bg-success text-white rounded-circle flex-shrink-0">
+                                            <i class="fe fe-check"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fs-13 fw-bold text-dark mb-0">Permohonan</h6>
+                                            <span class="helper-text text-muted">Nomor Agenda: 424218/2026 · Terhubung Otomatis</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="badge bg-success-transparent text-success px-2 py-1 fs-11">
+                                            <i class="fe fe-check me-1"></i>Otomatis
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Dokumen Wajib Diunggah -->
+                                <h6 class="fs-12 text-uppercase fw-bold text-muted mb-2 tracking-wide">
+                                    <i class="fe fe-upload-cloud text-primary me-1"></i>Dokumen Wajib Diunggah:
+                                </h6>
+
+                                <!-- 1. Rencana Pemanfaatan Rumpon * -->
+                                <div class="doc-upload-item">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <h6 class="fs-13 fw-bold text-dark mb-0">Rencana Pemanfaatan Rumpon Perubahan</h6>
+                                            <span class="text-danger fw-bold">*</span>
+                                        </div>
+                                        <span class="helper-text">Rincian rencana pemanfaatan perubahan rumpon (.pdf, max 5MB)</span>
+                                    </div>
+                                    <div style="max-width: 280px; width: 100%;">
+                                        <input class="form-control form-control-sm" type="file" accept=".pdf" required>
+                                    </div>
+                                </div>
+
+                                <!-- 2. Persetujuan Kesesuaian Kegiatan Pemanfaatan Ruang Laut * -->
+                                <div class="doc-upload-item">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <h6 class="fs-13 fw-bold text-dark mb-0">Persetujuan Kesesuaian Kegiatan Pemanfaatan Ruang Laut</h6>
+                                            <span class="text-danger fw-bold">*</span>
+                                        </div>
+                                        <span class="helper-text">Surat persetujuan ruang laut (PKKPRL) dari KKP (.pdf, max 5MB)</span>
+                                    </div>
+                                    <div style="max-width: 280px; width: 100%;">
+                                        <input class="form-control form-control-sm" type="file" accept=".pdf" required>
+                                    </div>
+                                </div>
+
+                                <!-- 3. NIB OSS * -->
+                                <div class="doc-upload-item">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <h6 class="fs-13 fw-bold text-dark mb-0">NIB OSS</h6>
+                                            <span class="text-danger fw-bold">*</span>
+                                        </div>
+                                        <span class="helper-text">Dokumen legalitas NIB OSS-RBA (.pdf, max 5MB)</span>
+                                    </div>
+                                    <div style="max-width: 280px; width: 100%;">
+                                        <input class="form-control form-control-sm" type="file" accept=".pdf" required>
+                                    </div>
+                                </div>
+
+                                <!-- 4. SIPR Terdaftar yang Masih Berlaku * (Wajib untuk Perubahan) -->
+                                <div class="doc-upload-item">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <h6 class="fs-13 fw-bold text-dark mb-0">SIPR Terdaftar yang Masih Berlaku</h6>
+                                            <span class="text-danger fw-bold">*</span>
+                                        </div>
+                                        <span class="helper-text">Salinan dokumen SIPR yang akan diubah data teknis/posisinya (.pdf, max 5MB)</span>
+                                    </div>
+                                    <div style="max-width: 280px; width: 100%;">
+                                        <input class="form-control form-control-sm" type="file" accept=".pdf" required>
+                                    </div>
+                                </div>
+
+                                <!-- 5. Surat Pernyataan Kebenaran Data * -->
+                                <div class="doc-upload-item">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <h6 class="fs-13 fw-bold text-dark mb-0">Surat Pernyataan Kebenaran Data</h6>
+                                            <span class="text-danger fw-bold">*</span>
+                                        </div>
+                                        <span class="helper-text">Surat pernyataan keabsahan data di atas meterai (.pdf, max 5MB)</span>
+                                    </div>
+                                    <div style="max-width: 280px; width: 100%;">
+                                        <input class="form-control form-control-sm" type="file" accept=".pdf" required>
+                                    </div>
+                                </div>
+
+                                <!-- 6. Surat Pernyataan Pakta Integritas * -->
+                                <div class="doc-upload-item">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <h6 class="fs-13 fw-bold text-dark mb-0">Surat Pernyataan Pakta Integritas</h6>
+                                            <span class="text-danger fw-bold">*</span>
+                                        </div>
+                                        <span class="helper-text">Pakta integritas penempatan rumpon ramah lingkungan (.pdf, max 5MB)</span>
+                                    </div>
+                                    <div style="max-width: 280px; width: 100%;">
+                                        <input class="form-control form-control-sm" type="file" accept=".pdf" required>
+                                    </div>
+                                </div>
+
+                                <!-- 7. Perjanjian Kerjasama antara Pemilik Kapal Pengangkut dengan Penangkap (Opsional) -->
+                                <div class="doc-upload-item mb-3">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <h6 class="fs-13 fw-semibold text-dark mb-0">Perjanjian Kerjasama antara Pemilik Kapal Pengangkut dengan Penangkap</h6>
+                                            <span class="badge bg-light text-muted fs-10">Opsional</span>
+                                        </div>
+                                        <span class="helper-text">Dokumen perjanjian kerjasama kemitraan operasional armada (.pdf, max 5MB)</span>
+                                    </div>
+                                    <div style="max-width: 280px; width: 100%;">
+                                        <input class="form-control form-control-sm" type="file" accept=".pdf">
+                                    </div>
+                                </div>
+
+                                <!-- Notes Alert -->
+                                <div class="alert alert-warning-transparent d-flex align-items-center p-3 rounded-3 mb-4" role="alert">
+                                    <i class="fe fe-alert-circle fs-18 me-2 text-warning flex-shrink-0"></i>
+                                    <div class="fs-12 text-muted">
+                                        <strong class="text-dark">Notes:</strong> Dokumen persyaratan harus dilengkapi untuk memenuhi permohonan izin kapal.
+                                    </div>
+                                </div>
+
+                                <!-- Step 1 Navigation Buttons -->
+                                <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                                    <a href="pengajuan-rumpon-perubahan.html" class="btn btn-outline-secondary px-3 py-2 fs-13">
+                                        <i class="fe fe-arrow-left me-1"></i>Kembali
+                                    </a>
+                                    <button type="button" class="btn btn-primary px-4 py-2 fs-13 fw-semibold" onclick="goToStep(2)">
+                                        Lanjut ke Spesifikasi Teknis<i class="fe fe-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- ========================================== -->
+                            <!-- STEP 2: SPESIFIKASI TEKNIS RUMPON -->
+                            <!-- ========================================== -->
+                            <div class="wizard-pane d-none" id="step2-content">
+                                <!-- Sub-Card 1: Karakteristik & Jenis Rumpon -->
+                                <div class="form-subcard">
+                                    <div class="form-subcard-title">
+                                        <i class="ri-settings-4-line"></i>1. Karakteristik &amp; Jenis Rumpon
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-4 col-12">
+                                            <label class="form-label-custom">Jenis Usaha <span class="text-danger">*</span></label>
+                                            <select class="form-select form-select-sm" required>
+                                                <option value="" selected>Pilih</option>
+                                                <option value="NON_NELAYAN_KECIL">NON NELAYAN KECIL</option>
+                                                <option value="NELAYAN_KECIL">NELAYAN KECIL</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <label class="form-label-custom">Jenis Rumpon <span class="text-danger">*</span></label>
+                                            <select class="form-select form-select-sm" required>
+                                                <option value="" selected>Pilih</option>
+                                                <option value="RUMPON MENETAP PERMUKAAN">RUMPON MENETAP PERMUKAAN</option>
+                                                <option value="RUMPON HANYUT">RUMPON HANYUT</option>
+                                                <option value="RUMPON MENETAP DASAR">RUMPON MENETAP DASAR</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <label class="form-label-custom">Kode Klasifikasi KBLI <span class="text-danger">*</span></label>
+                                            <select class="form-select form-select-sm" required>
+                                                <option value="" selected>Pilih</option>
+                                                <option value="03110">[03110] Penangkapan Ikan dan Biota Air Lainnya di Laut</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sub-Card 2: Struktur Pelampung & Pemberat -->
+                                <div class="form-subcard">
+                                    <div class="form-subcard-title">
+                                        <i class="ri-anchor-line"></i>2. Konstruksi Pelampung &amp; Pemberat
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6 col-12">
+                                            <label class="form-label-custom">Bahan Utama Pelampung <span class="text-danger">*</span></label>
+                                            <select class="form-select form-select-sm" required>
+                                                <option value="" selected>Pilih</option>
+                                                <option value="Bambu">Bambu</option>
+                                                <option value="Fiber Glass">Fiber Glass</option>
+                                                <option value="Gabus / Polystyrene">Gabus / Polystyrene</option>
+                                                <option value="Kayu">Kayu</option>
+                                                <option value="Logam">Logam</option>
+                                                <option value="Sintetik Lainnya">Sintetik Lainnya</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label class="form-label-custom">Volume Pelampung <span class="text-danger">*</span></label>
+                                            <div class="input-group input-group-sm">
+                                                <input type="number" step="0.01" class="form-control" placeholder="Contoh: 2.50" value="2.50" required>
+                                                <span class="input-group-text bg-light">M³</span>
+                                            </div>
+                                            <span class="helper-text">Kapasitas daya apung konstruksi</span>
+                                        </div>
+
+                                        <div class="col-md-6 col-12">
+                                            <label class="form-label-custom">Bahan Utama Pemberat <span class="text-danger">*</span></label>
+                                            <select class="form-select form-select-sm" required>
+                                                <option value="" selected>Pilih</option>
+                                                <option value="Batu">Batu</option>
+                                                <option value="Beton">Beton</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label class="form-label-custom">Berat Total Pemberat <span class="text-danger">*</span></label>
+                                            <div class="input-group input-group-sm">
+                                                <input type="number" step="1" class="form-control" placeholder="Contoh: 850" value="850" required>
+                                                <span class="input-group-text bg-light">KG</span>
+                                            </div>
+                                            <span class="helper-text">Bobot pemberat penahan dasar laut</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sub-Card 3: Tali Temali, Kedalaman & Alat Bantu Navigasi -->
+                                <div class="form-subcard">
+                                    <div class="form-subcard-title">
+                                        <i class="ri-radar-line"></i>3. Tali Temali, Kedalaman &amp; Alat Bantu Navigasi
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6 col-12">
+                                            <label class="form-label-custom">Bahan Tali Rumpon <span class="text-danger">*</span></label>
+                                            <select class="form-select form-select-sm" required>
+                                                <option value="" selected>Pilih</option>
+                                                <option value="Tali Bahan Alami">Tali Bahan Alami</option>
+                                                <option value="Tali Baja">Tali Baja</option>
+                                                <option value="Tali Sintetik">Tali Sintetik</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label class="form-label-custom">Panjang Tali Rumpon <span class="text-danger">*</span></label>
+                                            <div class="input-group input-group-sm">
+                                                <input type="number" step="1" class="form-control" placeholder="Contoh: 1200" value="1200" required>
+                                                <span class="input-group-text bg-light">Meter</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-12">
+                                            <label class="form-label-custom">Kedalaman Perairan Rumpon <span class="text-danger">*</span></label>
+                                            <div class="input-group input-group-sm">
+                                                <input type="number" step="1" class="form-control" placeholder="Contoh: 950" value="950" required>
+                                                <span class="input-group-text bg-light">Meter</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label class="form-label-custom">Bahan Tanda Pengenal Rumpon (Plat/Flag) <span class="text-danger">*</span></label>
+                                            <select class="form-select form-select-sm" required>
+                                                <option value="" selected>Pilih</option>
+                                                <option value="Papan Kayu">Papan Kayu</option>
+                                                <option value="Papan Logam">Papan Logam</option>
+                                                <option value="Papan Sintetik">Papan Sintetik</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-4 col-12">
+                                            <label class="form-label-custom">Bahan Alami Atraktor <span class="text-danger">*</span></label>
+                                            <select class="form-select form-select-sm" required>
+                                                <option value="" selected>Pilih</option>
+                                                <option value="Daun Kelapa">Daun Kelapa</option>
+                                                <option value="Rami">Rami</option>
+                                                <option value="Bahan Sintetik">Bahan Sintetik</option>
+                                                <option value="Bahan Alami Lainnya">Bahan Alami Lainnya</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <label class="form-label-custom">Atraktor Tambahan <span class="text-danger">*</span></label>
+                                            <select class="form-select form-select-sm" required>
+                                                <option value="" selected>Pilih</option>
+                                                <option value="Polyester">Polyester</option>
+                                                <option value="Jaring Bekas">Jaring Bekas</option>
+                                                <option value="Lainnya">Lainnya</option>
+                                                <option value="Tidak Ada">Tidak Ada</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <label class="form-label-custom">Bahan Radar Reflektor Rumpon <span class="text-danger">*</span></label>
+                                            <select class="form-select form-select-sm" required>
+                                                <option value="" selected>Pilih</option>
+                                                <option value="Alumunium">Alumunium</option>
+                                                <option value="Besi">Besi</option>
+                                                <option value="Logam Lainnya">Logam Lainnya</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2 Navigation Buttons -->
+                                <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                                    <button type="button" class="btn btn-outline-secondary px-3 py-2 fs-13" onclick="goToStep(1)">
+                                        <i class="fe fe-arrow-left me-1"></i>Sebelumnya
+                                    </button>
+                                    <button type="button" class="btn btn-primary px-4 py-2 fs-13 fw-semibold" onclick="goToStep(3)">
+                                        Lanjut ke Lokasi &amp; Pemanfaatan<i class="fe fe-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- ========================================== -->
+                            <!-- STEP 3: LOKASI & ESTIMASI PEMANFAATAN -->
+                            <!-- ========================================== -->
+                            <div class="wizard-pane d-none" id="step3-content">
+                                <!-- Sub-Card 1: Perizinan Ruang Laut & Titik Koordinat -->
+                                <div class="form-subcard">
+                                    <div class="form-subcard-title">
+                                        <i class="ri-map-pin-2-line"></i>1. Legalitas Ruang Laut &amp; Titik Koordinat Geografis (Perubahan)
+                                    </div>
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-md-6 col-12">
+                                            <label class="form-label-custom">Nomor Surat PKKPRL <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control form-control-sm font-monospace" placeholder="Contoh: PKKPRL/2026/089/KKP" value="PKKPRL/2026/089/KKP" required>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label class="form-label-custom">Tanggal Terbit PKKPRL <span class="text-danger">*</span></label>
+                                            <input type="date" class="form-control form-control-sm" value="2026-08-15" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="p-3 bg-light rounded-3 border">
+                                        <div class="mb-3">
+                                            <span class="fs-12 fw-bold text-dark d-block">Titik Koordinat Penempatan Rumpon Baru/Perubahan (Geografis)</span>
+                                            <span class="text-muted fs-11">Nelayan cukup input angka biasa. Sistem otomatis membaca dan menyusun format derajat astronomis (° ' '').</span>
+                                        </div>
+
+                                        <div class="row g-3">
+                                            <!-- Garis Lintang (Latitude) -->
+                                            <div class="col-lg-6 col-12">
+                                                <label class="form-label-custom d-flex justify-content-between">
+                                                    <span>Garis Lintang (Latitude) <span class="text-danger">*</span></span>
+                                                    <span class="text-muted fs-11">Derajat ° · Menit ' · Detik ''</span>
+                                                </label>
+                                                <div class="input-group input-group-sm">
+                                                    <select class="form-select text-center fw-bold bg-white" id="latDir" style="max-width: 80px;" onchange="updateCoordinatePreview()">
+                                                        <option value="LS" selected>LS</option>
+                                                        <option value="LU">LU</option>
+                                                    </select>
+                                                    <input type="number" step="1" min="0" max="90" class="form-control text-center font-monospace" id="latDeg" placeholder="05" value="05" oninput="updateCoordinatePreview()" required>
+                                                    <span class="input-group-text bg-light text-muted fw-bold">°</span>
+                                                    <input type="number" step="1" min="0" max="59" class="form-control text-center font-monospace" id="latMin" placeholder="45" value="45" oninput="updateCoordinatePreview()" required>
+                                                    <span class="input-group-text bg-light text-muted fw-bold">'</span>
+                                                    <input type="number" step="0.1" min="0" max="59.99" class="form-control text-center font-monospace" id="latSec" placeholder="30.2" value="30.2" oninput="updateCoordinatePreview()" required>
+                                                    <span class="input-group-text bg-light text-muted fw-bold">''</span>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between mt-2 pt-1 border-top border-light">
+                                                    <span class="text-muted fs-11"><i class="ri-radar-line me-1 text-primary"></i>Sistem membaca:</span>
+                                                    <span class="badge bg-primary-transparent text-primary font-monospace fs-11 px-2 py-1" id="previewLatitude">
+                                                        05° 45' 30.2'' LS
+                                                    </span>
+                                                </div>
+                                                <input type="hidden" name="latitude" id="fullLatitude" value="05° 45' 30.2'' LS">
+                                            </div>
+
+                                            <!-- Garis Bujur (Longitude) -->
+                                            <div class="col-lg-6 col-12">
+                                                <label class="form-label-custom d-flex justify-content-between">
+                                                    <span>Garis Bujur (Longitude) <span class="text-danger">*</span></span>
+                                                    <span class="text-muted fs-11">Derajat ° · Menit ' · Detik ''</span>
+                                                </label>
+                                                <div class="input-group input-group-sm">
+                                                    <select class="form-select text-center fw-bold bg-white" id="lonDir" style="max-width: 80px;" onchange="updateCoordinatePreview()">
+                                                        <option value="BT" selected>BT</option>
+                                                        <option value="BB">BB</option>
+                                                    </select>
+                                                    <input type="number" step="1" min="0" max="180" class="form-control text-center font-monospace" id="lonDeg" placeholder="134" value="134" oninput="updateCoordinatePreview()" required>
+                                                    <span class="input-group-text bg-light text-muted fw-bold">°</span>
+                                                    <input type="number" step="1" min="0" max="59" class="form-control text-center font-monospace" id="lonMin" placeholder="22" value="22" oninput="updateCoordinatePreview()" required>
+                                                    <span class="input-group-text bg-light text-muted fw-bold">'</span>
+                                                    <input type="number" step="0.1" min="0" max="59.99" class="form-control text-center font-monospace" id="lonSec" placeholder="18.5" value="18.5" oninput="updateCoordinatePreview()" required>
+                                                    <span class="input-group-text bg-light text-muted fw-bold">''</span>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between mt-2 pt-1 border-top border-light">
+                                                    <span class="text-muted fs-11"><i class="ri-radar-line me-1 text-primary"></i>Sistem membaca:</span>
+                                                    <span class="badge bg-primary-transparent text-primary font-monospace fs-11 px-2 py-1" id="previewLongitude">
+                                                        134° 22' 18.5'' BT
+                                                    </span>
+                                                </div>
+                                                <input type="hidden" name="longitude" id="fullLongitude" value="134° 22' 18.5'' BT">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sub-Card 2: Frekuensi Operasi & Estimasi Tangkapan -->
+                                <div class="form-subcard">
+                                    <div class="form-subcard-title">
+                                        <i class="ri-line-chart-line"></i>2. Frekuensi Operasi &amp; Estimasi Hasil Tangkapan
+                                    </div>
+                                    <div class="row g-3 mb-4">
+                                        <div class="col-md-6 col-12">
+                                            <label class="form-label-custom">Estimasi Frekuensi Setting per Trip <span class="text-danger">*</span></label>
+                                            <div class="input-group input-group-sm">
+                                                <input type="number" class="form-control" value="15" required>
+                                                <span class="input-group-text bg-light">Kali Setting / Trip</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label class="form-label-custom">Estimasi Frekuensi Trip per Tahun <span class="text-danger">*</span></label>
+                                            <div class="input-group input-group-sm">
+                                                <input type="number" class="form-control" value="12" required>
+                                                <span class="input-group-text bg-light">Trip / Tahun</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Table Estimasi Hasil Tangkapan per Trip -->
+                                    <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between mb-2 gap-1">
+                                        <h6 class="fs-13 fw-bold text-dark mb-0">Rincian Estimasi Hasil Tangkapan per Trip</h6>
+                                        <span class="text-primary fs-11 fst-italic">*) Untuk ikan-ikan dengan ukuran besar seperti tuna sirip kuning, tuna sirip biru, albakor, tuna mata besar dan jenis-jenis ikan ukuran besar lainnya.</span>
+                                    </div>
+                                    <div class="table-responsive mb-2">
+                                        <table class="table table-bordered align-middle table-sm mb-0 text-nowrap" id="tableEstimasiTangkapan">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th style="width: 45%;">Jenis Ikan Target Utama</th>
+                                                    <th style="width: 25%;">Estimasi Bobot (Kg) <span class="text-danger">*</span></th>
+                                                    <th style="width: 25%;">Estimasi Jumlah (Ekor) <span class="text-danger">*</span></th>
+                                                    <th style="width: 5%;" class="text-center">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <input type="text" class="form-control form-control-sm" value="Tuna Sirip Kuning (Yellowfin Tuna)">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control form-control-sm input-catch-kg" value="12500" oninput="calculateTotalCatch()">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control form-control-sm" value="250">
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <button type="button" class="btn btn-sm btn-icon btn-outline-danger" onclick="removeCatchRow(this)">
+                                                            <i class="fe fe-trash-2"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="text" class="form-control form-control-sm" value="Cakalang (Skipjack Tuna)">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control form-control-sm input-catch-kg" value="18000" oninput="calculateTotalCatch()">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control form-control-sm" value="3600">
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <button type="button" class="btn btn-sm btn-icon btn-outline-danger" onclick="removeCatchRow(this)">
+                                                            <i class="fe fe-trash-2"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="text" class="form-control form-control-sm" value="Tongkol Lisong / Abu-abu">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control form-control-sm input-catch-kg" value="8500" oninput="calculateTotalCatch()">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control form-control-sm" value="4250">
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <button type="button" class="btn btn-sm btn-icon btn-outline-danger" onclick="removeCatchRow(this)">
+                                                            <i class="fe fe-trash-2"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot class="bg-light fw-bold text-dark">
+                                                <tr>
+                                                    <td>TOTAL ESTIMASI HASIL TANGKAPAN:</td>
+                                                    <td colspan="3" class="text-primary fs-13" id="labelTotalCatch">
+                                                        39,000 Kg / Trip Operasi
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <button type="button" class="btn btn-sm btn-outline-primary" id="btnAddCatchRow" onclick="addCatchRow()">
+                                            <i class="fe fe-plus me-1"></i>Tambah Baris Komoditas (Maks. 5)
+                                        </button>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <span class="badge bg-light text-muted border fs-11" id="catchRowCountBadge">3/5 Baris</span>
+                                            <span class="text-muted fs-11"><i class="ri-information-line me-1 text-info"></i>*) Maksimal 5 jenis komoditas</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3 Navigation Buttons -->
+                                <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                                    <button type="button" class="btn btn-outline-secondary px-3 py-2 fs-13" onclick="goToStep(2)">
+                                        <i class="fe fe-arrow-left me-1"></i>Sebelumnya
+                                    </button>
+                                    <button type="button" class="btn btn-primary px-4 py-2 fs-13 fw-semibold" onclick="goToStep(4)">
+                                        Lanjut ke Daftar Pernyataan<i class="fe fe-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- ========================================== -->
+                            <!-- STEP 4: DAFTAR PERNYATAAN -->
+                            <!-- ========================================== -->
+                            <div class="wizard-pane d-none" id="step4-content">
+                                <!-- Sub-Card 1: Ringkasan Permohonan SIPR Perubahan -->
+                                <div class="form-subcard">
+                                    <div class="form-subcard-title">
+                                        <i class="ri-file-list-3-line"></i>1. Ringkasan Permohonan SIPR Perubahan
+                                    </div>
+                                    <div class="row g-3 text-muted fs-12">
+                                        <div class="col-md-4 col-sm-6">
+                                            <span class="d-block text-muted mb-1">Perusahaan Pemohon:</span>
+                                            <strong class="text-dark fs-13">BANDAR NELAYAN, PT</strong>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <span class="d-block text-muted mb-1">Jenis Rumpon:</span>
+                                            <strong class="text-dark fs-13">RUMPON MENETAP PERMUKAAN</strong>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <span class="d-block text-muted mb-1">Legalitas PKKPRL:</span>
+                                            <strong class="text-primary fs-13">PKKPRL/2026/089/KKP</strong>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <span class="d-block text-muted mb-1">Koordinat Penempatan:</span>
+                                            <strong class="text-dark font-monospace fs-12" id="summaryKoordinat">05° 45' 30.2'' LS / 134° 22' 18.5'' BT</strong>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <span class="d-block text-muted mb-1">Konstruksi Utama:</span>
+                                            <strong class="text-dark fs-12">Pelampung Fiber Glass · Pemberat Beton 850 KG</strong>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <span class="d-block text-muted mb-1">Total Estimasi Tangkapan:</span>
+                                            <strong class="text-success fs-13">39,000 Kg / Trip (12 Trip/Tahun)</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sub-Card 2: Daftar Pernyataan -->
+                                <div class="form-subcard">
+                                    <div class="form-subcard-title">
+                                        <i class="ri-shield-check-line"></i>2. Daftar Pernyataan
+                                    </div>
+
+                                    <!-- Paragraf 1: Pernyataan Kebenaran Data dan Informasi -->
+                                    <div class="p-3 bg-light rounded-3 border mb-3">
+                                        <p class="fs-13 text-dark mb-0 lh-base text-justify">
+                                            Dengan ini menyatakan dengan sesungguhnya, bahwa <strong>DATA DAN INFORMASI</strong> yang diisikan dalam aplikasi untuk memperoleh SIPR dan/atau disampaikan secara tertulis, dan/atau dicantumkan dan/atau dilampirkan dalam persyaratan untuk memperoleh SIPR adalah benar adanya. Dalam hal terdapat kesalahan <strong>DATA DAN INFORMASI</strong> yang diisikan dalam aplikasi untuk memperoleh SIPR dan/atau disampaikan dan/atau dicantumkan dan atau dilampirkan dalam persyaratan untuk memperoleh SIPR, saya menyadari dan menerima tanpa tuntutan bahwa SIPR yang saya peroleh <strong>GUGUR</strong> demi hukum. Dalam hal SIPR gugur demi hukum seperti di atas, tidak membebaskan kami dari kewajiban membongkar rumpon yang telah dipasang. Demikian Surat Pernyataan Kebenaran Data dan Informasi ini dibuat dalam keadaan sadar dan tanpa ada paksaan dari pihak manapun.
+                                        </p>
+                                    </div>
+
+                                    <!-- Paragraf 2: Pernyataan Kesanggupan & Butir 1-9 -->
+                                    <div class="p-3 bg-light rounded-3 border mb-3">
+                                        <p class="fs-13 text-dark fw-semibold mb-2">
+                                            Dengan ini menyatakan dengan sesungguhnya, bahwa dalam hal permohonan untuk mendapatkan SIPR disetujui, maka menyatakan kesanggupan sebagai berikut:
+                                        </p>
+                                        <ol class="ps-3 mb-3 fs-12 text-dark lh-base">
+                                            <li class="mb-2">Membuat dan menempatkan radar reflektor dilakukan oleh pemilik SIPR.</li>
+                                            <li class="mb-2">Memasang radar reflektor di atas permukaan air agar dapat dideteksi oleh radar dan sesuai dengan Peraturan Menteri Kelautan dan Perikanan Nomor 36 Tahun 2023.</li>
+                                            <li class="mb-2">Membuat dan menempatkan Tanda Pengenal Rumpon dilakukan oleh pemilik SIPR.</li>
+                                            <li class="mb-2">Menyediakan tanda pengenal rumpon dibuat dari bahan kuat dan awet berukuran minimal tinggi 40 (empat puluh) centimeter dan lebar 60 (enam puluh) centimeter berwarna dasar kontras dengan warna perairan yang dipasang tegak di atas pelampung Rumpon, dan tanda pengenal Rumpon memuat informasi nama pemilik, nomor Surat Izin Penempatan Rumpon, dan koordinat titik pusat (lintang dan bujur) dari lokasi penempatan Rumpon.</li>
+                                            <li class="mb-2">Menggunakan pelampung yang terbuat dari bahan alami atau bahan buatan yang dipasang terapung secara horizontal di permukaan air, diberi warna yang kontras dan bersifat awet, dan dibuat dalam bentuk struktur terapung yang tidak dapat ditempati/dihuni.</li>
+                                            <li class="mb-2">Menggunakan tali tambat/rumpon terbuat dari bahan yang tidak mudah rusak dan kuat menahan rangkaian Rumpon.</li>
+                                            <li class="mb-2">Menggunakan pemikat/atraktor terbuat dari bahan alami dan bahan buatan yang bukan merupakan Alat Penangkapan Ikan atau bagian dari Alat Penangkapan Ikan.</li>
+                                            <li class="mb-2">Menggunakan pemberat mempunyai daya tenggelam yang dapat menahan rangkaian rumpon pada posisinya.</li>
+                                            <li class="mb-2">Melakukan pembongkaran rumpon yang telah dipasang dengan biaya sendiri.</li>
+                                        </ol>
+                                        <p class="fs-13 text-dark mb-0 fst-italic">
+                                            Demikian Surat Pernyataan Kebenaran Data dan Informasi ini dibuat dalam keadaan sadar dan tanpa ada paksaan dari pihak manapun.
+                                        </p>
+                                    </div>
+
+                                    <!-- Checkbox Saya Setuju -->
+                                    <div class="form-check p-3 bg-primary-transparent border border-primary-subtle rounded-3 mb-0">
+                                        <input class="form-check-input ms-0 me-3" type="checkbox" id="checkSayaSetuju" required checked>
+                                        <label class="form-check-label fs-14 fw-bold text-dark cursor-pointer" for="checkSayaSetuju">
+                                            Saya Setuju
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Step 4 Navigation Buttons -->
+                                <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                                    <button type="button" class="btn btn-outline-secondary px-3 py-2 fs-13" onclick="goToStep(3)">
+                                        <i class="fe fe-arrow-left me-1"></i>Sebelumnya
+                                    </button>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <button type="button" class="btn btn-outline-primary px-3 py-2 fs-13" onclick="saveDraft()">
+                                            <i class="fe fe-save me-1"></i>Simpan Draft
+                                        </button>
+                                        <button type="submit" class="btn btn-warning text-white px-4 py-2 fs-13 fw-semibold shadow-sm" id="btnSubmitSIPR">
+                                            <i class="fe fe-send me-2"></i>Kirim Permohonan SIPR Perubahan
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer Start -->
+    <footer class="footer mt-auto py-3 text-center">
+        <div class="container">
+            <span class=""> Copyright © 2026 <a href="https://perizinan.kkp.go.id/" target="_blank" rel="noopener noreferrer">Digitalisasi Perizinan</a>, <a href="https://kkp.go.id/unit-kerja/djpt.html" target="_blank" rel="noopener noreferrer">Direktorat Jenderal Perikanan Tangkap</a> . All rights reserved.
+            </span>
+        </div>
+    </footer>
+    <!-- Footer End -->
+    
+    <!-- Scroll To Top -->
+    <div class="scrollToTop">
+        <span class="arrow"><i class="ri-arrow-up-s-fill fs-20"></i></span>
+    </div>
+    <div id="responsive-overlay"></div>
+    <!-- Scroll To Top -->
+
+    <!-- Popper JS -->
+    <script src="../assets/libs/@popperjs/core/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Defaultmenu JS -->
+    <script src="../assets/js/defaultmenu.min.js"></script>
+
+    <!-- Node Waves JS-->
+    <script src="../assets/libs/node-waves/waves.min.js"></script>
+
+    <!-- Sticky JS -->
+    <script src="../assets/js/sticky.js"></script>
+
+    <!-- Simplebar JS -->
+    <script src="../assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../assets/js/simplebar.js"></script>
+
+    <!-- Color Picker JS -->
+    <script src="../assets/libs/@simonwep/pickr/pickr.es5.min.js"></script>
+
+
+    <!-- SweetAlert2 JS -->
+    <script src="../assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <script>
+        let currentStep = 1;
+
+        function formatDegreePad(val, length) {
+            if (val === '' || val === null || val === undefined) return '';
+            let str = val.toString().trim();
+            if (!str) return '';
+            let parts = str.split('.');
+            let intPart = parts[0].padStart(length, '0');
+            return parts.length > 1 ? intPart + '.' + parts[1] : intPart;
+        }
+
+        function updateCoordinatePreview() {
+            const latDir = document.getElementById('latDir')?.value || 'LS';
+            const latDeg = document.getElementById('latDeg')?.value || '';
+            const latMin = document.getElementById('latMin')?.value || '';
+            const latSec = document.getElementById('latSec')?.value || '';
+
+            const lonDir = document.getElementById('lonDir')?.value || 'BT';
+            const lonDeg = document.getElementById('lonDeg')?.value || '';
+            const lonMin = document.getElementById('lonMin')?.value || '';
+            const lonSec = document.getElementById('lonSec')?.value || '';
+
+            let latFormatted = '-';
+            if (latDeg !== '' || latMin !== '' || latSec !== '') {
+                const degStr = formatDegreePad(latDeg, 2) || '00';
+                const minStr = formatDegreePad(latMin, 2) || '00';
+                const secStr = latSec !== '' ? (parseFloat(latSec) < 10 && !latSec.toString().startsWith('0') ? '0' + latSec : latSec) : '00.0';
+                latFormatted = `${degStr}° ${minStr}' ${secStr}'' ${latDir}`;
+            }
+
+            let lonFormatted = '-';
+            if (lonDeg !== '' || lonMin !== '' || lonSec !== '') {
+                const degStr = formatDegreePad(lonDeg, 3) || '000';
+                const minStr = formatDegreePad(lonMin, 2) || '00';
+                const secStr = lonSec !== '' ? (parseFloat(lonSec) < 10 && !lonSec.toString().startsWith('0') ? '0' + lonSec : lonSec) : '00.0';
+                lonFormatted = `${degStr}° ${minStr}' ${secStr}'' ${lonDir}`;
+            }
+
+            const previewLat = document.getElementById('previewLatitude');
+            const fullLat = document.getElementById('fullLatitude');
+            if (previewLat) previewLat.textContent = latFormatted;
+            if (fullLat) fullLat.value = latFormatted;
+
+            const previewLon = document.getElementById('previewLongitude');
+            const fullLon = document.getElementById('fullLongitude');
+            if (previewLon) previewLon.textContent = lonFormatted;
+            if (fullLon) fullLon.value = lonFormatted;
+
+            const summaryKoord = document.getElementById('summaryKoordinat');
+            if (summaryKoord) {
+                summaryKoord.textContent = latFormatted + ' / ' + lonFormatted;
+            }
+        }
+
+        function goToStep(stepNumber) {
+            if (stepNumber < 1 || stepNumber > 4) return;
+
+            // Hide all panes
+            for (let i = 1; i <= 4; i++) {
+                const pane = document.getElementById('step' + i + '-content');
+                const tab = document.getElementById('tab-step' + i);
+                if (pane) pane.classList.add('d-none');
+                if (tab) {
+                    tab.classList.remove('active');
+                    if (i < stepNumber) {
+                        tab.classList.add('completed');
+                    } else {
+                        tab.classList.remove('completed');
+                    }
+                }
+            }
+
+            // Show selected pane
+            const currentPane = document.getElementById('step' + stepNumber + '-content');
+            const currentTab = document.getElementById('tab-step' + stepNumber);
+            if (currentPane) currentPane.classList.remove('d-none');
+            if (currentTab) currentTab.classList.add('active');
+
+            if (stepNumber === 4) {
+                updateCoordinatePreview();
+            }
+
+            currentStep = stepNumber;
+            window.scrollTo({ top: 120, behavior: 'smooth' });
+        }
+
+        function calculateTotalCatch() {
+            const inputs = document.querySelectorAll('.input-catch-kg');
+            let total = 0;
+            inputs.forEach(inp => {
+                const val = parseFloat(inp.value) || 0;
+                total += val;
+            });
+            const formatted = new Intl.NumberFormat('id-ID').format(total);
+            const label = document.getElementById('labelTotalCatch');
+            if (label) {
+                label.textContent = formatted + ' Kg / Trip Operasi';
+            }
+        }
+
+        function updateCatchRowCount() {
+            const tbody = document.querySelector('#tableEstimasiTangkapan tbody');
+            const btn = document.getElementById('btnAddCatchRow');
+            const countBadge = document.getElementById('catchRowCountBadge');
+            if (!tbody) return;
+            const count = tbody.children.length;
+            if (countBadge) countBadge.textContent = `${count}/5 Baris`;
+            if (btn) {
+                if (count >= 5) {
+                    btn.disabled = true;
+                    btn.classList.add('disabled');
+                } else {
+                    btn.disabled = false;
+                    btn.classList.remove('disabled');
+                }
+            }
+        }
+
+        function addCatchRow() {
+            const tbody = document.querySelector('#tableEstimasiTangkapan tbody');
+            if (!tbody) return;
+            if (tbody.children.length >= 5) {
+                if (typeof Swal !== 'undefined') {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Batas Maksimal 5 Baris',
+                        text: 'Rincian estimasi hasil tangkapan dibatasi maksimal 5 komoditas/baris.',
+                        confirmButtonText: 'OK',
+                        customClass: { confirmButton: 'btn btn-primary' }
+                    });
+                } else {
+                    alert('Maksimal 5 baris komoditas.');
+                }
+                return;
+            }
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><input type="text" class="form-control form-control-sm" placeholder="Nama Komoditas Target"></td>
+                <td><input type="number" class="form-control form-control-sm input-catch-kg" placeholder="0" oninput="calculateTotalCatch()"></td>
+                <td><input type="number" class="form-control form-control-sm" placeholder="0"></td>
+                <td class="text-center">
+                    <button type="button" class="btn btn-sm btn-icon btn-outline-danger" onclick="removeCatchRow(this)">
+                        <i class="fe fe-trash-2"></i>
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+            updateCatchRowCount();
+        }
+
+        function removeCatchRow(button) {
+            const row = button.closest('tr');
+            if (row) {
+                row.remove();
+                calculateTotalCatch();
+                updateCatchRowCount();
+            }
+        }
+
+        function saveDraft() {
+            if (typeof Swal !== 'undefined') {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Draft Tersimpan',
+                    text: 'Data formulir SIPR Perubahan berhasil disimpan sebagai draf lokal Anda.',
+                    confirmButtonText: 'OK',
+                    customClass: { confirmButton: 'btn btn-primary' }
+                });
+            } else {
+                alert('Data formulir SIPR Perubahan berhasil disimpan sebagai draf.');
+            }
+        }
+
+        document.getElementById('rumponMasterForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (typeof Swal !== 'undefined') {
+                Swal.fire({
+                    title: 'Konfirmasi Pengiriman',
+                    text: 'Apakah Anda yakin ingin mengirim permohonan SIPR Perubahan ini ke Kementerian Kelautan dan Perikanan?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya, Kirim Permohonan',
+                    cancelButtonText: 'Batal',
+                    customClass: {
+                        confirmButton: 'btn btn-warning text-white px-4 me-2',
+                        cancelButton: 'btn btn-outline-secondary px-4'
+                    },
+                    buttonsStyling: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Permohonan Berhasil Dikirim!',
+                            html: '<p class="text-muted fs-13 mb-2">Permohonan SIPR Perubahan dengan No. Agenda <strong>424218/2026</strong> telah berhasil terkirim.</p><p class="text-muted fs-12 mb-0">Tim Verifikator KKP akan melakukan verifikasi berkas teknis dalam waktu 3-5 hari kerja.</p>',
+                            icon: 'success',
+                            confirmButtonText: 'Lihat Status di Verifikasi Izin Rumpon',
+                            customClass: { confirmButton: 'btn btn-primary px-4' }
+                        }).then(() => {
+                            window.location.href = 'verifikasi-izin-rumpon.html';
+                        });
+                    }
+                });
+            } else {
+                alert('Permohonan SIPR Perubahan dengan No. Agenda 424218/2026 berhasil dikirim!');
+                window.location.href = 'verifikasi-izin-rumpon.html';
+            }
+        });
+    </script>
+</body>
+</html>
