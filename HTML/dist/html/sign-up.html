@@ -1,392 +1,304 @@
 <!DOCTYPE html>
 <html lang="id" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
-
 <head>
-
-    <!-- Meta Data -->
     <meta charset="UTF-8">
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Daftar Akun | SILAT - Ditjen Perikanan Tangkap KKP</title>
-    <meta name="description" content="Sistem Informasi Izin Layanan Cepat (SILAT) - Aplikasi Layanan Perizinan Berusaha (terintegrasi dengan OSS) untuk kapal ukuran > 5 GT dan beroperasi diatas 12 mil.">
-    <meta name="Author" content="Direktorat Jenderal Perikanan Tangkap">
-
-    <!-- Favicon -->
+    <title>Pendaftaran Pengguna | SILAT</title>
+    <meta name="description" content="Pendaftaran pengguna SILAT bagi pelaku usaha yang belum memiliki SIUP">
     <link rel="icon" href="../assets/images/brand-logos/favicon.ico" type="image/x-icon">
-
-    <!-- Main Theme Js -->
     <script src="../assets/js/authentication-main.js"></script>
-
-    <!-- Bootstrap Css -->
-    <link id="style" href="../assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Style Css -->
+    <link href="../assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/styles.min.css" rel="stylesheet">
-
-    <!-- Icons Css -->
     <link href="../assets/css/icons.min.css" rel="stylesheet">
-
     <style>
         body {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background-color: #f0f4f9;
+            min-height: 100dvh;
+            margin: 0;
+            background: linear-gradient(135deg, #f4f8ff 0%, #eefaf6 100%);
         }
 
-        .signup-page {
+        .registration-header {
+            flex: 0 0 auto;
+            margin: 1rem 0 0.25rem;
+            text-align: center;
+        }
+
+        .registration-logo {
+            width: min(100%, 150px);
+            height: 36px;
+            object-fit: contain;
+        }
+
+        .registration-title {
+            margin: 0.2rem 0 0;
+            color: #183153;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .registration-main {
+            display: flex;
             flex: 1 0 auto;
-            display: flex;
+            min-width: 0;
             align-items: center;
-            background: radial-gradient(circle at 10% 20%, rgba(13, 110, 253, 0.05) 0%, rgba(240, 244, 249, 1) 90%);
+            justify-content: center;
+            padding: 0.5rem 1rem 0.75rem;
         }
 
-        .signup-shell {
-            overflow: hidden;
-            max-width: 1080px;
-            min-height: 640px;
-            border: 0;
-            border-radius: 1.25rem;
-            box-shadow: 0 24px 60px rgba(18, 38, 63, 0.12);
-            background: #ffffff;
+        .registration-panel {
+            width: min(100%, 820px);
+            padding: 1.15rem 1.35rem;
+            border: 1px solid rgba(220, 229, 239, 0.9);
+            border-radius: 0.8rem;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 6px 20px rgba(31, 51, 73, 0.07);
         }
 
-        .signup-form-panel {
-            display: flex;
+        .registration-card-title {
+            margin: 0;
+            color: #183153;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .registration-description {
+            margin: 0.15rem 0 0.65rem;
+            color: #6c757d;
+            font-size: 0.8rem;
+        }
+
+        .registration-section + .registration-section {
+            margin-top: 0.55rem;
+        }
+
+        .registration-section-title {
+            margin: 0 0 0.2rem;
+            padding: 0 0 0.25rem;
+            border-bottom: 1px solid #e1e8f0;
+            color: #285477;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .account-rows {
+            margin: 0;
+        }
+
+        .account-row {
+            display: grid;
+            grid-template-columns: minmax(260px, 280px) minmax(0, 1fr);
+            min-height: 38px;
             align-items: center;
-            padding: 3rem 2.75rem;
-            background: #ffffff;
+            border-bottom: 1px solid #edf1f5;
+            color: #344054;
         }
 
-        .signup-form-content {
+        .account-row label {
+            margin: 0;
+            padding: 0.25rem 0.6rem 0.25rem 0;
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+
+        .required-mark {
+            color: #c82333;
+        }
+
+        .account-row .form-control {
             width: 100%;
-            max-width: 460px;
-            margin: 0 auto;
+            min-width: 0;
+            min-height: 32px;
+            margin: 0.2rem 0;
+            padding: 0.3rem 0.65rem;
+            border: 1px solid #d7e0ea;
+            border-radius: 0.45rem;
+            background-color: #fff;
+            color: #183153;
+            font-size: 0.78rem;
+            line-height: 1.2;
+            box-shadow: inset 0 1px 2px rgba(31, 51, 73, 0.025);
         }
 
-        .signup-logo {
-            display: block;
-            width: 96px;
-            height: auto;
-            margin-bottom: 1.25rem;
+        .account-row .form-control:focus {
+            border-color: #6fa7d1;
+            box-shadow: 0 0 0 0.18rem rgba(13, 91, 153, 0.12);
         }
 
-        .signup-hero-panel {
-            min-height: 640px;
-            position: relative;
-            background: linear-gradient(145deg, rgba(8, 77, 96, 0.94) 0%, rgba(13, 110, 253, 0.88) 100%), url('../assets/images/brand-logos/login-page.png') center/cover no-repeat;
+        .registration-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.65rem;
         }
 
-        .bg-white-transparent {
-            background-color: rgba(255, 255, 255, 0.14) !important;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+        .registration-actions .btn {
+            min-width: 210px;
+            padding: 0.45rem 1.2rem;
+            border: 0;
+            border-radius: 0.5rem;
+            background: #0d5b99;
+            font-size: 0.82rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(13, 91, 153, 0.18);
         }
 
-        .text-white-75 {
-            color: rgba(255, 255, 255, 0.82) !important;
+        .registration-actions .btn:hover {
+            background: #0a4f86;
         }
 
-        .border-white-15 {
-            border-color: rgba(255, 255, 255, 0.18) !important;
+        .registration-status {
+            min-height: 1rem;
+            margin: 0.2rem 0 0;
+            color: #b02a37;
+            font-size: 0.75rem;
+            text-align: center;
         }
 
-        .form-control:focus, .input-group-text:focus-within {
-            box-shadow: none;
+        .registration-footer {
+            flex: 0 0 auto;
+            padding: 0.35rem 0.75rem 0.5rem;
+            color: #6c757d;
+            font-size: 0.72rem;
+            text-align: center;
         }
 
-        .input-group-custom {
-            border: 1px solid #dce4ec;
-            border-radius: 0.6rem;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-            background: #ffffff;
-        }
-
-        .input-group-custom:focus-within {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.14);
-        }
-
-        @media (max-width: 991.98px) {
-            .signup-form-panel {
-                padding: 2.25rem 1.5rem;
+        @media (max-width: 767.98px) {
+            .registration-panel {
+                padding: 1rem;
             }
 
-            .signup-shell {
-                margin: 1rem;
-                min-height: auto;
+            .account-row {
+                grid-template-columns: minmax(210px, 260px) minmax(0, 1fr);
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .registration-header {
+                margin-top: 0.7rem;
+            }
+
+            .registration-main {
+                align-items: flex-start;
+                padding-right: 0.65rem;
+                padding-left: 0.65rem;
+            }
+
+            .account-row {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 0.05rem;
+                padding: 0.35rem 0;
+            }
+
+            .account-row label {
+                padding: 0.1rem 0;
             }
         }
     </style>
-
 </head>
-
 <body>
-    <main class="signup-page py-4">
-        <div class="container">
-            <div class="row g-0 signup-shell mx-auto">
-                
-                <!-- Left Panel: Form Pendaftaran -->
-                <section class="col-lg-6 signup-form-panel">
-                    <div class="signup-form-content">
-                        
-                        <!-- Logo Portal -->
-                        <div class="mb-3">
-                            <a href="index.html" aria-label="Kembali ke halaman utama">
-                                <img class="signup-logo mb-0" src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="SILAT">
-                            </a>
-                        </div>
+    <header class="registration-header">
+        <img class="registration-logo" src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="SILAT">
+        <h1 class="registration-title">REGISTRASI DATA PENGGUNA</h1>
+    </header>
 
-                        <h4 class="fw-bold text-dark mb-1">Daftar Akun SILAT</h4>
-                        <p class="text-muted fs-13 mb-3">Lengkapi data usaha dan identitas Anda untuk akses layanan perizinan terpadu.</p>
-
-                        <form id="signup-form" novalidate>
-                            <div class="row g-2">
-                                
-                                <!-- Nama Pemilik / Perusahaan -->
-                                <div class="col-12 mb-1">
-                                    <label for="signup-owner" class="form-label text-dark fw-medium fs-12 mb-1">Nama Pemilik / Badan Usaha</label>
-                                    <div class="input-group input-group-custom overflow-hidden">
-                                        <span class="input-group-text bg-transparent border-0 text-muted ps-3 pe-2">
-                                            <i class="fe fe-briefcase fs-14"></i>
-                                        </span>
-                                        <input type="text" class="form-control border-0 ps-1 py-2 fs-13" id="signup-owner" placeholder="PT / CV / Nama Pemilik Usaha" required>
-                                    </div>
-                                </div>
-
-                                <!-- Nama Lengkap PIC -->
-                                <div class="col-12 mb-1">
-                                    <label for="signup-fullname" class="form-label text-dark fw-medium fs-12 mb-1">Nama Lengkap PIC / Pemohon</label>
-                                    <div class="input-group input-group-custom overflow-hidden">
-                                        <span class="input-group-text bg-transparent border-0 text-muted ps-3 pe-2">
-                                            <i class="fe fe-user fs-14"></i>
-                                        </span>
-                                        <input type="text" class="form-control border-0 ps-1 py-2 fs-13" id="signup-fullname" placeholder="Masukkan nama lengkap sesuai KTP" required>
-                                    </div>
-                                </div>
-
-                                <!-- Email -->
-                                <div class="col-md-6 mb-1">
-                                    <label for="signup-email" class="form-label text-dark fw-medium fs-12 mb-1">Email Aktif</label>
-                                    <div class="input-group input-group-custom overflow-hidden">
-                                        <span class="input-group-text bg-transparent border-0 text-muted ps-3 pe-2">
-                                            <i class="fe fe-mail fs-14"></i>
-                                        </span>
-                                        <input type="email" class="form-control border-0 ps-1 py-2 fs-13" id="signup-email" placeholder="nama@email.com" required>
-                                    </div>
-                                </div>
-
-                                <!-- Nomor Telepon / WA -->
-                                <div class="col-md-6 mb-1">
-                                    <label for="signup-phone" class="form-label text-dark fw-medium fs-12 mb-1">Nomor Telepon / WhatsApp</label>
-                                    <div class="input-group input-group-custom overflow-hidden">
-                                        <span class="input-group-text bg-transparent border-0 text-muted ps-3 pe-2">
-                                            <i class="fe fe-phone fs-14"></i>
-                                        </span>
-                                        <input type="tel" class="form-control border-0 ps-1 py-2 fs-13" id="signup-phone" placeholder="08xxxxxxxxxx" required>
-                                    </div>
-                                </div>
-
-                                <!-- Nomor KTP (NIK 16 Digit) -->
-                                <div class="col-12 mb-1">
-                                    <label for="signup-identity" class="form-label text-dark fw-medium fs-12 mb-1">Nomor KTP (16 Digit NIK)</label>
-                                    <div class="input-group input-group-custom overflow-hidden">
-                                        <span class="input-group-text bg-transparent border-0 text-muted ps-3 pe-2">
-                                            <i class="fe fe-credit-card fs-14"></i>
-                                        </span>
-                                        <input type="text" class="form-control border-0 ps-1 py-2 fs-13" id="signup-identity" inputmode="numeric" placeholder="Masukkan 16 digit Nomor Induk Kependudukan" minlength="16" maxlength="16" required>
-                                    </div>
-                                </div>
-
-                                <!-- Password -->
-                                <div class="col-12 mb-2">
-                                    <label for="signup-password" class="form-label text-dark fw-medium fs-12 mb-1">Kata Sandi (Password)</label>
-                                    <div class="input-group input-group-custom overflow-hidden">
-                                        <span class="input-group-text bg-transparent border-0 text-muted ps-3 pe-2">
-                                            <i class="fe fe-lock fs-14"></i>
-                                        </span>
-                                        <input type="password" class="form-control border-0 ps-1 py-2 fs-13" id="signup-password" placeholder="Minimal 8 karakter kombinasi" required>
-                                        <button class="btn btn-transparent border-0 text-muted pe-3" type="button" onclick="createpassword('signup-password', this)" aria-label="Tampilkan password">
-                                            <i class="ri-eye-off-line align-middle"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <!-- Persetujuan Ketentuan -->
-                                <div class="col-12 mb-2">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="signup-terms" required>
-                                        <label class="form-check-label text-muted fs-12" for="signup-terms">
-                                            Saya menyetujui <a href="javascript:void(0);" class="text-primary fw-medium">Syarat & Ketentuan</a> serta Kebijakan Privasi Ditjen Perikanan Tangkap.
-                                        </label>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <!-- Tombol Submit -->
-                            <button type="submit" id="signup-submit" class="btn btn-primary btn-lg w-100 fw-semibold rounded-3 shadow-sm py-2 fs-14 mt-2">
-                                <i class="fe fe-user-plus me-2"></i>Daftar Akun Sekarang
-                            </button>
-
-                            <p id="signup-message" class="text-center text-danger fs-13 mt-3 mb-0" aria-live="polite"></p>
-                        </form>
-
-                        <p class="text-center text-muted fs-13 mt-3 mb-0">
-                            Sudah memiliki akun? <a href="login.html" class="text-primary fw-semibold text-decoration-none">Masuk di sini</a>
-                        </p>
-
+    <main class="registration-main">
+        <div class="registration-panel">
+            <form id="user-registration-form" novalidate>
+                <section class="registration-section" aria-labelledby="business-data-title">
+                    <h3 id="business-data-title" class="registration-section-title">DATA PENDAFTARAN</h3>
+                    <div class="account-row">
+                        <label for="owner-name">Nama Pemilik/Perusahaan <span class="required-mark">*</span></label>
+                        <input id="owner-name" name="ownerName" type="text" class="form-control" required autocomplete="organization">
                     </div>
                 </section>
 
-                <!-- Right Panel: Hero Banner with Value Proposition -->
-                <aside class="col-lg-6 signup-hero-panel d-none d-lg-flex flex-column justify-content-between p-5 text-white">
-                    <div>
-                        <div class="d-flex align-items-center gap-2 mb-4">
-                            <span class="badge bg-white-transparent text-white px-3 py-2 rounded-pill fs-12 fw-semibold">
-                                <i class="ri-government-line me-1"></i>Kementerian Kelautan dan Perikanan
-                            </span>
+                <section class="registration-section" aria-labelledby="account-data-title">
+                    <h3 id="account-data-title" class="registration-section-title">DATA AKUN</h3>
+                    <div class="account-rows">
+                        <div class="account-row">
+                            <label for="user-email">Email <span class="required-mark">*</span></label>
+                            <input id="user-email" name="email" type="email" class="form-control" required autocomplete="email">
                         </div>
-                        <h3 class="fw-bold mb-2 text-white">Sistem Informasi Izin Layanan Cepat (SILAT)</h3>
-                        <p class="text-white-75 fs-13 mb-4" style="max-width: 440px;">
-                            Aplikasi Layanan Perizinan Berusaha (terintegrasi dengan OSS) untuk kapal ukuran &gt; 5 GT dan beroperasi diatas 12 mil.
-                        </p>
-
-                        <!-- Value Proposition Points / Fungsi Web -->
-                        <div class="d-flex flex-column gap-3 mt-4">
-                            <div class="d-flex align-items-center gap-3 p-3 rounded-3 bg-white-transparent">
-                                <div class="avatar avatar-md bg-white text-primary rounded-circle shadow-xs flex-shrink-0">
-                                    <i class="ri-file-shield-2-line fs-18"></i>
-                                </div>
-                                <div>
-                                    <h6 class="fw-semibold mb-0 fs-13 text-white">Surat Izin Usaha Perikanan (SIUP)</h6>
-                                    <span class="text-white-75 fs-11">Penerbitan baru dan pembaruan izin usaha berbasis risiko & KBLI 2025</span>
-                                </div>
-                            </div>
-
-                            <div class="d-flex align-items-center gap-3 p-3 rounded-3 bg-white-transparent">
-                                <div class="avatar avatar-md bg-white text-success rounded-circle shadow-xs flex-shrink-0">
-                                    <i class="ri-ship-line fs-18"></i>
-                                </div>
-                                <div>
-                                    <h6 class="fw-semibold mb-0 fs-13 text-white">SIPI / SIKPI</h6>
-                                    <span class="text-white-75 fs-11">Surat Izin Penangkapan Ikan & Surat Izin Kapal Pengangkut Ikan</span>
-                                </div>
-                            </div>
-
-                            <div class="d-flex align-items-center gap-3 p-3 rounded-3 bg-white-transparent">
-                                <div class="avatar avatar-md bg-white text-warning rounded-circle shadow-xs flex-shrink-0">
-                                    <i class="ri-anchor-line fs-18"></i>
-                                </div>
-                                <div>
-                                    <h6 class="fw-semibold mb-0 fs-13 text-white">Surat Izin Pemasangan Rumpon (SIPR)</h6>
-                                    <span class="text-white-75 fs-11">Perizinan penempatan alat bantu penangkapan ikan di perairan WPPNRI</span>
-                                </div>
-                            </div>
+                        <div class="account-row">
+                            <label for="user-password">Password <span class="required-mark">*</span></label>
+                            <input id="user-password" name="password" type="password" class="form-control" required minlength="8" autocomplete="new-password">
                         </div>
                     </div>
+                </section>
 
-                    <!-- Bottom Contact info -->
-                    <div class="pt-4 border-top border-white-15 d-flex justify-content-between align-items-center">
-                        <span class="fs-12 text-white-75"><i class="fe fe-phone me-1"></i>Helpdesk: (021) 3519070</span>
-                        <span class="fs-12 text-white-75"><i class="fe fe-mail me-1"></i>perizinan@kkp.go.id</span>
+                <section class="registration-section" aria-labelledby="user-data-title">
+                    <h3 id="user-data-title" class="registration-section-title">DATA PENGGUNA</h3>
+                    <div class="account-rows">
+                        <div class="account-row">
+                            <label for="full-name">Nama Lengkap <span class="required-mark">*</span></label>
+                            <input id="full-name" name="fullName" type="text" class="form-control" required autocomplete="name">
+                        </div>
+                        <div class="account-row">
+                            <label for="mobile-phone">Nomor Telepon Seluler <span class="required-mark">*</span></label>
+                            <input id="mobile-phone" name="mobilePhone" type="tel" class="form-control" required autocomplete="tel">
+                        </div>
+                        <div class="account-row">
+                            <label for="identity-number">Nomor KTP <span class="required-mark">*</span></label>
+                            <input id="identity-number" name="identityNumber" type="text" class="form-control" required inputmode="numeric" minlength="16" maxlength="16" autocomplete="off">
+                        </div>
                     </div>
-                </aside>
+                </section>
 
-            </div>
+                <div class="registration-actions">
+                    <button type="submit" class="btn btn-primary text-white">Pendaftaran</button>
+                </div>
+                <p id="registration-status" class="registration-status" role="status" aria-live="polite"></p>
+            </form>
         </div>
     </main>
 
-    <!-- Footer Start -->
-    <footer class="footer mt-auto py-3 text-center">
-        <div class="container">
-            <span class=""> Copyright © 2026 <a href="https://perizinan.kkp.go.id/" target="_blank" rel="noopener noreferrer">Digitalisasi Perizinan</a>, <a href="https://kkp.go.id/unit-kerja/djpt.html" target="_blank" rel="noopener noreferrer">Direktorat Jenderal Perikanan Tangkap</a> . All rights reserved.
-            </span>
-        </div>
-    </footer>
-    <!-- Footer End -->
+    <footer class="registration-footer">© Direktorat Jenderal Perikanan Tangkap, 2026</footer>
 
-    <!-- Success Modal -->
-    <div class="modal fade" id="registration-success-modal" tabindex="-1" aria-labelledby="registration-success-title" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal fade" id="registration-success-modal" tabindex="-1" aria-labelledby="registration-success-title" aria-describedby="registration-success-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
-                <div class="modal-header border-0 pb-0 pt-4 px-4 justify-content-end">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-0 pb-0">
+                    <h2 class="modal-title fs-5 fw-semibold text-dark" id="registration-success-title">Pendaftaran Berhasil</h2>
                 </div>
-                <div class="modal-body text-center px-4 pb-4 pt-1">
-                    <div class="avatar avatar-xl bg-success-transparent text-success rounded-circle mb-3 mx-auto shadow-sm" style="width: 64px; height: 64px;">
-                        <i class="ri-checkbox-circle-fill fs-36"></i>
-                    </div>
-                    <h5 class="fw-bold text-dark mb-2" id="registration-success-title">Pendaftaran Akun Berhasil!</h5>
-                    <p class="text-muted fs-13 mb-4">
-                        Akun SILAT Anda telah berhasil didaftarkan. Tautan verifikasi dan instruksi aktivasi telah dikirimkan ke alamat email Anda.
-                    </p>
-                    <button id="registration-success-ok" type="button" class="btn btn-primary w-100 rounded-3 py-2 fw-semibold" data-bs-dismiss="modal">
-                        <i class="fe fe-log-in me-1"></i> Lanjut ke Halaman Login
-                    </button>
+                <div class="modal-body text-muted" id="registration-success-message">
+                    Silakan lakukan aktivasi akun melalui email yang telah didaftarkan.
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-primary px-4" id="registration-success-ok">OK</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/show-password.js"></script>
-
     <script>
-        (function () {
-            const form = document.getElementById('signup-form');
-            const identityInput = document.getElementById('signup-identity');
-            const passwordInput = document.getElementById('signup-password');
-            const termsInput = document.getElementById('signup-terms');
-            const message = document.getElementById('signup-message');
-            const successModal = new bootstrap.Modal(document.getElementById('registration-success-modal'));
+        (() => {
+            const form = document.getElementById('user-registration-form');
+            const identityInput = document.getElementById('identity-number');
+            const successModalElement = document.getElementById('registration-success-modal');
+            const successModal = new bootstrap.Modal(successModalElement);
 
-            document.getElementById('registration-success-ok').addEventListener('click', function () {
-                window.location.href = 'login.html';
-            });
-
-            identityInput.addEventListener('input', function () {
+            identityInput.addEventListener('input', () => {
                 identityInput.value = identityInput.value.replace(/\D/g, '').slice(0, 16);
             });
 
-            form.addEventListener('submit', function (event) {
+            form.addEventListener('submit', (event) => {
                 event.preventDefault();
-                message.textContent = '';
 
-                if (!form.checkValidity()) {
-                    form.classList.add('was-validated');
-                    if (!termsInput.checked) {
-                        message.textContent = 'Harap setujui Syarat & Ketentuan serta Kebijakan Privasi.';
-                        return;
-                    }
-                    message.textContent = 'Harap lengkapi semua data yang diperlukan.';
-                    return;
-                }
-
-                if (identityInput.value.length !== 16) {
-                    message.textContent = 'Nomor KTP harus terdiri dari 16 digit angka.';
-                    identityInput.focus();
-                    return;
-                }
-
-                if (passwordInput.value.length < 8) {
-                    message.textContent = 'Kata sandi harus terdiri dari minimal 8 karakter.';
-                    passwordInput.focus();
-                    return;
-                }
-
-                if (!termsInput.checked) {
-                    message.textContent = 'Harap setujui Syarat & Ketentuan serta Kebijakan Privasi.';
-                    termsInput.focus();
-                    return;
-                }
+                if (!form.reportValidity()) return;
 
                 successModal.show();
             });
-        }());
+
+            document.getElementById('registration-success-ok').addEventListener('click', () => {
+                window.location.href = 'login.html';
+            });
+        })();
     </script>
-
 </body>
-
 </html>

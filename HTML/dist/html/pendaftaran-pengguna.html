@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pendaftaran Pengguna | SILAT</title>
+    <meta name="description" content="Pendaftaran pengguna SILAT dengan SIUP yang sudah dimiliki">
+
+    <link rel="icon" href="../assets/images/brand-logos/favicon.ico" type="image/x-icon">
+    <script src="../assets/js/authentication-main.js"></script>
+    <link id="style" href="../assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/styles.min.css" rel="stylesheet">
+    <link href="../assets/css/icons.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            min-height: 100dvh;
+            margin: 0;
+            background: linear-gradient(135deg, #f4f8ff 0%, #eefaf6 100%);
+        }
+
+        .registration-content {
+            display: flex;
+            flex: 1 0 auto;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 2rem;
+            transform: translateY(-2rem);
+        }
+
+        .registration-header {
+            flex: 0 0 auto;
+            margin: 0 0 0.65rem;
+            text-align: center;
+        }
+
+        .registration-logo {
+            width: min(100%, 150px);
+            height: 36px;
+            object-fit: contain;
+        }
+
+        .registration-title {
+            margin: 0.2rem 0 0;
+            color: #183153;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .registration-main {
+            display: flex;
+            flex: 0 0 auto;
+            min-width: 0;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+
+        .registration-panel {
+            width: min(100%, 820px);
+            padding: 1.15rem 1.35rem;
+            border: 1px solid rgba(220, 229, 239, 0.9);
+            border-radius: 0.8rem;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 6px 20px rgba(31, 51, 73, 0.07);
+        }
+
+        .registration-card-title {
+            margin: 0;
+            color: #183153;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .registration-description {
+            margin: 0.15rem 0 0.65rem;
+            color: #6c757d;
+            font-size: 0.8rem;
+        }
+
+        .registration-section-title {
+            margin: 0 0 0.45rem;
+            padding: 0 0 0.35rem;
+            border-bottom: 1px solid #d5e0eb;
+            color: #285477;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.055em;
+        }
+
+        .registration-fields {
+            margin: 0;
+        }
+
+        .registration-row {
+            display: grid;
+            grid-template-columns: minmax(220px, 230px) minmax(0, 1fr);
+            min-height: 38px;
+            align-items: center;
+            border-bottom: 1px solid #edf1f5;
+            color: #344054;
+        }
+
+        .registration-row label {
+            margin: 0;
+            padding: 0.25rem 0.6rem 0.25rem 0;
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+
+        .registration-row .form-control {
+            width: 100%;
+            min-width: 0;
+            min-height: 32px;
+            margin: 0.2rem 0;
+            padding: 0.3rem 0.65rem;
+            border: 1px solid #d7e0ea;
+            border-radius: 0.45rem;
+            background-color: #fff;
+            color: #183153;
+            font-size: 0.78rem;
+            line-height: 1.2;
+            box-shadow: inset 0 1px 2px rgba(31, 51, 73, 0.025);
+        }
+
+        .registration-row .form-control:focus {
+            border-color: #6fa7d1;
+            box-shadow: 0 0 0 0.18rem rgba(13, 91, 153, 0.12);
+        }
+
+        .registration-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.65rem;
+        }
+
+        .registration-actions .btn {
+            min-width: 210px;
+            padding: 0.45rem 1.2rem;
+            border: 0;
+            border-radius: 0.5rem;
+            background: #0d5b99;
+            font-size: 0.82rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(13, 91, 153, 0.18);
+        }
+
+        .registration-actions .btn:hover {
+            background: #0a4f86;
+        }
+
+        .registration-status {
+            min-height: 1rem;
+        }
+
+        .registration-footer {
+            flex: 0 0 auto;
+            margin-top: auto;
+            padding: 0.35rem 0.75rem 0.5rem;
+            color: #6c757d;
+            font-size: 0.72rem;
+            text-align: center;
+        }
+
+        @media (max-width: 767.98px) {
+            .registration-panel {
+                padding: 1rem;
+            }
+
+            .registration-row {
+                grid-template-columns: minmax(200px, 220px) minmax(0, 1fr);
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .registration-content {
+                padding-top: 1rem;
+                transform: none;
+            }
+
+            .registration-header {
+                margin-top: 0.7rem;
+            }
+
+            .registration-main {
+                padding-top: 0;
+                padding-right: 0.65rem;
+                padding-left: 0.65rem;
+            }
+
+            .registration-row {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 0.05rem;
+                padding: 0.35rem 0;
+            }
+
+            .registration-row label {
+                padding: 0.1rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="registration-content">
+        <header class="registration-header">
+            <a href="siup-selection.html" aria-label="Kembali ke pilihan status SIUP">
+                <img class="registration-logo" src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="SILAT">
+            </a>
+            <h1 class="registration-title">REGISTRASI DATA PENGGUNA</h1>
+        </header>
+
+        <main class="registration-main">
+            <section class="registration-panel" aria-labelledby="registration-title">
+
+                <form id="registration-form" class="registration-form">
+                    <section aria-labelledby="siup-data-title">
+                        <h3 id="siup-data-title" class="registration-section-title">DATA SIUP</h3>
+                        <div class="registration-fields">
+                            <div class="registration-row">
+                                <label for="owner-name">Nama Pemilik/Perusahaan</label>
+                                <input id="owner-name" name="ownerName" type="text" class="form-control" autocomplete="organization" required>
+                            </div>
+                            <div class="registration-row">
+                                <label for="siup-number">Nomor SIUP</label>
+                                <input id="siup-number" name="siupNumber" type="text" class="form-control" required>
+                            </div>
+                            <div class="registration-row">
+                                <label for="siup-issued-date">Tanggal Terbit</label>
+                                <input id="siup-issued-date" name="siupIssuedDate" type="date" class="form-control" required>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="registration-actions">
+                        <button type="submit" class="btn btn-primary text-white">
+                            <i class="ri-search-line me-2"></i>Periksa Data SIUP
+                        </button>
+                    </div>
+                    <p id="siup-check-status" class="registration-status text-center text-muted fs-13 mt-2 mb-0" aria-live="polite"></p>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer class="registration-footer">© Direktorat Jenderal Perikanan Tangkap, 2026</footer>
+
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (function () {
+            const form = document.getElementById('registration-form');
+            const status = document.getElementById('siup-check-status');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                status.textContent = '';
+
+                if (!form.reportValidity()) {
+                    return;
+                }
+
+                sessionStorage.setItem('silatSiupData', JSON.stringify({
+                    ownerName: form.elements.ownerName.value.trim(),
+                    siupNumber: form.elements.siupNumber.value.trim(),
+                    siupIssuedDate: form.elements.siupIssuedDate.value
+                }));
+                window.location.href = 'registrasi-data-pengguna.html';
+            });
+        }());
+    </script>
+</body>
+
+</html>

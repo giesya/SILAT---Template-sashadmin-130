@@ -35,7 +35,7 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: min(100%, 100px);
+            width: min(100%, 72px);
             height: auto;
         }
 
@@ -117,7 +117,7 @@
                                 <a href="index.html" aria-label="Kembali ke halaman utama">
                                     <img class="siup-logo mb-3" src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="SILAT">
                                 </a>
-                                <p class="h4 fw-semibold mb-2">PENDAFTARAN PENGGUNA E-SERVICE</p>
+                                <p class="h4 fw-semibold mb-2">PENDAFTARAN PENGGUNA</p>
                                 <p class="text-muted mb-0">Pilih status surat izin usaha yang sesuai dengan kondisi usaha Anda.</p>
                             </div>
 
@@ -170,7 +170,7 @@
                     option.classList.add('is-selected');
                     const status = option.querySelector('input').value;
                     localStorage.setItem('silatSiupStatus', status);
-                    window.location.href = status === 'owned' ? 'login.html' : 'sign-up.html';
+                    window.location.href = status === 'owned' ? 'pendaftaran-pengguna.html' : 'sign-up.html';
                 });
             });
         }());

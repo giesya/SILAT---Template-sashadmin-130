@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="id" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Registrasi Data Pengguna | SILAT</title>
+    <meta name="description" content="Lengkapi data SIUP dan registrasi pengguna SILAT">
+    <link rel="icon" href="../assets/images/brand-logos/favicon.ico" type="image/x-icon">
+    <script src="../assets/js/authentication-main.js"></script>
+    <link href="../assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/styles.min.css" rel="stylesheet">
+    <link href="../assets/css/icons.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f4f8ff 0%, #eefaf6 100%);
+        }
+
+        .registration-header {
+            flex: 0 0 auto;
+            margin: 2.2rem 0 0.35rem;
+            text-align: center;
+        }
+
+        .registration-logo {
+            width: min(100%, 150px);
+            height: 38px;
+            object-fit: contain;
+        }
+
+        .registration-title {
+            margin: 0.25rem 0 0;
+            color: #183153;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .registration-main {
+            display: flex;
+            flex: 1 1 auto;
+            min-height: 0;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+        }
+
+        .registration-panel {
+            width: min(100%, 650px);
+            padding: 0.8rem 1.05rem;
+            border: 1px solid rgba(220, 229, 239, 0.9);
+            border-radius: 0.9rem;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 8px 24px rgba(31, 51, 73, 0.08);
+        }
+
+        .registration-section + .registration-section {
+            margin-top: 0.65rem;
+        }
+
+        .registration-section-title {
+            display: flex;
+            align-items: center;
+            min-height: 30px;
+            margin: 0 0 0.25rem;
+            padding: 0.3rem 0.6rem;
+            border-bottom: 1px solid #dce5ef;
+            border-left: 3px solid #0d5b99;
+            border-radius: 0.25rem 0.25rem 0 0;
+            background: rgba(13, 91, 153, 0.045);
+            color: #183153;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.015em;
+        }
+
+        .siup-rows,
+        .account-rows {
+            margin: 0;
+        }
+
+        .siup-row {
+            display: grid;
+            grid-template-columns: minmax(190px, 38%) minmax(0, 1fr);
+            min-height: 26px;
+            align-items: center;
+            border-bottom: 1px solid #e5ebf2;
+            color: #344054;
+            font-size: 0.78rem;
+            line-height: 1.3;
+        }
+
+        .siup-row dt,
+        .siup-row dd {
+            min-width: 0;
+            margin: 0;
+            padding: 0.28rem 0.6rem;
+            overflow-wrap: anywhere;
+        }
+
+        .siup-row dt {
+            font-weight: 400;
+        }
+
+        .siup-row dd {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            color: #183153;
+        }
+
+        .siup-validation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            padding: 0.5rem 0.65rem;
+            border: 1px solid #d5eadc;
+            border-radius: 0.45rem;
+            background: #f1faf4;
+            color: #24613a;
+            font-size: 0.72rem;
+            line-height: 1.35;
+            text-align: center;
+        }
+
+        .siup-validation.is-incomplete {
+            border-color: #f0dfb5;
+            background: #fffaf0;
+            color: #795b17;
+        }
+
+        .siup-validation-icon {
+            flex: 0 0 auto;
+            font-size: 0.95rem;
+            line-height: 1.1;
+        }
+
+        .siup-validation strong {
+            display: block;
+            margin-bottom: 0.08rem;
+            font-weight: 600;
+        }
+
+        .account-row {
+            display: grid;
+            grid-template-columns: minmax(190px, 38%) minmax(0, 1fr);
+            min-height: 39px;
+            align-items: center;
+            border-bottom: 1px solid #e5ebf2;
+            color: #344054;
+        }
+
+        .account-row label {
+            margin: 0;
+            padding: 0.35rem 0.6rem;
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+
+        .required-mark {
+            color: #c82333;
+        }
+
+        .account-row .form-control {
+            min-height: 30px;
+            margin: 0.25rem 0;
+            padding: 0.35rem 0.65rem;
+            border: 1px solid #d7e0ea;
+            border-radius: 0.45rem;
+            background-color: #fff;
+            color: #183153;
+            font-size: 0.78rem;
+            line-height: 1.2;
+            box-shadow: inset 0 1px 2px rgba(31, 51, 73, 0.025);
+        }
+
+        .account-row .form-control:focus {
+            border-color: #6fa7d1;
+            box-shadow: 0 0 0 0.18rem rgba(13, 91, 153, 0.12);
+        }
+
+        .registration-actions {
+            display: flex;
+            min-height: 38px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.4rem;
+        }
+
+        .registration-actions .btn {
+            min-width: 160px;
+            padding: 0.4rem 1.1rem;
+            border: 0;
+            border-radius: 0.5rem;
+            background: #0d5b99;
+            font-size: 0.82rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(13, 91, 153, 0.18);
+        }
+
+        .registration-actions .btn:hover {
+            background: #0a4f86;
+        }
+
+        .registration-status {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+        }
+
+        .registration-footer {
+            flex: 0 0 auto;
+            padding: 0.4rem 0.75rem;
+            color: #6c757d;
+            font-size: 0.72rem;
+            text-align: center;
+        }
+
+        @media (max-height: 700px) {
+            .registration-header {
+                margin: 1.4rem 0 0.2rem;
+            }
+
+            .registration-logo {
+                height: 30px;
+            }
+
+            .registration-panel {
+                padding: 0.5rem 0.7rem;
+            }
+
+            .registration-section + .registration-section {
+                margin-top: 0.35rem;
+            }
+
+            .registration-section-title {
+                min-height: 24px;
+                margin-bottom: 0.15rem;
+                padding: 0.2rem 0.45rem;
+                font-size: 0.72rem;
+            }
+
+            .siup-row {
+                min-height: 19px;
+                grid-template-columns: minmax(128px, 38%) minmax(0, 1fr);
+                font-size: 0.69rem;
+            }
+
+            .siup-row dt,
+            .siup-row dd {
+                padding: 0.12rem 0.4rem;
+            }
+
+            .siup-validation {
+                gap: 0.35rem;
+                margin-top: 0.3rem;
+                padding: 0.3rem 0.45rem;
+                font-size: 0.63rem;
+            }
+
+            .account-row {
+                min-height: 27px;
+                grid-template-columns: minmax(128px, 38%) minmax(0, 1fr);
+            }
+
+            .account-row label,
+            .account-row .form-control {
+                font-size: 0.69rem;
+            }
+
+            .account-row .form-control {
+                min-height: 23px;
+                margin: 0.12rem 0;
+                padding: 0.12rem 0.4rem;
+            }
+
+            .registration-actions {
+                min-height: 32px;
+                margin-top: 0.25rem;
+            }
+
+            .registration-actions .btn {
+                padding: 0.25rem 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .registration-main {
+                padding-right: 0.4rem;
+                padding-left: 0.4rem;
+            }
+
+            .registration-panel {
+                padding-right: 0.55rem;
+                padding-left: 0.55rem;
+            }
+
+            .siup-row,
+            .account-row {
+                grid-template-columns: minmax(112px, 42%) minmax(0, 1fr);
+            }
+
+            .siup-row,
+            .account-row label,
+            .account-row .form-control {
+                font-size: 0.67rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="registration-header">
+        <img class="registration-logo" src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="SILAT">
+        <h1 class="registration-title">REGISTRASI DATA PENGGUNA</h1>
+    </header>
+
+    <main class="registration-main">
+        <div class="registration-panel">
+            <form id="user-registration-form" novalidate>
+                <section class="registration-section" aria-labelledby="siup-data-title">
+                    <h2 id="siup-data-title" class="registration-section-title">PENDAFTARAN PENGGUNA</h2>
+                    <dl class="siup-rows">
+                        <div class="siup-row"><dt>Nama Pemilik/Perusahaan</dt><dd id="siup-owner">—</dd></div>
+                        <div class="siup-row"><dt>Nomor SIUP</dt><dd id="siup-number">—</dd></div>
+                        <div class="siup-row"><dt>Tanggal Terbit</dt><dd id="siup-issued-date">—</dd></div>
+                        <div class="siup-row"><dt>Alamat</dt><dd>—</dd></div>
+                        <div class="siup-row"><dt>NPWP</dt><dd>—</dd></div>
+                        <div class="siup-row"><dt>Nomor Telepon</dt><dd>—</dd></div>
+                        <div class="siup-row"><dt>Nomor HP</dt><dd>—</dd></div>
+                        <div class="siup-row"><dt>Nomor Fax</dt><dd>—</dd></div>
+                        <div class="siup-row"><dt>Penanggung Jawab</dt><dd>—</dd></div>
+                    </dl>
+                    <div id="siup-validation" class="siup-validation" role="status" aria-live="polite">
+                        <span id="siup-validation-icon" class="siup-validation-icon" aria-hidden="true">✓</span>
+                        <div>
+                            <strong id="siup-validation-title">Memeriksa kelengkapan data…</strong>
+                            <span id="siup-validation-detail"></span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="registration-section" aria-labelledby="account-data-title">
+                    <h2 id="account-data-title" class="registration-section-title">REGISTRASI DATA PENGGUNA</h2>
+                    <div class="account-rows">
+                        <div class="account-row">
+                            <label for="user-email">Email <span class="required-mark">*</span></label>
+                            <input id="user-email" name="email" type="email" class="form-control" required autocomplete="email">
+                        </div>
+                        <div class="account-row">
+                            <label for="user-password">Password <span class="required-mark">*</span></label>
+                            <input id="user-password" name="password" type="password" class="form-control" required autocomplete="new-password">
+                        </div>
+                        <div class="account-row">
+                            <label for="full-name">Nama Lengkap <span class="required-mark">*</span></label>
+                            <input id="full-name" name="fullName" type="text" class="form-control" required autocomplete="name">
+                        </div>
+                        <div class="account-row">
+                            <label for="mobile-phone">Nomor Telepon Seluler <span class="required-mark">*</span></label>
+                            <input id="mobile-phone" name="mobilePhone" type="tel" class="form-control" required autocomplete="tel">
+                        </div>
+                        <div class="account-row">
+                            <label for="identity-number">Nomor KTP <span class="required-mark">*</span></label>
+                            <input id="identity-number" name="identityNumber" type="text" class="form-control" required inputmode="numeric" autocomplete="off">
+                        </div>
+                    </div>
+                </section>
+
+                <div class="registration-actions">
+                    <button type="submit" class="btn btn-primary text-white">Pendaftaran</button>
+                </div>
+                <p class="registration-status" id="registration-status" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </main>
+
+    <footer class="registration-footer">© Direktorat Jenderal Perikanan Tangkap, 2026</footer>
+
+    <div class="modal fade" id="registration-success-modal" tabindex="-1" aria-labelledby="registration-success-title" aria-describedby="registration-success-message" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-0 pb-0">
+                    <h2 class="modal-title fs-5 fw-semibold text-dark" id="registration-success-title">Pendaftaran Berhasil</h2>
+                </div>
+                <div class="modal-body text-muted" id="registration-success-message">
+                    Silakan lakukan aktivasi akun melalui email yang telah didaftarkan.
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-primary px-4" id="registration-success-ok">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (() => {
+            const form = document.getElementById('user-registration-form');
+            const status = document.getElementById('registration-status');
+            const successModalElement = document.getElementById('registration-success-modal');
+            const successModal = new bootstrap.Modal(successModalElement);
+
+            try {
+                const siupData = JSON.parse(sessionStorage.getItem('silatSiupData') || '{}');
+                const ownerName = typeof siupData.ownerName === 'string' ? siupData.ownerName.trim() : '';
+                const siupNumber = typeof siupData.siupNumber === 'string' ? siupData.siupNumber.trim() : '';
+                const siupIssuedDate = typeof siupData.siupIssuedDate === 'string' ? siupData.siupIssuedDate : '';
+                const dateParts = /^(\d{4})-(\d{2})-(\d{2})$/.exec(siupIssuedDate);
+                const dateYear = dateParts ? Number(dateParts[1]) : 0;
+                const dateMonth = dateParts ? Number(dateParts[2]) : 0;
+                const dateDay = dateParts ? Number(dateParts[3]) : 0;
+                const daysInMonth = dateParts && dateMonth >= 1 && dateMonth <= 12
+                    ? new Date(Date.UTC(dateYear, dateMonth, 0)).getUTCDate()
+                    : 0;
+                const hasValidIssuedDate = dateParts !== null
+                    && dateYear > 0
+                    && dateDay >= 1
+                    && dateDay <= daysInMonth;
+                const isComplete = Boolean(ownerName && siupNumber && hasValidIssuedDate);
+
+                document.getElementById('siup-owner').textContent = ownerName || '—';
+                document.getElementById('siup-number').textContent = siupNumber || '—';
+                document.getElementById('siup-issued-date').textContent = hasValidIssuedDate ? siupIssuedDate : '—';
+
+                document.getElementById('siup-validation').classList.toggle('is-incomplete', !isComplete);
+                document.getElementById('siup-validation-icon').textContent = isComplete ? '✓' : '!';
+                document.getElementById('siup-validation-title').textContent = isComplete
+                    ? 'Data Valid'
+                    : 'Data SIUP belum lengkap';
+                document.getElementById('siup-validation-detail').textContent = isComplete
+                    ? ''
+                    : 'Periksa kembali nama pemilik/perusahaan, nomor SIUP, dan tanggal terbit.';
+            } catch (error) {
+                status.textContent = 'Data SIUP tidak dapat dimuat dari sesi ini.';
+                document.getElementById('siup-validation').classList.add('is-incomplete');
+                document.getElementById('siup-validation-icon').textContent = '!';
+                document.getElementById('siup-validation-title').textContent = 'Data SIUP tidak dapat diperiksa';
+                document.getElementById('siup-validation-detail').textContent = 'Silakan kembali dan masukkan ulang data SIUP.';
+            }
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                if (!form.reportValidity()) return;
+                successModal.show();
+            });
+
+            document.getElementById('registration-success-ok').addEventListener('click', () => {
+                window.location.href = 'login.html';
+            });
+        })();
+    </script>
+</body>
+</html>
