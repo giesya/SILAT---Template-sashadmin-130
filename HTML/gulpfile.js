@@ -28,7 +28,7 @@ function browsersyncFn(callback) {
 	browsersync$.init({
 		server: {
 			baseDir: [baseDir, baseDir + '/html'],							// Specify the base path of the project
-			index: "html/siup-selection.html"							// Has to specify the initial page in case not the index.html
+			index: "html/login.html"							// Has to specify the initial page in case not the index.html
 		},
 		port: 1111,															// Used to change the port number
 		// tunnel: 'technology', 											// Attempt to use the URL https://someTunnelName.loca.lt
@@ -183,7 +183,6 @@ function copyAll() {
 function copyRootFiles() {
 	return gulp
 		.src([
-			'./src/index.html',
 			'./src/_redirects'
 		], { allowEmpty: true })
 		.pipe(gulp.dest('./dist'));

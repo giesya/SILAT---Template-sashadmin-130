@@ -40,8 +40,10 @@
         }
 
         .registration-logo {
-            width: min(100%, 150px);
-            height: 36px;
+            display: inline-block;
+            width: min(100%, 190px);
+            max-height: 58px;
+            height: auto;
             object-fit: contain;
         }
 
@@ -188,6 +190,11 @@
                 margin-top: 0.7rem;
             }
 
+            .registration-logo {
+                width: min(100%, 160px);
+                max-height: 48px;
+            }
+
             .registration-main {
                 padding-top: 0;
                 padding-right: 0.65rem;
@@ -210,8 +217,8 @@
 <body>
     <div class="registration-content">
         <header class="registration-header">
-            <a href="siup-selection.html" aria-label="Kembali ke pilihan status SIUP">
-                <img class="registration-logo" src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="SILAT">
+            <a href="siup-selection.html" class="d-inline-flex" aria-label="Kembali ke pilihan status SIUP">
+                <img class="registration-logo" src="../assets/images/brand-logos/logo-SILAT-v2.png" alt="Logo SILAT">
             </a>
             <h1 class="registration-title">REGISTRASI DATA PENGGUNA</h1>
         </header>
@@ -238,11 +245,15 @@
                         </div>
                     </section>
 
-                    <div class="registration-actions">
+                    <div class="registration-actions d-flex justify-content-between align-items-center mt-3">
+                        <a href="siup-selection.html" class="text-muted fs-13 text-decoration-none"><i class="ri-arrow-left-line me-1"></i>Kembali</a>
                         <button type="submit" class="btn btn-primary text-white">
                             <i class="ri-search-line me-2"></i>Periksa Data SIUP
                         </button>
                     </div>
+                    <p class="text-center text-muted fs-13 mt-3 mb-0">
+                        Sudah memiliki akun? <a href="login.html" class="text-primary fw-semibold text-decoration-none">Masuk</a>
+                    </p>
                     <p id="siup-check-status" class="registration-status text-center text-muted fs-13 mt-2 mb-0" aria-live="polite"></p>
                 </form>
             </section>

@@ -31,11 +31,25 @@
             box-shadow: 0 18px 55px rgba(31, 51, 73, 0.12);
         }
 
+        .siup-header {
+            margin-bottom: 1.25rem;
+        }
+
+        .siup-header-title {
+            color: #183153;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0.25rem 0 0;
+            letter-spacing: 0.02em;
+        }
+
         .siup-logo {
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: min(100%, 72px);
+            width: min(100%, 220px);
+            max-height: 68px;
+            object-fit: contain;
             height: auto;
         }
 
@@ -99,8 +113,21 @@
         }
 
         @media (max-width: 575.98px) {
+            .siup-header {
+                margin-bottom: 0.85rem;
+            }
+
+            .siup-header-title {
+                font-size: 1rem;
+            }
+
             .siup-card .card-body {
                 padding: 1.5rem !important;
+            }
+
+            .siup-logo {
+                width: min(100%, 180px);
+                max-height: 56px;
             }
         }
     </style>
@@ -111,13 +138,16 @@
         <div class="container-lg">
             <div class="row justify-content-center">
                 <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10 col-12">
+                    <header class="siup-header text-center mb-3">
+                        <a href="login.html" class="d-inline-flex" aria-label="Kembali ke halaman login">
+                            <img class="siup-logo mb-2" src="../assets/images/brand-logos/logo-SILAT-v2.png" alt="Logo SILAT">
+                        </a>
+                        <h1 class="siup-header-title">PENDAFTARAN PENGGUNA</h1>
+                    </header>
+
                     <section class="card custom-card siup-card">
-                        <div class="card-body p-5">
+                        <div class="card-body p-4 p-md-5">
                             <div class="text-center mb-4">
-                                <a href="index.html" aria-label="Kembali ke halaman utama">
-                                    <img class="siup-logo mb-3" src="../assets/images/brand-logos/SILAT-nobg-logo.png" alt="SILAT">
-                                </a>
-                                <p class="h4 fw-semibold mb-2">PENDAFTARAN PENGGUNA</p>
                                 <p class="text-muted mb-0">Pilih status surat izin usaha yang sesuai dengan kondisi usaha Anda.</p>
                             </div>
 
@@ -147,6 +177,7 @@
                                 </fieldset>
 
                                 <p class="text-center text-muted fs-13 mt-4 mb-0">Pilih salah satu opsi untuk melanjutkan.</p>
+                                <p class="text-center text-muted fs-13 mt-3 mb-0">Sudah memiliki akun? <a href="login.html" class="text-primary fw-semibold text-decoration-none">Masuk</a></p>
                             </form>
                         </div>
                     </section>
