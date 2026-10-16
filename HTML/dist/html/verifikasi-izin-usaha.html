@@ -155,29 +155,35 @@
 
     .permohonan-table-wrap {
         width: 100%;
-        overflow-x: hidden;
+        overflow-x: auto;
     }
 
     #permohonanTable {
         width: 100%;
-        table-layout: fixed;
-        font-size: 0.72rem;
+        font-size: 0.75rem;
     }
 
     #permohonanTable th,
     #permohonanTable td {
-        padding: 0.4rem 0.3rem;
-        overflow-wrap: anywhere;
-        vertical-align: top;
+        padding: 0.5rem 0.5rem;
+        vertical-align: middle;
     }
 
     #permohonanTable thead th {
-        text-align: center;
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #475569;
+        font-weight: 700;
+        background-color: #f8fafc;
         vertical-align: middle;
+        text-align: center;
+        white-space: nowrap;
     }
 
     #permohonanTable tbody td {
         font-weight: 400;
+        color: #212529;
     }
 
     #permohonanTable .permohonan-actions {
@@ -1686,30 +1692,17 @@
                     </div>
                 </div>
                     <div class="card-body">
-                        <div class="permohonan-table-wrap">
-                            <table class="table table-bordered table-hover mb-0" id="permohonanTable">
-                                <colgroup>
-                                    <col style="width: 3%">
-                                    <col style="width: 8%">
-                                    <col style="width: 12%">
-                                    <col style="width: 9%">
-                                    <col style="width: 9%">
-                                    <col style="width: 19%">
-                                    <col style="width: 9%">
-                                    <col style="width: 13%">
-                                    <col style="width: 18%">
-                                </colgroup>
-                                <thead>
+                        <div class="permohonan-table-wrap table-responsive">
+                            <table class="table table-bordered table-hover align-middle mb-0" id="permohonanTable">
+                                <thead class="table-light">
                                     <tr>
-                                        <th>No.</th>
-                                        <th>Tanggal Pengajuan</th>
-                                        <th>Pemohon</th>
-                                        <th>No. Agenda</th>
-                                        <th>Jenis Permohonan</th>
-                                        <th>Perubahan yang Diajukan</th>
-                                        <th>Status Permohonan</th>
-                                        <th>Keterangan</th>
-                                        <th>Aksi</th>
+                                        <th scope="col" class="text-center ps-3" style="width: 45px;">NO.</th>
+                                        <th scope="col" class="text-center" style="min-width: 180px;">TGL. PENGAJUAN &amp; NO. AGENDA</th>
+                                        <th scope="col" class="text-center" style="min-width: 180px;">PEMOHON</th>
+                                        <th scope="col" class="text-center" style="min-width: 160px;">JENIS PERMOHONAN</th>
+                                        <th scope="col" class="text-center" style="min-width: 180px;">STATUS PERMOHONAN</th>
+                                        <th scope="col" class="text-center" style="min-width: 170px;">KETERANGAN</th>
+                                        <th scope="col" class="text-center pe-3" style="width: 250px;">AKSI</th>
                                     </tr>
                                 </thead>
                                 <tbody id="permohonanTableBody"></tbody>
@@ -2193,16 +2186,16 @@
 
     <script>
         const permohonanData = [
-            { tanggal: "15-09-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-KBLI-2026/0091", jenis: "SIUP (Update KBLI 2025)", perubahan: "Perubahan KBLI", status: "Dalam Proses", keterangan: "Menunggu verifikasi Verifikator KKP" },
-            { tanggal: "02-09-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0001", jenis: "SIUP", perubahan: "Perubahan Alat Tangkap, Perubahan Daerah Penangkapan, Perubahan KBLI, Perubahan Pelabuhan Pangkalan", status: "Dalam Proses", keterangan: "Dokumen sedang diperiksa" },
-            { tanggal: "01-09-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0002", jenis: "SIPI/SIKPI", perubahan: "PERUBAHAN BALIK KEMBALI ALOKASI MENJADI 11 PANCING CUMI DARI PANCING ULUR TUNA YANG BELUM REALISASI DIKARENAKAN KONDISI DI LAPANGAN YANG TERBATAS UNTUK UMPAN TUNA", status: "Dalam Proses", keterangan: "Dokumen lengkap" },
-            { tanggal: "29-08-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0003", jenis: "SIUP", status: "Ditolak", keterangan: "Dokumen persyaratan teknis tidak memenuhi ketentuan" },
-            { tanggal: "27-08-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0004", jenis: "SIPI/SIKPI", status: "Terbit", keterangan: "Izin dapat dicetak" },
-            { tanggal: "25-08-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0005", jenis: "SIUP", status: "Dalam Proses", keterangan: "Dokumen sedang diperiksa" },
-            { tanggal: "22-08-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0006", jenis: "SIPI/SIKPI", status: "Dalam Proses", keterangan: "Dokumen lengkap" },
-            { tanggal: "20-08-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0007", jenis: "SIUP", status: "Ditolak", keterangan: "Ketidaksesuaian data administrasi pemohon" },
-            { tanggal: "18-08-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0008", jenis: "SIPI/SIKPI", status: "Terbit", keterangan: "Izin dapat dicetak" },
-            { tanggal: "15-08-2026", pemohon: "PT Samudra Bahari Nusantara", agenda: "AG-2026-0009", jenis: "SIUP", status: "Ditolak", keterangan: "Persyaratan belum terpenuhi" }
+            { tanggal: "15-09-2026", agenda: "AG-KBLI-2026/0091", pemohon: "PT Samudra Bahari Nusantara", jenis: "SIUP", status: "UPDATE KBLI 2026", kondisi: "proses", keterangan: "", canPrint: false },
+            { tanggal: "02-09-2026", agenda: "AG-2026-0001", pemohon: "PT Samudra Bahari Nusantara", jenis: "SIUP", status: "Perubahan Alat Tangkap, Perubahan Daerah Penangkapan, Perubahan KBLI, Perubahan Pelabuhan Pangkalan", kondisi: "proses", keterangan: "", canPrint: false },
+            { tanggal: "01-09-2026", agenda: "AG-2026-0002", pemohon: "PT Samudra Bahari Nusantara", jenis: "SIUP", status: "PERUBAHAN BALIK KEMBALI ALOKASI MENJADI 11 PANCING CUMI DARI PANCING ULUR TUNA YANG BELUM REALISASI DIKARENAKAN KONDISI DI LAPANGAN YANG TERBATAS UNTUK UMPAN TUNA", kondisi: "proses", keterangan: "", canPrint: false },
+            { tanggal: "29-08-2026", agenda: "AG-2026-0003", pemohon: "PT Samudra Bahari Nusantara", jenis: "SIUP", status: "Perubahan", kondisi: "ditolak", keterangan: "Dokumen persyaratan teknis tidak memenuhi ketentuan", canPrint: false },
+            { tanggal: "27-08-2026", agenda: "AG-2026-0004", pemohon: "PT Samudra Bahari Nusantara", jenis: "SIUP", status: "Perubahan KBLI", kondisi: "terbit", keterangan: "", canPrint: true },
+            { tanggal: "25-08-2026", agenda: "AG-2026-0005", pemohon: "PT Samudra Bahari Nusantara", jenis: "SIUP", status: "Perubahan", kondisi: "proses", keterangan: "", canPrint: false },
+            { tanggal: "22-08-2026", agenda: "AG-2026-0006", pemohon: "PT Samudra Bahari Nusantara", jenis: "SIUP", status: "Perubahan", kondisi: "proses", keterangan: "", canPrint: false },
+            { tanggal: "20-08-2026", agenda: "AG-2026-0007", pemohon: "PT Samudra Bahari Nusantara", jenis: "SIUP", status: "Perubahan", kondisi: "ditolak", keterangan: "Ketidaksesuaian data administrasi pemohon", canPrint: false },
+            { tanggal: "18-08-2026", agenda: "AG-2026-0008", pemohon: "PT Samudra Bahari Nusantara", jenis: "SIUP", status: "Perubahan KBLI", kondisi: "terbit", keterangan: "", canPrint: true },
+            { tanggal: "15-08-2026", agenda: "AG-2026-0009", pemohon: "PT Samudra Bahari Nusantara", jenis: "SIUP", status: "Perubahan", kondisi: "ditolak", keterangan: "Persyaratan belum terpenuhi", canPrint: false }
         ];
         const rowsPerPage = 10;
         let currentPage = 1;
@@ -2211,38 +2204,40 @@
             const start = (currentPage - 1) * rowsPerPage;
             const pageRows = permohonanData.slice(start, start + rowsPerPage);
             const tableBody = document.getElementById("permohonanTableBody");
+            
             tableBody.innerHTML = pageRows.map((item, index) => `
-                ${item.status === "Ditolak" || item.status === "Dalam Proses" ? `
-                    <tr>
-                        <td data-label="No.">${start + index + 1}</td>
-                        <td data-label="Tanggal Pengajuan">${item.tanggal}</td>
-                        <td data-label="Pemohon">${item.pemohon}</td>
-                        <td data-label="No. Agenda">${item.agenda}</td>
-                        <td data-label="Jenis Permohonan">${item.jenis}</td>
-                        <td data-label="Perubahan yang Diajukan">${item.perubahan || ""}</td>
-                        <td data-label="Status Permohonan">${item.status}</td>
-                        <td data-label="Keterangan">${item.status === "Ditolak" ? item.keterangan : ""}</td>
-                        <td data-label="Aksi"><button type="button" class="btn btn-sm btn-secondary"><i class="fe fe-eye me-1"></i>Lihat</button></td>
-                    </tr>
-                ` : `
                 <tr>
-                    <td data-label="No.">${start + index + 1}</td>
-                    <td data-label="Tanggal Pengajuan">${item.tanggal}</td>
-                    <td data-label="Pemohon">${item.pemohon}</td>
-                    <td data-label="No. Agenda">${item.agenda}</td>
-                    <td data-label="Jenis Permohonan">${item.jenis}</td>
-                    <td data-label="Perubahan yang Diajukan">${item.perubahan || ""}</td>
-                    <td data-label="Status Permohonan">${item.status}</td>
-                    <td data-label="Keterangan">${item.status === "Ditolak" ? item.keterangan : ""}</td>
-                    <td data-label="Aksi">
-                        <div class="permohonan-actions">
-                            <a href="surat-preview.html?pemohon=${encodeURIComponent(item.pemohon)}&agenda=${encodeURIComponent(item.agenda)}&jenis=${encodeURIComponent(item.jenis)}&tanggal=${encodeURIComponent(item.tanggal)}&status=${encodeURIComponent(item.status)}" class="btn btn-sm btn-primary"><i class="fe fe-printer me-1"></i>Cetak Izin OSS</a>
-                            <button type="button" class="btn btn-sm btn-success"><i class="fe fe-printer me-1"></i>Cetak Izin</button>
-                            <button type="button" class="btn btn-sm btn-info"><i class="fe fe-paperclip me-1"></i>Lampiran Data Teknis</button>
+                    <td data-label="NO." class="text-center text-dark">${start + index + 1}</td>
+                    <td data-label="TGL. PENGAJUAN & NO. AGENDA">
+                        <div class="d-flex flex-column gap-1" style="min-width: 170px;">
+                            <div class="d-flex align-items-center gap-1">
+                                <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 58px; text-align: center;">TGL</span>
+                                <span class="text-dark fs-11">${item.tanggal}</span>
+                            </div>
+                            <div class="pt-1 border-top mt-1 d-flex align-items-center gap-1">
+                                <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 58px; text-align: center;">AGENDA</span>
+                                <span class="font-monospace text-dark fs-11">${item.agenda}</span>
+                            </div>
                         </div>
                     </td>
+                    <td data-label="PEMOHON" class="text-dark">${item.pemohon}</td>
+                    <td data-label="JENIS PERMOHONAN" class="text-dark">${item.jenis}</td>
+                    <td data-label="STATUS PERMOHONAN">
+                        <div class="text-dark fs-12 text-wrap" style="max-width: 320px; line-height: 1.45;">${item.status}</div>
+                    </td>
+                    <td data-label="KETERANGAN">${item.keterangan ? `<span class="text-danger fs-12">${item.keterangan}</span>` : ""}</td>
+                    <td data-label="AKSI" class="${!item.canPrint ? 'text-center' : ''}">
+                        ${item.canPrint ? `
+                            <div class="permohonan-actions">
+                                <a href="surat-preview.html?pemohon=${encodeURIComponent(item.pemohon)}&agenda=${encodeURIComponent(item.agenda)}&jenis=${encodeURIComponent(item.jenis)}&tanggal=${encodeURIComponent(item.tanggal)}&status=${encodeURIComponent(item.status)}" class="btn btn-sm btn-primary"><i class="fe fe-printer me-1"></i>Cetak Izin OSS</a>
+                                <button type="button" class="btn btn-sm btn-primary"><i class="fe fe-printer me-1"></i>Cetak Izin</button>
+                                <button type="button" class="btn btn-sm btn-primary"><i class="fe fe-paperclip me-1"></i>Lampiran Data Teknis</button>
+                            </div>
+                        ` : `
+                            <button type="button" class="btn btn-sm btn-primary"><i class="fe fe-eye me-1"></i>Lihat</button>
+                        `}
+                    </td>
                 </tr>
-                `}
             `).join("");
 
             const first = permohonanData.length ? start + 1 : 0;
@@ -3183,10 +3178,11 @@
                         tanggal: new Date().toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-'),
                         pemohon: "PT Samudra Bahari Nusantara",
                         agenda: randomAgenda,
-                        jenis: "SIUP (Update KBLI 2025)",
-                        perubahan: "Perubahan KBLI",
-                        status: "Dalam Proses",
-                        keterangan: "Menunggu verifikasi Verifikator KKP"
+                        jenis: "SIUP",
+                        status: "UPDATE KBLI 2026",
+                        kondisi: "proses",
+                        keterangan: "",
+                        canPrint: false
                     });
                     renderPermohonanTable();
 

@@ -73,6 +73,8 @@
         vertical-align: top !important;
         font-size: 0.6875rem;
         line-height: 1.35;
+        font-weight: 400;
+        color: #212529;
     }
 
     .info-cell-title {
@@ -1348,18 +1350,18 @@
             // Helper function to render Status Perizinan Badge
             function getStatusPerizinanBadge(status) {
                 if (!status || status === "-" || status === "Belum Mengajukan Izin" || status.toLowerCase().includes("belum")) {
-                    return `<span class="badge bg-secondary-transparent text-secondary border border-secondary-subtle fs-10 px-1 py-0 fw-semibold"><i class="ri-close-circle-line me-1"></i>Belum Mengajukan Izin</span>`;
+                    return `<span class="badge bg-secondary-transparent text-secondary border border-secondary-subtle fs-10 px-1 py-0 fw-bold"><i class="ri-close-circle-line me-1"></i>Belum Mengajukan Izin</span>`;
                 }
                 if (status === "Aktif" || status.toLowerCase().includes("aktif")) {
-                    return `<span class="badge bg-success-transparent text-success border border-success-subtle fs-10 px-1 py-0 fw-semibold"><i class="ri-checkbox-circle-fill me-1"></i>Aktif</span>`;
+                    return `<span class="badge bg-success-transparent text-success border border-success-subtle fs-10 px-1 py-0 fw-bold"><i class="ri-checkbox-circle-fill me-1"></i>Aktif</span>`;
                 }
                 if (status === "Kedaluwarsa" || status.toLowerCase().includes("habis") || status.toLowerCase().includes("kedaluwarsa")) {
-                    return `<span class="badge bg-danger-transparent text-danger border border-danger-subtle fs-10 px-1 py-0 fw-semibold"><i class="ri-alarm-warning-line me-1"></i>Kedaluwarsa</span>`;
+                    return `<span class="badge bg-danger-transparent text-danger border border-danger-subtle fs-10 px-1 py-0 fw-bold"><i class="ri-alarm-warning-line me-1"></i>Kedaluwarsa</span>`;
                 }
                 if (status.toLowerCase().includes("mendekati") || status.toLowerCase().includes("proses")) {
-                    return `<span class="badge bg-warning-transparent text-warning-emphasis border border-warning-subtle fs-10 px-1 py-0 fw-semibold"><i class="ri-error-warning-line me-1"></i>Mendekati Kedaluwarsa</span>`;
+                    return `<span class="badge bg-warning-transparent text-warning-emphasis border border-warning-subtle fs-10 px-1 py-0 fw-bold"><i class="ri-error-warning-line me-1"></i>Mendekati Kedaluwarsa</span>`;
                 }
-                return `<span class="badge bg-light text-muted border fs-10 px-1 py-0">${status}</span>`;
+                return `<span class="badge bg-light text-muted border fs-10 px-1 py-0 fw-bold">${status}</span>`;
             }
 
             // Pool of realistic fishing vessel names
@@ -2024,20 +2026,20 @@
                 tableBody.innerHTML = pageRows.map(item => `
                     <tr>
                         <!-- 1. No. -->
-                        <td class="text-center ps-3 text-dark fw-semibold fs-11">${item.no}</td>
+                        <td class="text-center ps-3 text-dark fs-11">${item.no}</td>
 
                         <!-- 2. ID/Tanggal Alokasi (Split Atas Bawah) -->
                         <td>
                             <div class="d-flex flex-column gap-1" style="min-width: 130px;">
                                 <!-- Baris Atas: ID -->
                                 <div class="d-flex align-items-center gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 40px; text-align: center;">ID</span>
-                                    <span class="font-monospace text-dark fw-semibold fs-11">${item.idAlokasi}</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 40px; text-align: center;">ID</span>
+                                    <span class="font-monospace text-dark fs-11">${item.idAlokasi}</span>
                                 </div>
                                 <!-- Baris Bawah: Tanggal -->
                                 <div class="pt-1 border-top mt-1 d-flex align-items-center gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 40px; text-align: center;">TGL</span>
-                                    <span class="text-dark fw-semibold fs-11">${item.tglAlokasi}</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 40px; text-align: center;">TGL</span>
+                                    <span class="text-dark fs-11">${item.tglAlokasi}</span>
                                 </div>
                             </div>
                         </td>
@@ -2048,18 +2050,18 @@
                                 <!-- Bagian Atas: NIB & SIUP -->
                                 <div class="d-flex flex-column gap-1">
                                     <div class="d-flex align-items-center gap-1">
-                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 42px; text-align: center;">NIB</span>
-                                        <span class="font-monospace text-dark fw-semibold fs-11">${item.nib}</span>
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 42px; text-align: center;">NIB</span>
+                                        <span class="font-monospace text-dark fs-11">${item.nib}</span>
                                     </div>
                                     <div class="d-flex align-items-center gap-1">
-                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 42px; text-align: center;">SIUP</span>
-                                        <span class="font-monospace text-dark fw-semibold fs-11">${item.noSiup}</span>
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 42px; text-align: center;">SIUP</span>
+                                        <span class="font-monospace text-dark fs-11">${item.noSiup}</span>
                                     </div>
                                 </div>
                                 <!-- Bagian Bawah: KBLI -->
                                 <div class="pt-1 border-top mt-1 d-flex align-items-start gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0" style="min-width: 42px; text-align: center;">KBLI</span>
-                                    <span class="text-dark fw-semibold fs-11" title="${item.kbli}">${item.kbli}</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0 fw-bold" style="min-width: 42px; text-align: center;">KBLI</span>
+                                    <span class="text-dark fs-11" title="${item.kbli}">${item.kbli}</span>
                                 </div>
                             </div>
                         </td>
@@ -2068,12 +2070,12 @@
                         <td>
                             <div class="d-flex flex-column gap-1" style="min-width: 200px; max-width: 270px;">
                                 <div class="d-flex align-items-start gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0" style="min-width: 82px; text-align: center;">Perusahaan</span>
-                                    <span class="text-dark fw-semibold fs-11">${item.namaPemilik}</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0 fw-bold" style="min-width: 82px; text-align: center;">Perusahaan</span>
+                                    <span class="text-dark fs-11">${item.namaPemilik}</span>
                                 </div>
                                 <div class="pt-1 border-top mt-1 d-flex align-items-start gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0" style="min-width: 82px; text-align: center;">Penanggung Jawab</span>
-                                    <span class="text-dark fw-semibold fs-11">${item.namaPenanggungJawab || 'Ir. H. Hendra Wijaya, M.M.'}</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0 fw-bold" style="min-width: 82px; text-align: center;">Penanggung Jawab</span>
+                                    <span class="text-dark fs-11">${item.namaPenanggungJawab || 'Ir. H. Hendra Wijaya, M.M.'}</span>
                                 </div>
                             </div>
                         </td>
@@ -2082,16 +2084,16 @@
                         <td>
                             <div class="d-flex flex-column gap-1" style="min-width: 170px; max-width: 240px;">
                                 <div class="d-flex align-items-center gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 58px; text-align: center;">Material</span>
-                                    <span class="text-dark fw-semibold fs-11">${item.material || 'Baja'}</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 58px; text-align: center;">Material</span>
+                                    <span class="text-dark fs-11">${item.material || 'Baja'}</span>
                                 </div>
                                 <div class="d-flex align-items-center gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 58px; text-align: center;">Lokasi</span>
-                                    <span class="text-dark fw-semibold fs-11">${item.lokasiPengadaan || 'Dalam Negeri'}</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 58px; text-align: center;">Lokasi</span>
+                                    <span class="text-dark fs-11">${item.lokasiPengadaan || 'Dalam Negeri'}</span>
                                 </div>
                                 <div class="d-flex align-items-center gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 58px; text-align: center;">Skema</span>
-                                    <span class="text-dark fw-semibold fs-11">${item.skemaPengadaan || 'Pasca Produksi'}</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 58px; text-align: center;">Skema</span>
+                                    <span class="text-dark fs-11">${item.skemaPengadaan || 'Pasca Produksi'}</span>
                                 </div>
                             </div>
                         </td>
@@ -2102,37 +2104,37 @@
                                 <!-- Bagian 1: Jenis & API -->
                                 <div class="d-flex flex-column gap-1">
                                     <div class="d-flex align-items-center gap-1">
-                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 50px; text-align: center;">Jenis</span>
-                                        <span class="text-dark fw-semibold fs-11">${item.jenisKapal}</span>
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 50px; text-align: center;">Jenis</span>
+                                        <span class="text-dark fs-11">${item.jenisKapal}</span>
                                     </div>
                                     <div class="d-flex align-items-start gap-1">
-                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0" style="min-width: 50px; text-align: center;">API</span>
-                                        <span class="text-dark fw-semibold fs-11" title="${item.subAlatTangkap || item.alatTangkap}">${item.subAlatTangkap || item.alatTangkap}</span>
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0 fw-bold" style="min-width: 50px; text-align: center;">API</span>
+                                        <span class="text-dark fs-11" title="${item.subAlatTangkap || item.alatTangkap}">${item.subAlatTangkap || item.alatTangkap}</span>
                                     </div>
                                 </div>
 
                                 <!-- Bagian 2: DPI & Zona -->
                                 <div class="pt-1 border-top mt-1 d-flex flex-column gap-1">
                                     <div class="d-flex align-items-center gap-1">
-                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 50px; text-align: center;">DPI</span>
-                                        <span class="text-dark fw-semibold fs-11">${item.wpp || item.zona}</span>
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 50px; text-align: center;">DPI</span>
+                                        <span class="text-dark fs-11">${item.wpp || item.zona}</span>
                                     </div>
                                     ${item.zona ? `
                                     <div class="d-flex align-items-center gap-1">
-                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 50px; text-align: center;">Zona</span>
-                                        <span class="text-dark fw-semibold fs-11">${item.zona}</span>
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 50px; text-align: center;">Zona</span>
+                                        <span class="text-dark fs-11">${item.zona}</span>
                                     </div>` : ''}
                                 </div>
 
                                 <!-- Bagian 3: Ukuran & Jumlah -->
                                 <div class="pt-1 border-top mt-1 d-flex flex-column gap-1">
                                     <div class="d-flex align-items-center gap-1">
-                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 50px; text-align: center;">Ukuran</span>
-                                        <span class="text-dark fw-semibold fs-11">${item.ukuranKapal || item.rangeUkuran} GT</span>
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 50px; text-align: center;">Ukuran</span>
+                                        <span class="text-dark fs-11">${item.ukuranKapal || item.rangeUkuran} GT</span>
                                     </div>
                                     <div class="d-flex align-items-center gap-1">
-                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 50px; text-align: center;">Jumlah</span>
-                                        <span class="text-dark fw-semibold fs-11">${item.jumlahKapal || '1 Unit'}</span>
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 50px; text-align: center;">Jumlah</span>
+                                        <span class="text-dark fs-11">${item.jumlahKapal || '1 Unit'}</span>
                                     </div>
                                 </div>
                             </div>
@@ -2143,27 +2145,27 @@
                             <div class="d-flex flex-column gap-1" style="min-width: 200px; max-width: 280px;">
                                 <!-- Baris Atas: Pelabuhan Pangkalan -->
                                 <div class="d-flex align-items-start gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0" style="min-width: 65px; text-align: center;">Pangkalan</span>
-                                    <span class="text-dark fw-semibold fs-11" style="line-height: 1.35;" title="${item.pangkalan}">
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 mt-0-5 flex-shrink-0 fw-bold" style="min-width: 65px; text-align: center;">Pangkalan</span>
+                                    <span class="text-dark fs-11" style="line-height: 1.35;" title="${item.pangkalan}">
                                         ${item.pangkalan}
                                     </span>
                                 </div>
                                 <!-- Baris Bawah: Domisili / Muat / Tujuan -->
                                 <div class="pt-1 border-top mt-1 d-flex flex-column gap-1">
                                     <div class="d-flex align-items-center gap-1">
-                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 65px; text-align: center;">Domisili</span>
-                                        <span class="text-dark fw-semibold fs-11">${item.pd && item.pd !== '-' ? item.pd : (item.pangkalan.split(',')[0] || '-')}</span>
+                                        <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 65px; text-align: center;">Domisili</span>
+                                        <span class="text-dark fs-11">${item.pd && item.pd !== '-' ? item.pd : (item.pangkalan.split(',')[0] || '-')}</span>
                                     </div>
                                     ${item.muatSinggah && item.muatSinggah !== '-' ? `
                                         <div class="d-flex align-items-center gap-1">
-                                            <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 65px; text-align: center;">Muat</span>
-                                            <span class="text-dark fw-semibold fs-11">${item.muatSinggah}</span>
+                                            <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 65px; text-align: center;">Muat</span>
+                                            <span class="text-dark fs-11">${item.muatSinggah}</span>
                                         </div>
                                     ` : ''}
                                     ${item.negaraTujuan && item.negaraTujuan !== '-' ? `
                                         <div class="d-flex align-items-center gap-1">
-                                            <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 65px; text-align: center;">Tujuan</span>
-                                            <span class="text-dark fw-semibold fs-11">${item.negaraTujuan}</span>
+                                            <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 65px; text-align: center;">Tujuan</span>
+                                            <span class="text-dark fs-11">${item.negaraTujuan}</span>
                                         </div>
                                     ` : ''}
                                 </div>
@@ -2174,20 +2176,20 @@
                         <td>
                             <div class="d-flex flex-column gap-1" style="min-width: 180px; max-width: 260px;">
                                 <div class="d-flex align-items-center gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 60px; text-align: center;">No. BKP</span>
-                                    <span class="font-monospace text-dark fw-semibold fs-11">${item.noBkp && item.noBkp !== '-' ? item.noBkp : '-'}</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 60px; text-align: center;">No. BKP</span>
+                                    <span class="font-monospace text-dark fs-11">${item.noBkp && item.noBkp !== '-' ? item.noBkp : '-'}</span>
                                 </div>
                                 <div class="d-flex align-items-center gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 60px; text-align: center;">ID Kapal</span>
-                                    <span class="font-monospace text-dark fw-semibold fs-11">${item.idKapal && item.idKapal !== '-' ? item.idKapal : '-'}</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 60px; text-align: center;">ID Kapal</span>
+                                    <span class="font-monospace text-dark fs-11">${item.idKapal && item.idKapal !== '-' ? item.idKapal : '-'}</span>
                                 </div>
                                 <div class="d-flex align-items-center gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 60px; text-align: center;">Kapal</span>
-                                    <span class="text-dark fw-semibold fs-11">${item.namaKapal && item.namaKapal !== '-' ? item.namaKapal : '-'}</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 60px; text-align: center;">Kapal</span>
+                                    <span class="text-dark fs-11">${item.namaKapal && item.namaKapal !== '-' ? item.namaKapal : '-'}</span>
                                 </div>
                                 <div class="d-flex align-items-center gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 60px; text-align: center;">Ukuran</span>
-                                    <span class="text-dark fw-semibold fs-11">${item.ukuranKapalGt && item.ukuranKapalGt !== '-' ? item.ukuranKapalGt : (item.ukuranKapal ? item.ukuranKapal + ' GT' : '-')}</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 60px; text-align: center;">Ukuran</span>
+                                    <span class="text-dark fs-11">${item.ukuranKapalGt && item.ukuranKapalGt !== '-' ? item.ukuranKapalGt : (item.ukuranKapal ? item.ukuranKapal + ' GT' : '-')}</span>
                                 </div>
                             </div>
                         </td>
@@ -2196,15 +2198,15 @@
                         <td>
                             <div class="d-flex flex-column gap-1" style="min-width: 190px; max-width: 270px;">
                                 <div class="d-flex align-items-center gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 65px; text-align: center;">No. Izin</span>
-                                    <span class="font-monospace text-dark fw-semibold fs-11">${item.noIzin && item.noIzin !== '-' ? item.noIzin : '-'}</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 65px; text-align: center;">No. Izin</span>
+                                    <span class="font-monospace text-dark fs-11">${item.noIzin && item.noIzin !== '-' ? item.noIzin : '-'}</span>
                                 </div>
                                 <div class="d-flex align-items-center gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 65px; text-align: center;">Tgl Terbit</span>
-                                    <span class="text-dark fw-semibold fs-11">${item.tglTerbitIzin && item.tglTerbitIzin !== '-' ? item.tglTerbitIzin : '-'}</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 65px; text-align: center;">Tgl Terbit</span>
+                                    <span class="text-dark fs-11">${item.tglTerbitIzin && item.tglTerbitIzin !== '-' ? item.tglTerbitIzin : '-'}</span>
                                 </div>
                                 <div class="pt-1 border-top mt-1 d-flex align-items-center gap-1">
-                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0" style="min-width: 65px; text-align: center;">Status</span>
+                                    <span class="badge bg-light text-muted border fs-10 px-1 py-0 flex-shrink-0 fw-bold" style="min-width: 65px; text-align: center;">Status</span>
                                     ${getStatusPerizinanBadge(item.statusPerizinan)}
                                 </div>
                             </div>
